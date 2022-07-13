@@ -39,6 +39,7 @@ com.verby.restapi
                |   +- ...
            +- infrastructure
            |   +- OrderRepositoryImpl.java
+           |   +- OrdererServiceImpl.java
            |   +- ExternalApiClient.java
            |   +- ...
            +- Presentation
