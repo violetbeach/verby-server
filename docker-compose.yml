@@ -1,0 +1,12 @@
+version: "3"
+services:
+  main-db:
+    image: mysql:8.0.29
+    container_name: verby-main-db
+    ports:
+      - "8341:3306"
+    volumes:
+      - ./database/test/:/docker-entrypoint-initdb.d/
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    restart: always
