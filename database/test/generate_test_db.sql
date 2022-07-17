@@ -88,7 +88,7 @@ CREATE TABLE `inquiry`
     `title`       varchar(100) NOT NULL,
     `content`     text         NOT NULL,
     `answer`      text         NULL,
-    `status_id`   bigint(20)   NOT NULL,
+    `status`      varchar(30)  NOT NULL,
     `created_at`  datetime     NOT NULL DEFAULT NOW(),
     `answered_at` datetime     NULL
 );
@@ -147,12 +147,12 @@ DROP TABLE IF EXISTS `notification`;
 
 CREATE TABLE `notification`
 (
-    `status_id`   bigint(20) NOT NULL,
     `id`          bigint(20) AUTO_INCREMENT PRIMARY KEY,
     `sender_id`   bigint(20)  NOT NULL,
     `receiver_id` bigint(20)  NOT NULL,
     `entity_id`   bigint(20)  NULL,
     `type_id`     bigint(20)  NOT NULL,
+    `status`      varchar(30) NOT NULL,
     `created_at`  datetime    NOT NULL
 );
 
@@ -193,22 +193,6 @@ CREATE TABLE `notification_type`
 (
     `id`   bigint(20)  NOT NULL,
     `name` varchar(30) NOT NULL
-);
-
-DROP TABLE IF EXISTS `notification_status`;
-
-CREATE TABLE `notification_status`
-(
-    `id`   bigint(20)  NOT NULL,
-    `name` varchar(50) NOT NULL
-);
-
-DROP TABLE IF EXISTS `inquiry_status`;
-
-CREATE TABLE `inquiry_status`
-(
-    `id`   bigint(20) NOT NULL,
-    `name` bigint(20) NOT NULL
 );
 
 DROP TABLE IF EXISTS `Ranking`;
