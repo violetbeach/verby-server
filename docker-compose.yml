@@ -6,7 +6,15 @@ services:
     ports:
       - "8341:3306"
     volumes:
-      - ./database/test/:/docker-entrypoint-initdb.d/
+      - ./sql/ddl:/docker-entrypoint-initdb.d/
     environment:
       MYSQL_ROOT_PASSWORD: root
+    restart: always
+
+  auth-server:
+    image: redis:7.0.3
+    container_name: verby-auth-server
+    ports:
+      - "8342:6379"
+    command: redis-server
     restart: always
