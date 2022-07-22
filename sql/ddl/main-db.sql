@@ -134,13 +134,13 @@ CREATE TABLE `comment_like`
     `created_at` datetime   NOT NULL DEFAULT NOW()
 );
 
-DROP TABLE IF EXISTS `user_role`;
+DROP TABLE IF EXISTS `account_role`;
 
-CREATE TABLE `user_role`
+CREATE TABLE `account_role`
 (
-    `user_id` bigint(20) NOT NULL,
+    `account_id` bigint(20) NOT NULL,
     `role_id` bigint(20) NOT NULL,
-    PRIMARY KEY (`user_id`, `role_id`)
+    PRIMARY KEY (`account_id`, `role_id`)
 );
 
 DROP TABLE IF EXISTS `notification`;
