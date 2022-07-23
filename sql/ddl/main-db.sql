@@ -12,7 +12,7 @@ CREATE TABLE `account`
     `birthday`                             date         NULL,
     `phone`                                varchar(13)  NOT NULL,
     `status`                               varchar(30)  NOT NULL,
-    `is_allowed_to_marketing_notification` boolean      NOT NULL,
+    `allow_to_marketing_notification` boolean      NOT NULL,
     `created_at`                           datetime     NOT NULL DEFAULT NOW(),
     `updated_at`                           datetime     NULL
 );
