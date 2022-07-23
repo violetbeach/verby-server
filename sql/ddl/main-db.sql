@@ -101,6 +101,10 @@ CREATE TABLE `role`
     `name` varchar(20) NOT NULL
 );
 
+INSERT INTO `role` (name) VALUES
+    ("ADMIN"),
+    ("MEMBER");
+
 DROP TABLE IF EXISTS `comment`;
 
 CREATE TABLE `comment`
