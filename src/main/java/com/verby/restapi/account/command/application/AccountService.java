@@ -15,6 +15,10 @@ public class AccountService {
     private final RoleRepository roleRepository;
 
     public AccountData signUp(SignUpRequest signUpRequest) {
+        if(accountRepository.existsByLoginId(signUpRequest.getLoginId())) {
+            throw new LoginIdDuplicateException(signUpRequest.getLoginId());
+        }
+
         AccountRole role = roleRepository.findByName(Role.MEMBER);
 
         Account newAccount = new Account(signUpRequest.getLoginId(),

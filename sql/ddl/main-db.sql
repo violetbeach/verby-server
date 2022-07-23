@@ -17,6 +17,8 @@ CREATE TABLE `account`
     `updated_at`                           datetime     NULL
 );
 
+ALTER TABLE `account` ADD UNIQUE uk_login_id (`login_id`);
+
 DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE `user`
