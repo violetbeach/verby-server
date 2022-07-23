@@ -2,7 +2,9 @@ package com.verby.restapi.account.command.application;
 
 import com.verby.restapi.account.command.domain.Account;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
+@Getter
 @AllArgsConstructor
 public class AccountData {
     private Long id;

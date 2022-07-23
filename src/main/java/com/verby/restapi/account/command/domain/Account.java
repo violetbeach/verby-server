@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
@@ -20,6 +21,8 @@ public class Account {
     private String password;
 
     private String name;
+
+    private LocalDateTime birthday;
 
     private String phone;
 
