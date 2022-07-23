@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/accounts")
 @RequiredArgsConstructor
@@ -19,7 +21,7 @@ public class AccountController {
     private final AccountService accountService;
 
     @PostMapping
-    private ResponseEntity<AccountData> signup(@RequestBody SignUpRequest signUpRequest) {
+    private ResponseEntity<AccountData> signup(@RequestBody @Valid SignUpRequest signUpRequest) {
         AccountData accountData = accountService.signUp(signUpRequest);
         return new ResponseEntity<>(accountData, HttpStatus.CREATED);
     }
