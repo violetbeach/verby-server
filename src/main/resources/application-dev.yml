@@ -12,10 +12,6 @@ spring:
   session:
     store-type: redis
 
-  devtools:
-    livereload:
-      enabled: true
-
   jpa:
     properties:
       hibernate:
