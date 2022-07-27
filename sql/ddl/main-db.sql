@@ -104,8 +104,8 @@ CREATE TABLE `role`
 );
 
 INSERT INTO `role` (name) VALUES
-    ("ADMIN"),
-    ("MEMBER");
+    ('ADMIN'),
+    ('MEMBER');
 
 DROP TABLE IF EXISTS `comment`;
 
