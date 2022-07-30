@@ -5,13 +5,6 @@ spring:
     username: root
     password: root
 
-  redis:
-    host: localhost
-    port: 8342
-
-  session:
-    store-type: redis
-
   jpa:
     properties:
       hibernate:
