@@ -4,6 +4,7 @@ jobs:
   build:
     docker:
       - image: openjdk:17-alpine
+    resource_class: medium
     steps:
       - checkout
       - run:
