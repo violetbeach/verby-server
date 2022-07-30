@@ -68,7 +68,7 @@ Jerry;
 [[accounts-create]]
 === 계정 등록
 
-`POST` 요청을 사용해서 새 이벤트를 만들 수 있다.
+`POST` 요청을 사용해서 새 계정을 등록할 수 있다.
 
 operation::계정 등록[snippets='http-request,request-fields,http-response,response-fields']
 
