@@ -7,7 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @Builder
@@ -22,7 +22,7 @@ public class SignUpRequest {
     private final String password;
     @NotBlank
     private final String name;
-    private final LocalDateTime birthday;
+    private final LocalDate birthday;
     @NotBlank @Pattern(regexp = "^\\d*$", message = "숫자만 사용할 수 있습니다")
     private final String phone;
     @NotNull
