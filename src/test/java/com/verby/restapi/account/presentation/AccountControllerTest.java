@@ -26,12 +26,6 @@ class AccountControllerTest extends BasicControllerTest {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @BeforeEach
-    void setup() {
-        jdbcTemplate.update("truncate table account");
-        jdbcTemplate.update("truncate table account_role");
-    }
-
     @Test
     @DisplayName("유저를 생성할 수 있다.")
     void signup() throws Exception {
