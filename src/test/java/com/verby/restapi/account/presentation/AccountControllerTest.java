@@ -2,7 +2,6 @@ package com.verby.restapi.account.presentation;
 
 import com.verby.restapi.account.command.application.SignUpRequest;
 import com.verby.restapi.common.presentation.BasicControllerTest;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.web.servlet.ResultActions;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import static com.verby.restapi.common.presentation.ApiDocumentUtils.getDocumentRequest;
 import static com.verby.restapi.common.presentation.ApiDocumentUtils.getDocumentResponse;
@@ -34,7 +33,7 @@ class AccountControllerTest extends BasicControllerTest {
                 .loginId("test123")
                 .password("password12@")
                 .name("TestName")
-                .birthday(LocalDateTime.now())
+                .birthday(LocalDate.of(1994, 2, 10))
                 .phone("01012345678")
                 .allowToMarketingNotification(true)
                 .build();
