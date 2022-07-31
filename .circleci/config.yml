@@ -12,8 +12,6 @@ jobs:
 
     resource_class: medium
 
-    working_directory: ~/repo
-
     steps:
       - checkout
 
@@ -21,9 +19,14 @@ jobs:
           command: ./gradlew clean build
 
       - run:
-          command: zip -r verby-rest-api *
+          command: zip verby-rest-api -r ./*
             mkdir -p deploy
             mv verby-rest-api.zip deploy/verby-rest-api.zip
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - deploy
 
   deploy:
     docker:
