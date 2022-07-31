@@ -24,4 +24,6 @@ JAR_NAME=$(ls $REPOSITORY/jar/ |grep 'restapi' | tail -n 1)
 
 echo "> JAR Name: $JAR_NAME"
 
+source /home/ec2-user/.bash_profile
+
 nohup /opt/jdk-17/bin/java -jar $REPOSITORY/jar/$JAR_NAME --spring.profiles.active=prod > $REPOSITORY/nohup.out 2>&1 &
