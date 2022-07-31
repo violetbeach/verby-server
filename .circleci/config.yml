@@ -8,11 +8,6 @@ jobs:
     docker:
       - image: circleci/openjdk:17-jdk-buster
 
-        environment:
-          VERBY_MAIN_URL: ${VERBY_MAIN_URL}
-          VERBY_MAIN_USERNAME: ${VERBY_MAIN_USERNAME}
-          VERBY_MAIN_PASSWORD: ${VERBY_MAIN_PASSWORD}
-
     steps:
       - checkout
 
