@@ -2,11 +2,5 @@ spring:
   jackson:
     property-naming-strategy: SNAKE_CASE
 
-  datasource:
-    driver-class-name: org.mariadb.jdbc.Driver
-    url: ${VERBY_MAIN_URL}/verby_main?serverTimezone=Asia/Seoul
-    username: ${VERBY_MAIN_USERNAME}
-    password: ${VERBY_MAIN_PASSWORD}
-
   jpa:
     database-platform: org.hibernate.dialect.MariaDB106Dialect
