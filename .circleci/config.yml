@@ -19,7 +19,8 @@ jobs:
           command: ./gradlew clean build
 
       - run:
-          command: zip verby-rest-api -r ./*
+          command: |
+            zip verby-rest-api -r ./*
             mkdir -p deploy
             mv verby-rest-api.zip deploy/verby-rest-api.zip
 
