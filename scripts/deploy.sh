@@ -17,7 +17,7 @@ fi
 echo "> 새 어플리케이션 배포"
 
 echo "> Build 파일 복사"
-cp $REPOSITORY/build/libs/*.jar $REPOSITORY/jar/
+cp $REPOSITORY/build/build/libs/*.jar $REPOSITORY/jar/
 
 
 JAR_NAME=$(ls $REPOSITORY/jar/ |grep 'restapi' | tail -n 1)
