@@ -1,22 +1,6 @@
 #!/bin/bash
 
-REPOSITORY=/home/ec2-user/app/git
-
-cd $REPOSITORY/verby-rest-api/
-
-echo "> Git Pull"
-
-git pull
-
-echo "> 프로젝트 Build 시작"
-
-./gradlew build
-
-echo "> Build 파일 복사"
-
-cp ./build/libs/*.jar $REPOSITORY/
-
-echo "> 현재 구동중인 애플리케이션 pid 확인"
+REPOSITORY=/home/ec2-user/app/deploy
 
 CURRENT_PID=$(pgrep -f restapi)
 
@@ -32,8 +16,14 @@ fi
 
 echo "> 새 어플리케이션 배포"
 
-JAR_NAME=$(ls $REPOSITORY/ |grep 'restapi' | tail -n 1)
+echo "> Build 파일 복사"
+cp $REPOSITORY/build/build/libs/*.jar $REPOSITORY/jar/
+
+
+JAR_NAME=$(ls $REPOSITORY/jar/ |grep 'restapi' | tail -n 1)
 
 echo "> JAR Name: $JAR_NAME"
 
-nohup java -jar $REPOSITORY/$JAR_NAME --spring.profiles.active=prod &
+source /home/ec2-user/.bash_profile
+
+nohup /opt/jdk-17/bin/java -jar $REPOSITORY/jar/$JAR_NAME --spring.profiles.active=prod > $REPOSITORY/nohup.out 2>&1 &

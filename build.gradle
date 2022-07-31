@@ -40,9 +40,14 @@ dependencies {
 	asciidoctorExtensions 'org.springframework.restdocs:spring-restdocs-asciidoctor'
 }
 
+tasks.named("jar") {
+	enabled = false
+}
+
 bootJar {
 	dependsOn asciidoctor
 }
+
 test {
 	useJUnitPlatform()
 }
