@@ -6,7 +6,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/openjdk
+      - image: circleci/openjdk:17-jdk-buster
         environment:
           DATABASE_URL: ${VERBY_MAIN_URL)
 
