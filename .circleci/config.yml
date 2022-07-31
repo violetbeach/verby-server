@@ -6,7 +6,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: openjdk:17-alpine
+      - image: circleci/openjdk:17-jdk
         environment:
           DATABASE_URL: ${VERBY_MAIN_URL)
 
