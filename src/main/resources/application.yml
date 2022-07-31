@@ -1,3 +1,7 @@
 spring:
+
   jackson:
     property-naming-strategy: SNAKE_CASE
+
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDB106Dialect
