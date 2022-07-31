@@ -52,8 +52,8 @@ jobs:
           aws-region: AWS_DEFAULT_REGION
 
       - aws-code-deploy/deploy-bundle:
-          application-name: EC2CodeDeployTest
-            deployment-group: EC2CodeDeployTestGroup
+          application-name: verby-server
+            deployment-group: verby-group
             deployment-config: CodeDeployDefault.AllAtOnce
             bundle-bucket: verby-deploy
             bundle-key: verby-rest-api
