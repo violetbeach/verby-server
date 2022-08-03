@@ -11,7 +11,7 @@ public interface ApiDocumentUtils {
         return preprocessRequest(
                 modifyUris()
                         .scheme("https")
-                        .host("api.verby.com")
+                        .host("api.verby.co.kr")
                         .removePort(),
                 prettyPrint());
     }
