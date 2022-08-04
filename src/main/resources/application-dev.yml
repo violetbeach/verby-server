@@ -5,6 +5,10 @@ spring:
     username: root
     password: root
 
+  redis:
+    host: localhost
+    port: 8342
+
   jpa:
     properties:
       hibernate:

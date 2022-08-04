@@ -4,11 +4,12 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "role")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class AccountRole {
+public class AccountRole implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

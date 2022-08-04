@@ -4,18 +4,20 @@ import com.verby.restapi.account.command.domain.Account;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 
-public class UserDetailsImpl implements UserDetails {
+public class SecurityUser implements UserDetails {
 
     private final Account account;
 
-    public UserDetailsImpl(Account account) {
+    public SecurityUser(Account account) {
         this.account = account;
     }
 
     @Override
+    @Transactional
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return AuthorityUtils.createAuthorityList(account.getRoles().toString());
     }

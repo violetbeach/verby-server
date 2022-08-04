@@ -4,7 +4,8 @@ public enum ErrorCode {
 
     INVALID_INPUT_VALUE(400, "COMMON-001"),
 
-    DUPLICATE_LOGIN_ID(400, "ACCOUNT-001");
+    DUPLICATE_LOGIN_ID(400, "ACCOUNT-001"),
+    UNAUTHORIZED(401, "ACCOUNT-002");
 
     private final int status;
     private final String code;
