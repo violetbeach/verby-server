@@ -63,6 +63,11 @@ Jerry;
 [[accounts]]
 == 계정
 
+[[accounts-create]]
+=== 세션 등록(로그인)
+`POST` 요청을 사용해서 인증 세션을 등록할 수 있습니다.
+
+operation::세션 등록(로그인)[snippets='http-request,request-fields,http-response']
 
 [[accounts-create]]
 === 계정 등록

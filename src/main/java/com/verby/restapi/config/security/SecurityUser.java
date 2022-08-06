@@ -1,35 +1,32 @@
 package com.verby.restapi.config.security;
 
-import com.verby.restapi.account.command.domain.Account;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
+import java.util.List;
 
+@Getter
+@RequiredArgsConstructor
 public class SecurityUser implements UserDetails {
 
-    private final Account account;
-
-    public SecurityUser(Account account) {
-        this.account = account;
-    }
+    private final String loginId;
+    private final String password;
+    private final List<GrantedAuthority> roles;
 
     @Override
     @Transactional
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return AuthorityUtils.createAuthorityList(account.getRoles().toString());
-    }
-
-    @Override
-    public String getPassword() {
-        return account.getPassword();
+        return AuthorityUtils.createAuthorityList(this.getRoles().toString());
     }
 
     @Override
     public String getUsername() {
-        return account.getLoginId();
+        return this.getLoginId();
     }
 
     @Override
