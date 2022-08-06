@@ -63,7 +63,6 @@ Jerry;
 [[accounts]]
 == 계정
 
-이벤트 리소스는 이벤트를 만들거나 조회할 때 사용한다.
 
 [[accounts-create]]
 === 계정 등록
