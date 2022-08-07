@@ -9,5 +9,6 @@ import java.util.Optional;
 public interface AccountDataDao extends Repository<AccountData, Long> {
 
     Optional<AccountLoginId> findLoginIdByPhone(String phone);
+    Optional<AccountData> findByLoginId(String loginId);
 
 }

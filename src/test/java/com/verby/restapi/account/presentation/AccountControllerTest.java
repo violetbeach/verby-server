@@ -18,8 +18,7 @@ import static com.verby.restapi.common.presentation.ApiDocumentUtils.getDocument
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
-import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
-import static org.springframework.restdocs.request.RequestDocumentation.requestParameters;
+import static org.springframework.restdocs.request.RequestDocumentation.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -95,6 +94,39 @@ class AccountControllerTest extends BasicControllerTest {
                                 fieldWithPath("id").type(JsonFieldType.NUMBER).description("계정 일련번호"),
                                 fieldWithPath("login_id").type(JsonFieldType.STRING).description("계정 로그인 ID")
                         )));
+    }
+
+    @Test
+    @DisplayName("로그인 아이디의 중복 여부를 확인할 수 있다.")
+    void existsLoginId() throws Exception {
+        // given
+        String loginId = "VioletBeach1";
+        Account account = generateAccount(loginId);
+
+        // when
+        ResultActions result = mockMvc.perform(head("/accounts/login-id/{loginId}", loginId));
+
+        // then
+        result.andExpect(status().isOk())
+                .andDo(document("아이디 중복 확인",
+                        getDocumentRequest(),
+                        getDocumentResponse(),
+                        pathParameters(
+                                parameterWithName("loginId").description("계정 로그인 아이디")
+                        )));
+    }
+
+    Account generateAccount(String loginId) {
+        Account account = new Account(
+                loginId,
+                "test1234",
+                "testName",
+                "01012345678",
+                AccountStatus.ACTIVE,
+                Set.of(roleRepository.findByName(Role.MEMBER)),
+                false
+        );
+        return accountRepository.save(account);
     }
 
     Account generateAccount(String loginId, String phone) {
