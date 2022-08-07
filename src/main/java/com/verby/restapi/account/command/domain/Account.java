@@ -25,6 +25,7 @@ public class Account implements Serializable {
 
     private LocalDate birthday;
 
+    @Column(unique = true)
     private String phone;
 
     @Enumerated(value = EnumType.STRING)
