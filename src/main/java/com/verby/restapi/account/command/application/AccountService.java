@@ -16,7 +16,7 @@ public class AccountService {
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public AccountData signUp(SignUpRequest signUpRequest) {
+    public AccountInfo signUp(SignUpRequest signUpRequest) {
         if(accountRepository.existsByLoginId(signUpRequest.getLoginId())) {
             throw new LoginIdDuplicateException(signUpRequest.getLoginId());
         }
@@ -34,7 +34,7 @@ public class AccountService {
 
         accountRepository.save(newAccount);
 
-        return AccountData.of(newAccount);
+        return AccountInfo.of(newAccount);
     }
 
 }

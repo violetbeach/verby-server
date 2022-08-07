@@ -63,7 +63,7 @@ Jerry;
 [[accounts]]
 == 계정
 
-[[accounts-create]]
+[[accounts-create-session]]
 === 세션 등록(로그인)
 `POST` 요청을 사용해서 인증 세션을 등록할 수 있습니다.
 
@@ -75,6 +75,13 @@ operation::세션 등록(로그인)[snippets='http-request,request-fields,http-r
 `POST` 요청을 사용해서 새 계정을 등록할 수 있다.
 
 operation::계정 등록[snippets='http-request,request-fields,http-response,response-fields']
+
+[[accounts-create]]
+=== 아이디 찾기
+
+Account의 휴대전화 번호로 아이디를 조회할 수 있습니다.
+
+operation::아이디 조회[snippets='http-request,request-parameters,http-response,response-fields']
 
 [[overview-errors]]
 == 에러

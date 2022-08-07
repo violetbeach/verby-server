@@ -456,8 +456,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#accounts">계정</a>
 <ul class="sectlevel2">
-<li><a href="#accounts-create">세션 등록(로그인)</a></li>
+<li><a href="#accounts-create-session">세션 등록(로그인)</a></li>
 <li><a href="#accounts-create">계정 등록</a></li>
+<li><a href="#accounts-create">아이디 찾기</a></li>
 </ul>
 </li>
 <li><a href="#overview-errors">에러</a></li>
@@ -554,12 +555,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="accounts"><a class="link" href="#accounts">계정</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="accounts-create"><a class="link" href="#accounts-create">세션 등록(로그인)</a></h3>
+<h3 id="accounts-create-session"><a class="link" href="#accounts-create-session">세션 등록(로그인)</a></h3>
 <div class="paragraph">
 <p><code>POST</code> 요청을 사용해서 인증 세션을 등록할 수 있습니다.</p>
 </div>
 <div class="sect3">
-<h4 id="accounts-create_http_request"><a class="link" href="#accounts-create_http_request">HTTP request</a></h4>
+<h4 id="accounts-create-session_http_request"><a class="link" href="#accounts-create-session_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /accounts/sessions HTTP/1.1
@@ -575,7 +576,7 @@ Host: api.verby.co.kr
 </div>
 </div>
 <div class="sect3">
-<h4 id="accounts-create_request_fields"><a class="link" href="#accounts-create_request_fields">Request fields</a></h4>
+<h4 id="accounts-create-session_request_fields"><a class="link" href="#accounts-create-session_request_fields">Request fields</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -606,7 +607,7 @@ Host: api.verby.co.kr
 </table>
 </div>
 <div class="sect3">
-<h4 id="accounts-create_http_response"><a class="link" href="#accounts-create_http_response">Example response</a></h4>
+<h4 id="accounts-create-session_http_response"><a class="link" href="#accounts-create-session_http_response">Example response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 204 No Content
@@ -616,7 +617,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=NDIyNGY1NGMtYTU5Yi00ZDBjLTljOTEtMmJkMDI4Yjk0ZmE1; Path=/; HttpOnly; SameSite=Lax</code></pre>
+Set-Cookie: SESSION=MGZhMmUxNDUtYzE5NC00YmNjLWE2MGQtODNhOTVlNDllMTll; Path=/; HttpOnly; SameSite=Lax</code></pre>
 </div>
 </div>
 </div>
@@ -750,6 +751,90 @@ Content-Length: 40
 </table>
 </div>
 </div>
+<div class="sect2">
+<h3 id="accounts-create"><a class="link" href="#accounts-create">아이디 찾기</a></h3>
+<div class="paragraph">
+<p>Account의 휴대전화 번호로 아이디를 조회할 수 있습니다.</p>
+</div>
+<div class="sect3">
+<h4 id="accounts-create_http_request"><a class="link" href="#accounts-create_http_request">HTTP request</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /accounts/login-id?phone=01012345678 HTTP/1.1
+Host: api.verby.co.kr</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="accounts-create_request_parameters"><a class="link" href="#accounts-create_request_parameters">Request parameters</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>phone</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">계정 휴대전화 번호</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="accounts-create_http_response"><a class="link" href="#accounts-create_http_response">Example response</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Length: 45
+
+{
+  "id" : 2,
+  "login_id" : "VioletBeach1"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="accounts-create_response_fields"><a class="link" href="#accounts-create_response_fields">Response fields</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">필드명</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">타입</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">설명</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">계정 일련번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>login_id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">계정 로그인 ID</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -773,7 +858,7 @@ Content-Length: 40
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2022-08-06 23:19:16 +0900
+Last updated 2022-08-07 21:05:11 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">

@@ -6,11 +6,11 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class AccountData {
+public class AccountInfo {
     private Long id;
     private String loginId;
 
-    static AccountData of(Account account) {
-        return new AccountData(account.getId(), account.getLoginId());
+    static AccountInfo of(Account account) {
+        return new AccountInfo(account.getId(), account.getLoginId());
     }
 }
