@@ -458,8 +458,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#accounts-create-session">세션 등록(로그인)</a></li>
 <li><a href="#accounts-create">계정 등록</a></li>
-<li><a href="#accounts-create">아이디 찾기</a></li>
-<li><a href="#accounts-create">아이디 중복 확인</a></li>
+<li><a href="#accounts-find-loginid">아이디 찾기</a></li>
+<li><a href="#accounts-exists">아이디 중복 확인</a></li>
 </ul>
 </li>
 <li><a href="#overview-errors">에러</a></li>
@@ -618,7 +618,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=ZTA3ZWRjY2ItMjJhMC00NDliLWE3MzYtMzdkMTk5MzlmYzYw; Path=/; HttpOnly; SameSite=Lax</code></pre>
+Set-Cookie: SESSION=OTI2YTEzNTYtYzk2Yy00YzA2LTliMjUtMzExZmM2NzJmYWNl; Path=/; HttpOnly; SameSite=Lax</code></pre>
 </div>
 </div>
 </div>
@@ -753,12 +753,12 @@ Content-Length: 40
 </div>
 </div>
 <div class="sect2">
-<h3 id="accounts-create"><a class="link" href="#accounts-create">아이디 찾기</a></h3>
+<h3 id="accounts-find-loginid"><a class="link" href="#accounts-find-loginid">아이디 찾기</a></h3>
 <div class="paragraph">
 <p>Account의 휴대전화 번호로 아이디를 조회할 수 있습니다.</p>
 </div>
 <div class="sect3">
-<h4 id="accounts-create_http_request"><a class="link" href="#accounts-create_http_request">HTTP request</a></h4>
+<h4 id="accounts-find-loginid_http_request"><a class="link" href="#accounts-find-loginid_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /accounts/login-id?phone=01012345678 HTTP/1.1
@@ -767,7 +767,7 @@ Host: api.verby.co.kr</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="accounts-create_request_parameters"><a class="link" href="#accounts-create_request_parameters">Request parameters</a></h4>
+<h4 id="accounts-find-loginid_request_parameters"><a class="link" href="#accounts-find-loginid_request_parameters">Request parameters</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -788,7 +788,7 @@ Host: api.verby.co.kr</code></pre>
 </table>
 </div>
 <div class="sect3">
-<h4 id="accounts-create_http_response"><a class="link" href="#accounts-create_http_response">Example response</a></h4>
+<h4 id="accounts-find-loginid_http_response"><a class="link" href="#accounts-find-loginid_http_response">Example response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
@@ -809,7 +809,7 @@ Content-Length: 45
 </div>
 </div>
 <div class="sect3">
-<h4 id="accounts-create_response_fields"><a class="link" href="#accounts-create_response_fields">Response fields</a></h4>
+<h4 id="accounts-find-loginid_response_fields"><a class="link" href="#accounts-find-loginid_response_fields">Response fields</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -837,21 +837,42 @@ Content-Length: 45
 </div>
 </div>
 <div class="sect2">
-<h3 id="accounts-create"><a class="link" href="#accounts-create">아이디 중복 확인</a></h3>
+<h3 id="accounts-exists"><a class="link" href="#accounts-exists">아이디 중복 확인</a></h3>
 <div class="paragraph">
 <p>Account의 로그인 아이디로 중복 여부를 확인할 수 있다.</p>
 </div>
 <div class="sect3">
-<h4 id="accounts-create_http_request"><a class="link" href="#accounts-create_http_request">HTTP request</a></h4>
+<h4 id="accounts-exists_http_request"><a class="link" href="#accounts-exists_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HEAD /accounts/login-id/VioletBeach1 HTTP/1.1
-Host: localhost:8080</code></pre>
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HEAD /accounts?login_id=VioletBeach1 HTTP/1.1
+Host: api.verby.co.kr</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="accounts-create_http_response"><a class="link" href="#accounts-create_http_response">Example response</a></h4>
+<h4 id="accounts-exists_request_parameters"><a class="link" href="#accounts-exists_request_parameters">Request parameters</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>login_id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">계정 로그인 아이디</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="accounts-exists_http_response"><a class="link" href="#accounts-exists_http_response">Example response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
@@ -889,7 +910,7 @@ X-Frame-Options: DENY</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2022-08-07 22:01:25 +0900
+Last updated 2022-08-08 21:22:53 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">

@@ -37,8 +37,8 @@ public class AccountController {
         return new ResponseEntity<>(accountLoginId, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/login-id/{loginId}", method = RequestMethod.HEAD)
-    private ResponseEntity<AccountData> existsLoginId(@PathVariable String loginId) {
+    @RequestMapping(method = RequestMethod.HEAD)
+    private ResponseEntity<AccountData> existsLoginId(@RequestParam(value = "login-id") String loginId) {
         AccountData accountData = accountDataDao.findByLoginId(loginId)
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.ACCOUNT_NOT_FOUND, "Not found."));
         return new ResponseEntity<>(accountData, HttpStatus.OK);

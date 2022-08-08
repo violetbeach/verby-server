@@ -104,15 +104,16 @@ class AccountControllerTest extends BasicControllerTest {
         Account account = generateAccount(loginId);
 
         // when
-        ResultActions result = mockMvc.perform(head("/accounts/login-id/{loginId}", loginId));
+        ResultActions result = mockMvc.perform(head("/accounts")
+                .param("login-id", loginId));
 
         // then
         result.andExpect(status().isOk())
                 .andDo(document("아이디 중복 확인",
                         getDocumentRequest(),
                         getDocumentResponse(),
-                        pathParameters(
-                                parameterWithName("loginId").description("계정 로그인 아이디")
+                        requestParameters(
+                                parameterWithName("login-id").description("계정 로그인 아이디")
                         )));
     }
 
