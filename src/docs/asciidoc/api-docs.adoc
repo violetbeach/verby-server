@@ -76,14 +76,14 @@ operation::세션 등록(로그인)[snippets='http-request,request-fields,http-r
 
 operation::계정 등록[snippets='http-request,request-fields,http-response,response-fields']
 
-[[accounts-create]]
+[[accounts-find-loginid]]
 === 아이디 찾기
 
 Account의 휴대전화 번호로 아이디를 조회할 수 있습니다.
 
 operation::아이디 조회[snippets='http-request,request-parameters,http-response,response-fields']
 
-[[accounts-create]]
+[[accounts-exists]]
 === 아이디 중복 확인
 
 Account의 로그인 아이디로 중복 여부를 확인할 수 있다.
