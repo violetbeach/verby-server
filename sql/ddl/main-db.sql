@@ -18,6 +18,7 @@ CREATE TABLE `account`
 );
 
 ALTER TABLE `account` ADD UNIQUE uk_login_id (`login_id`);
+ALTER TABLE `account` ADD UNIQUE uk_phone (`phone`);
 
 DROP TABLE IF EXISTS `user`;
 

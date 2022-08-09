@@ -4,12 +4,13 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Account {
+public class Account implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,12 +25,13 @@ public class Account {
 
     private LocalDate birthday;
 
+    @Column(unique = true)
     private String phone;
 
     @Enumerated(value = EnumType.STRING)
     private AccountStatus status;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "account_role",
             joinColumns = { @JoinColumn(name = "account_id", referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "role_id", referencedColumnName = "id") }

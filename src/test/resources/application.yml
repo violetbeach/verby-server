@@ -5,6 +5,13 @@ spring:
   datasource:
     url: jdbc:h2:mem:verby_test;
 
+  redis:
+    host: localhost
+    port: 9341
+
+  session:
+    store-type: redis
+
   jpa:
     properties:
       hibernate:

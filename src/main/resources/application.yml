@@ -2,5 +2,10 @@ spring:
   jackson:
     property-naming-strategy: SNAKE_CASE
 
+  session:
+    store-type: redis
+    redis:
+      flush-mode: on-save
+
   jpa:
     database-platform: org.hibernate.dialect.MariaDB106Dialect
