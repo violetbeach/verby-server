@@ -92,7 +92,7 @@ operation::아이디 중복 확인[snippets='http-request,request-parameters,htt
 
 
 [[errors]]
-== 에러
+== 에러 응답
 
 에러 응답이 발생했을 때 (상태 코드 >= 400), 본문에 해당 문제를 기술한 JSON 객체가 담겨있다. 각 에러 코드에 대한 설명은 다음과 같다.
 
