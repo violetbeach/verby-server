@@ -462,7 +462,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#accounts-exists">아이디 중복 확인</a></li>
 </ul>
 </li>
-<li><a href="#overview-errors">에러</a></li>
+<li><a href="#errors">에러 응답</a></li>
 </ul>
 </div>
 </div>
@@ -618,7 +618,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=OTI2YTEzNTYtYzk2Yy00YzA2LTliMjUtMzExZmM2NzJmYWNl; Path=/; HttpOnly; SameSite=Lax</code></pre>
+Set-Cookie: SESSION=ZjMwNWYwOTMtNzAxOS00NjhhLWFmNjMtMjM2OTA5OGMxMmUw; Path=/; HttpOnly; SameSite=Lax</code></pre>
 </div>
 </div>
 </div>
@@ -845,7 +845,7 @@ Content-Length: 45
 <h4 id="accounts-exists_http_request"><a class="link" href="#accounts-exists_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HEAD /accounts?login_id=VioletBeach1 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HEAD /accounts?login-id=VioletBeach1 HTTP/1.1
 Host: api.verby.co.kr</code></pre>
 </div>
 </div>
@@ -865,7 +865,7 @@ Host: api.verby.co.kr</code></pre>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>login_id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>login-id</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">계정 로그인 아이디</p></td>
 </tr>
 </tbody>
@@ -890,27 +890,51 @@ X-Frame-Options: DENY</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="overview-errors"><a class="link" href="#overview-errors">에러</a></h2>
+<h2 id="errors"><a class="link" href="#errors">에러 응답</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>에러 응답이 발생했을 때 (상태 코드 &gt;= 400), 본문에 해당 문제를 기술한 JSON 객체가 담겨있다. 에러 객체는 다음의 구조를 따른다.</p>
+<p>에러 응답이 발생했을 때 (상태 코드 &gt;= 400), 본문에 해당 문제를 기술한 JSON 객체가 담겨있다. 각 에러 코드에 대한 설명은 다음과 같다.</p>
 </div>
 <div class="paragraph">
-<p>Unresolved directive in api-docs.adoc - include::/Users/user/Documents/verby-rest-api/build/generated-snippets/create-event/response-fields.adoc[]</p>
+<p>에러 코드</p>
 </div>
-<div class="paragraph">
-<p>예를 들어, 잘못된 요청으로 이벤트를 만들려고 했을 때 다음과 같은 <code>400 Bad Request</code> 응답을 받는다.</p>
-</div>
-<div class="paragraph">
-<p>Unresolved directive in api-docs.adoc - include::/Users/user/Documents/verby-rest-api/build/generated-snippets/create-event/http-response.adoc[]</p>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">코드</th>
+<th class="tableblock halign-left valign-top">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>COMMON-001</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">유효성 검증에 실패한 경우</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ACCOUNT-001</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">계정명이 중복된 경우</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ACCOUNT-002</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">인증에 실패한 경우</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ACCOUNT-003</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">계정을 찾을 수 없는 경우</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2022-08-08 21:22:53 +0900
+Last updated 2022-08-11 22:46:40 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">

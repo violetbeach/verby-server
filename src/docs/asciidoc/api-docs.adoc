@@ -91,13 +91,12 @@ Account의 로그인 아이디로 중복 여부를 확인할 수 있다.
 operation::아이디 중복 확인[snippets='http-request,request-parameters,http-response']
 
 
-[[overview-errors]]
-== 에러
+[[errors]]
+== 에러 응답
 
-에러 응답이 발생했을 때 (상태 코드 >= 400), 본문에 해당 문제를 기술한 JSON 객체가 담겨있다. 에러 객체는 다음의 구조를 따른다.
+에러 응답이 발생했을 때 (상태 코드 >= 400), 본문에 해당 문제를 기술한 JSON 객체가 담겨있다. 각 에러 코드에 대한 설명은 다음과 같다.
 
-include::{snippets}/create-event/response-fields.adoc[]
+include::{snippets}/에러 코드/code-response-fields-beneath-error_codes.adoc[]
 
-예를 들어, 잘못된 요청으로 이벤트를 만들려고 했을 때 다음과 같은 `400 Bad Request` 응답을 받는다.
+// TODO 예를 들어, 잘못된 요청으로 이벤트를 만들려고 했을 때 다음과 같은 `400 Bad Request` 응답을 받는다.
 
-include::{snippets}/create-event/http-response.adoc[]
