@@ -22,7 +22,7 @@ spring:
 
   sql:
     init:
-      data-locations: classpath:sql/init-role.sql
+      data-locations: classpath:sql/init-role.sql, classpath:sql/init-account.sql
 
 logging:
   level:

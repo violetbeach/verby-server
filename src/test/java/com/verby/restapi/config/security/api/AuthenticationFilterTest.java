@@ -1,7 +1,7 @@
 package com.verby.restapi.config.security.api;
 
 import com.verby.restapi.account.command.domain.*;
-import com.verby.restapi.common.presentation.BasicControllerTest;
+import com.verby.restapi.common.presentation.BaseControllerTest;
 import com.verby.restapi.config.security.AuthenticationRequest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,7 +21,7 @@ import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWit
 import static org.springframework.restdocs.payload.PayloadDocumentation.requestFields;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-class AuthenticationFilterTest extends BasicControllerTest {
+class AuthenticationFilterTest extends BaseControllerTest {
 
     @Autowired
     AccountRepository accountRepository;
