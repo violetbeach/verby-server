@@ -6,7 +6,8 @@ public enum ErrorCode {
 
     DUPLICATE_LOGIN_ID(400, "ACCOUNT-001", "계정명이 중복된 경우"),
     UNAUTHORIZED(401, "ACCOUNT-002", "인증에 실패한 경우"),
-    ACCOUNT_NOT_FOUND(404, "ACCOUNT-003", "계정을 찾을 수 없는 경우");
+    ACCOUNT_NOT_FOUND(404, "ACCOUNT-003", "계정을 찾을 수 없는 경우"),
+    ROLE_NOT_EXISTS(403, "ACCOUNT-004", "권한이 부족한 경우");
 
     private final int status;
     private final String code;
