@@ -98,7 +98,14 @@ operation::아이디 중복 확인[snippets='http-request,request-parameters,htt
 
 관리자 권한의 계정을 생성할 수 있다.
 
-operation::관리자 계정 생성[snippets='http-request,request-fields,http-response,response-fields']
+operation::관리자 - 관리자 계정 생성[snippets='http-request,request-fields,http-response,response-fields']
+
+[[admin-create-artist]]
+=== 아티스트 생성
+
+관리자는 아티스트를 생성할 수 있다.
+
+operation::관리자 - 아티스트 생성[snippets='http-request,request-fields,http-response,response-fields']
 
 [[errors]]
 == 에러 응답

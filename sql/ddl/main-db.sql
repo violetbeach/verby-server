@@ -51,7 +51,7 @@ DROP TABLE IF EXISTS `artist`;
 
 CREATE TABLE `artist`
 (
-    `id`   bigint(20)  NOT NULL,
+    `id`   bigint(20) AUTO_INCREMENT PRIMARY KEY,
     `name` varchar(50) NOT NULL
 );
 

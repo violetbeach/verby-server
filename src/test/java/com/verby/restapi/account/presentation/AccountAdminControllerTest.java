@@ -43,7 +43,7 @@ class AccountAdminControllerTest extends BaseControllerTest {
         // then
         result.andExpect(status().isCreated())
                 .andExpect(jsonPath("login_id").value(createAdminRequest.getLoginId()))
-                .andDo(document("관리자 계정 생성",
+                .andDo(document("관리자 - 관리자 계정 생성",
                         getDocumentRequest(),
                         getDocumentResponse(),
                         requestFields(

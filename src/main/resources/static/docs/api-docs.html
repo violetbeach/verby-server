@@ -465,6 +465,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#admin">관리자</a>
 <ul class="sectlevel2">
 <li><a href="#admin-create-admin">관리자 계정 생성</a></li>
+<li><a href="#admin-create-artist">아티스트 생성</a></li>
 </ul>
 </li>
 <li><a href="#errors">에러 응답</a></li>
@@ -623,7 +624,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=YjQ4YWViYWQtOTExMC00ZTBhLTgwMDktMjdmZmRkYjZjMDc4; Path=/; HttpOnly; SameSite=Lax</code></pre>
+Set-Cookie: SESSION=MWNhZTY0NGYtMDFmNS00YzgxLWE4NjItZTg1ZjhiNWE0YWYz; Path=/; HttpOnly; SameSite=Lax</code></pre>
 </div>
 </div>
 </div>
@@ -720,7 +721,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=YTY5YzQwMzAtODI1Ni00ODAyLWI0YzYtYzE1NmRmZWIyOWU4; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=ODJmOTNmZWUtOWRjYi00N2NhLWE2NTMtMTYzMzA2NWVlMjg4; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 40
 
 {
@@ -969,7 +970,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=ODUyY2E3MzEtMzZkYy00MjUyLWJhYzEtNjBjZDdmNGJmNjQ0; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=NmZkYjg4ZTYtNDMzMy00MDEyLTgzOTMtZTZjMTEyYWU5ZTFl; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 40
 
 {
@@ -1002,6 +1003,101 @@ Content-Length: 40
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>login_id</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">계정 로그인 ID</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="admin-create-artist"><a class="link" href="#admin-create-artist">아티스트 생성</a></h3>
+<div class="paragraph">
+<p>관리자는 아티스트를 생성할 수 있다.</p>
+</div>
+<div class="sect3">
+<h4 id="admin-create-artist_http_request"><a class="link" href="#admin-create-artist_http_request">HTTP request</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /admin/artists HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Content-Length: 19
+Host: api.verby.co.kr
+
+{
+  "name" : "IU"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="admin-create-artist_request_fields"><a class="link" href="#admin-create-artist_request_fields">Request fields</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">필드명</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">타입</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">필수값</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">설명</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">가수명</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="admin-create-artist_http_response"><a class="link" href="#admin-create-artist_http_response">Example response</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 201 Created
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Set-Cookie: SESSION=ODFiNGU5ZjUtZWM4MC00Njg3LWExMmEtZDFlYzljY2VmODdl; Path=/; HttpOnly; SameSite=Lax
+Content-Length: 31
+
+{
+  "id" : 1,
+  "name" : "IU"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="admin-create-artist_response_fields"><a class="link" href="#admin-create-artist_response_fields">Response fields</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">필드명</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">타입</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">설명</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">가수 일련번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">가수명</p></td>
 </tr>
 </tbody>
 </table>
@@ -1046,6 +1142,10 @@ Content-Length: 40
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ACCOUNT-003</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">계정을 찾을 수 없는 경우</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ACCOUNT-004</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">권한이 부족한 경우</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1054,7 +1154,7 @@ Content-Length: 40
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2022-08-13 13:52:59 +0900
+Last updated 2022-08-15 16:19:32 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
