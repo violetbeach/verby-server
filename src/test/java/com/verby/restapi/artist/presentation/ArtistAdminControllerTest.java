@@ -33,7 +33,7 @@ class ArtistAdminControllerTest extends BaseControllerTest {
         // then
         result.andExpect(status().isCreated())
                 .andExpect(jsonPath("name").value(createArtistRequest.getName()))
-                .andDo(document("관리자 - 아티스트 생성",
+                .andDo(document("관리자 - 아티스트 추가",
                         getDocumentRequest(),
                         getDocumentResponse(),
                         requestFields(
