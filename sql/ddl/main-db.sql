@@ -10,7 +10,7 @@ CREATE TABLE `account`
     `password`                             varchar(255) NOT NULL,
     `name`                                 varchar(50)  NOT NULL,
     `birthday`                             date         NULL,
-    `phone`                                varchar(13)  NOT NULL,
+    `phone`                                varchar(13)  NULL,
     `status`                               varchar(30)  NOT NULL,
     `allow_to_marketing_notification` boolean      NOT NULL,
     `created_at`                           datetime     NOT NULL DEFAULT NOW(),

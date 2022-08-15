@@ -2,7 +2,7 @@ package com.verby.restapi.account.presentation;
 
 import com.verby.restapi.account.command.application.SignUpRequest;
 import com.verby.restapi.account.command.domain.*;
-import com.verby.restapi.common.presentation.BasicControllerTest;
+import com.verby.restapi.common.presentation.BaseControllerTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ import static org.springframework.restdocs.request.RequestDocumentation.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-class AccountControllerTest extends BasicControllerTest {
+class AccountControllerTest extends BaseControllerTest {
 
     @Autowired
     AccountRepository accountRepository;

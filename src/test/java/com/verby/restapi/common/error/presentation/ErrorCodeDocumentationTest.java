@@ -1,7 +1,7 @@
 package com.verby.restapi.common.error.presentation;
 
 import com.verby.restapi.common.error.ErrorCode;
-import com.verby.restapi.common.presentation.BasicControllerTest;
+import com.verby.restapi.common.presentation.BaseControllerTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
@@ -20,13 +20,14 @@ import static org.springframework.restdocs.snippet.Attributes.key;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class ErrorCodeDocumentationTest extends BasicControllerTest {
+public class ErrorCodeDocumentationTest extends BaseControllerTest {
 
     @Test
     @DisplayName("ErrorCode 문서화")
     public void errorCodeDocumentation() throws Exception {
         // given + when
         ResultActions result = this.mockMvc.perform(get("/errors")
+                .session(memberSession)
                 .accept(MediaType.APPLICATION_JSON));
 
         // then
