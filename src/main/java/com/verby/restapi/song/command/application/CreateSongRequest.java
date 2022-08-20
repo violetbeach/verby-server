@@ -13,6 +13,5 @@ public class CreateSongRequest {
 
     @NotBlank
     private String name;
-    private String image;
 
 }
