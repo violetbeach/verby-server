@@ -16,9 +16,6 @@ cloud:
       secretKey: ${S3_SECRET_ACCESS_KEY}   # AWS IAM SecretKey 적기
     s3:
       bucket: verby-deploy
-      directoriess:
-        songs:
-          images: static/song/image
     region:
       static: ap-northeast-2
     stack:

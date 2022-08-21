@@ -20,8 +20,8 @@ public class SongService {
     @Value("${static.paths.song.image}")
     private String imageBasePath;
 
-    public Song create(long artistsId, CreateSongRequest createSongRequest, MultipartFile image) {
-        String imagePath = staticStorage.upload(image, imagePath);
+    public Song create(long artistsId, CreateSongRequest createSongRequest, MultipartFile image) throws IOException {
+        String imagePath = staticStorage.upload(image, imageBasePath);
 
         Song song = new Song(
                 artistsId,

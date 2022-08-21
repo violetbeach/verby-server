@@ -24,6 +24,22 @@ spring:
     init:
       data-locations: classpath:sql/init-role.sql, classpath:sql/init-account.sql
 
+cloud:
+  aws:
+    region:
+      static: ap-northeast-2
+      auto: false
+    s3:
+      bucket: verby-deploy
+    stack:
+      auto: false
+
 logging:
   level:
     root: INFO
+    com.amazonaws.util.EC2MetadataUtils: error
+
+static:
+  paths:
+    song:
+      image: static/song/images
