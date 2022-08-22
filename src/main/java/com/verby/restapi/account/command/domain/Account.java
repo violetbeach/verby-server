@@ -1,5 +1,6 @@
 package com.verby.restapi.account.command.domain;
 
+import com.verby.restapi.common.domain.BaseEntity;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -10,7 +11,7 @@ import java.util.Set;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Account implements Serializable {
+public class Account extends BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
