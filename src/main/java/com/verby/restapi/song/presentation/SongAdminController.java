@@ -32,7 +32,7 @@ public class SongAdminController {
         }
         createSongRequest.setArtistId(artistId);
 
-        Song song = songService.create(artistId, createSongRequest, imageFile);
+        Song song = songService.create(createSongRequest, imageFile);
         return new ResponseEntity<>(song, HttpStatus.CREATED);
     }
 
