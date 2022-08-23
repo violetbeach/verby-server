@@ -19,9 +19,9 @@ import static com.verby.restapi.common.presentation.ApiDocumentUtils.getDocument
 import static com.verby.restapi.common.presentation.ApiDocumentUtils.getDocumentResponse;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.multipart;
-import static org.springframework.restdocs.payload.PayloadDocumentation.*;
+import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
+import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 import static org.springframework.restdocs.request.RequestDocumentation.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -57,7 +57,6 @@ class SongAdminControllerTest extends BaseControllerTest {
         // then
         result.andExpect(status().isCreated())
                 .andExpect(jsonPath("name").value(createSongRequest.getName()))
-                .andDo(print())
                 .andDo(document("관리자 - 곡 추가",
                         getDocumentRequest(),
                         getDocumentResponse(),
