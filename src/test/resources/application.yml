@@ -3,7 +3,7 @@ spring:
     property-naming-strategy: SNAKE_CASE
 
   datasource:
-    url: jdbc:h2:mem:verby_test;
+    url: jdbc:h2:mem:verby_test;MODE=MYSQL
 
   redis:
     host: localhost
@@ -19,10 +19,14 @@ spring:
         show_sql: true
         format_sql: true
     defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: none
 
   sql:
     init:
-      data-locations: classpath:sql/init-role.sql, classpath:sql/init-account.sql
+      schema-locations: classpath:sql/schema-h2.sql
+      data-locations: classpath:sql/init-account.sql
+      mode: always
 
 cloud:
   aws:
