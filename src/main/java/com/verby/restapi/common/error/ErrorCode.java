@@ -10,7 +10,9 @@ public enum ErrorCode {
     ROLE_NOT_EXISTS(403, "ACCOUNT-004", "권한이 부족한 경우"),
 
 
-    ARTIST_NOT_FOUND(404, "ARTIST-001", "가수를 찾을 수 없는 경우");
+    ARTIST_NOT_FOUND(404, "ARTIST-001", "가수를 찾을 수 없는 경우"),
+
+    SONG_NOT_FOUND(404, "SONG-001", "곡을 찾을 수 없는 경우");
 
     private final int status;
     private final String code;
