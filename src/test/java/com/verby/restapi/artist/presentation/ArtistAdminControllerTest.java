@@ -26,23 +26,25 @@ class ArtistAdminControllerTest extends BaseControllerTest {
 
         // when
         ResultActions result = mockMvc.perform(post("/admin/artists")
-                        .session(adminSession)
+                .session(adminSession)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(createArtistRequest)));
 
         // then
         result.andExpect(status().isCreated())
-                .andExpect(jsonPath("name").value(createArtistRequest.getName()))
-                .andDo(document("관리자 - 아티스트 추가",
-                        getDocumentRequest(),
-                        getDocumentResponse(),
-                        requestFields(
-                                fieldWithPath("name").type(JsonFieldType.STRING).description("가수명")
-                        ),
-                        responseFields(
-                                fieldWithPath("id").type(JsonFieldType.NUMBER).description("가수 일련번호"),
-                                fieldWithPath("name").type(JsonFieldType.STRING).description("가수명")
-                        )));
+                .andExpect(jsonPath("name").value(createArtistRequest.getName()));
+
+        // docs
+        result.andDo(document("관리자 - 아티스트 추가",
+                getDocumentRequest(),
+                getDocumentResponse(),
+                requestFields(
+                        fieldWithPath("name").type(JsonFieldType.STRING).description("가수명")
+                ),
+                responseFields(
+                        fieldWithPath("id").type(JsonFieldType.NUMBER).description("가수 일련번호"),
+                        fieldWithPath("name").type(JsonFieldType.STRING).description("가수명")
+                )));
     }
 
 }

@@ -83,17 +83,19 @@ class AccountControllerTest extends BaseControllerTest {
         // then
         result.andExpect(status().isOk())
                 .andExpect(jsonPath("id").value(account.getId()))
-                .andExpect(jsonPath("login_id").value(loginId))
-                .andDo(document("아이디 조회",
-                        getDocumentRequest(),
-                        getDocumentResponse(),
-                        requestParameters(
-                                parameterWithName("phone").description("계정 휴대전화 번호")
-                        ),
-                        responseFields(
-                                fieldWithPath("id").type(JsonFieldType.NUMBER).description("계정 일련번호"),
-                                fieldWithPath("login_id").type(JsonFieldType.STRING).description("계정 로그인 ID")
-                        )));
+                .andExpect(jsonPath("login_id").value(loginId));
+
+        // docs
+        result.andDo(document("아이디 조회",
+                getDocumentRequest(),
+                getDocumentResponse(),
+                requestParameters(
+                        parameterWithName("phone").description("계정 휴대전화 번호")
+                ),
+                responseFields(
+                        fieldWithPath("id").type(JsonFieldType.NUMBER).description("계정 일련번호"),
+                        fieldWithPath("login_id").type(JsonFieldType.STRING).description("계정 로그인 ID")
+                )));
     }
 
     @Test

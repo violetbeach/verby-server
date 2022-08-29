@@ -47,15 +47,17 @@ class AuthenticationFilterTest extends BaseControllerTest {
                 .content(objectMapper.writeValueAsString(authenticationRequest)));
 
         // then
-        result.andExpect(status().isNoContent())
-                .andDo(document("세션 등록(로그인)",
-                        getDocumentRequest(),
-                        getDocumentResponse(),
-                        requestFields(
-                                fieldWithPath("login_id").type(JsonFieldType.STRING).description("계정 로그인 ID"),
-                                fieldWithPath("password").type(JsonFieldType.STRING).description("계정 비밀번호")
-                        )
-                ));
+        result.andExpect(status().isNoContent());
+
+        // docs
+        result.andDo(document("세션 등록(로그인)",
+                getDocumentRequest(),
+                getDocumentResponse(),
+                requestFields(
+                        fieldWithPath("login_id").type(JsonFieldType.STRING).description("계정 로그인 ID"),
+                        fieldWithPath("password").type(JsonFieldType.STRING).description("계정 비밀번호")
+                )
+        ));
     }
 
     Account generateAccount(String loginId, String password) {

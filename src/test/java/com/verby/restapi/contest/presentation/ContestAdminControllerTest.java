@@ -57,26 +57,28 @@ class ContestAdminControllerTest extends BaseControllerTest {
                 .content(objectMapper.writeValueAsString(createContestRequest)));
 
         // then
-        result.andExpect(status().isCreated())
-                .andDo(document("관리자 - 선정곡 추가",
-                        getDocumentRequest(),
-                        getDocumentResponse(),
-                        requestFields(
-                                fieldWithPath("song_id").type(JsonFieldType.NUMBER).description("곡 ID"),
-                                fieldWithPath("content").type(JsonFieldType.STRING).description("선정곡(대회) 내용"),
-                                fieldWithPath("round").type(JsonFieldType.NUMBER).description("회차"),
-                                fieldWithPath("start_time").type(JsonFieldType.STRING).description("시작 시간"),
-                                fieldWithPath("end_time").type(JsonFieldType.STRING).description("종료 시간")
-                        ),
-                        responseFields(
-                                fieldWithPath("id").type(JsonFieldType.NUMBER).description("선정곡 일련번호"),
-                                fieldWithPath("song_id").type(JsonFieldType.NUMBER).description("곡 ID"),
-                                fieldWithPath("content").type(JsonFieldType.STRING).description("선정곡(대회) 내용"),
-                                fieldWithPath("round").type(JsonFieldType.NUMBER).description("회차"),
-                                fieldWithPath("start_time").type(JsonFieldType.STRING).description("시작 시간"),
-                                fieldWithPath("end_time").type(JsonFieldType.STRING).description("종료 시간")
+        result.andExpect(status().isCreated());
 
-                        )));
+        // docs
+        result.andDo(document("관리자 - 선정곡 추가",
+                getDocumentRequest(),
+                getDocumentResponse(),
+                requestFields(
+                        fieldWithPath("song_id").type(JsonFieldType.NUMBER).description("곡 ID"),
+                        fieldWithPath("content").type(JsonFieldType.STRING).description("선정곡(대회) 내용"),
+                        fieldWithPath("round").type(JsonFieldType.NUMBER).description("회차"),
+                        fieldWithPath("start_time").type(JsonFieldType.STRING).description("시작 시간"),
+                        fieldWithPath("end_time").type(JsonFieldType.STRING).description("종료 시간")
+                ),
+                responseFields(
+                        fieldWithPath("id").type(JsonFieldType.NUMBER).description("선정곡 일련번호"),
+                        fieldWithPath("song_id").type(JsonFieldType.NUMBER).description("곡 ID"),
+                        fieldWithPath("content").type(JsonFieldType.STRING).description("선정곡(대회) 내용"),
+                        fieldWithPath("round").type(JsonFieldType.NUMBER).description("회차"),
+                        fieldWithPath("start_time").type(JsonFieldType.STRING).description("시작 시간"),
+                        fieldWithPath("end_time").type(JsonFieldType.STRING).description("종료 시간")
+
+                )));
     }
 
 }

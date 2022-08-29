@@ -42,19 +42,21 @@ class AccountAdminControllerTest extends BaseControllerTest {
 
         // then
         result.andExpect(status().isCreated())
-                .andExpect(jsonPath("login_id").value(createAdminRequest.getLoginId()))
-                .andDo(document("관리자 - 관리자 계정 생성",
-                        getDocumentRequest(),
-                        getDocumentResponse(),
-                        requestFields(
-                                fieldWithPath("login_id").type(JsonFieldType.STRING).description("계정 로그인 ID"),
-                                fieldWithPath("password").type(JsonFieldType.STRING).description("계정 비밀번호"),
-                                fieldWithPath("name").type(JsonFieldType.STRING).description("이름")
-                        ),
-                        responseFields(
-                                fieldWithPath("id").type(JsonFieldType.NUMBER).description("계정 일련번호"),
-                                fieldWithPath("login_id").type(JsonFieldType.STRING).description("계정 로그인 ID")
-                        )));
+                .andExpect(jsonPath("login_id").value(createAdminRequest.getLoginId()));
+
+        // docs
+        result.andDo(document("관리자 - 관리자 계정 생성",
+                getDocumentRequest(),
+                getDocumentResponse(),
+                requestFields(
+                        fieldWithPath("login_id").type(JsonFieldType.STRING).description("계정 로그인 ID"),
+                        fieldWithPath("password").type(JsonFieldType.STRING).description("계정 비밀번호"),
+                        fieldWithPath("name").type(JsonFieldType.STRING).description("이름")
+                ),
+                responseFields(
+                        fieldWithPath("id").type(JsonFieldType.NUMBER).description("계정 일련번호"),
+                        fieldWithPath("login_id").type(JsonFieldType.STRING).description("계정 로그인 ID")
+                )));
     }
 
 }
