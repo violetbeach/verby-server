@@ -12,7 +12,9 @@ public enum ErrorCode {
 
     ARTIST_NOT_FOUND(404, "ARTIST-001", "가수를 찾을 수 없는 경우"),
 
-    SONG_NOT_FOUND(404, "SONG-001", "곡을 찾을 수 없는 경우");
+    SONG_NOT_FOUND(404, "SONG-001", "곡을 찾을 수 없는 경우"),
+
+    CONTEST_INVALID_DATE(400, "CONTEST-001", "선정 곡 날짜가 적절치 않은 경우");
 
     private final int status;
     private final String code;

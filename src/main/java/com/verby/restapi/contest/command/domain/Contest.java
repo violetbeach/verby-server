@@ -34,7 +34,15 @@ public class Contest extends BaseEntity {
         this.songId = songId;
         this.content = content;
         this.round = round;
+        setContestDate(startTime, endTime);
+    }
+
+    private void setContestDate(LocalDateTime startTime, LocalDateTime endTime) {
+        if(!startTime.isBefore(endTime)) {
+            throw  new IllegalArgumentException("Start time is later thane end time");
+        }
         this.startTime = startTime;
         this.endTime = endTime;
     }
+
 }
