@@ -23,7 +23,6 @@ class AccountAdminControllerTest extends BaseControllerTest {
     @Autowired
     AccountRepository accountRepository;
 
-
     @Test
     @DisplayName("관리자 유저를 생성할 수 있다.")
     void createAdmin() throws Exception {
