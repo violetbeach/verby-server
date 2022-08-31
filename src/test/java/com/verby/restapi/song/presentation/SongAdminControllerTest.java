@@ -50,29 +50,31 @@ class SongAdminControllerTest extends BaseControllerTest {
 
         // when
         ResultActions result = mockMvc.perform(multipart("/admin/artists/{artistId}/songs", artist.getId())
-                        .file(imageFile)
-                        .file(requestJson)
+                .file(imageFile)
+                .file(requestJson)
                 .session(adminSession));
 
         // then
         result.andExpect(status().isCreated())
-                .andExpect(jsonPath("name").value(createSongRequest.getName()))
-                .andDo(document("관리자 - 곡 추가",
-                        getDocumentRequest(),
-                        getDocumentResponse(),
-                        pathParameters(
-                                parameterWithName("artistId").description("가수 일련번호")
-                        ),
-                        requestParts(
-                                partWithName("song").description("곡 정보 ({ name: string })"),
-                                partWithName("song_image").description("이미지 경로")
-                        ),
-                        responseFields(
-                                fieldWithPath("id").type(JsonFieldType.NUMBER).description("곡 일련번호"),
-                                fieldWithPath("artist_id").type(JsonFieldType.NUMBER).description("가수 일련번호"),
-                                fieldWithPath("name").type(JsonFieldType.STRING).description("곡명"),
-                                fieldWithPath("image").type(JsonFieldType.STRING).description("이미지 경로")
-                        )));
+                .andExpect(jsonPath("name").value(createSongRequest.getName()));
+
+        // docs
+        result.andDo(document("관리자 - 곡 추가",
+                getDocumentRequest(),
+                getDocumentResponse(),
+                pathParameters(
+                        parameterWithName("artistId").description("가수 일련번호")
+                ),
+                requestParts(
+                        partWithName("song").description("곡 정보 ({ name: string })"),
+                        partWithName("song_image").description("이미지 경로")
+                ),
+                responseFields(
+                        fieldWithPath("id").type(JsonFieldType.NUMBER).description("곡 일련번호"),
+                        fieldWithPath("artist_id").type(JsonFieldType.NUMBER).description("가수 일련번호"),
+                        fieldWithPath("name").type(JsonFieldType.STRING).description("곡명"),
+                        fieldWithPath("image").type(JsonFieldType.STRING).description("이미지 경로")
+                )));
     }
 
     Artist generateArtist() {

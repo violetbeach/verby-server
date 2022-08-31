@@ -31,14 +31,15 @@ public class ErrorCodeDocumentationTest extends BaseControllerTest {
                 .accept(MediaType.APPLICATION_JSON));
 
         // then
-        result.andExpect(status().isOk())
-                .andDo(print())
-                .andDo(document("에러 코드",
-                        codeResponseFields("code-response", beneathPath("error_codes"),
-                                attributes(key("title").value("에러 코드")),
-                                enumConvertFieldDescriptor(ErrorCode.values())
-                        )
-                ));
+        result.andExpect(status().isOk());
+
+        // docs
+        result.andDo(document("에러 코드",
+                codeResponseFields("code-response", beneathPath("error_codes"),
+                        attributes(key("title").value("에러 코드")),
+                        enumConvertFieldDescriptor(ErrorCode.values())
+                )
+        ));
     }
 
     private FieldDescriptor[] enumConvertFieldDescriptor(ErrorCode[] errorCodes) {
@@ -48,8 +49,8 @@ public class ErrorCodeDocumentationTest extends BaseControllerTest {
     }
 
     public static CodeResponseFieldsSnippet codeResponseFields(String type,
-                                                                   PayloadSubsectionExtractor<?> subsectionExtractor,
-                                                                   Map<String, Object> attributes, FieldDescriptor... descriptors) {
+                                                               PayloadSubsectionExtractor<?> subsectionExtractor,
+                                                               Map<String, Object> attributes, FieldDescriptor... descriptors) {
         return new CodeResponseFieldsSnippet(type, subsectionExtractor, Arrays.asList(descriptors), attributes
                 , true);
     }
