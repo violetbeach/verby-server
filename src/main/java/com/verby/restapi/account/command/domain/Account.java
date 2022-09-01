@@ -32,7 +32,7 @@ public class Account extends BaseEntity implements Serializable {
     @Enumerated(value = EnumType.STRING)
     private AccountStatus status;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "account_role",
             joinColumns = { @JoinColumn(name = "account_id", referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "role_id", referencedColumnName = "id") }
