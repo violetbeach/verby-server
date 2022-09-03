@@ -1,6 +1,7 @@
 package com.verby.restapi.contest.command.domain;
 
 import com.verby.restapi.common.domain.BaseEntity;
+import com.verby.restapi.contest.exception.InvalidContestDateException;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,7 +40,7 @@ public class Contest extends BaseEntity {
 
     private void setContestDate(LocalDateTime startTime, LocalDateTime endTime) {
         if(!startTime.isBefore(endTime)) {
-            throw  new IllegalArgumentException("Start time is later thane end time");
+            throw  new InvalidContestDateException();
         }
         this.startTime = startTime;
         this.endTime = endTime;
