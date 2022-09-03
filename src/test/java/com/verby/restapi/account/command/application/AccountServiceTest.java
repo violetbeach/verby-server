@@ -27,9 +27,9 @@ class AccountServiceTest {
 
         @Test
         @DisplayName("생성할 회원 데이터를 가지고 회원을 생성하고, 생성한 회원을 반환한다.")
-        void success_create() {
+        void success() {
             // given
-            SignUpRequest signUpRequest = new SignUpRequest("violetbeach13", "password1234", "Honey", null, "01043042900", true);
+            SignUpRequest signUpRequest = new SignUpRequest("violetbeach12", "password1234", "Honey", null, "01043042900", true);
 
             // when
             AccountInfo accountInfo = accountService.signUp(signUpRequest);
@@ -39,8 +39,8 @@ class AccountServiceTest {
         }
 
         @Test
-        @DisplayName("생성할 로그인 ID가 이미 존재하면 생성한 회원을 반환한다.")
-        void fail_duplicate_loginId() {
+        @DisplayName("생성할 로그인 ID가 이미 존재하면 LoginIdDuplicateException이 발생한다.")
+        void fail_duplicateLoginId() {
             // given
             String duplicatedLoginId = "violetbeach13";
             Account account = new Account(duplicatedLoginId,
