@@ -4,10 +4,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import java.time.LocalDateTime;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -17,7 +18,7 @@ class ContestRepositoryTest {
     private ContestRepository contestRepository;
 
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private TestEntityManager em;
 
     @Test
     void save() {
@@ -31,10 +32,10 @@ class ContestRepositoryTest {
 
         // when
         contestRepository.save(contest);
+        em.flush();
 
         // then
-        SqlRowSet rsAccount = jdbcTemplate.queryForRowSet(
-                "select * from contest where id = ?",
-                contest.getId());
+        Contest result = em.find(Contest.class, contest.getId());
+        assertThat(result).isNotNull();
     }
 }

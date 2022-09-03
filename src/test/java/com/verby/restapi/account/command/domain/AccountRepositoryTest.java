@@ -4,13 +4,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -20,17 +18,16 @@ class AccountRepositoryTest {
     private AccountRepository accountRepository;
 
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private TestEntityManager em;
 
     @Test
     void findByLoginId() {
         // given
-        String loginId = "violetbeach13";
-        jdbcTemplate.update("INSERT INTO account (login_id, password, name, status, allow_to_marketing_notification) VALUES" +
-                "(?, '$2a$10$JtZ/Qb4VjL1KIvLMgNFKGOSWU.4LSFDpJZkqYOB4tM2A/wg1N/Vse', 'member', 'ACTIVE', false)", loginId);
+        Account newAccount = new Account("violetBeach13", "password13", "honey", "01012345678", AccountStatus.ACTIVE, null, false);
+        em.persistAndFlush(newAccount);
 
         // when
-        Optional<Account> account = accountRepository.findByLoginId(loginId);
+        Optional<Account> account = accountRepository.findByLoginId(newAccount.getLoginId());
 
         // then
         assertThat(account).isPresent();
@@ -51,12 +48,10 @@ class AccountRepositoryTest {
 
         // when
         accountRepository.save(account);
+        em.flush();
 
         // then
-        SqlRowSet rsAccount = jdbcTemplate.queryForRowSet(
-                "select * from account where id = ?",
-                account.getId());
-        assertThat(rsAccount.next()).isTrue();
-        assertThat(rsAccount.getString("login_id")).isEqualTo(loginId);
+        Account result = em.find(Account.class, account.getId());
+        assertThat(result).isNotNull();
     }
 }

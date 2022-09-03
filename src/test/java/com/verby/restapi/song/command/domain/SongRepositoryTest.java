@@ -4,20 +4,19 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-class ArticleRepositoryTest {
+class SongRepositoryTest {
 
     @Autowired
     private SongRepository songRepository;
 
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private TestEntityManager em;
 
     @Test
     void save() {
@@ -26,11 +25,10 @@ class ArticleRepositoryTest {
 
         // when
         songRepository.save(song);
+        em.flush();
 
         // then
-        SqlRowSet rsArtist = jdbcTemplate.queryForRowSet(
-                "select * from song where id = ?",
-                song.getId());
-        assertThat(rsArtist.next()).isTrue();
+        Song result = em.find(Song.class, song.getId());
+        assertThat(result).isNotNull();
     }
 }
