@@ -3,7 +3,7 @@ package com.verby.restapi.account.presentation;
 import com.verby.restapi.account.command.application.AccountInfo;
 import com.verby.restapi.account.command.application.AccountService;
 import com.verby.restapi.account.command.application.SignUpRequest;
-import com.verby.restapi.account.query.application.AccountAuthService;
+import com.verby.restapi.account.query.application.AccountQueryService;
 import com.verby.restapi.account.query.dao.AccountDataDao;
 import com.verby.restapi.account.query.dto.AccountData;
 import com.verby.restapi.account.query.dto.AccountLoginId;
@@ -22,7 +22,7 @@ import javax.validation.Valid;
 public class AccountController {
 
     private final AccountService accountService;
-    private final AccountAuthService accountAuthService;
+    private final AccountQueryService accountQueryService;
     private final AccountDataDao accountDataDao;
 
     @PostMapping
@@ -33,7 +33,7 @@ public class AccountController {
 
     @GetMapping("/login-id")
     private ResponseEntity<AccountLoginId> findByPhoneAuth(@RequestParam String phone) {
-        AccountLoginId accountLoginId = accountAuthService.findLoginIdByPhoneAuth(phone);
+        AccountLoginId accountLoginId = accountQueryService.findLoginIdByPhoneAuth(phone);
         return new ResponseEntity<>(accountLoginId, HttpStatus.OK);
     }
 
