@@ -15,6 +15,6 @@ public class ResetPasswordRequest {
 
     @NotNull @Size(min = 8, max = 20)
     @Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*\\d).*$", message = "영문과 숫자를 조합해서 사용해야합니다")
-    String newPassword;
+    private String newPassword;
 
 }
