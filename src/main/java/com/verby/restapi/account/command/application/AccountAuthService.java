@@ -11,12 +11,12 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AccountAuthService {
 
-    private final VerificationRepository verificationRepository;
+    private final VerificationTokenRepository verificationTokenRepository;
 
     private final PasswordEncoder passwordEncoder;
 
     public void resetPassword(String token, ResetPasswordRequest resetPasswordRequest) {
-        VerificationToken verificationToken = verificationRepository.findByKeyAndType(token, VerificationType.SET_PASSWORD)
+        VerificationToken verificationToken = verificationTokenRepository.findByKeyAndType(token, VerificationType.SET_PASSWORD)
                 .orElseThrow(() -> new TokenNotFoundException(token));
         Account account = verificationToken.getAccount();
 

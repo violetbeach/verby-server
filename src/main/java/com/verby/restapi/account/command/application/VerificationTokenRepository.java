@@ -6,7 +6,7 @@ import org.springframework.data.repository.Repository;
 
 import java.util.Optional;
 
-public interface VerificationRepository extends Repository<VerificationToken, Long> {
+public interface VerificationTokenRepository extends Repository<VerificationToken, Long> {
 
     VerificationToken save(VerificationToken verificationToken);
     Optional<VerificationToken> findByKeyAndType(String key, VerificationType type);
