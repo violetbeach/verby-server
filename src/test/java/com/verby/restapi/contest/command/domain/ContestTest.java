@@ -1,5 +1,6 @@
 package com.verby.restapi.contest.command.domain;
 
+import com.verby.restapi.contest.exception.InvalidContestDateException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -7,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ContestTest {
 
@@ -29,7 +29,7 @@ class ContestTest {
     @DisplayName("선정곡 시작 시간이 종료 시간보다 늦으면 예외가 발생한다.")
     public void setContestDate() {
         // Then
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+        Assertions.assertThrows(InvalidContestDateException.class, () -> {
             // Given & WHen
             new Contest(1L,
                     "text",

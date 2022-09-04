@@ -40,7 +40,7 @@ public class Contest extends BaseEntity {
 
     private void setContestDate(LocalDateTime startTime, LocalDateTime endTime) {
         if(!startTime.isBefore(endTime)) {
-            throw  new InvalidContestDateException();
+            throw new InvalidContestDateException();
         }
         this.startTime = startTime;
         this.endTime = endTime;
