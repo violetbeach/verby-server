@@ -1,7 +1,7 @@
 package com.verby.restapi.account.presentation;
 
 import com.verby.restapi.account.command.application.ResetPasswordRequest;
-import com.verby.restapi.account.command.application.VerificationRepository;
+import com.verby.restapi.account.command.application.VerificationTokenRepository;
 import com.verby.restapi.account.command.domain.*;
 import com.verby.restapi.common.presentation.BaseControllerTest;
 import org.junit.jupiter.api.DisplayName;
@@ -26,7 +26,7 @@ class AccountAuthControllerTest extends BaseControllerTest {
     AccountRepository accountRepository;
 
     @Autowired
-    VerificationRepository verificationRepository;
+    VerificationTokenRepository verificationRepository;
 
     @Test
     @DisplayName("비밀번호를 재설정할 수 있다.")
