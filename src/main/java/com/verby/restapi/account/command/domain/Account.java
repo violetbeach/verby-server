@@ -67,5 +67,9 @@ public class Account extends BaseEntity implements Serializable {
         return roles;
     }
 
+    public void resetPassword(String newPassword) {
+        this.password = newPassword;
+    }
+
 
 }

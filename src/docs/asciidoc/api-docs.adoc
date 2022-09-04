@@ -83,6 +83,13 @@ Account의 휴대전화 번호로 아이디를 조회할 수 있습니다.
 
 operation::아이디 조회[snippets='http-request,request-parameters,http-response,response-fields']
 
+[[accounts-reset-password]]
+=== 비밀번호 재설정
+
+Account의 비밀번호를 재설정할 수 있다.
+
+operation::계정 비밀번호 재설정[snippets='http-request,request-parameters,request-fields,http-response']
+
 [[accounts-exists]]
 === 아이디 중복 확인
 

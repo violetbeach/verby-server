@@ -3,7 +3,7 @@ spring:
     property-naming-strategy: SNAKE_CASE
 
   datasource:
-    url: jdbc:h2:mem:verby_test;MODE=MYSQL
+    url: jdbc:h2:mem:verby_test;MODE=MYSQL;NON_KEYWORDS=KEY
 
   redis:
     host: localhost

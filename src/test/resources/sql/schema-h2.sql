@@ -2,20 +2,35 @@ DROP TABLE IF EXISTS `account`;
 
 CREATE TABLE `account`
 (
-    `id`                                   bigint(20) AUTO_INCREMENT PRIMARY KEY,
-    `login_id`                             varchar(20)  NOT NULL,
-    `password`                             varchar(255) NOT NULL,
-    `name`                                 varchar(50)  NOT NULL,
-    `birthday`                             date         NULL,
-    `phone`                                varchar(13)  NULL,
-    `status`                               varchar(30)  NOT NULL,
+    `id`                              bigint(20) AUTO_INCREMENT PRIMARY KEY,
+    `login_id`                        varchar(20)  NOT NULL,
+    `password`                        varchar(255) NOT NULL,
+    `name`                            varchar(50)  NOT NULL,
+    `birthday`                        date         NULL,
+    `phone`                           varchar(13)  NULL,
+    `status`                          varchar(30)  NOT NULL,
     `allow_to_marketing_notification` boolean      NOT NULL,
-    `created_at`                           datetime     NOT NULL DEFAULT NOW(),
-    `updated_at`                           datetime     NULL
+    `created_at`                      datetime     NOT NULL DEFAULT NOW(),
+    `updated_at`                      datetime     NULL
 );
 
-ALTER TABLE `account` ADD UNIQUE uk_login_id (`login_id`);
-ALTER TABLE `account` ADD UNIQUE uk_phone (`phone`);
+ALTER TABLE `account`
+    ADD UNIQUE uk_login_id (`login_id`);
+ALTER TABLE `account`
+    ADD UNIQUE uk_phone (`phone`);
+
+DROP TABLE IF EXISTS `account_verification_token`;
+
+CREATE TABLE `account_verification_token`
+(
+    `id`              bigint(20) AUTO_INCREMENT PRIMARY KEY,
+    `account_id`      bigint(20)   NOT NULL,
+    `key`             varchar(255) NOT NULL,
+    `type`            varchar(20)  NOT NULL,
+    `expiration_date` datetime     NULL,
+    `created_at`      datetime     NOT NULL DEFAULT NOW()
+);
+
 
 DROP TABLE IF EXISTS `user`;
 
