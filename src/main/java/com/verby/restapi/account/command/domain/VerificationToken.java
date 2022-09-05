@@ -1,5 +1,7 @@
 package com.verby.restapi.account.command.domain;
 
+import com.verby.restapi.common.error.ErrorCode;
+import com.verby.restapi.common.error.exception.EntityNotFoundException;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,6 +41,12 @@ public class VerificationToken {
         this.type = type;
         this.account = account;
         setExpirationDate(type);
+    }
+
+    public void setAccount(Account account) {
+        if(account == null) {
+            throw new EntityNotFoundException(ErrorCode.ACCOUNT_NOT_FOUND, "Not found.");
+        }
     }
 
     private void setExpirationDate(VerificationType type) {
