@@ -43,12 +43,6 @@ public class VerificationToken {
         setExpirationDate(type);
     }
 
-    public void setAccount(Account account) {
-        if(account == null) {
-            throw new EntityNotFoundException(ErrorCode.ACCOUNT_NOT_FOUND, "Not found.");
-        }
-    }
-
     private void setExpirationDate(VerificationType type) {
         LocalDateTime now = LocalDateTime.now();
         if(type == VerificationType.SET_PASSWORD) {
