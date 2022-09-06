@@ -42,7 +42,7 @@ public class BaseControllerTest {
         adminSession.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
     }
 
-    /*@BeforeAll
+    @BeforeAll
     static void initMemberSession(@Autowired AuthenticationManager authenticationManager) {
         UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken("member", "member");
 
@@ -52,6 +52,6 @@ public class BaseControllerTest {
 
         memberSession.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
     }
-*/
+
 
 }
