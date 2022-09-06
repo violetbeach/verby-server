@@ -6,6 +6,6 @@ import java.util.Optional;
 
 public interface AccountRepository extends Repository<Account, Long> {
     Optional<Account> findByLoginId(String loginId);
-    Boolean existsByLoginId(String loginId);
+    boolean existsByLoginId(String loginId);
     Account save(Account account);
 }
