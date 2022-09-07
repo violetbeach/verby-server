@@ -43,7 +43,8 @@ CREATE TABLE `user`
     `bio`           varchar(255) NULL,
     `profile_image` varchar(255) NULL,
     `created_at`    datetime     NOT NULL DEFAULT NOW(),
-    `updated_at`    datetime     NULL
+    `updated_at`    datetime     NULL,
+    UNIQUE KEY uk_account_id (account_id)
 );
 
 DROP TABLE IF EXISTS `contest`;
