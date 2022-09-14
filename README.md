@@ -16,7 +16,7 @@
     <tr>
         <td>
             <a href="#">
-                <img src="http://image.kyobobook.co.kr/newimages/giftshop_new/goods/400/1776/S1620697280757.jpg" width="100px" />
+                <img src="https://user-images.githubusercontent.com/63458653/190153215-1543dc7e-c5b1-46be-a4e7-1da3ac90bf44.png" width="100px" />
             </a>
         </td>
         <td>
