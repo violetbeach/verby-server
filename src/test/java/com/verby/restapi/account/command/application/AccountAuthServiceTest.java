@@ -38,18 +38,18 @@ class AccountAuthServiceTest {
         @DisplayName("token과 ResetPasswordRequest를 가지고 해당 token의 회원의 비밀번호를 재설정한다.")
         void success() {
             // given
-            ResetPasswordRequest resetPasswordRequest = new ResetPasswordRequest("new_password1234");
+            ResetPasswordRequest request = new ResetPasswordRequest("token", "new_password1234");
             Account account = new Account("violetBeach13", "password13", "honey", "01012345678", AccountStatus.ACTIVE, null, false);
 
-            given(passwordEncoder.encode(anyString())).willReturn(resetPasswordRequest.getNewPassword());
+            given(passwordEncoder.encode(anyString())).willReturn(request.getNewPassword());
             given(verificationTokenRepository.findByKeyAndType(anyString(), eq(VerificationType.SET_PASSWORD)))
                     .willReturn(Optional.of(new VerificationToken(VerificationType.SET_PASSWORD, account)));
 
             // when
-            accountAuthService.resetPassword("token", resetPasswordRequest);
+            accountAuthService.resetPassword(request);
 
             // then
-            assertThat(account.getPassword()).isEqualTo(resetPasswordRequest.getNewPassword());
+            assertThat(account.getPassword()).isEqualTo(request.getNewPassword());
         }
 
     }

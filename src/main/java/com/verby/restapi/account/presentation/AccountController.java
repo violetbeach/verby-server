@@ -26,8 +26,8 @@ public class AccountController {
     private final AccountDataDao accountDataDao;
 
     @PostMapping
-    private ResponseEntity<AccountInfo> signup(@RequestBody @Valid SignUpRequest signUpRequest) {
-        AccountInfo accountData = accountService.signUp(signUpRequest);
+    private ResponseEntity<AccountInfo> signup(@RequestBody @Valid SignUpRequest request) {
+        AccountInfo accountData = accountService.signUp(request);
         return new ResponseEntity<>(accountData, HttpStatus.CREATED);
     }
 

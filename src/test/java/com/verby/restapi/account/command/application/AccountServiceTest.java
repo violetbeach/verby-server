@@ -29,10 +29,10 @@ class AccountServiceTest {
         @DisplayName("생성할 회원 데이터를 가지고 회원을 생성하고, 생성한 회원을 반환한다.")
         void success() {
             // given
-            SignUpRequest signUpRequest = new SignUpRequest("violetbeach12", "password1234", "Honey", null, "01043042900", true);
+            SignUpRequest request = new SignUpRequest("violetbeach12", "password1234", "Honey", null, "01043042900", true);
 
             // when
-            AccountInfo accountInfo = accountService.signUp(signUpRequest);
+            AccountInfo accountInfo = accountService.signUp(request);
 
             // then
             assertThat(accountInfo).isNotNull();
@@ -53,10 +53,10 @@ class AccountServiceTest {
             );
             accountRepository.save(account);
 
-            SignUpRequest signUpRequest = new SignUpRequest(duplicatedLoginId, "password1234", "Honey", null, "01043042900", true);
+            SignUpRequest request = new SignUpRequest(duplicatedLoginId, "password1234", "Honey", null, "01043042900", true);
 
             // when & then
-            assertThatThrownBy(() -> accountService.signUp(signUpRequest))
+            assertThatThrownBy(() -> accountService.signUp(request))
                     .isInstanceOf(LoginIdDuplicateException.class);
         }
 

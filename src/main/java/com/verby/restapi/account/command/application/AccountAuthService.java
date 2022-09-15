@@ -15,12 +15,12 @@ public class AccountAuthService {
 
     private final PasswordEncoder passwordEncoder;
 
-    public void resetPassword(String token, ResetPasswordRequest resetPasswordRequest) {
-        VerificationToken verificationToken = verificationTokenRepository.findByKeyAndType(token, VerificationType.SET_PASSWORD)
-                .orElseThrow(() -> new TokenNotFoundException(token));
+    public void resetPassword(ResetPasswordRequest request) {
+        VerificationToken verificationToken = verificationTokenRepository.findByKeyAndType(request.getToken(), VerificationType.SET_PASSWORD)
+                .orElseThrow(() -> new TokenNotFoundException(request.getToken()));
         Account account = verificationToken.getAccount();
 
-        String encodedPassword = passwordEncoder.encode(resetPasswordRequest.getNewPassword());
+        String encodedPassword = passwordEncoder.encode(request.getNewPassword());
         account.resetPassword(encodedPassword);
     }
 

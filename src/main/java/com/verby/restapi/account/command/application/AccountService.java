@@ -16,20 +16,20 @@ public class AccountService {
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public AccountInfo signUp(SignUpRequest signUpRequest) {
-        if(accountRepository.existsByLoginId(signUpRequest.getLoginId())) {
-            throw new LoginIdDuplicateException(signUpRequest.getLoginId());
+    public AccountInfo signUp(SignUpRequest request) {
+        if(accountRepository.existsByLoginId(request.getLoginId())) {
+            throw new LoginIdDuplicateException(request.getLoginId());
         }
 
         AccountRole role = roleRepository.findByName(Role.MEMBER);
 
-        Account newAccount = new Account(signUpRequest.getLoginId(),
-                passwordEncoder.encode(signUpRequest.getPassword()),
-                signUpRequest.getName(),
-                signUpRequest.getPhone(),
+        Account newAccount = new Account(request.getLoginId(),
+                passwordEncoder.encode(request.getPassword()),
+                request.getName(),
+                request.getPhone(),
                 AccountStatus.ACTIVE,
                 new HashSet<>(List.of(role)),
-                signUpRequest.getAllowToMarketingNotification()
+                request.getAllowToMarketingNotification()
         );
 
         accountRepository.save(newAccount);

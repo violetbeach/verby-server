@@ -15,18 +15,18 @@ public class AccountAdminService {
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public AccountInfo createAdmin(CreateAdminRequest createAdminRequest) {
-        if(accountRepository.existsByLoginId(createAdminRequest.getLoginId())) {
-            throw new LoginIdDuplicateException(createAdminRequest.getLoginId());
+    public AccountInfo createAdmin(CreateAdminRequest request) {
+        if(accountRepository.existsByLoginId(request.getLoginId())) {
+            throw new LoginIdDuplicateException(request.getLoginId());
         }
 
         HashSet<AccountRole> roles = new HashSet<>();
         roles.add(roleRepository.findByName(Role.MEMBER));
         roles.add(roleRepository.findByName(Role.ADMIN));
 
-        Account newAdminAccount = new Account(createAdminRequest.getLoginId(),
-                passwordEncoder.encode(createAdminRequest.getPassword()),
-                createAdminRequest.getName(),
+        Account newAdminAccount = new Account(request.getLoginId(),
+                passwordEncoder.encode(request.getPassword()),
+                request.getName(),
                 null,
                 AccountStatus.ACTIVE,
                 roles,

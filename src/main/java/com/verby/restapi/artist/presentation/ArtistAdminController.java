@@ -21,8 +21,8 @@ public class ArtistAdminController {
     private final ArtistService artistService;
 
     @PostMapping
-    private ResponseEntity<Artist> create(@RequestBody @Valid CreateArtistRequest createArtistRequest) {
-        Artist artist = artistService.create(createArtistRequest);
+    private ResponseEntity<Artist> create(@RequestBody @Valid CreateArtistRequest request) {
+        Artist artist = artistService.create(request);
         return new ResponseEntity<>(artist, HttpStatus.CREATED);
     }
 

@@ -39,12 +39,12 @@ class AuthenticationFilterTest extends BaseControllerTest {
         String loginId = "test1234";
         String password = "test5678";
         Account account = generateAccount(loginId, password);
-        AuthenticationRequest authenticationRequest = new AuthenticationRequest(loginId, password);
+        AuthenticationRequest request = new AuthenticationRequest(loginId, password);
 
         // when
         ResultActions result = mockMvc.perform(post("/accounts/sessions")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(authenticationRequest)));
+                .content(objectMapper.writeValueAsString(request)));
 
         // then
         result.andExpect(status().isNoContent());

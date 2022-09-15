@@ -11,8 +11,8 @@ public class ArtistService {
 
     private final ArtistRepository accountRepository;
 
-    public Artist create(CreateArtistRequest createArtistRequest) {
-        Artist artist = new Artist(createArtistRequest.getName());
+    public Artist create(CreateArtistRequest request) {
+        Artist artist = new Artist(request.getName());
         return accountRepository.save(artist);
     }
 

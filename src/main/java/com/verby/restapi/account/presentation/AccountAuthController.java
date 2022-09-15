@@ -17,8 +17,9 @@ public class AccountAuthController {
 
     @PutMapping("/password")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    private void resetPassword(@RequestParam String token, @RequestBody @Valid ResetPasswordRequest changePasswordRequest) {
-        accountAuthService.resetPassword(token, changePasswordRequest);
+    private void resetPassword(@RequestParam String token, @RequestBody @Valid ResetPasswordRequest request) {
+        request.setToken(token);
+        accountAuthService.resetPassword(request);
     }
 
 }

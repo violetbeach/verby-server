@@ -1,7 +1,5 @@
 package com.verby.restapi.account.command.domain;
 
-import com.verby.restapi.common.error.ErrorCode;
-import com.verby.restapi.common.error.exception.EntityNotFoundException;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
