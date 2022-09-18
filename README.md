@@ -10,7 +10,7 @@
 
 ## 팀 소개
 
-### 기획 및 설계
+### 기획
 
 <table>
     <tr>
@@ -24,16 +24,6 @@
                 <img src="https://user-images.githubusercontent.com/63458653/190397962-a03a98e9-e245-405e-81e4-d6c241500d40.jpeg" width="100px" />
             </a>
         </td>
-        <td>
-            <a href="#">
-                <img src="http://image.kyobobook.co.kr/newimages/giftshop_new/goods/400/1776/S1620697280757.jpg" width="100px" />
-            </a>
-        </td>
-        <td>
-            <a href="#">
-                <img src="http://image.kyobobook.co.kr/newimages/giftshop_new/goods/400/1776/S1620697280757.jpg" width="100px" />
-            </a>
-        </td>
     </tr>
     <tr>
         <td>
@@ -41,12 +31,6 @@
         </td>
         <td>
             <b>정희라</b>
-        </td>
-        <td>
-            <b>김주현</b>
-        </td>
-        <td>
-            <b>한수민</b>
         </td>
     </tr>
     <tr>
@@ -56,6 +40,44 @@
         <td>
             <b>Product Manager</b>
         </td>
+    </tr>
+</table>
+
+### 디자인
+
+<table>
+    <tr>
+        <td>
+            <a href="#">
+                <img src="http://image.kyobobook.co.kr/newimages/giftshop_new/goods/400/1776/S1620697280757.jpg" width="100px" />
+            </a>
+        </td>
+        <td>
+            <a href="#">
+                <img src="http://image.kyobobook.co.kr/newimages/giftshop_new/goods/400/1776/S1620697280757.jpg" width="100px" />
+            </a>
+        </td>
+        <td>
+            <a href="#">
+                <img src="http://image.kyobobook.co.kr/newimages/giftshop_new/goods/400/1776/S1620697280757.jpg" width="100px" />
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <b>이윤지</b>
+        </td
+        <td>
+            <b>김주현</b>
+        </td>
+        <td>
+            <b>한수민</b>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <b>UI/UX Design</b>
+        </td>
         <td>
             <b>UI/UX Design</b>
         </td>
@@ -64,6 +86,7 @@
         </td>
     </tr>
 </table>
+
 
 ### 개발
 
