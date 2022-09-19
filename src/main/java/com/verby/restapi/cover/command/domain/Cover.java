@@ -1,4 +1,4 @@
-package com.verby.restapi.cover.command.dommain;
+package com.verby.restapi.cover.command.domain;
 
 import com.verby.restapi.common.domain.BaseEntity;
 import lombok.AccessLevel;
