@@ -1,8 +1,15 @@
+buildscript {
+	ext {
+		queryDslVersion = "5.0.0"
+	}
+}
+
 plugins {
 	id 'org.springframework.boot' version '2.7.1'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'io.freefair.lombok' version '6.5.0.3'
 	id 'org.asciidoctor.jvm.convert' version '3.3.2'
+	id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
 	id 'jacoco'
 	id 'java'
 }
@@ -13,6 +20,7 @@ sourceCompatibility = '17'
 
 configurations {
 	asciidoctorExtensions
+	querydsl.extendsFrom compileClasspath
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
@@ -27,6 +35,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
+	implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
 
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
@@ -60,6 +70,19 @@ test {
 	finalizedBy jacocoTestReport
 }
 
+def querydslDir = "$buildDir/generated/querydsl"
+
+querydsl {
+	jpa = true
+	querydslSourcesDir = querydslDir
+}
+sourceSets {
+	main.java.srcDir querydslDir
+}
+compileQuerydsl{
+	options.annotationProcessorPath = configurations.querydsl
+}
+
 asciidoctor {
 	configurations 'asciidoctorExtensions'
 	dependsOn test
@@ -90,6 +113,12 @@ jacocoTestReport {
 }
 
 jacocoTestCoverageVerification {
+	def Qdomains = []
+
+	for (qPattern in '*.QA'..'*.QZ') {
+		Qdomains.add(qPattern + '*')
+	}
+
 	violationRules {
 		rule {
 			enabled = true
@@ -100,6 +129,8 @@ jacocoTestCoverageVerification {
 				value = 'COVEREDRATIO'
 				minimum = 0.50
 			}
+
+			excludes = [] + Qdomains
 		}
 	}
 }
