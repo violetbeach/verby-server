@@ -1,4 +1,4 @@
-package com.verby.restapi.user.command.domain;
+package com.verby.restapi.account.command.domain;
 
 import org.springframework.data.repository.Repository;
 

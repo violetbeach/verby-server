@@ -1,11 +1,13 @@
 package com.verby.restapi.account.query.dto;
 
+import com.verby.restapi.account.command.domain.AccountRole;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -26,5 +28,12 @@ public class AccountData {
     private LocalDate birthday;
 
     private String phone;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "account_role",
+            joinColumns = { @JoinColumn(name = "account_id", referencedColumnName = "id") },
+            inverseJoinColumns = { @JoinColumn(name = "role_id", referencedColumnName = "id") }
+    )
+    private Set<AccountRole> roles;
 
 }

@@ -130,7 +130,7 @@ class AccountControllerTest extends BaseControllerTest {
     void existsLoginId() throws Exception {
         // given
         String loginId = "VioletBeach1";
-        Account account = generateAccount(loginId);
+        generateAccount(loginId);
 
         // when
         ResultActions result = mockMvc.perform(head("/accounts")

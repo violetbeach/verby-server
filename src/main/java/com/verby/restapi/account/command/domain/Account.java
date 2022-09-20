@@ -41,6 +41,9 @@ public class Account extends BaseEntity implements Serializable {
 
     private boolean allowToMarketingNotification;
 
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
+    private User user;
+
     public Account(String loginId, String password, String name, String phone, AccountStatus status, Set<AccountRole> roles, boolean allowToMarketingNotification) {
         this.loginId = loginId;
         this.password = password;
@@ -49,6 +52,7 @@ public class Account extends BaseEntity implements Serializable {
         this.status = status;
         this.roles = roles;
         this.allowToMarketingNotification = allowToMarketingNotification;
+        this.user = new User(this, null, null, null);
     }
 
     public Long getId() {
@@ -65,6 +69,10 @@ public class Account extends BaseEntity implements Serializable {
 
     public Set<AccountRole> getRoles() {
         return roles;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public void resetPassword(String newPassword) {

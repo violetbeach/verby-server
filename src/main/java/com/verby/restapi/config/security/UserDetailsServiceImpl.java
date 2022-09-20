@@ -20,10 +20,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         Account account = accountRepository.findByLoginId(loginId)
                 .orElseThrow(() -> new UsernameNotFoundException("loginId not found"));
 
-
         return new SecurityUser(
                 account.getLoginId(),
                 account.getPassword(),
+                account.getUser().getId(),
                 AuthorityUtils.createAuthorityList(
                         account.getRoles().stream().map(r -> String.format("ROLE_%s", r.getName().toString()))
                                 .toArray(String[]::new)

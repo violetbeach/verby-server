@@ -1,4 +1,4 @@
-package com.verby.restapi.user.command.domain;
+package com.verby.restapi.account.command.domain;
 
 import com.verby.restapi.common.domain.BaseEntity;
 import lombok.AccessLevel;
@@ -16,8 +16,9 @@ public class User extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
-    private long accountId;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_id")
+    private Account account;
 
     private String nickname;
 
@@ -25,8 +26,8 @@ public class User extends BaseEntity {
 
     private String profileImage;
 
-    public User(long accountId, String nickname, String bio, String profileImage) {
-        this.accountId = accountId;
+    public User(Account account, String nickname, String bio, String profileImage) {
+        this.account = account;
         this.nickname = nickname;
         this.bio = bio;
         this.profileImage = profileImage;
@@ -34,5 +35,9 @@ public class User extends BaseEntity {
 
     public void rename(String nickname) {
         this.nickname = nickname;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
     }
 }

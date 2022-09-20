@@ -1,9 +1,9 @@
-package com.verby.restapi.user.command.application;
+package com.verby.restapi.account.command.application;
 
+import com.verby.restapi.account.command.domain.User;
+import com.verby.restapi.account.command.domain.UserRepository;
 import com.verby.restapi.common.error.ErrorCode;
 import com.verby.restapi.common.error.exception.EntityNotFoundException;
-import com.verby.restapi.user.command.domain.User;
-import com.verby.restapi.user.command.domain.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -13,6 +13,7 @@ public class SecurityUser implements UserDetails {
 
     private final String loginId;
     private final String password;
+    private final long userId;
     private final List<GrantedAuthority> authorities;
 
     @Override

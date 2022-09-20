@@ -30,6 +30,9 @@ class AuthenticationFilterTest extends BaseControllerTest {
     RoleRepository roleRepository;
 
     @Autowired
+    UserRepository userRepository;
+
+    @Autowired
     PasswordEncoder passwordEncoder;
 
     @Test
@@ -38,7 +41,7 @@ class AuthenticationFilterTest extends BaseControllerTest {
         // given
         String loginId = "test1234";
         String password = "test5678";
-        Account account = generateAccount(loginId, password);
+        generateAccount(loginId, password);
         AuthenticationRequest request = new AuthenticationRequest(loginId, password);
 
         // when
@@ -60,7 +63,7 @@ class AuthenticationFilterTest extends BaseControllerTest {
         ));
     }
 
-    Account generateAccount(String loginId, String password) {
+    void generateAccount(String loginId, String password) {
         Account account = new Account(
                 loginId,
                 passwordEncoder.encode(password),
@@ -70,7 +73,7 @@ class AuthenticationFilterTest extends BaseControllerTest {
                 Set.of(roleRepository.findByName(Role.MEMBER)),
                 false
         );
-        return accountRepository.save(account);
+        accountRepository.save(account);
     }
 
 }
