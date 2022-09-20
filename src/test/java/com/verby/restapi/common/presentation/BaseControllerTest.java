@@ -1,7 +1,7 @@
 package com.verby.restapi.common.presentation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -31,8 +31,8 @@ public class BaseControllerTest {
     protected static MockHttpSession adminSession = new MockHttpSession();
     protected static MockHttpSession memberSession = new MockHttpSession();
 
-    @BeforeAll
-    static void initAdminSession(@Autowired AuthenticationManager authenticationManager) {
+    @BeforeEach
+    void initAdminSession(@Autowired AuthenticationManager authenticationManager) {
         UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken("admin", "admin");
 
         Authentication authentication = authenticationManager.authenticate(authRequest);
@@ -42,8 +42,8 @@ public class BaseControllerTest {
         adminSession.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
     }
 
-    @BeforeAll
-    static void initMemberSession(@Autowired AuthenticationManager authenticationManager) {
+    @BeforeEach
+    void initMemberSession(@Autowired AuthenticationManager authenticationManager) {
         UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken("member", "member");
 
         Authentication authentication = authenticationManager.authenticate(authRequest);
