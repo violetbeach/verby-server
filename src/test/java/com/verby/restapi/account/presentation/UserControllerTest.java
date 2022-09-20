@@ -1,12 +1,9 @@
 package com.verby.restapi.account.presentation;
 
 import com.verby.restapi.account.command.application.ResetNicknameRequest;
-import com.verby.restapi.account.command.domain.AccountRepository;
-import com.verby.restapi.account.command.domain.UserRepository;
 import com.verby.restapi.common.presentation.BaseControllerTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.web.servlet.ResultActions;
@@ -20,12 +17,6 @@ import static org.springframework.restdocs.payload.PayloadDocumentation.requestF
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 class UserControllerTest extends BaseControllerTest {
-
-    @Autowired
-    AccountRepository accountRepository;
-
-    @Autowired
-    UserRepository userRepository;
 
     @Test
     @DisplayName("ResetNicknameRequest로 닉네임을 재설정할 수 있다.")
