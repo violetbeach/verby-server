@@ -38,7 +38,7 @@ CREATE TABLE `user`
 (
     `id`            bigint(20) AUTO_INCREMENT PRIMARY KEY,
     `account_id`    bigint(20)   NOT NULL,
-    `nickname`      varchar(50)  NOT NULL,
+    `nickname`      varchar(50)  NULL,
     `bio`           varchar(255) NULL,
     `profile_image` varchar(255) NULL,
     `created_at`    datetime     NOT NULL DEFAULT NOW(),
