@@ -1,6 +1,8 @@
 package com.verby.restapi.account.command.application;
 
 import com.verby.restapi.account.command.domain.*;
+import com.verby.restapi.account.exception.LoginIdDuplicateException;
+import com.verby.restapi.account.exception.PhoneNumberDuplicateException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -17,9 +19,8 @@ public class AccountService {
     private final PasswordEncoder passwordEncoder;
 
     public AccountInfo signUp(SignUpRequest request) {
-        if(accountRepository.existsByLoginId(request.getLoginId())) {
-            throw new LoginIdDuplicateException(request.getLoginId());
-        }
+        verifyUniqueLoginId(request.getLoginId());
+        verifyUniquePhoneNumber(request.getPhone());
 
         AccountRole role = roleRepository.findByName(Role.MEMBER);
 
@@ -35,6 +36,18 @@ public class AccountService {
         accountRepository.save(newAccount);
 
         return AccountInfo.of(newAccount);
+    }
+
+    private void verifyUniqueLoginId(String loginId) {
+        if(accountRepository.existsByLoginId(loginId)) {
+            throw new LoginIdDuplicateException(loginId);
+        }
+    }
+
+    private void verifyUniquePhoneNumber(String phoneNumber) {
+        if(accountRepository.existsByPhone(phoneNumber)) {
+            throw new PhoneNumberDuplicateException(phoneNumber);
+        }
     }
 
 }
