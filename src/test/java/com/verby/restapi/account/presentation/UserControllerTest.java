@@ -11,9 +11,9 @@ import org.springframework.test.web.servlet.ResultActions;
 import static com.verby.restapi.common.presentation.ApiDocumentUtils.getDocumentRequest;
 import static com.verby.restapi.common.presentation.ApiDocumentUtils.getDocumentResponse;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.put;
-import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
-import static org.springframework.restdocs.payload.PayloadDocumentation.requestFields;
+import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 class UserControllerTest extends BaseControllerTest {
@@ -39,6 +39,29 @@ class UserControllerTest extends BaseControllerTest {
                 getDocumentResponse(),
                 requestFields(
                         fieldWithPath("name").type(JsonFieldType.STRING).description("병경할 닉네임")
+                ))
+        );
+    }
+
+    @Test
+    @DisplayName("세션의 회원 정보를 조회할 수 있다.")
+    void me() throws Exception {
+        // when
+        ResultActions result = mockMvc.perform(get("/users/me")
+                        .session(memberSession));
+
+        // then
+        result.andExpect(status().isOk());
+
+        // docs
+        result.andDo(document("유저 정보 조회",
+                getDocumentRequest(),
+                getDocumentResponse(),
+                responseFields(
+                        fieldWithPath("id").type(JsonFieldType.NUMBER).description("유저 일련번호"),
+                        fieldWithPath("nickname").type(JsonFieldType.STRING).description("닉네임").optional(),
+                        fieldWithPath("bio").type(JsonFieldType.STRING).description("소개 글"),
+                        fieldWithPath("profile_image").type(JsonFieldType.STRING).description("프로필 이미지").optional()
                 ))
         );
     }
