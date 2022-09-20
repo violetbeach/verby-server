@@ -1,6 +1,7 @@
 package com.verby.restapi.account.command.application;
 
 import com.verby.restapi.account.command.domain.*;
+import com.verby.restapi.account.exception.LoginIdDuplicateException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

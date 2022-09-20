@@ -3,6 +3,7 @@ package com.verby.restapi.account.command.application;
 import com.verby.restapi.account.command.domain.Account;
 import com.verby.restapi.account.command.domain.AccountRepository;
 import com.verby.restapi.account.command.domain.AccountStatus;
+import com.verby.restapi.account.exception.LoginIdDuplicateException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

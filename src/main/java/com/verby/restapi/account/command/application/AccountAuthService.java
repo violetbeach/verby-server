@@ -3,6 +3,7 @@ package com.verby.restapi.account.command.application;
 import com.verby.restapi.account.command.domain.Account;
 import com.verby.restapi.account.command.domain.VerificationToken;
 import com.verby.restapi.account.command.domain.VerificationType;
+import com.verby.restapi.account.exception.TokenNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
