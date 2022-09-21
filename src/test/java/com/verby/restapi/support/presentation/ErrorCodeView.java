@@ -1,4 +1,4 @@
-package com.verby.restapi.common.error.presentation;
+package com.verby.restapi.support.presentation;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

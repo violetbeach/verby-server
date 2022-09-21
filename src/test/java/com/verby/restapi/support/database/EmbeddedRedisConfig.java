@@ -1,4 +1,4 @@
-package com.verby.restapi.config.database;
+package com.verby.restapi.support.database;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

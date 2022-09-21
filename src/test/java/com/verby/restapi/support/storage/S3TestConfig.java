@@ -1,4 +1,4 @@
-package com.verby.restapi.common.storage.infra;
+package com.verby.restapi.support.storage;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.AnonymousAWSCredentials;

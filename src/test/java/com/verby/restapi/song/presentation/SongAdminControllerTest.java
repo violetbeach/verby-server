@@ -2,8 +2,8 @@ package com.verby.restapi.song.presentation;
 
 import com.verby.restapi.artist.command.domain.Artist;
 import com.verby.restapi.artist.command.domain.ArtistRepository;
-import com.verby.restapi.common.presentation.BaseControllerTest;
-import com.verby.restapi.common.storage.infra.S3TestConfig;
+import com.verby.restapi.support.presentation.BaseControllerTest;
+import com.verby.restapi.support.storage.S3TestConfig;
 import com.verby.restapi.song.command.application.CreateSongRequest;
 import io.findify.s3mock.S3Mock;
 import org.junit.jupiter.api.AfterEach;
@@ -16,8 +16,8 @@ import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.ResultActions;
 
-import static com.verby.restapi.common.presentation.ApiDocumentUtils.getDocumentRequest;
-import static com.verby.restapi.common.presentation.ApiDocumentUtils.getDocumentResponse;
+import static com.verby.restapi.support.documentation.ApiDocumentUtils.getDocumentRequest;
+import static com.verby.restapi.support.documentation.ApiDocumentUtils.getDocumentResponse;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.multipart;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;

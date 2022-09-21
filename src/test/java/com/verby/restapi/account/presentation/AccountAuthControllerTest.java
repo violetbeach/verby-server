@@ -2,8 +2,11 @@ package com.verby.restapi.account.presentation;
 
 import com.verby.restapi.account.command.application.ResetPasswordRequest;
 import com.verby.restapi.account.command.application.VerificationTokenRepository;
-import com.verby.restapi.account.command.domain.*;
-import com.verby.restapi.common.presentation.BaseControllerTest;
+import com.verby.restapi.account.command.domain.Account;
+import com.verby.restapi.account.command.domain.AccountRepository;
+import com.verby.restapi.account.command.domain.VerificationToken;
+import com.verby.restapi.account.command.domain.VerificationType;
+import com.verby.restapi.support.presentation.BaseControllerTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +14,9 @@ import org.springframework.http.MediaType;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.web.servlet.ResultActions;
 
-import static com.verby.restapi.common.presentation.ApiDocumentUtils.getDocumentRequest;
-import static com.verby.restapi.common.presentation.ApiDocumentUtils.getDocumentResponse;
+import static com.verby.restapi.support.documentation.ApiDocumentUtils.getDocumentRequest;
+import static com.verby.restapi.support.documentation.ApiDocumentUtils.getDocumentResponse;
+import static com.verby.restapi.support.fixture.domain.AccountFixture.NORMAL_ACCOUNT;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.put;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
@@ -65,15 +69,6 @@ class AccountAuthControllerTest extends BaseControllerTest {
     };
 
     Account generateAccount() {
-        Account account = new Account(
-                "violetbeach13",
-                "test1234",
-                "testName",
-                "01012345678",
-                AccountStatus.ACTIVE,
-                null,
-                false
-        );
-        return accountRepository.save(account);
+        return accountRepository.save(NORMAL_ACCOUNT.getAccount());
     }
 }

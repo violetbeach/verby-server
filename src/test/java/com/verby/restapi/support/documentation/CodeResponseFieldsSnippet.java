@@ -1,4 +1,4 @@
-package com.verby.restapi.common.error.presentation;
+package com.verby.restapi.support.documentation;
 
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.operation.Operation;

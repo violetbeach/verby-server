@@ -1,7 +1,7 @@
 package com.verby.restapi.artist.presentation;
 
 import com.verby.restapi.artist.command.application.CreateArtistRequest;
-import com.verby.restapi.common.presentation.BaseControllerTest;
+import com.verby.restapi.support.presentation.BaseControllerTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
@@ -9,8 +9,8 @@ import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.ResultActions;
 
-import static com.verby.restapi.common.presentation.ApiDocumentUtils.getDocumentRequest;
-import static com.verby.restapi.common.presentation.ApiDocumentUtils.getDocumentResponse;
+import static com.verby.restapi.support.documentation.ApiDocumentUtils.getDocumentRequest;
+import static com.verby.restapi.support.documentation.ApiDocumentUtils.getDocumentResponse;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;

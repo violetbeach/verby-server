@@ -1,4 +1,4 @@
-package com.verby.restapi.common.error.presentation;
+package com.verby.restapi.support.presentation;
 
 import com.verby.restapi.common.error.ErrorCode;
 import org.springframework.http.HttpStatus;

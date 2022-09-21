@@ -1,8 +1,10 @@
 package com.verby.restapi.config.security.api;
 
-import com.verby.restapi.account.command.domain.*;
-import com.verby.restapi.common.presentation.BaseControllerTest;
+import com.verby.restapi.account.command.domain.AccountRepository;
+import com.verby.restapi.account.command.domain.RoleRepository;
+import com.verby.restapi.account.command.domain.UserRepository;
 import com.verby.restapi.config.security.AuthenticationRequest;
+import com.verby.restapi.support.presentation.BaseControllerTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +13,9 @@ import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.web.servlet.ResultActions;
 
-import java.util.Set;
-
-import static com.verby.restapi.common.presentation.ApiDocumentUtils.getDocumentRequest;
-import static com.verby.restapi.common.presentation.ApiDocumentUtils.getDocumentResponse;
+import static com.verby.restapi.support.documentation.ApiDocumentUtils.getDocumentRequest;
+import static com.verby.restapi.support.documentation.ApiDocumentUtils.getDocumentResponse;
+import static com.verby.restapi.support.fixture.domain.AccountFixture.NORMAL_ACCOUNT;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
@@ -64,16 +65,7 @@ class AuthenticationFilterTest extends BaseControllerTest {
     }
 
     void generateAccount(String loginId, String password) {
-        Account account = new Account(
-                loginId,
-                passwordEncoder.encode(password),
-                "testName",
-                "010123456789",
-                AccountStatus.ACTIVE,
-                Set.of(roleRepository.findByName(Role.MEMBER)),
-                false
-        );
-        accountRepository.save(account);
+        accountRepository.save(NORMAL_ACCOUNT.getAccount(loginId, password));
     }
 
 }

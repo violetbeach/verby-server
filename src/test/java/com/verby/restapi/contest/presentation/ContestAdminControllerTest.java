@@ -2,7 +2,7 @@ package com.verby.restapi.contest.presentation;
 
 import com.verby.restapi.artist.command.domain.Artist;
 import com.verby.restapi.artist.command.domain.ArtistRepository;
-import com.verby.restapi.common.presentation.BaseControllerTest;
+import com.verby.restapi.support.presentation.BaseControllerTest;
 import com.verby.restapi.contest.command.application.CreateContestRequest;
 import com.verby.restapi.song.command.domain.Song;
 import com.verby.restapi.song.command.domain.SongRepository;
@@ -17,8 +17,8 @@ import org.springframework.test.web.servlet.ResultActions;
 
 import java.time.LocalDateTime;
 
-import static com.verby.restapi.common.presentation.ApiDocumentUtils.getDocumentRequest;
-import static com.verby.restapi.common.presentation.ApiDocumentUtils.getDocumentResponse;
+import static com.verby.restapi.support.documentation.ApiDocumentUtils.getDocumentRequest;
+import static com.verby.restapi.support.documentation.ApiDocumentUtils.getDocumentResponse;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;

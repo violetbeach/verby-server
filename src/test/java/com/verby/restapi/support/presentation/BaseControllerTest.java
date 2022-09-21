@@ -1,4 +1,4 @@
-package com.verby.restapi.common.presentation;
+package com.verby.restapi.support.presentation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;

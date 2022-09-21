@@ -1,4 +1,4 @@
-package com.verby.restapi.common.presentation;
+package com.verby.restapi.support.documentation;
 
 import org.springframework.restdocs.operation.preprocess.OperationRequestPreprocessor;
 import org.springframework.restdocs.operation.preprocess.OperationResponsePreprocessor;

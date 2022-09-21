@@ -1,9 +1,11 @@
 package com.verby.restapi.account.presentation;
 
 import com.verby.restapi.account.command.application.SignUpRequest;
-import com.verby.restapi.account.command.domain.*;
+import com.verby.restapi.account.command.domain.Account;
+import com.verby.restapi.account.command.domain.AccountRepository;
+import com.verby.restapi.account.command.domain.RoleRepository;
 import com.verby.restapi.common.error.ErrorCode;
-import com.verby.restapi.common.presentation.BaseControllerTest;
+import com.verby.restapi.support.presentation.BaseControllerTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +14,10 @@ import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.web.servlet.ResultActions;
 
 import java.time.LocalDate;
-import java.util.Set;
 
-import static com.verby.restapi.common.presentation.ApiDocumentUtils.getDocumentRequest;
-import static com.verby.restapi.common.presentation.ApiDocumentUtils.getDocumentResponse;
+import static com.verby.restapi.support.documentation.ApiDocumentUtils.getDocumentRequest;
+import static com.verby.restapi.support.documentation.ApiDocumentUtils.getDocumentResponse;
+import static com.verby.restapi.support.fixture.domain.AccountFixture.NORMAL_ACCOUNT;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
@@ -146,30 +148,12 @@ class AccountControllerTest extends BaseControllerTest {
                         )));
     }
 
-    Account generateAccount(String loginId) {
-        Account account = new Account(
-                loginId,
-                "test1234",
-                "testName",
-                "01012345678",
-                AccountStatus.ACTIVE,
-                Set.of(roleRepository.findByName(Role.MEMBER)),
-                false
-        );
-        return accountRepository.save(account);
+    void generateAccount(String loginId) {
+        accountRepository.save(NORMAL_ACCOUNT.getAccount(loginId));
     }
 
     Account generateAccount(String loginId, String phone) {
-        Account account = new Account(
-                loginId,
-                "test1234",
-                "testName",
-                phone,
-                AccountStatus.ACTIVE,
-                Set.of(roleRepository.findByName(Role.MEMBER)),
-                false
-        );
-        return accountRepository.save(account);
+        return accountRepository.save(NORMAL_ACCOUNT.getAccount(loginId, phone));
     }
 
 }
