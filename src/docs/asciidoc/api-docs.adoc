@@ -148,11 +148,21 @@ operation::관리자 - 곡 추가[snippets='http-request,path-parameters,request
 operation::관리자 - 선정곡 추가[snippets='http-request,request-fields,http-response,response-fields']
 
 [[errors]]
-== 에러 응답
+== 에러
+
+[[error-response]]
+=== 에러 응답
+
+잘못된 요청으로 이벤트를 만들려고 했을 때 다음과 같은 Format의 응답을 받는다.
+
+operation::에러 응답[snippets='http-response,response-fields']
+
+
+
+[[error-codes]]
+=== 에러 코드
 
 에러 응답이 발생했을 때 (상태 코드 >= 400), 본문에 해당 문제를 기술한 JSON 객체가 담겨있다. 각 에러 코드에 대한 설명은 다음과 같다.
 
 include::{snippets}/에러 코드/code-response-fields-beneath-error_codes.adoc[]
-
-// TODO 예를 들어, 잘못된 요청으로 이벤트를 만들려고 했을 때 다음과 같은 `400 Bad Request` 응답을 받는다.
 
