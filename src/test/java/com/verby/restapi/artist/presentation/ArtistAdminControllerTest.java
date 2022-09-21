@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.payload.JsonFieldType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.ResultActions;
 
 import static com.verby.restapi.common.presentation.ApiDocumentUtils.getDocumentRequest;
@@ -16,6 +17,7 @@ import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@WithMockUser(roles = "ADMIN")
 class ArtistAdminControllerTest extends BaseControllerTest {
 
     @Test
@@ -26,7 +28,6 @@ class ArtistAdminControllerTest extends BaseControllerTest {
 
         // when
         ResultActions result = mockMvc.perform(post("/admin/artists")
-                .session(adminSession)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(createArtistRequest)));
 

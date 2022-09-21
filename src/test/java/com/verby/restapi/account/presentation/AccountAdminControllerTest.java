@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.payload.JsonFieldType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.ResultActions;
 
 import static com.verby.restapi.common.presentation.ApiDocumentUtils.getDocumentRequest;
@@ -18,6 +19,7 @@ import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@WithMockUser(roles = "ADMIN")
 class AccountAdminControllerTest extends BaseControllerTest {
 
     @Autowired
@@ -35,7 +37,6 @@ class AccountAdminControllerTest extends BaseControllerTest {
 
         // when
         ResultActions result = mockMvc.perform(post("/admin/accounts")
-                        .session(adminSession)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(createAdminRequest)));
 

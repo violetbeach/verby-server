@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.restdocs.payload.JsonFieldType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.ResultActions;
 
 import static com.verby.restapi.common.presentation.ApiDocumentUtils.getDocumentRequest;
@@ -26,6 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @Import(S3TestConfig.class)
+@WithMockUser(roles = "ADMIN")
 class SongAdminControllerTest extends BaseControllerTest {
 
     @Autowired
@@ -51,8 +53,7 @@ class SongAdminControllerTest extends BaseControllerTest {
         // when
         ResultActions result = mockMvc.perform(multipart("/admin/artists/{artistId}/songs", artist.getId())
                 .file(imageFile)
-                .file(requestJson)
-                .session(adminSession));
+                .file(requestJson));
 
         // then
         result.andExpect(status().isCreated())

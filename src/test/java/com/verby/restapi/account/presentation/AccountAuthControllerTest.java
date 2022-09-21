@@ -40,7 +40,6 @@ class AccountAuthControllerTest extends BaseControllerTest {
 
         // when
         ResultActions result = mockMvc.perform(put("/accounts/password")
-                .session(memberSession)
                 .param("token", verificationToken.getKey())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(resetPasswordRequest)));

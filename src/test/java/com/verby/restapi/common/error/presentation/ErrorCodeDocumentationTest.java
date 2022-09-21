@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.payload.FieldDescriptor;
 import org.springframework.restdocs.payload.PayloadSubsectionExtractor;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.ResultActions;
 
 import java.util.Arrays;
@@ -20,14 +21,14 @@ import static org.springframework.restdocs.snippet.Attributes.attributes;
 import static org.springframework.restdocs.snippet.Attributes.key;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@WithMockUser
 public class ErrorCodeDocumentationTest extends BaseControllerTest {
 
     @Test
     @DisplayName("ErrorCode 문서화")
     public void errorCodeDocumentation() throws Exception {
         // given + when
-        ResultActions result = this.mockMvc.perform(get("/errors")
-                .session(memberSession)
+        ResultActions result = mockMvc.perform(get("/errors")
                 .accept(MediaType.APPLICATION_JSON));
 
         // then

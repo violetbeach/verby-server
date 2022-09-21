@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.payload.JsonFieldType;
+import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.ResultActions;
 
 import static com.verby.restapi.common.presentation.ApiDocumentUtils.getDocumentRequest;
@@ -16,6 +17,7 @@ import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuild
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@WithUserDetails("member")
 class UserControllerTest extends BaseControllerTest {
 
     @Test
@@ -26,7 +28,6 @@ class UserControllerTest extends BaseControllerTest {
 
         // when
         ResultActions result = mockMvc.perform(put("/users/me/nickname")
-                .session(memberSession)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(resetNicknameRequest)));
 
@@ -47,8 +48,7 @@ class UserControllerTest extends BaseControllerTest {
     @DisplayName("세션의 회원 정보를 조회할 수 있다.")
     void me() throws Exception {
         // when
-        ResultActions result = mockMvc.perform(get("/users/me")
-                        .session(memberSession));
+        ResultActions result = mockMvc.perform(get("/users/me"));
 
         // then
         result.andExpect(status().isOk());
