@@ -1,5 +1,6 @@
 package com.verby.restapi.contest.command.application;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,8 +8,8 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Getter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CreateContestRequest {
 
     private Long songId;
