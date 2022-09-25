@@ -10,7 +10,7 @@ public class AccountInfo {
     private Long id;
     private String loginId;
 
-    static AccountInfo of(Account account) {
+    static AccountInfo from(Account account) {
         return new AccountInfo(account.getId(), account.getLoginId());
     }
 }

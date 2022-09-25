@@ -36,7 +36,7 @@ public class AccountAdminService {
 
         accountRepository.save(newAdminAccount);
 
-        return AccountInfo.of(newAdminAccount);
+        return AccountInfo.from(newAdminAccount);
     }
 
 }

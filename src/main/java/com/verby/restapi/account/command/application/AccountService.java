@@ -35,7 +35,7 @@ public class AccountService {
 
         accountRepository.save(newAccount);
 
-        return AccountInfo.of(newAccount);
+        return AccountInfo.from(newAccount);
     }
 
     private void verifyUniqueLoginId(String loginId) {
