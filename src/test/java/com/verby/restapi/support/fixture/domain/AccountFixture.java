@@ -1,7 +1,10 @@
 package com.verby.restapi.support.fixture.domain;
 
 import com.verby.restapi.account.command.domain.Account;
+import com.verby.restapi.account.command.domain.AccountRole;
 import com.verby.restapi.account.command.domain.AccountStatus;
+
+import java.util.Set;
 
 public enum AccountFixture {
 
@@ -30,6 +33,10 @@ public enum AccountFixture {
 
     public Account getAccount(String loginId, String phone) {
         return new Account(loginId, password, name, phone, AccountStatus.ACTIVE, null, false);
+    }
+
+    public Account getAccount(String loginId, String password, Set<AccountRole> roles) {
+        return new Account(loginId, password, name, phone, AccountStatus.ACTIVE, roles, false);
     }
 
 }
