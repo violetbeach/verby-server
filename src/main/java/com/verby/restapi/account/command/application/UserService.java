@@ -16,11 +16,11 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public void resetNickname(ResetNicknameRequest resetNicknameRequest) {
-        User user = userRepository.findById(resetNicknameRequest.getUserId())
+    public void resetNickname(ResetNicknameRequest request) {
+        User user = userRepository.findById(request.getUserId())
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.USER_NOT_FOUND, "User not found."));
 
-        user.rename(resetNicknameRequest.getName());
+        user.rename(request.getName());
     }
 
 }

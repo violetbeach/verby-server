@@ -45,7 +45,7 @@ class ContestAdminControllerTest extends BaseControllerTest {
     @DisplayName("관리자는 선정곡을 추가할 수 있다.")
     void createContest() throws Exception {
         // given
-        CreateContestRequest createContestRequest = new CreateContestRequest(
+        CreateContestRequest request = new CreateContestRequest(
                 song.getId(),
                 "제 148회차 선정곡! 상금 100만원!",
                 148,
@@ -55,7 +55,7 @@ class ContestAdminControllerTest extends BaseControllerTest {
         // when
         ResultActions result = mockMvc.perform(post("/admin/contests")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(createContestRequest)));
+                .content(objectMapper.writeValueAsString(request)));
 
         // then
         result.andExpect(status().isCreated());

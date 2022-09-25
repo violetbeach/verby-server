@@ -26,9 +26,9 @@ public class UserController {
 
     @PutMapping("/me/nickname")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    private void resetNickname(@AuthenticationPrincipal SecurityUser user, @RequestBody @Valid ResetNicknameRequest resetNicknameRequest) {
-        resetNicknameRequest.setUserId(user.getUserId());
-        userService.resetNickname(resetNicknameRequest);
+    private void resetNickname(@AuthenticationPrincipal SecurityUser user, @RequestBody @Valid ResetNicknameRequest request) {
+        request.setUserId(user.getUserId());
+        userService.resetNickname(request);
     }
 
     @GetMapping("/me")
