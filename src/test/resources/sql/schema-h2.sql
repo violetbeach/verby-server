@@ -99,7 +99,7 @@ CREATE TABLE `inquiry`
 (
     `id`          bigint(20) AUTO_INCREMENT PRIMARY KEY,
     `inquirer_id` bigint(20)   NOT NULL,
-    `answerer_id` bigint(20)   NOT NULL,
+    `answerer_id` bigint(20)   NULL,
     `title`       varchar(100) NOT NULL,
     `content`     text         NOT NULL,
     `answer`      text         NULL,
