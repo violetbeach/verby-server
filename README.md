@@ -160,6 +160,12 @@
 <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">
 </div>
 
+## ERD
+
+<img src="./docs/erd.png" />
+
+> Link: https://www.erdcloud.com/d/uCXnKBd5X6DAZmjhD
+ 
 ## 프로젝트 설계
 
 > (TODO) Package Structure
@@ -173,10 +179,3 @@
 ### CI/CD
 
 > TODO) 이미지
-
-## ERD
-
-> TODO) 이미지
-
-> https://www.erdcloud.com/d/uCXnKBd5X6DAZmjhD
-
