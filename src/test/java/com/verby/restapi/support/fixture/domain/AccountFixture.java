@@ -5,7 +5,7 @@ import com.verby.restapi.account.command.domain.AccountStatus;
 
 public enum AccountFixture {
 
-    NORMAL_ACCOUNT("member1234", "nickname12", "violetbeach@github.com", "https://images")
+    NORMAL_ACCOUNT("member1234", "nickname12", "violetbeach@github.com", "01050339203")
     ;
 
     private final String loginId;
