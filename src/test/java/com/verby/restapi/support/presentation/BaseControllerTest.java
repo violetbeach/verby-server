@@ -21,4 +21,7 @@ public class BaseControllerTest {
     @Autowired
     protected ObjectMapper objectMapper;
 
+    protected long adminId = 1;
+    protected long memberId = 2;
+
 }

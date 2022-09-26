@@ -1,8 +1,8 @@
 package com.verby.restapi.common.error.presentation;
 
 import com.verby.restapi.common.error.ErrorCode;
-import com.verby.restapi.support.presentation.BaseControllerTest;
 import com.verby.restapi.support.documentation.CodeResponseFieldsSnippet;
+import com.verby.restapi.support.presentation.BaseControllerTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;

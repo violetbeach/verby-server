@@ -156,6 +156,12 @@ operation::관리자 - 선정곡 추가[snippets='http-request,request-fields,ht
 
 operation::문의하기[snippets='http-request,request-fields,http-response,response-fields']
 
+=== 문의 내역 조회
+
+유저는 자신의 문의 내역 전체를 조회할 수 있다.
+
+operation::문의 내역 조회[snippets='http-request,http-response,response-fields']
+
 [[errors]]
 == 에러
 

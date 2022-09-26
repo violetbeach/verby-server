@@ -2,10 +2,10 @@ package com.verby.restapi.contest.presentation;
 
 import com.verby.restapi.artist.command.domain.Artist;
 import com.verby.restapi.artist.command.domain.ArtistRepository;
-import com.verby.restapi.support.presentation.BaseControllerTest;
 import com.verby.restapi.contest.command.application.CreateContestRequest;
 import com.verby.restapi.song.command.domain.Song;
 import com.verby.restapi.song.command.domain.SongRepository;
+import com.verby.restapi.support.presentation.BaseControllerTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
