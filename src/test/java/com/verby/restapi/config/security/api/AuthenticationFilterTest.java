@@ -1,6 +1,6 @@
 package com.verby.restapi.config.security.api;
 
-import com.verby.restapi.account.command.domain.*;
+import com.verby.restapi.user.command.domain.*;
 import com.verby.restapi.config.security.AuthenticationRequest;
 import com.verby.restapi.support.presentation.BaseControllerTest;
 import org.junit.jupiter.api.DisplayName;
@@ -15,7 +15,7 @@ import java.util.Set;
 
 import static com.verby.restapi.support.documentation.ApiDocumentUtils.getDocumentRequest;
 import static com.verby.restapi.support.documentation.ApiDocumentUtils.getDocumentResponse;
-import static com.verby.restapi.support.fixture.domain.AccountFixture.NORMAL_ACCOUNT;
+import static com.verby.restapi.support.fixture.domain.UserFixture.NORMAL_USER;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
@@ -23,9 +23,6 @@ import static org.springframework.restdocs.payload.PayloadDocumentation.requestF
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 class AuthenticationFilterTest extends BaseControllerTest {
-
-    @Autowired
-    AccountRepository accountRepository;
 
     @Autowired
     RoleRepository roleRepository;
@@ -42,11 +39,11 @@ class AuthenticationFilterTest extends BaseControllerTest {
         // given
         String loginId = "test1234";
         String password = "test5678";
-        generateAccount(loginId, password);
+        generateUser(loginId, password);
         AuthenticationRequest request = new AuthenticationRequest(loginId, password);
 
         // when
-        ResultActions result = mockMvc.perform(post("/accounts/sessions")
+        ResultActions result = mockMvc.perform(post("/users/sessions")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(request)));
 
@@ -64,9 +61,9 @@ class AuthenticationFilterTest extends BaseControllerTest {
         ));
     }
 
-    void generateAccount(String loginId, String password) {
-        AccountRole role = roleRepository.findByName(Role.MEMBER);
-        accountRepository.save(NORMAL_ACCOUNT.getAccount(loginId, passwordEncoder.encode(password), Set.of(role)));
+    void generateUser(String loginId, String password) {
+        UserRole role = roleRepository.findByName(Role.MEMBER);
+        userRepository.save(NORMAL_USER.getUser(loginId, passwordEncoder.encode(password), Set.of(role)));
     }
 
 }

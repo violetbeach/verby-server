@@ -1,15 +1,17 @@
 CREATE DATABASE IF NOT EXISTS `verby_main`;
 use `verby_main`;
 
-DROP TABLE IF EXISTS `account`;
+DROP TABLE IF EXISTS `user`;
 
-CREATE TABLE `account`
+CREATE TABLE `user`
 (
     `id`                                   bigint(20) AUTO_INCREMENT PRIMARY KEY,
     `login_id`                             varchar(20)  NOT NULL,
     `password`                             varchar(255) NOT NULL,
     `name`                                 varchar(50)  NOT NULL,
     `birthday`                             date         NULL,
+    `bio`                                  varchar(255) NULL,
+    `profile_image`                         varchar(255) NULL,
     `phone`                                varchar(13)  NULL,
     `status`                               varchar(30)  NOT NULL,
     `allow_to_marketing_notification` boolean      NOT NULL,
@@ -17,34 +19,19 @@ CREATE TABLE `account`
     `updated_at`                           datetime     NULL
 );
 
-ALTER TABLE `account` ADD UNIQUE uk_login_id (`login_id`);
-ALTER TABLE `account` ADD UNIQUE uk_phone (`phone`);
+ALTER TABLE `user` ADD UNIQUE uk_login_id (`login_id`);
+ALTER TABLE `user` ADD UNIQUE uk_phone (`phone`);
 
-DROP TABLE IF EXISTS `account_verification_token`;
+DROP TABLE IF EXISTS `user_verification_token`;
 
-CREATE TABLE `account_verification_token`
+CREATE TABLE `user_verification_token`
 (
     `id`              bigint(20)   AUTO_INCREMENT PRIMARY KEY,
-    `account_id`      bigint(20)   NOT NULL,
+    `user_id`      bigint(20)   NOT NULL,
     `key`             varchar(255) NOT NULL,
     `type`            varchar(20)  NOT NULL,
     `expiration_date` datetime     NULL,
     `created_at`      datetime     NOT NULL DEFAULT NOW()
-);
-
-
-DROP TABLE IF EXISTS `user`;
-
-CREATE TABLE `user`
-(
-    `id`            bigint(20) AUTO_INCREMENT PRIMARY KEY,
-    `account_id`    bigint(20)   NOT NULL,
-    `nickname`      varchar(50)  NULL,
-    `bio`           varchar(255) NULL,
-    `profile_image` varchar(255) NULL,
-    `created_at`    datetime     NOT NULL DEFAULT NOW(),
-    `updated_at`    datetime     NULL,
-    UNIQUE KEY uk_account_id (account_id)
 );
 
 DROP TABLE IF EXISTS `contest`;
@@ -155,13 +142,13 @@ CREATE TABLE `comment_like`
     `created_at` datetime   NOT NULL DEFAULT NOW()
 );
 
-DROP TABLE IF EXISTS `account_role`;
+DROP TABLE IF EXISTS `user_role`;
 
-CREATE TABLE `account_role`
+CREATE TABLE `user_role`
 (
-    `account_id` bigint(20) NOT NULL,
+    `user_id` bigint(20) NOT NULL,
     `role_id` bigint(20) NOT NULL,
-    PRIMARY KEY (`account_id`, `role_id`)
+    PRIMARY KEY (`user_id`, `role_id`)
 );
 
 DROP TABLE IF EXISTS `notification`;

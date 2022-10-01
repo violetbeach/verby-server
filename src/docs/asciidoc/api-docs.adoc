@@ -60,40 +60,40 @@ Jerry;
 | 요청한 리소스가 없음.
 |===
 
-[[accounts]]
-== 계정
+[[users]]
+== 유저
 
-[[accounts-create-session]]
+[[users-create-session]]
 === 세션 등록(로그인)
 `POST` 요청을 사용해서 인증 세션을 등록할 수 있습니다.
 
 operation::세션 등록(로그인)[snippets='http-request,request-fields,http-response']
 
-[[accounts-create]]
+[[users-create]]
 === 계정 등록
 
 `POST` 요청을 사용해서 새 계정을 등록할 수 있다.
 
 operation::계정 등록[snippets='http-request,request-fields,http-response,response-fields']
 
-[[accounts-find-loginid]]
+[[users-find-loginid]]
 === 아이디 찾기
 
-Account의 휴대전화 번호로 아이디를 조회할 수 있습니다.
+User의 휴대전화 번호로 아이디를 조회할 수 있습니다.
 
 operation::아이디 조회[snippets='http-request,request-parameters,http-response,response-fields']
 
-[[accounts-reset-password]]
+[[users-reset-password]]
 === 비밀번호 재설정
 
-Account의 비밀번호를 재설정할 수 있다.
+User 비밀번호를 재설정할 수 있다.
 
 operation::계정 비밀번호 재설정[snippets='http-request,request-parameters,request-fields,http-response']
 
-[[accounts-exists]]
+[[users-exists]]
 === 아이디 중복 확인
 
-Account의 로그인 아이디로 중복 여부를 확인할 수 있다.
+User의 로그인 아이디로 중복 여부를 확인할 수 있다.
 
 operation::아이디 중복 확인[snippets='http-request,request-parameters,http-response, response-fields']
 
@@ -106,15 +106,6 @@ operation::아이디 중복 확인[snippets='http-request,request-parameters,htt
 세션으로 유저 정보를 조회할 수 있다.
 
 operation::유저 정보 조회[snippets='http-request,http-response,response-fields']
-
-[[users-reset-nickname]]
-=== 닉네임 재설정
-
-User의 닉네임을 재설정할 수 있다.
-
-operation::유저 닉네임 재설정[snippets='http-request,path-parameters,request-fields,http-response']
-
-
 
 [[admin]]
 == 관리자

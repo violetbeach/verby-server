@@ -33,7 +33,10 @@ public class SecurityConfig {
 
                 .authorizeRequests()
                 .antMatchers("/health").permitAll()
-                .antMatchers("/accounts/**").permitAll()
+
+                .antMatchers("/users/me").hasRole("MEMBER")
+                .antMatchers("/users/**").permitAll()
+
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
 

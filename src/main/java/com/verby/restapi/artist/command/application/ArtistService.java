@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ArtistService {
 
-    private final ArtistRepository accountRepository;
+    private final ArtistRepository artistRepository;
 
     public Artist create(CreateArtistRequest request) {
         Artist artist = new Artist(request.getName());
-        return accountRepository.save(artist);
+        return artistRepository.save(artist);
     }
 
 }

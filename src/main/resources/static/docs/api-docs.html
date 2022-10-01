@@ -454,19 +454,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#overview-http-status-codes">HTTP 상태 코드</a></li>
 </ul>
 </li>
-<li><a href="#accounts">계정</a>
+<li><a href="#users">유저</a>
 <ul class="sectlevel2">
-<li><a href="#accounts-create-session">세션 등록(로그인)</a></li>
-<li><a href="#accounts-create">계정 등록</a></li>
-<li><a href="#accounts-find-loginid">아이디 찾기</a></li>
-<li><a href="#accounts-reset-password">비밀번호 재설정</a></li>
-<li><a href="#accounts-exists">아이디 중복 확인</a></li>
+<li><a href="#users-create-session">세션 등록(로그인)</a></li>
+<li><a href="#users-create">계정 등록</a></li>
+<li><a href="#users-find-loginid">아이디 찾기</a></li>
+<li><a href="#users-reset-password">비밀번호 재설정</a></li>
+<li><a href="#users-exists">아이디 중복 확인</a></li>
 </ul>
 </li>
 <li><a href="#users">유저</a>
 <ul class="sectlevel2">
 <li><a href="#users-get-my-info">정보 조회</a></li>
-<li><a href="#users-reset-nickname">닉네임 재설정</a></li>
 </ul>
 </li>
 <li><a href="#admin">관리자</a>
@@ -579,18 +578,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="accounts"><a class="link" href="#accounts">계정</a></h2>
+<h2 id="users"><a class="link" href="#users">유저</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="accounts-create-session"><a class="link" href="#accounts-create-session">세션 등록(로그인)</a></h3>
+<h3 id="users-create-session"><a class="link" href="#users-create-session">세션 등록(로그인)</a></h3>
 <div class="paragraph">
 <p><code>POST</code> 요청을 사용해서 인증 세션을 등록할 수 있습니다.</p>
 </div>
 <div class="sect3">
-<h4 id="accounts-create-session_http_request"><a class="link" href="#accounts-create-session_http_request">HTTP request</a></h4>
+<h4 id="users-create-session_http_request"><a class="link" href="#users-create-session_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /accounts/sessions HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /users/sessions HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Content-Length: 56
 Host: api.verby.co.kr
@@ -603,7 +602,7 @@ Host: api.verby.co.kr
 </div>
 </div>
 <div class="sect3">
-<h4 id="accounts-create-session_request_fields"><a class="link" href="#accounts-create-session_request_fields">Request fields</a></h4>
+<h4 id="users-create-session_request_fields"><a class="link" href="#users-create-session_request_fields">Request fields</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -634,7 +633,7 @@ Host: api.verby.co.kr
 </table>
 </div>
 <div class="sect3">
-<h4 id="accounts-create-session_http_response"><a class="link" href="#accounts-create-session_http_response">Example response</a></h4>
+<h4 id="users-create-session_http_response"><a class="link" href="#users-create-session_http_response">Example response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 204 No Content
@@ -644,21 +643,21 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=NjYyNTJhYWUtMGU2NC00NGE5LThiYTEtYjJjOGU4MWNkYjdi; Path=/; HttpOnly; SameSite=Lax</code></pre>
+Set-Cookie: SESSION=Y2NiM2E1ODAtNDMyNC00Mjc1LTgxOTctMzdiZmFkNzZhNTFh; Path=/; HttpOnly; SameSite=Lax</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="accounts-create"><a class="link" href="#accounts-create">계정 등록</a></h3>
+<h3 id="users-create"><a class="link" href="#users-create">계정 등록</a></h3>
 <div class="paragraph">
 <p><code>POST</code> 요청을 사용해서 새 계정을 등록할 수 있다.</p>
 </div>
 <div class="sect3">
-<h4 id="accounts-create_http_request"><a class="link" href="#accounts-create_http_request">HTTP request</a></h4>
+<h4 id="users-create_http_request"><a class="link" href="#users-create_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /accounts HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /users HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Content-Length: 181
 Host: api.verby.co.kr
@@ -675,7 +674,7 @@ Host: api.verby.co.kr
 </div>
 </div>
 <div class="sect3">
-<h4 id="accounts-create_request_fields"><a class="link" href="#accounts-create_request_fields">Request fields</a></h4>
+<h4 id="users-create_request_fields"><a class="link" href="#users-create_request_fields">Request fields</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -730,7 +729,7 @@ Host: api.verby.co.kr
 </table>
 </div>
 <div class="sect3">
-<h4 id="accounts-create_http_response"><a class="link" href="#accounts-create_http_response">Example response</a></h4>
+<h4 id="users-create_http_response"><a class="link" href="#users-create_http_response">Example response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 201 Created
@@ -744,14 +743,14 @@ X-Frame-Options: DENY
 Content-Length: 40
 
 {
-  "id" : 5,
+  "id" : 3,
   "login_id" : "test123"
 }</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="accounts-create_response_fields"><a class="link" href="#accounts-create_response_fields">Response fields</a></h4>
+<h4 id="users-create_response_fields"><a class="link" href="#users-create_response_fields">Response fields</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -779,21 +778,21 @@ Content-Length: 40
 </div>
 </div>
 <div class="sect2">
-<h3 id="accounts-find-loginid"><a class="link" href="#accounts-find-loginid">아이디 찾기</a></h3>
+<h3 id="users-find-loginid"><a class="link" href="#users-find-loginid">아이디 찾기</a></h3>
 <div class="paragraph">
-<p>Account의 휴대전화 번호로 아이디를 조회할 수 있습니다.</p>
+<p>User의 휴대전화 번호로 아이디를 조회할 수 있습니다.</p>
 </div>
 <div class="sect3">
-<h4 id="accounts-find-loginid_http_request"><a class="link" href="#accounts-find-loginid_http_request">HTTP request</a></h4>
+<h4 id="users-find-loginid_http_request"><a class="link" href="#users-find-loginid_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /accounts/login-id?phone=01012345678 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /users/login-id?phone=01012345678 HTTP/1.1
 Host: api.verby.co.kr</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="accounts-find-loginid_request_parameters"><a class="link" href="#accounts-find-loginid_request_parameters">Request parameters</a></h4>
+<h4 id="users-find-loginid_request_parameters"><a class="link" href="#users-find-loginid_request_parameters">Request parameters</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -814,7 +813,7 @@ Host: api.verby.co.kr</code></pre>
 </table>
 </div>
 <div class="sect3">
-<h4 id="accounts-find-loginid_http_response"><a class="link" href="#accounts-find-loginid_http_response">Example response</a></h4>
+<h4 id="users-find-loginid_http_response"><a class="link" href="#users-find-loginid_http_response">Example response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
@@ -828,14 +827,14 @@ X-Frame-Options: DENY
 Content-Length: 45
 
 {
-  "id" : 7,
+  "id" : 5,
   "login_id" : "VioletBeach1"
 }</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="accounts-find-loginid_response_fields"><a class="link" href="#accounts-find-loginid_response_fields">Response fields</a></h4>
+<h4 id="users-find-loginid_response_fields"><a class="link" href="#users-find-loginid_response_fields">Response fields</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -863,15 +862,15 @@ Content-Length: 45
 </div>
 </div>
 <div class="sect2">
-<h3 id="accounts-reset-password"><a class="link" href="#accounts-reset-password">비밀번호 재설정</a></h3>
+<h3 id="users-reset-password"><a class="link" href="#users-reset-password">비밀번호 재설정</a></h3>
 <div class="paragraph">
-<p>Account의 비밀번호를 재설정할 수 있다.</p>
+<p>User 비밀번호를 재설정할 수 있다.</p>
 </div>
 <div class="sect3">
-<h4 id="accounts-reset-password_http_request"><a class="link" href="#accounts-reset-password_http_request">HTTP request</a></h4>
+<h4 id="users-reset-password_http_request"><a class="link" href="#users-reset-password_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PUT /accounts/password?token=02204e16-5099-4030-88aa-c8fa1c997713 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PUT /users/password?token=6fb2f8b3-39c8-4ff7-9481-8892b8594663 HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Content-Length: 38
 Host: api.verby.co.kr
@@ -883,7 +882,7 @@ Host: api.verby.co.kr
 </div>
 </div>
 <div class="sect3">
-<h4 id="accounts-reset-password_request_parameters"><a class="link" href="#accounts-reset-password_request_parameters">Request parameters</a></h4>
+<h4 id="users-reset-password_request_parameters"><a class="link" href="#users-reset-password_request_parameters">Request parameters</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -904,7 +903,7 @@ Host: api.verby.co.kr
 </table>
 </div>
 <div class="sect3">
-<h4 id="accounts-reset-password_request_fields"><a class="link" href="#accounts-reset-password_request_fields">Request fields</a></h4>
+<h4 id="users-reset-password_request_fields"><a class="link" href="#users-reset-password_request_fields">Request fields</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -929,7 +928,7 @@ Host: api.verby.co.kr
 </table>
 </div>
 <div class="sect3">
-<h4 id="accounts-reset-password_http_response"><a class="link" href="#accounts-reset-password_http_response">Example response</a></h4>
+<h4 id="users-reset-password_http_response"><a class="link" href="#users-reset-password_http_response">Example response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 204 No Content
@@ -944,21 +943,21 @@ X-Frame-Options: DENY</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="accounts-exists"><a class="link" href="#accounts-exists">아이디 중복 확인</a></h3>
+<h3 id="users-exists"><a class="link" href="#users-exists">아이디 중복 확인</a></h3>
 <div class="paragraph">
-<p>Account의 로그인 아이디로 중복 여부를 확인할 수 있다.</p>
+<p>User의 로그인 아이디로 중복 여부를 확인할 수 있다.</p>
 </div>
 <div class="sect3">
-<h4 id="accounts-exists_http_request"><a class="link" href="#accounts-exists_http_request">HTTP request</a></h4>
+<h4 id="users-exists_http_request"><a class="link" href="#users-exists_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HEAD /accounts?login-id=VioletBeach1 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HEAD /users?login-id=VioletBeach1 HTTP/1.1
 Host: api.verby.co.kr</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="accounts-exists_request_parameters"><a class="link" href="#accounts-exists_request_parameters">Request parameters</a></h4>
+<h4 id="users-exists_request_parameters"><a class="link" href="#users-exists_request_parameters">Request parameters</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -979,7 +978,7 @@ Host: api.verby.co.kr</code></pre>
 </table>
 </div>
 <div class="sect3">
-<h4 id="accounts-exists_http_response"><a class="link" href="#accounts-exists_http_response">Example response</a></h4>
+<h4 id="users-exists_http_response"><a class="link" href="#users-exists_http_response">Example response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
@@ -993,7 +992,7 @@ X-Frame-Options: DENY</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>[[accounts-exists_ response_fields]]
+<p>[[users-exists_ response_fields]]
 ==  response fields</p>
 </div>
 <div class="paragraph">
@@ -1032,13 +1031,13 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=Y2E3ZmM4OGYtMzM1ZS00ZWRlLWFmM2YtNTA1N2YxNTY3MjY4; Path=/; HttpOnly; SameSite=Lax
-Content-Length: 107
+Set-Cookie: SESSION=NWNmYmU3MmQtNzg2Ni00MzY2LTkyMjQtNTNjMTM0MGM2N2E2; Path=/; HttpOnly; SameSite=Lax
+Content-Length: 81
 
 {
   "id" : 2,
-  "nickname" : "member닉네임",
-  "bio" : "소개글입니다.",
+  "login_id" : "member",
+  "bio" : null,
   "profile_image" : null
 }</code></pre>
 </div>
@@ -1064,9 +1063,9 @@ Content-Length: 107
 <td class="tableblock halign-left valign-top"><p class="tableblock">유저 일련번호</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nickname</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>login_id</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">닉네임</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">로그인 ID</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>bio</code></p></td>
@@ -1080,71 +1079,6 @@ Content-Length: 107
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="users-reset-nickname"><a class="link" href="#users-reset-nickname">닉네임 재설정</a></h3>
-<div class="paragraph">
-<p>User의 닉네임을 재설정할 수 있다.</p>
-</div>
-<div class="sect3">
-<h4 id="users-reset-nickname_http_request"><a class="link" href="#users-reset-nickname_http_request">HTTP request</a></h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PUT /users/me/nickname HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Content-Length: 32
-Host: api.verby.co.kr
-
-{
-  "name" : "updatedNickname"
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="users-reset-nickname_path_parameters"><a class="link" href="#users-reset-nickname_path_parameters">Path parameters</a></h4>
-
-</div>
-<div class="sect3">
-<h4 id="users-reset-nickname_request_fields"><a class="link" href="#users-reset-nickname_request_fields">Request fields</a></h4>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">필드명</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">타입</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">필수값</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">설명</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">병경할 닉네임</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="users-reset-nickname_http_response"><a class="link" href="#users-reset-nickname_http_response">Example response</a></h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 204 No Content
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 1; mode=block
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-X-Frame-Options: DENY
-Set-Cookie: SESSION=YWY5M2Q5YWUtNDgwMi00YzcxLTg1ZjYtNjk5MTI3ZGFhODE1; Path=/; HttpOnly; SameSite=Lax</code></pre>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -1318,7 +1252,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=MDIyM2JmYzgtZmZhZC00YmUyLThjMjQtZjY2ZTJhYjg2NzY1; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=NGNkZWFjYjYtNjc5NS00Y2E2LWJhZTQtYTEyNmIwNDJkODRm; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 31
 
 {
@@ -1444,7 +1378,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=NmQ1MzBhZmMtMmQxNC00MzY4LWExZDgtMGUyNmYzMWY1Mjkx; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=MWM2ODlhMDEtYzk2YS00MThiLWIwZjgtZWM1MTljMDk5MjVi; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 140
 
 {
@@ -1579,7 +1513,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=YTU1MzhhNmQtY2RmOC00NGRmLWJkMmQtMmFjY2E0ZjgwZTI3; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=YWM5M2YzZjgtODMwNS00NzgxLTgzNjctZjM4YzFiMjFjNTkx; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 186
 
 {
@@ -1710,14 +1644,14 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=MWU4ZGJjMWUtNzIyZC00MTlmLTgxNzAtYmZjYmYwNTgxOGNi; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=OGEyMjA0NjAtN2RmOS00M2M1LTg5Y2QtNTI1MzUzMGE0ODFh; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 199
 
 {
   "id" : 1,
   "title" : "커버 영상 업로드 관련 문의입니다.",
   "content" : "커버 영상을 어떻게 올리는 지 모르겠어요.",
-  "created_at" : "2022-09-26T21:31:24.694376"
+  "created_at" : "2022-10-01T19:40:31.166493"
 }</code></pre>
 </div>
 </div>
@@ -1786,7 +1720,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=NzJkZTgxOWItOGM0My00ZDBlLWEyOTAtNThiYmFhNjI2YWE0; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=MzAzOTVlNjctYzAzMi00ZTlmLWFiZmYtMTRiOTY5ZDMzZmNh; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 304
 
 [ {
@@ -1797,7 +1731,7 @@ Content-Length: 304
   "content" : "노래가 재생되지 않는데 어떻게 하죠?",
   "answer" : null,
   "status" : "WAITING_ANSWER",
-  "created_at" : "2022-09-26T21:31:24.750398",
+  "created_at" : "2022-10-01T19:40:31.215588",
   "answered_at" : null
 } ]</code></pre>
 </div>
@@ -1888,11 +1822,11 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=ZWIxNzA3MGEtMzUxNy00NTliLTkwZDktZmNhNWRkMjQzNzAw; Path=/; HttpOnly; SameSite=Lax
-Content-Length: 64
+Set-Cookie: SESSION=NmU3ODQ5NDAtZWFlMy00ZDJjLTg2NDktODYzZDQxNDQ3MGJk; Path=/; HttpOnly; SameSite=Lax
+Content-Length: 61
 
 {
-  "code" : "ACCOUNT-002",
+  "code" : "USER-002",
   "message" : "Not authenticated."
 }</code></pre>
 </div>
@@ -1948,32 +1882,28 @@ Content-Length: 64
 <td class="tableblock halign-left valign-top"><p class="tableblock">유효성 검증에 실패한 경우</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ACCOUNT-001</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>USER-001</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">계정명이 중복된 경우</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ACCOUNT-002</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>USER-002</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">인증에 실패한 경우</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ACCOUNT-003</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>USER-003</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">계정을 찾을 수 없는 경우</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ACCOUNT-004</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>USER-004</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">권한이 부족한 경우</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ACCOUNT-005</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>USER-005</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">해당 key의 인증 토큰이 존재하지 않는 경우</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ACCOUNT-006</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>USER-006</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">휴대폰 번호가 중복된 경우</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>USER-001</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">유저를 찾을 수 없는 경우</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ARTIST-001</code></p></td>
@@ -2000,7 +1930,7 @@ Content-Length: 64
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2022-09-26 21:18:39 +0900
+Last updated 2022-10-01 18:32:45 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
