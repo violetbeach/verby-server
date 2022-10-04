@@ -99,36 +99,6 @@ class UserControllerTest extends BaseControllerTest {
     }
 
     @Test
-    @DisplayName("휴대전화 번호로 로그인 ID를 조회할 수 있다.")
-    void findByLoginId() throws Exception {
-        // given
-        String loginId = "VioletBeach1";
-        String phone = "01012345678";
-        User user = generateUser(loginId, phone);
-
-        // when
-        ResultActions result = mockMvc.perform(get("/users/login-id")
-                .param("phone", phone));
-
-        // then
-        result.andExpect(status().isOk())
-                .andExpect(jsonPath("id").value(user.getId()))
-                .andExpect(jsonPath("login_id").value(loginId));
-
-        // docs
-        result.andDo(document("아이디 조회",
-                getDocumentRequest(),
-                getDocumentResponse(),
-                requestParameters(
-                        parameterWithName("phone").description("계정 휴대전화 번호")
-                ),
-                responseFields(
-                        fieldWithPath("id").type(JsonFieldType.NUMBER).description("계정 일련번호"),
-                        fieldWithPath("login_id").type(JsonFieldType.STRING).description("계정 로그인 ID")
-                )));
-    }
-
-    @Test
     @DisplayName("로그인 아이디의 중복 여부를 확인할 수 있다.")
     void existsLoginId() throws Exception {
         // given

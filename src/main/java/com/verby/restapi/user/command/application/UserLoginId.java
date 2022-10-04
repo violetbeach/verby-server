@@ -1,4 +1,4 @@
-package com.verby.restapi.user.query.dto;
+package com.verby.restapi.user.command.application;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,7 +7,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public class UserLoginId {
 
-    private final Long id;
+    private final long id;
     private final String loginId;
 
 }

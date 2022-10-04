@@ -18,11 +18,12 @@ import static com.verby.restapi.support.documentation.ApiDocumentUtils.getDocume
 import static com.verby.restapi.support.documentation.ApiDocumentUtils.getDocumentResponse;
 import static com.verby.restapi.support.fixture.domain.UserFixture.NORMAL_USER;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.put;
-import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
-import static org.springframework.restdocs.payload.PayloadDocumentation.requestFields;
+import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.restdocs.request.RequestDocumentation.requestParameters;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 class UserAuthControllerTest extends BaseControllerTest {
@@ -32,6 +33,34 @@ class UserAuthControllerTest extends BaseControllerTest {
 
     @Autowired
     VerificationTokenRepository verificationRepository;
+
+    @Test
+    @DisplayName("Verification Token으로 로그인 ID를 조회할 수 있다.")
+    void findByLoginId() throws Exception {
+        // given
+        User user = generateUser();
+        VerificationToken verificationToken = generateVerificationToken(VerificationType.FIND_ID, user);
+
+        // when
+        ResultActions result = mockMvc.perform(get("/users/login-id")
+                .param("token", verificationToken.getKey()));
+
+        // then
+        result.andExpect(status().isOk())
+                .andExpect(jsonPath("login_id").value(user.getLoginId()));
+
+        // docs
+        result.andDo(document("ID 찾기",
+                getDocumentRequest(),
+                getDocumentResponse(),
+                requestParameters(
+                        parameterWithName("token").description("Verification 토큰")
+                ),
+                responseFields(
+                        fieldWithPath("id").type(JsonFieldType.NUMBER).description("계정 일련번호"),
+                        fieldWithPath("login_id").type(JsonFieldType.STRING).description("계정 로그인 ID")
+                )));
+    }
 
     @Test
     @DisplayName("비밀번호를 재설정할 수 있다.")
