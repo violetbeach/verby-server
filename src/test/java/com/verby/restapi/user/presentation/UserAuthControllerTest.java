@@ -2,6 +2,7 @@ package com.verby.restapi.user.presentation;
 
 import com.verby.restapi.support.presentation.BaseControllerTest;
 import com.verby.restapi.user.command.application.ResetPasswordRequest;
+import com.verby.restapi.user.command.application.SendCertificationSMSRequest;
 import com.verby.restapi.user.command.application.VerificationTokenRepository;
 import com.verby.restapi.user.command.domain.User;
 import com.verby.restapi.user.command.domain.UserRepository;
@@ -33,6 +34,29 @@ class UserAuthControllerTest extends BaseControllerTest {
 
     @Autowired
     VerificationTokenRepository verificationRepository;
+
+    @Test
+    @DisplayName("SendCertificationSMSRequest로 인증번호를 발송할 수 있다.")
+    void sendFindIdSMS() throws Exception {
+        // given
+        SendCertificationSMSRequest request = new SendCertificationSMSRequest("01013529380");
+
+        // when
+        ResultActions result = mockMvc.perform(get("/find-id/send-certification-sms")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(request)));
+
+        // then
+        result.andExpect(status().isNoContent());
+
+        // docs
+        result.andDo(document("인증 SMS 발송",
+                getDocumentRequest(),
+                getDocumentResponse(),
+                requestParameters(
+                        parameterWithName("phone").description("휴대 전화 번호")
+                )));
+    }
 
     @Test
     @DisplayName("Verification Token으로 로그인 ID를 조회할 수 있다.")
