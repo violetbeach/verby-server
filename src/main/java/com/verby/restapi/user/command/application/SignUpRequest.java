@@ -27,5 +27,7 @@ public class SignUpRequest {
     private final String phone;
     @NotNull
     private final Boolean allowToMarketingNotification;
+    @NotBlank
+    private final String token;
 
 }

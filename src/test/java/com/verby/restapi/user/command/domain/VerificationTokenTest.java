@@ -17,7 +17,7 @@ class VerificationTokenTest {
         User user = new User("violetBeach13", "password13", "honey", "01012345678", null, false);
 
         // when
-        VerificationToken verificationToken = new VerificationToken(VerificationType.SET_PASSWORD, user);
+        VerificationToken verificationToken = new VerificationToken(user.getPhone());
 
         // given
         long difference = LocalDate.now().until(verificationToken.getExpirationDate().toLocalDate(), ChronoUnit.DAYS);

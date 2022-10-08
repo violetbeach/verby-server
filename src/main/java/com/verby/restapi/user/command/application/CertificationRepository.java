@@ -9,5 +9,6 @@ public interface CertificationRepository extends Repository<Certification, Strin
     Certification save(Certification certification);
 
     Optional<Certification> findByPhone(String phone);
+    void delete(Certification certification);
 
 }

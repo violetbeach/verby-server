@@ -2,20 +2,22 @@ package com.verby.restapi.user.command.application;
 
 import lombok.Getter;
 import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 
 import javax.persistence.Id;
 
 @Getter
-@RedisHash("certification")
+@RedisHash(value = "Certification", timeToLive = 300)
 public class Certification {
 
     @Id
     String id;
+    @Indexed
     String phone;
-    int certificationNUmber;
+    int certificationNumber;
 
-    public Certification(String phone, int certificationNUmber) {
+    public Certification(String phone, int certificationNumber) {
         this.phone = phone;
-        this.certificationNUmber = certificationNUmber;
+        this.certificationNumber = certificationNumber;
     }
 }

@@ -1,7 +1,7 @@
 package com.verby.restapi.user.presentation;
 
-import com.verby.restapi.user.command.application.CreateAdminRequest;
 import com.verby.restapi.support.presentation.BaseControllerTest;
+import com.verby.restapi.user.command.application.CreateAdminRequest;
 import com.verby.restapi.user.command.domain.UserRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

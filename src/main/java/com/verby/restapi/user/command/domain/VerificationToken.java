@@ -1,5 +1,6 @@
 package com.verby.restapi.user.command.domain;
 
+import com.verby.restapi.user.exception.ExpiredVerificationTokenException;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,8 +12,8 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
-@Table(name = "user_verification_token")
 @Entity
+@Table(name = "phone_verification_token")
 @EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class VerificationToken {
@@ -23,28 +24,27 @@ public class VerificationToken {
 
     private String key;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    private VerificationType type;
+    private String phone;
 
     private LocalDateTime expirationDate;
 
     @CreatedDate
     private LocalDateTime createdAt;
 
-    public VerificationToken(VerificationType type, User user) {
+    public VerificationToken(String phone) {
         this.key = UUID.randomUUID().toString();
-        this.type = type;
-        this.user = user;
-        setExpirationDate(type);
+        this.phone = phone;
+        setExpirationDate();
     }
 
-    private void setExpirationDate(VerificationType type) {
-        LocalDateTime now = LocalDateTime.now();
-        if(type == VerificationType.SET_PASSWORD) {
-            this.expirationDate = now.plusDays(7);
+    public void verifyExpirationDate() {
+        if(expirationDate.isBefore(LocalDateTime.now())) {
+            throw new ExpiredVerificationTokenException(key);
         }
+    }
+
+    private void setExpirationDate() {
+        LocalDateTime now = LocalDateTime.now();
+        this.expirationDate = now.plusDays(7);
     }
 }

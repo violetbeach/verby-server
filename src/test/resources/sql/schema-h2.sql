@@ -19,14 +19,13 @@ CREATE TABLE `user`
 ALTER TABLE `user` ADD UNIQUE uk_login_id (`login_id`);
 ALTER TABLE `user` ADD UNIQUE uk_phone (`phone`);
 
-DROP TABLE IF EXISTS `user_verification_token`;
+DROP TABLE IF EXISTS `phone_verification_token`;
 
-CREATE TABLE `user_verification_token`
+CREATE TABLE `phone_verification_token`
 (
     `id`              bigint(20)   AUTO_INCREMENT PRIMARY KEY,
-    `user_id`      bigint(20)   NOT NULL,
+    `phone`           varchar(13)  NOT NULL,
     `key`             varchar(255) NOT NULL,
-    `type`            varchar(20)  NOT NULL,
     `expiration_date` datetime     NULL,
     `created_at`      datetime     NOT NULL DEFAULT NOW()
 );

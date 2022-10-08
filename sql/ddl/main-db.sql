@@ -5,31 +5,32 @@ DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE `user`
 (
-    `id`                                   bigint(20) AUTO_INCREMENT PRIMARY KEY,
-    `login_id`                             varchar(20)  NOT NULL,
-    `password`                             varchar(255) NOT NULL,
-    `name`                                 varchar(50)  NOT NULL,
-    `birthday`                             date         NULL,
-    `bio`                                  varchar(255) NULL,
-    `profile_image`                         varchar(255) NULL,
-    `phone`                                varchar(13)  NULL,
-    `status`                               varchar(30)  NOT NULL,
+    `id`                              bigint(20) AUTO_INCREMENT PRIMARY KEY,
+    `login_id`                        varchar(20)  NOT NULL,
+    `password`                        varchar(255) NOT NULL,
+    `name`                            varchar(50)  NOT NULL,
+    `birthday`                        date         NULL,
+    `bio`                             varchar(255) NULL,
+    `profile_image`                   varchar(255) NULL,
+    `phone`                           varchar(13)  NULL,
+    `status`                          varchar(30)  NOT NULL,
     `allow_to_marketing_notification` boolean      NOT NULL,
-    `created_at`                           datetime     NOT NULL DEFAULT NOW(),
-    `updated_at`                           datetime     NULL
+    `created_at`                      datetime     NOT NULL DEFAULT NOW(),
+    `updated_at`                      datetime     NULL
 );
 
-ALTER TABLE `user` ADD UNIQUE uk_login_id (`login_id`);
-ALTER TABLE `user` ADD UNIQUE uk_phone (`phone`);
+ALTER TABLE `user`
+    ADD UNIQUE uk_login_id (`login_id`);
+ALTER TABLE `user`
+    ADD UNIQUE uk_phone (`phone`);
 
-DROP TABLE IF EXISTS `user_verification_token`;
+DROP TABLE IF EXISTS `phone_verification_token`;
 
-CREATE TABLE `user_verification_token`
+CREATE TABLE `phone_verification_token`
 (
     `id`              bigint(20)   AUTO_INCREMENT PRIMARY KEY,
-    `user_id`      bigint(20)   NOT NULL,
+    `phone`           varchar(13)  NOT NULL,
     `key`             varchar(255) NOT NULL,
-    `type`            varchar(20)  NOT NULL,
     `expiration_date` datetime     NULL,
     `created_at`      datetime     NOT NULL DEFAULT NOW()
 );
@@ -105,9 +106,9 @@ CREATE TABLE `role`
     `name` varchar(20) NOT NULL
 );
 
-INSERT INTO `role` (name) VALUES
-    ('ADMIN'),
-    ('MEMBER');
+INSERT INTO `role` (name)
+VALUES ('ADMIN'),
+       ('MEMBER');
 
 DROP TABLE IF EXISTS `comment`;
 
