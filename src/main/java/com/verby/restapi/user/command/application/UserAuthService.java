@@ -39,11 +39,12 @@ public class UserAuthService {
         return verificationToken;
     }
 
-    public UserLoginId findLoginId(SMSCertificationRequest request) {
-        String phone = request.getPhone();
-        verifyCertificationRequest(phone, request.getCertificationNumber());
+    public UserLoginId findLoginId(String token) {
+        VerificationToken verificationToken = verificationTokenRepository.findByKey(token)
+                .orElseThrow(() -> new TokenNotFoundException(token));
+        verifyToken(verificationToken);
 
-        User user = userRepository.findByPhone(phone)
+        User user = userRepository.findByPhone(verificationToken.getPhone())
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.USER_NOT_FOUND, "Not found."));
 
         return new UserLoginId(user.getId(), user.getLoginId());

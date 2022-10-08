@@ -95,7 +95,7 @@ operation::계정 비밀번호 재설정[snippets='http-request,request-paramete
 
 User의 로그인 아이디로 중복 여부를 확인할 수 있다.
 
-operation::아이디 중복 확인[snippets='http-request,request-parameters,http-response, response-fields']
+operation::아이디 중복 확인[snippets='http-request,request-parameters,http-response']
 
 [[users-get-my-info]]
 === 내 정보 조회
@@ -104,15 +104,28 @@ operation::아이디 중복 확인[snippets='http-request,request-parameters,htt
 
 operation::유저 정보 조회[snippets='http-request,http-response,response-fields']
 
+[[sms-auth]]
+== SMS 인증
+
+[[auth-send-sms]]
+=== 인증 SMS 발송
+
+operation::인증 SMS 발송[snippets='http-request,request-fields,http-response']
+
+[[auth-create-token]]
+=== 인증 토큰 생성
+
+operation::토큰 생성[snippets='http-request,request-fields,http-response,response-fields']
+
 [[admin]]
 == 관리자
 
 [[admin-create-admin]]
-=== 관리자 계정 생성
+=== 관리자 회원 생성
 
-관리자 권한의 계정을 생성할 수 있다.
+관리자 권한의 회원을 생성할 수 있다.
 
-operation::관리자 - 관리자 계정 생성[snippets='http-request,request-fields,http-response,response-fields']
+operation::관리자 - 관리자 회원 생성[snippets='http-request,request-fields,http-response,response-fields']
 
 [[admin-create-artist]]
 === 아티스트 추가

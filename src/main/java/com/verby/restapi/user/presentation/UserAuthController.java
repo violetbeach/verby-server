@@ -28,15 +28,16 @@ public class UserAuthController {
         return new ResponseEntity<>(token, HttpStatus.CREATED);
     }
 
-    @PostMapping("/find-id")
-    private ResponseEntity<UserLoginId> findLoginId(@RequestBody SMSCertificationRequest request) {
-        UserLoginId loginId = userAuthService.findLoginId(request);
+    @GetMapping("/login-id")
+    private ResponseEntity<UserLoginId> findLoginId(@RequestParam(value = "verification_token") String token) {
+        UserLoginId loginId = userAuthService.findLoginId(token);
         return new ResponseEntity<>(loginId, HttpStatus.OK);
     }
 
-    @PostMapping("/reset-password")
+    @PutMapping("/password")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    private void resetPassword(@RequestBody @Valid ResetPasswordRequest request) {
+    private void resetPassword(@RequestParam(value = "verification_token") String token, @RequestBody @Valid ResetPasswordRequest request) {
+        request.setToken(token);
         userAuthService.resetPassword(request);
     }
 

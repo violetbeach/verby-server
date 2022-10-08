@@ -18,8 +18,10 @@ import static com.verby.restapi.support.documentation.ApiDocumentUtils.getDocume
 import static com.verby.restapi.support.documentation.ApiDocumentUtils.getDocumentResponse;
 import static com.verby.restapi.support.fixture.domain.UserFixture.NORMAL_USER;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
+import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
+import static org.springframework.restdocs.request.RequestDocumentation.requestParameters;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -92,17 +94,15 @@ class UserAuthControllerTest extends BaseControllerTest {
     }
 
     @Test
-    @DisplayName("SMSCertificationRequest로 로그인 ID를 조회할 수 있다.")
+    @DisplayName("VerificationToken으로 로그인 ID를 조회할 수 있다.")
     void findLoginId() throws Exception {
         // given
         User user = generateUser();
-        Certification certification = generateCertification(user.getPhone());
-        SMSCertificationRequest request = new SMSCertificationRequest(user.getPhone(), certification.getCertificationNumber());
+        VerificationToken verificationToken = generateVerificationToken(user.getPhone());
 
         // when
-        ResultActions result = mockMvc.perform(post("/users/find-id")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(request)));
+        ResultActions result = mockMvc.perform(get("/users/login-id")
+                .param("verification_token", verificationToken.getKey()));
 
         // then
         result.andExpect(status().isOk())
@@ -112,9 +112,8 @@ class UserAuthControllerTest extends BaseControllerTest {
         result.andDo(document("ID 찾기",
                 getDocumentRequest(),
                 getDocumentResponse(),
-                requestFields(
-                        fieldWithPath("phone").type(JsonFieldType.STRING).description("휴대 전화 번호"),
-                        fieldWithPath("certification_number").type(JsonFieldType.NUMBER).description("SMS 인증 번호")
+                requestParameters(
+                        parameterWithName("verification_token").description("인증 토큰")
                 ),
                 responseFields(
                         fieldWithPath("id").type(JsonFieldType.NUMBER).description("계정 일련번호"),
@@ -133,8 +132,8 @@ class UserAuthControllerTest extends BaseControllerTest {
         ResetPasswordRequest request = new ResetPasswordRequest(verificationToken.getKey(), "new_password1");
 
         // when
-        ResultActions result = mockMvc.perform(post("/users/reset-password")
-                .param("token", verificationToken.getKey())
+        ResultActions result = mockMvc.perform(put("/users/password")
+                .param("verification_token", verificationToken.getKey())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(request)));
 
@@ -145,8 +144,10 @@ class UserAuthControllerTest extends BaseControllerTest {
         result.andDo(document("계정 비밀번호 재설정",
                 getDocumentRequest(),
                 getDocumentResponse(),
+                requestParameters(
+                        parameterWithName("verification_token").description("인증 토큰")
+                ),
                 requestFields(
-                        fieldWithPath("token").type(JsonFieldType.STRING).description("인증 토큰 키"),
                         fieldWithPath("new_password").type(JsonFieldType.STRING).description("재설정할 비밀번호")
                 )));
     }

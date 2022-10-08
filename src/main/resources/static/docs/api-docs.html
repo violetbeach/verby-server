@@ -464,9 +464,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#users-get-my-info">내 정보 조회</a></li>
 </ul>
 </li>
+<li><a href="#sms-auth">SMS 인증</a>
+<ul class="sectlevel2">
+<li><a href="#auth-send-sms">인증 SMS 발송</a></li>
+<li><a href="#auth-create-token">인증 토큰 생성</a></li>
+</ul>
+</li>
 <li><a href="#admin">관리자</a>
 <ul class="sectlevel2">
-<li><a href="#admin-create-admin">관리자 계정 생성</a></li>
+<li><a href="#admin-create-admin">관리자 회원 생성</a></li>
 <li><a href="#admin-create-artist">아티스트 추가</a></li>
 <li><a href="#admin-create-song">곡 추가</a></li>
 <li><a href="#admin-create-contest">선정곡 추가</a></li>
@@ -639,7 +645,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=ZTE0ODAzOTItYzkxOS00YmNhLWFlYmMtOGVjOWYwZWY5NDc2; Path=/; HttpOnly; SameSite=Lax</code></pre>
+Set-Cookie: SESSION=NzNhOTIwNTctNzZjNi00NGVhLTliZjEtZjRhMzc3NTYwODBi; Path=/; HttpOnly; SameSite=Lax</code></pre>
 </div>
 </div>
 </div>
@@ -655,7 +661,7 @@ Set-Cookie: SESSION=ZTE0ODAzOTItYzkxOS00YmNhLWFlYmMtOGVjOWYwZWY5NDc2; Path=/; Ht
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /users HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Content-Length: 181
+Content-Length: 233
 Host: api.verby.co.kr
 
 {
@@ -663,8 +669,9 @@ Host: api.verby.co.kr
   "password" : "password12@",
   "name" : "TestName",
   "birthday" : "1994-02-10",
-  "phone" : "01012345678",
-  "allow_to_marketing_notification" : true
+  "phone" : "01013524302",
+  "allow_to_marketing_notification" : true,
+  "token" : "43450b0b-30a0-4825-a829-71d038cc01c1"
 }</code></pre>
 </div>
 </div>
@@ -721,6 +728,12 @@ Host: api.verby.co.kr
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">마케팅 정보 수신 동의 여부</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>token</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">인증 토큰</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -739,7 +752,7 @@ X-Frame-Options: DENY
 Content-Length: 40
 
 {
-  "id" : 8,
+  "id" : 6,
   "login_id" : "test123"
 }</code></pre>
 </div>
@@ -782,7 +795,7 @@ Content-Length: 40
 <h4 id="users-find-loginid_http_request"><a class="link" href="#users-find-loginid_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /users/login-id?token=f761738e-ce55-4afc-be29-a0637092e9b7 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /users/login-id?verification_token=fa93e640-d730-4016-924b-71f687ef8ccb HTTP/1.1
 Host: api.verby.co.kr</code></pre>
 </div>
 </div>
@@ -802,8 +815,8 @@ Host: api.verby.co.kr</code></pre>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verification 토큰</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>verification_token</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">인증 토큰</p></td>
 </tr>
 </tbody>
 </table>
@@ -823,7 +836,7 @@ X-Frame-Options: DENY
 Content-Length: 43
 
 {
-  "id" : 4,
+  "id" : 8,
   "login_id" : "member1234"
 }</code></pre>
 </div>
@@ -866,7 +879,7 @@ Content-Length: 43
 <h4 id="users-reset-password_http_request"><a class="link" href="#users-reset-password_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PUT /users/password?token=66408b32-6f6e-472f-b1bd-560ace81cba1 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PUT /users/password?verification_token=eaf15831-c7f4-4cae-b320-31e9f7675ced HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Content-Length: 38
 Host: api.verby.co.kr
@@ -892,8 +905,8 @@ Host: api.verby.co.kr
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">인증 토큰 키</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>verification_token</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">인증 토큰</p></td>
 </tr>
 </tbody>
 </table>
@@ -987,13 +1000,6 @@ Expires: 0
 X-Frame-Options: DENY</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>[[users-exists_ response_fields]]
-==  response fields</p>
-</div>
-<div class="paragraph">
-<p>Snippet  response-fields not found for operation::아이디 중복 확인</p>
-</div>
 </div>
 </div>
 <div class="sect2">
@@ -1022,7 +1028,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=MjAwNTI1YmQtYmFiMS00NTc1LWJiMjUtNTIyNGViMzM5OWZi; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=N2MwMjBhYjAtZTVhNS00NmRjLWJlZDItNjEyNWQ2Y2I3ZTUw; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 81
 
 {
@@ -1075,18 +1081,196 @@ Content-Length: 81
 </div>
 </div>
 <div class="sect1">
+<h2 id="sms-auth"><a class="link" href="#sms-auth">SMS 인증</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="auth-send-sms"><a class="link" href="#auth-send-sms">인증 SMS 발송</a></h3>
+<div class="sect3">
+<h4 id="auth-send-sms_http_request"><a class="link" href="#auth-send-sms_http_request">HTTP request</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /users/send-certification-sms HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Content-Length: 29
+Host: api.verby.co.kr
+
+{
+  "phone" : "01013529380"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="auth-send-sms_request_fields"><a class="link" href="#auth-send-sms_request_fields">Request fields</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">필드명</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">타입</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">필수값</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">설명</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>phone</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">휴대 전화 번호</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="auth-send-sms_http_response"><a class="link" href="#auth-send-sms_http_response">Example response</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 204 No Content
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="auth-create-token"><a class="link" href="#auth-create-token">인증 토큰 생성</a></h3>
+<div class="sect3">
+<h4 id="auth-create-token_http_request"><a class="link" href="#auth-create-token_http_request">HTTP request</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /users/verification-tokens HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Content-Length: 62
+Host: api.verby.co.kr
+
+{
+  "phone" : "01020492039",
+  "certification_number" : 7248
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="auth-create-token_request_fields"><a class="link" href="#auth-create-token_request_fields">Request fields</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">필드명</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">타입</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">필수값</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">설명</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>phone</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">휴대 전화 번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>certification_number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SMS 인증 번호</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="auth-create-token_http_response"><a class="link" href="#auth-create-token_http_response">Example response</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 201 Created
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Length: 190
+
+{
+  "id" : 2,
+  "key" : "377dd154-5cbb-4525-8ecb-9987f72de7a4",
+  "phone" : "01020492039",
+  "expiration_date" : "2022-10-15T18:12:33.615639",
+  "created_at" : "2022-10-08T18:12:33.615995"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="auth-create-token_response_fields"><a class="link" href="#auth-create-token_response_fields">Response fields</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">필드명</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">타입</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">설명</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">토큰 일련번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>key</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">토큰 키</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>phone</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">휴대폰 번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>expiration_date</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">만료 일자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>created_at</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">생성 일자</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="admin"><a class="link" href="#admin">관리자</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="admin-create-admin"><a class="link" href="#admin-create-admin">관리자 계정 생성</a></h3>
+<h3 id="admin-create-admin"><a class="link" href="#admin-create-admin">관리자 회원 생성</a></h3>
 <div class="paragraph">
-<p>관리자 권한의 계정을 생성할 수 있다.</p>
+<p>관리자 권한의 회원을 생성할 수 있다.</p>
 </div>
 <div class="sect3">
 <h4 id="admin-create-admin_http_request"><a class="link" href="#admin-create-admin_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /admin/accounts HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /admin/users HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Content-Length: 81
 Host: api.verby.co.kr
@@ -1148,11 +1332,11 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=YmI1MzlkNzQtZTc3MC00YjY3LWEwMGUtNTEzYjI4Y2FkYjA4; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=MzAzNzdlYzgtNTcyZC00ZWI4LWJhNDAtYTc2ODBkZmI3NTdm; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 40
 
 {
-  "id" : 3,
+  "id" : 5,
   "login_id" : "test123"
 }</code></pre>
 </div>
@@ -1243,11 +1427,11 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=YTQ4ODBiMWYtZTI0Ni00MjUyLWJhM2MtNDc2NmJhZmMxYjVl; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=NzQyYzNkNjItZjZkMS00NDllLWE1MWItM2JhMGJhNDY4MTM2; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 31
 
 {
-  "id" : 2,
+  "id" : 1,
   "name" : "IU"
 }</code></pre>
 </div>
@@ -1369,7 +1553,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=NzZlMGJjMGEtNWJmZS00MjA2LWFiYmUtNGMyNjJkNzBlNzhj; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=MTk0MWJkZGQtMzNlMS00YjBmLTg4M2YtYjYyODQyYjQ0Njgx; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 140
 
 {
@@ -1504,7 +1688,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=NjFmOTBjOGEtNmViZC00YmRjLWJhMmUtODk3MDNkNzQzNzlh; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=ODVkZmYwZDEtMWVkOC00NDg0LWE5ODktMWRhYjIzMGZjMzU3; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 186
 
 {
@@ -1635,14 +1819,14 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=ZmQyMzQyZTktMzkzNy00ZDYwLWExOTUtMmRjODc5ZTcxZmFj; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=MDU1OGJmZTEtYzIzMS00NjhkLWJhMTktYWFjY2UwMjk1NjBk; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 199
 
 {
   "id" : 1,
   "title" : "커버 영상 업로드 관련 문의입니다.",
   "content" : "커버 영상을 어떻게 올리는 지 모르겠어요.",
-  "created_at" : "2022-10-04T21:23:34.188026"
+  "created_at" : "2022-10-08T18:12:27.973755"
 }</code></pre>
 </div>
 </div>
@@ -1711,7 +1895,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=YjUzMzc2ZTQtMjI4ZS00NDUxLWIwYmQtNDJjNDkxY2IzMGNm; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=NWNmNTgyOGUtNWNhNC00MGMzLTkwNDktNTI4NmExYzJjMzlh; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 304
 
 [ {
@@ -1722,7 +1906,7 @@ Content-Length: 304
   "content" : "노래가 재생되지 않는데 어떻게 하죠?",
   "answer" : null,
   "status" : "WAITING_ANSWER",
-  "created_at" : "2022-10-04T21:23:34.237406",
+  "created_at" : "2022-10-08T18:12:28.041891",
   "answered_at" : null
 } ]</code></pre>
 </div>
@@ -1813,7 +1997,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=Yjc2NDEyNjktYmVhNi00ZTU1LTk3MDUtYzVkOTQ5YWFlYTdi; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=NzA1NTMzNjUtZWI2Yy00ZmM1LWI5YWItNDI3OWJlMjQwMDE3; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 61
 
 {
@@ -1897,6 +2081,18 @@ Content-Length: 61
 <td class="tableblock halign-left valign-top"><p class="tableblock">휴대폰 번호가 중복된 경우</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AUTH-001</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">휴대전화 인증 번호가 유효하지 않은 경우</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AUTH-002</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">인증 토큰이 만료된 경우</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AUTH-003</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">토큰이 유효하지 않은 경우</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ARTIST-001</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">가수를 찾을 수 없는 경우</p></td>
 </tr>
@@ -1921,7 +2117,7 @@ Content-Length: 61
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2022-10-04 21:16:30 +0900
+Last updated 2022-10-08 18:11:59 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
