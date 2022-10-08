@@ -29,6 +29,16 @@ public class UserAuthService {
         certificationRepository.save(certification);
     }
 
+    public VerificationToken createToken(SMSCertificationRequest request) {
+        String phone = request.getPhone();
+        verifyCertificationRequest(phone, request.getCertificationNumber());
+
+        VerificationToken verificationToken = new VerificationToken(phone);
+        verificationTokenRepository.save(verificationToken);
+
+        return verificationToken;
+    }
+
     public UserLoginId findLoginId(SMSCertificationRequest request) {
         String phone = request.getPhone();
         verifyCertificationRequest(phone, request.getCertificationNumber());

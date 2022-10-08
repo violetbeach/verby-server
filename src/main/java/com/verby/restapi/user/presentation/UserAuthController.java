@@ -1,6 +1,7 @@
 package com.verby.restapi.user.presentation;
 
 import com.verby.restapi.user.command.application.*;
+import com.verby.restapi.user.command.domain.VerificationToken;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,12 @@ public class UserAuthController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     private void sendCertificationSMS(@RequestBody SendCertificationSMSRequest request) {
         userAuthService.sendCertificationSMS(request);
+    }
+
+    @PostMapping("/verification-tokens")
+    private ResponseEntity<VerificationToken> createToken(@RequestBody SMSCertificationRequest request) {
+        VerificationToken token = userAuthService.createToken(request);
+        return new ResponseEntity<>(token, HttpStatus.CREATED);
     }
 
     @PostMapping("/find-id")

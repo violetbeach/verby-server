@@ -57,6 +57,41 @@ class UserAuthControllerTest extends BaseControllerTest {
     }
 
     @Test
+    @DisplayName("SMSCertificationRequest로 토큰을 생성할 수 있다.")
+    void createToken() throws Exception {
+        // given
+        String phone = "01020492039";
+        Certification certification = generateCertification(phone);
+        SMSCertificationRequest request = new SMSCertificationRequest(phone, certification.getCertificationNumber());
+
+        // when
+        ResultActions result = mockMvc.perform(post("/users/verification-tokens")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(request)));
+
+        // then
+        result.andExpect(status().isCreated())
+                .andExpect(jsonPath("phone").value(phone));
+
+        // docs
+        result.andDo(document("토큰 생성",
+                getDocumentRequest(),
+                getDocumentResponse(),
+                requestFields(
+                        fieldWithPath("phone").type(JsonFieldType.STRING).description("휴대 전화 번호"),
+                        fieldWithPath("certification_number").type(JsonFieldType.NUMBER).description("SMS 인증 번호")
+                ),
+                responseFields(
+                        fieldWithPath("id").type(JsonFieldType.NUMBER).description("토큰 일련번호"),
+                        fieldWithPath("key").type(JsonFieldType.STRING).description("토큰 키"),
+                        fieldWithPath("phone").type(JsonFieldType.STRING).description("휴대폰 번호"),
+                        fieldWithPath("expiration_date").type(JsonFieldType.STRING).description("만료 일자"),
+                        fieldWithPath("created_at").type(JsonFieldType.STRING).description("생성 일자")
+                )
+        ));
+    }
+
+    @Test
     @DisplayName("SMSCertificationRequest로 로그인 ID를 조회할 수 있다.")
     void findLoginId() throws Exception {
         // given
