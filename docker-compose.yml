@@ -1,7 +1,7 @@
 version: "3"
 services:
   main-db:
-    image: mysql:8.0.29
+    image: mariadb:10.6.8
     container_name: verby-main-db
     ports:
       - "8341:3306"

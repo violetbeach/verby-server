@@ -60,25 +60,125 @@ Jerry;
 | 요청한 리소스가 없음.
 |===
 
-[[accounts]]
-== 계정
+[[users]]
+== 유저
 
-이벤트 리소스는 이벤트를 만들거나 조회할 때 사용한다.
+[[users-create-session]]
+=== 세션 등록(로그인)
+`POST` 요청을 사용해서 인증 세션을 등록할 수 있습니다.
 
-[[accounts-create]]
+operation::세션 등록(로그인)[snippets='http-request,request-fields,http-response']
+
+[[users-create]]
 === 계정 등록
 
-`POST` 요청을 사용해서 새 이벤트를 만들 수 있다.
+`POST` 요청을 사용해서 새 계정을 등록할 수 있다.
 
 operation::계정 등록[snippets='http-request,request-fields,http-response,response-fields']
 
-[[overview-errors]]
+[[users-find-loginid]]
+=== 아이디 찾기
+
+token으로 User의 ID를 조회할 수 있다.
+
+operation::ID 찾기[snippets='http-request,request-parameters,http-response,response-fields']
+
+[[users-reset-password]]
+=== 비밀번호 재설정
+
+User 비밀번호를 재설정할 수 있다.
+
+operation::계정 비밀번호 재설정[snippets='http-request,request-parameters,request-fields,http-response']
+
+[[users-exists]]
+=== 아이디 중복 확인
+
+User의 로그인 아이디로 중복 여부를 확인할 수 있다.
+
+operation::아이디 중복 확인[snippets='http-request,request-parameters,http-response']
+
+[[users-get-my-info]]
+=== 내 정보 조회
+
+세션으로 유저 정보를 조회할 수 있다.
+
+operation::유저 정보 조회[snippets='http-request,http-response,response-fields']
+
+[[sms-auth]]
+== SMS 인증
+
+[[auth-send-sms]]
+=== 인증 SMS 발송
+
+operation::인증 SMS 발송[snippets='http-request,request-fields,http-response']
+
+[[auth-create-token]]
+=== 인증 토큰 생성
+
+operation::토큰 생성[snippets='http-request,request-fields,http-response,response-fields']
+
+[[admin]]
+== 관리자
+
+[[admin-create-admin]]
+=== 관리자 회원 생성
+
+관리자 권한의 회원을 생성할 수 있다.
+
+operation::관리자 - 관리자 회원 생성[snippets='http-request,request-fields,http-response,response-fields']
+
+[[admin-create-artist]]
+=== 아티스트 추가
+
+관리자는 아티스트를 추가할 수 있다.
+
+operation::관리자 - 아티스트 추가[snippets='http-request,request-fields,http-response,response-fields']
+
+[[admin-create-song]]
+=== 곡 추가
+
+관리자는 곡을 추가할 수 있다.
+
+operation::관리자 - 곡 추가[snippets='http-request,path-parameters,request-parts,http-response,response-fields']
+
+[[admin-create-contest]]
+=== 선정곡 추가
+
+관리자는 선정곡을 추가할 수 있다.
+
+operation::관리자 - 선정곡 추가[snippets='http-request,request-fields,http-response,response-fields']
+
+[[inquiry]]
+== 문의
+
+=== 문의하기
+
+유저는 1:1 문의를 추가할 수 있다.
+
+operation::문의하기[snippets='http-request,request-fields,http-response,response-fields']
+
+=== 문의 내역 조회
+
+유저는 자신의 문의 내역 전체를 조회할 수 있다.
+
+operation::문의 내역 조회[snippets='http-request,http-response,response-fields']
+
+[[errors]]
 == 에러
 
-에러 응답이 발생했을 때 (상태 코드 >= 400), 본문에 해당 문제를 기술한 JSON 객체가 담겨있다. 에러 객체는 다음의 구조를 따른다.
+[[error-response]]
+=== 에러 응답
 
-include::{snippets}/create-event/response-fields.adoc[]
+잘못된 요청으로 이벤트를 만들려고 했을 때 다음과 같은 Format의 응답을 받는다.
 
-예를 들어, 잘못된 요청으로 이벤트를 만들려고 했을 때 다음과 같은 `400 Bad Request` 응답을 받는다.
+operation::에러 응답[snippets='http-response,response-fields']
 
-include::{snippets}/create-event/http-response.adoc[]
+
+
+[[error-codes]]
+=== 에러 코드
+
+에러 응답이 발생했을 때 (상태 코드 >= 400), 본문에 해당 문제를 기술한 JSON 객체가 담겨있다. 각 에러 코드에 대한 설명은 다음과 같다.
+
+include::{snippets}/에러 코드/code-response-fields-beneath-error_codes.adoc[]
+

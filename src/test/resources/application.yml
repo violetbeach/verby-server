@@ -3,14 +3,11 @@ spring:
     property-naming-strategy: SNAKE_CASE
 
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:8341/verby_main?serverTimezone=Asia/Seoul
-    username: root
-    password: root
+    url: jdbc:h2:mem:verby_test;MODE=MYSQL;NON_KEYWORDS=USER,KEY
 
   redis:
     host: localhost
-    port: 8342
+    port: 9341
 
   session:
     store-type: redis
@@ -18,9 +15,35 @@ spring:
   jpa:
     properties:
       hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
         show_sql: true
         format_sql: true
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: none
+
+  sql:
+    init:
+      schema-locations: classpath:sql/schema-h2.sql
+      data-locations: classpath:sql/init-users.sql
+      mode: always
+
+cloud:
+  aws:
+    region:
+      static: ap-northeast-2
+      auto: false
+    s3:
+      bucket: verby-deploy
+    stack:
+      auto: false
 
 logging:
   level:
     root: INFO
+    com.amazonaws.util.EC2MetadataUtils: error
+
+static:
+  paths:
+    song:
+      image: static/song/images

@@ -1,7 +1,7 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:8341/verby_main?serverTimezone=Asia/Seoul
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:8341/verby_main?serverTimezone=Asia/Seoul
     username: root
     password: root
 
@@ -9,15 +9,25 @@ spring:
     host: localhost
     port: 8342
 
-  session:
-    store-type: redis
-
   jpa:
     properties:
       hibernate:
         show_sql: true
         format_sql: true
 
+cloud:
+  aws:
+    credentials:
+      accessKey: ${S3_ACCESS_KEY_ID}       # AWS IAM AccessKey 적기
+      secretKey: ${S3_SECRET_ACCESS_KEY}   # AWS IAM SecretKey 적기
+    s3:
+      bucket: verby-deploy
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
+
 logging:
   level:
     root: INFO
+    com.amazonaws.util.EC2MetadataUtils: error
