@@ -7,7 +7,7 @@ import java.util.Set;
 
 public enum UserFixture {
 
-    NORMAL_USER("member1234", "nickname12", "violetbeach@github.com", "01050339203")
+    NORMAL_USER("member1234", "password1234!", "홍길동", "01050339203")
     ;
 
     private final String loginId;
