@@ -19,6 +19,14 @@ CREATE TABLE `user`
 ALTER TABLE `user` ADD UNIQUE uk_login_id (`login_id`);
 ALTER TABLE `user` ADD UNIQUE uk_phone (`phone`);
 
+DROP TABLE IF EXISTS `unavailable_ID`;
+
+CREATE TABLE `unavailable_ID`
+(
+    `id`       bigint(20)  AUTO_INCREMENT PRIMARY KEY,
+    `login_id` varchar(20) NOT NULL
+);
+
 DROP TABLE IF EXISTS `phone_verification_token`;
 
 CREATE TABLE `phone_verification_token`

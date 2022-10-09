@@ -15,7 +15,7 @@ public class SignUpRequest {
 
     @NotNull
     @Size(min = 6, max = 12)
-    @Pattern(regexp = "^[a-zA-Z\\d]*$", message = "영문 또는 숫자만 사용 가능합니다.")
+    @Pattern(regexp = "^[a-z\\d]*$", message = "영문 소문자 또는 숫자만 사용 가능합니다.")
     private final String loginId;
     @NotNull @Size(min = 10, max = 16)
     @Complexity(min = 2, message = "영문과 숫자, 특수문자 중 2가지 이상을 조합해서 사용해야합니다.")

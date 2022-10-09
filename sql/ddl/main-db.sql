@@ -24,11 +24,22 @@ ALTER TABLE `user`
 ALTER TABLE `user`
     ADD UNIQUE uk_phone (`phone`);
 
+DROP TABLE IF EXISTS `unavailable_ID`;
+
+CREATE TABLE `unavailable_ID`
+(
+    `id`       bigint(20)  AUTO_INCREMENT PRIMARY KEY,
+    `login_id` varchar(20) NOT NULL
+);
+
+INSERT INTO `unavailable_ID` (login_id)
+VALUES ('admin'), ('administration'), ('administer'), ('master'), ('manager');
+
 DROP TABLE IF EXISTS `phone_verification_token`;
 
 CREATE TABLE `phone_verification_token`
 (
-    `id`              bigint(20)   AUTO_INCREMENT PRIMARY KEY,
+    `id`              bigint(20) AUTO_INCREMENT PRIMARY KEY,
     `phone`           varchar(13)  NOT NULL,
     `key`             varchar(255) NOT NULL,
     `expiration_date` datetime     NULL,
