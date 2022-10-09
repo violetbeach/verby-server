@@ -21,6 +21,7 @@ public class UserAuthService {
     private final CertificationRepository certificationRepository;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final UnavailableIDRepository unavailableIDRepository;
     private final VerificationTokenRepository verificationTokenRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -74,6 +75,7 @@ public class UserAuthService {
 
         verifyUniqueLoginId(request.getLoginId());
         verifyUniquePhoneNumber(request.getPhone());
+        verifyAvailableLoginId(request);
 
         UserRole role = roleRepository.findByName(Role.MEMBER);
 
@@ -88,6 +90,15 @@ public class UserAuthService {
         userRepository.save(user);
 
         return UserInfo.from(user);
+    }
+
+    private void verifyAvailableLoginId(SignUpRequest request) {
+        List<UnavailableID> unavailableIds = unavailableIDRepository.findAll();
+        boolean match = unavailableIds.stream()
+                .anyMatch(u -> u.getLoginId().equals(request.getLoginId()));
+        if(match) {
+            throw new UnavailableLoginIdException(request.getLoginId());
+        }
     }
 
     private void verifyToken(VerificationToken verificationToken) {

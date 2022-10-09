@@ -3,6 +3,7 @@ package com.verby.restapi.user.command.application;
 import com.verby.restapi.user.command.domain.*;
 import com.verby.restapi.user.exception.LoginIdDuplicateException;
 import com.verby.restapi.user.exception.PhoneNumberDuplicateException;
+import com.verby.restapi.user.exception.UnavailableLoginIdException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -13,6 +14,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -29,6 +32,8 @@ class UserAuthServiceTest {
     UserRepository userRepository;
     @Mock
     RoleRepository roleRepository;
+    @Mock
+    UnavailableIDRepository unavailableIDRepository;
     @Mock
     VerificationTokenRepository verificationTokenRepository;
     @Mock
@@ -78,6 +83,7 @@ class UserAuthServiceTest {
         void success() {
             // given
             given(roleRepository.findByName(Role.MEMBER)).willReturn(new UserRole(Role.MEMBER));
+            given(unavailableIDRepository.findAll()).willReturn(new ArrayList<>());
 
             // when
             UserInfo userInfo = userAuthService.signUp(request);
@@ -108,6 +114,18 @@ class UserAuthServiceTest {
             // when & then
             assertThatThrownBy(() -> userAuthService.signUp(request))
                     .isInstanceOf(PhoneNumberDuplicateException.class);
+        }
+
+        @Test
+        @DisplayName("Request의 Login id가 사용 불가능한 ID라면 UnAvailableLoginIdException이 발생한다.")
+        void fail_unavailable_login_id() {
+            // given;
+            given(unavailableIDRepository.findAll())
+                    .willReturn(List.of(new UnavailableID(request.getLoginId())));
+
+            // when & then
+            assertThatThrownBy(() -> userAuthService.signUp(request))
+                    .isInstanceOf(UnavailableLoginIdException.class);
         }
 
     }
