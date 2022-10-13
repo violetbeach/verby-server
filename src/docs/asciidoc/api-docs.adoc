@@ -1,0 +1,191 @@
+= Verby REST API
+Jerry;
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+:operation-curl-request-title: Example request
+:operation-http-response-title: Example response
+
+[[overview]]
+== 개요
+
+[[overview-http-verbs]]
+=== HTTP 동사
+
+본 REST API에서 사용하는 HTTP 동사(verbs)는 REST 규약을 따릅니다.
+
+|===
+| 동사 | 용례
+
+| `GET`
+| 리소스를 가져올 때 사용
+
+| `POST`
+| 새 리소스를 만들 때 사용
+
+| `PUT`
+| 기존 리소스를 수정할 때 사용
+
+| `PATCH`
+| 기존 리소스의 일부를 수정할 때 사용
+
+| `DELETE`
+| 기존 리소스를 삭제할 떄 사용
+|===
+
+[[overview-http-status-codes]]
+=== HTTP 상태 코드
+
+본 REST API에서 사용하는 HTTP 상태 코드는 가능한 표준 HTTP 규약을 따릅니다.
+
+|===
+| 상태 코드 | 의미
+
+| `200 OK`
+| 요청을 성공적으로 처리함
+
+| `201 Created`
+| 새 리소스를 성공적으로 생성함. 응답의 `Location` 헤더에 해당 리소스의 URI가 담겨있다.
+
+| `204 No Content`
+| 기존 리소스를 성공적으로 수정함.
+
+| `400 Bad Request`
+| 잘못된 요청을 보낸 경우. 응답 본문에 더 오류에 대한 정보가 담겨있다.
+
+| `404 Not Found`
+| 요청한 리소스가 없음.
+|===
+
+[[users]]
+== 유저
+
+[[users-create-session]]
+=== 세션 등록(로그인)
+`POST` 요청을 사용해서 인증 세션을 등록할 수 있습니다.
+
+operation::세션 등록(로그인)[snippets='http-request,request-fields,http-response']
+
+[[users-create]]
+=== 계정 등록
+
+`POST` 요청을 사용해서 새 계정을 등록할 수 있다.
+
+operation::계정 등록[snippets='http-request,request-fields,http-response,response-fields']
+
+[[users-find-loginid]]
+=== 아이디 찾기
+
+token으로 User의 ID를 조회할 수 있다.
+
+operation::ID 찾기[snippets='http-request,request-parameters,http-response,response-fields']
+
+[[users-reset-password]]
+=== 비밀번호 재설정
+
+User 비밀번호를 재설정할 수 있다.
+
+operation::계정 비밀번호 재설정[snippets='http-request,request-parameters,request-fields,http-response']
+
+[[users-exists]]
+=== 아이디 중복 확인
+
+User의 로그인 아이디로 중복 여부를 확인할 수 있다.
+
+operation::아이디 중복 확인[snippets='http-request,request-parameters,http-response']
+
+[[users-get-my-info]]
+=== 내 정보 조회
+
+세션으로 유저 정보를 조회할 수 있다.
+
+operation::유저 정보 조회[snippets='http-request,http-response,response-fields']
+
+[[sms-auth]]
+== SMS 인증
+
+[[auth-send-sms]]
+=== 인증 SMS 발송
+
+operation::인증 SMS 발송[snippets='http-request,request-fields,http-response']
+
+[[auth-create-token]]
+=== 인증 토큰 생성
+
+operation::토큰 생성[snippets='http-request,request-fields,http-response,response-fields']
+
+[[users-policy]]
+== 유저 정책
+
+[[users-find-unavailable-ids]]
+=== 사용 불가 ID 목록 조회
+operation::사용 불가 ID 목록 조회[snippets='http-request,http-response,response-fields']
+
+[[admin]]
+== 관리자
+
+[[admin-create-admin]]
+=== 관리자 회원 생성
+
+관리자 권한의 회원을 생성할 수 있다.
+
+operation::관리자 - 관리자 회원 생성[snippets='http-request,request-fields,http-response,response-fields']
+
+[[admin-create-artist]]
+=== 아티스트 추가
+
+관리자는 아티스트를 추가할 수 있다.
+
+operation::관리자 - 아티스트 추가[snippets='http-request,request-fields,http-response,response-fields']
+
+[[admin-create-song]]
+=== 곡 추가
+
+관리자는 곡을 추가할 수 있다.
+
+operation::관리자 - 곡 추가[snippets='http-request,path-parameters,request-parts,http-response,response-fields']
+
+[[admin-create-contest]]
+=== 선정곡 추가
+
+관리자는 선정곡을 추가할 수 있다.
+
+operation::관리자 - 선정곡 추가[snippets='http-request,request-fields,http-response,response-fields']
+
+[[inquiry]]
+== 문의
+
+=== 문의하기
+
+유저는 1:1 문의를 추가할 수 있다.
+
+operation::문의하기[snippets='http-request,request-fields,http-response,response-fields']
+
+=== 문의 내역 조회
+
+유저는 자신의 문의 내역 전체를 조회할 수 있다.
+
+operation::문의 내역 조회[snippets='http-request,http-response,response-fields']
+
+[[errors]]
+== 에러
+
+[[error-response]]
+=== 에러 응답
+
+잘못된 요청으로 이벤트를 만들려고 했을 때 다음과 같은 Format의 응답을 받는다.
+
+operation::에러 응답[snippets='http-response,response-fields']
+
+
+
+[[error-codes]]
+=== 에러 코드
+
+에러 응답이 발생했을 때 (상태 코드 >= 400), 본문에 해당 문제를 기술한 JSON 객체가 담겨있다. 각 에러 코드에 대한 설명은 다음과 같다.
+
+include::{snippets}/에러 코드/code-response-fields-beneath-error_codes.adoc[]
+
