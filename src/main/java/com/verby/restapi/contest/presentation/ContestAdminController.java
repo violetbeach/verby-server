@@ -4,6 +4,7 @@ import com.verby.restapi.common.error.ErrorCode;
 import com.verby.restapi.common.error.exception.EntityNotFoundException;
 import com.verby.restapi.contest.command.application.ContestService;
 import com.verby.restapi.contest.command.application.CreateContestRequest;
+import com.verby.restapi.contest.command.application.CreatedContestInfo;
 import com.verby.restapi.contest.command.domain.Contest;
 import com.verby.restapi.contest.command.domain.SongService;
 import lombok.RequiredArgsConstructor;
@@ -25,12 +26,12 @@ public class ContestAdminController {
     private final SongService songService;
 
     @PostMapping("/contests")
-    private ResponseEntity<Contest> create(@RequestBody @Valid CreateContestRequest createContestRequest) {
+    private ResponseEntity<CreatedContestInfo> create(@RequestBody @Valid CreateContestRequest createContestRequest) {
         if(!songService.existsSong(createContestRequest.getSongId())) {
             throw new EntityNotFoundException(ErrorCode.SONG_NOT_FOUND, "Not found.");
         }
 
-        Contest contest = contestService.create(createContestRequest);
+        CreatedContestInfo contest = contestService.create(createContestRequest);
         return new ResponseEntity<>(contest, HttpStatus.CREATED);
     }
 

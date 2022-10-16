@@ -650,7 +650,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=NWQyNTk0YTMtM2ZiOS00MTBjLWEyMzMtZWI1NTk1YjQxYThk; Path=/; HttpOnly; SameSite=Lax</code></pre>
+Set-Cookie: SESSION=MTMzMzJhODItNmFlMC00N2I1LWExM2MtZGNhNTRlOGVmN2M2; Path=/; HttpOnly; SameSite=Lax</code></pre>
 </div>
 </div>
 </div>
@@ -677,7 +677,7 @@ Host: api.verby.co.kr
   "phone" : "01013524302",
   "gender" : "MALE",
   "allow_to_marketing_notification" : true,
-  "token" : "5462635a-2ab3-4237-800f-04b947ce36bb"
+  "token" : "5b17ad81-106a-40b6-bb07-627101e42ac0"
 }</code></pre>
 </div>
 </div>
@@ -761,11 +761,12 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 40
+Content-Length: 87
 
 {
   "id" : 6,
-  "login_id" : "test123"
+  "login_id" : "test123",
+  "created_at" : "2022-10-17T08:45:08.798114"
 }</code></pre>
 </div>
 </div>
@@ -794,6 +795,11 @@ Content-Length: 40
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">계정 로그인 ID</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>created_at</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">생성 일자</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -807,7 +813,7 @@ Content-Length: 40
 <h4 id="users-find-loginid_http_request"><a class="link" href="#users-find-loginid_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /users/login-id?verification_token=17dae121-bf87-42ee-9ad8-b6ac6eabebec HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /users/login-id?verification_token=556740d8-a137-4928-9fff-c6261239c10c HTTP/1.1
 Host: api.verby.co.kr</code></pre>
 </div>
 </div>
@@ -891,7 +897,7 @@ Content-Length: 43
 <h4 id="users-reset-password_http_request"><a class="link" href="#users-reset-password_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PUT /users/password?verification_token=f3e0d65c-4d77-497d-b13a-69a1df95be79 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PUT /users/password?verification_token=a4639290-6309-47e9-82ba-57a81dce4ffb HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Content-Length: 38
 Host: api.verby.co.kr
@@ -1040,7 +1046,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=MTcxMzQxOTYtZmJhYS00ZWI3LWE1MTItMGY4ZTg5M2IyMzU1; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=OWMzNjliOWMtY2MyYi00NmVjLTliMTItNTZlNTE1MTkwYmNm; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 81
 
 {
@@ -1213,14 +1219,14 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 190
+Content-Length: 189
 
 {
   "id" : 2,
-  "key" : "83c877b2-bc00-4039-8ff0-37c43687bed6",
+  "key" : "44f21802-b80a-46db-adf8-f718aecd7043",
   "phone" : "01020492039",
-  "expiration_date" : "2022-10-23T14:22:47.985934",
-  "created_at" : "2022-10-16T14:22:47.986334"
+  "expiration_date" : "2022-10-24T08:45:08.86177",
+  "created_at" : "2022-10-17T08:45:08.861989"
 }</code></pre>
 </div>
 </div>
@@ -1421,12 +1427,13 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=ODZhZTg4ODItYmQ3NC00MWYzLTkwODAtZmZkMzg5YTVlOTgz; Path=/; HttpOnly; SameSite=Lax
-Content-Length: 40
+Set-Cookie: SESSION=YTYyOGY1Y2MtOWViZC00MWRkLWI5YmMtNzBiMWEzZWZiMDEw; Path=/; HttpOnly; SameSite=Lax
+Content-Length: 87
 
 {
   "id" : 5,
-  "login_id" : "test123"
+  "login_id" : "test123",
+  "created_at" : "2022-10-17T08:45:08.665087"
 }</code></pre>
 </div>
 </div>
@@ -1454,6 +1461,11 @@ Content-Length: 40
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>login_id</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">계정 로그인 ID</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>created_at</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">생성 일자</p></td>
 </tr>
 </tbody>
 </table>
@@ -1516,7 +1528,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=MDcyMDY1ZWQtNTM5MS00NWQ3LTgxNGMtZTY3YzgzM2ZmYTgx; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=MzU1ZmY3ZmUtMzk0MC00YTRkLWFlYWYtYjlmNGMwMjU3NmQw; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 31
 
 {
@@ -1642,7 +1654,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=Zjk3MGJhOTUtYWUwMC00YmNiLWE3MTAtMDkwYTFmZGRkZDRk; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=ZTBiMmRkODUtN2RkMi00NmY2LWJjM2MtMzkxOGEzM2FhMDA4; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 140
 
 {
@@ -1777,8 +1789,8 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=NTZkOGRhYTAtN2M4NS00ZmZiLTllZGQtNzdlODQ3MTVkODZi; Path=/; HttpOnly; SameSite=Lax
-Content-Length: 186
+Set-Cookie: SESSION=YjA2OTBjZTktOWU2MS00ODM5LThkMTAtNGVhNWQwZDhhNmMz; Path=/; HttpOnly; SameSite=Lax
+Content-Length: 233
 
 {
   "id" : 2,
@@ -1786,7 +1798,8 @@ Content-Length: 186
   "content" : "제 148회차 선정곡! 상금 100만원!",
   "round" : 148,
   "start_time" : "2022-08-01T00:00:00",
-  "end_time" : "2022-08-02T00:00:00"
+  "end_time" : "2022-08-02T00:00:00",
+  "created_at" : "2022-10-17T08:45:05.678162"
 }</code></pre>
 </div>
 </div>
@@ -1834,6 +1847,11 @@ Content-Length: 186
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>end_time</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">종료 시간</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>created_at</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">생성 일자</p></td>
 </tr>
 </tbody>
 </table>
@@ -1908,14 +1926,14 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=M2Q4OGZhMzUtZmU5ZS00OGE4LTlkMzYtZTdkNjYyMmZlMDQ4; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=NGVhNmE2YzgtNmVkZi00ZDYyLWI5MTUtZjQ2ODFlNjI5ZjIz; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 199
 
 {
   "id" : 1,
   "title" : "커버 영상 업로드 관련 문의입니다.",
   "content" : "커버 영상을 어떻게 올리는 지 모르겠어요.",
-  "created_at" : "2022-10-16T14:22:41.704647"
+  "created_at" : "2022-10-17T08:45:05.744184"
 }</code></pre>
 </div>
 </div>
@@ -1984,7 +2002,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=NWNlZTJjOWQtOTg5Ny00ZDRmLWE5YTAtYjNhNjQyYjM3ZDc0; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=MTQ1NzcwN2YtZmNmZC00NzU5LWE0N2YtNWQwYzdjOWM1YjU1; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 304
 
 [ {
@@ -1995,7 +2013,7 @@ Content-Length: 304
   "content" : "노래가 재생되지 않는데 어떻게 하죠?",
   "answer" : null,
   "status" : "WAITING_ANSWER",
-  "created_at" : "2022-10-16T14:22:41.760546",
+  "created_at" : "2022-10-17T08:45:05.772603",
   "answered_at" : null
 } ]</code></pre>
 </div>
@@ -2086,7 +2104,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=ZTYyYjNhOTMtMjY1Ny00ZmJhLTk4OWItYTM5YmQ1OTAwYTdh; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=Y2E3YWZlNmEtNDkyMi00YmJmLTlhY2EtMDdiYzhjZDhjMDk0; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 61
 
 {
@@ -2210,7 +2228,7 @@ Content-Length: 61
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2022-10-16 13:47:12 +0900
+Last updated 2022-10-17 08:23:08 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
