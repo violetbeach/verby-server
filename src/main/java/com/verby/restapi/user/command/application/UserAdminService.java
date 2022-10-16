@@ -29,6 +29,7 @@ public class UserAdminService {
                 passwordEncoder.encode(request.getPassword()),
                 request.getName(),
                 null,
+                null,
                 roles,
                 false
         );

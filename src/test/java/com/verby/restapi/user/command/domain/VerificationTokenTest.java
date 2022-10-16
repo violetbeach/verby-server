@@ -1,5 +1,6 @@
 package com.verby.restapi.user.command.domain;
 
+import com.verby.restapi.support.fixture.domain.UserFixture;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +15,7 @@ class VerificationTokenTest {
     @DisplayName("비밀번호 변경에 대한 토큰은 7일간 유효하다.")
     void setExpirationDate() {
         // given
-        User user = new User("violetBeach13", "password13", "honey", "01012345678", null, false);
+        User user = UserFixture.NORMAL_USER.getUser();
 
         // when
         VerificationToken verificationToken = new VerificationToken(user.getPhone());
