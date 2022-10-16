@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class SendCertificationSMSRequest {
 
+    @PhoneValidation
     String phone;
 
 }

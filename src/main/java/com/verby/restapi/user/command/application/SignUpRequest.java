@@ -23,7 +23,7 @@ public class SignUpRequest {
     @NotBlank
     private final String name;
     private final LocalDate birthday;
-    @NotBlank @Pattern(regexp = "^\\d*$", message = "숫자만 사용할 수 있습니다.")
+    @PhoneValidation
     private final String phone;
     @NotNull
     private final Boolean allowToMarketingNotification;
