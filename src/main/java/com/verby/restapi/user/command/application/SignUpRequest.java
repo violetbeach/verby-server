@@ -1,5 +1,6 @@
 package com.verby.restapi.user.command.application;
 
+import com.verby.restapi.user.command.domain.Gender;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -25,6 +26,7 @@ public class SignUpRequest {
     private final LocalDate birthday;
     @NotBlank @Pattern(regexp = "^\\d*$", message = "숫자만 사용할 수 있습니다.")
     private final String phone;
+    private final Gender gender;
     @NotNull
     private final Boolean allowToMarketingNotification;
     @NotBlank

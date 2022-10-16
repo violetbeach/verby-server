@@ -83,6 +83,7 @@ public class UserAuthService {
                 passwordEncoder.encode(request.getPassword()),
                 request.getName(),
                 request.getPhone(),
+                request.getGender(),
                 new HashSet<>(List.of(role)),
                 request.getAllowToMarketingNotification()
         );

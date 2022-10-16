@@ -44,6 +44,7 @@ class UserRepositoryTest {
                 "password1234",
                 "nickname12",
                 "01012345678",
+                Gender.MALE,
                 null,
                 false
                 );

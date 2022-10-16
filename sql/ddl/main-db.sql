@@ -13,6 +13,7 @@ CREATE TABLE `user`
     `bio`                             varchar(255) NULL,
     `profile_image`                   varchar(255) NULL,
     `phone`                           varchar(13)  NULL,
+    `gender`                          varchar(11) NULL,
     `status`                          varchar(30)  NOT NULL,
     `allow_to_marketing_notification` boolean      NOT NULL,
     `created_at`                      datetime     NOT NULL DEFAULT NOW(),

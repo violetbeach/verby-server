@@ -48,7 +48,7 @@ class UserAuthServiceTest {
         void success() {
             // given
             ResetPasswordRequest request = new ResetPasswordRequest("token", "new_password1234");
-            User user = new User("violetBeach13", "password13", "honey", "01012345678", null, false);
+            User user = new User("violetBeach13", "password13", "honey", "01012345678", Gender.MALE,null, false);
 
             given(passwordEncoder.encode(anyString())).willReturn(request.getNewPassword());
             given(verificationTokenRepository.findByKey(anyString()))
@@ -73,7 +73,7 @@ class UserAuthServiceTest {
 
         @BeforeEach
         void setup() {
-            request = new SignUpRequest("violetbeach12", "password1234", "Honey", null, "01043042900", true, "token");
+            request = new SignUpRequest("violetbeach12", "password1234", "Honey", null, "01043042900",  Gender.MALE, true, "token");
             given(verificationTokenRepository.findByKey(anyString()))
                     .willReturn(Optional.of(new VerificationToken(request.getPhone())));
         }
