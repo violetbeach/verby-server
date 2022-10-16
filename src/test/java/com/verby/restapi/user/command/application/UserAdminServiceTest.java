@@ -44,7 +44,7 @@ class UserAdminServiceTest {
                     .build();
 
             // when
-            UserInfo userInfo = userAdminService.createAdmin(createAdminRequest);
+            CreatedUserInfo userInfo = userAdminService.createAdmin(createAdminRequest);
 
             // then
             assertNotNull(userInfo);

@@ -77,8 +77,8 @@ class ContestAdminControllerTest extends BaseControllerTest {
                         fieldWithPath("content").type(JsonFieldType.STRING).description("선정곡(대회) 내용"),
                         fieldWithPath("round").type(JsonFieldType.NUMBER).description("회차"),
                         fieldWithPath("start_time").type(JsonFieldType.STRING).description("시작 시간"),
-                        fieldWithPath("end_time").type(JsonFieldType.STRING).description("종료 시간")
-
+                        fieldWithPath("end_time").type(JsonFieldType.STRING).description("종료 시간"),
+                        fieldWithPath("created_at").type(JsonFieldType.STRING).description("생성 일자")
                 )));
     }
 

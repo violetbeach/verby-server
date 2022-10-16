@@ -86,7 +86,7 @@ class UserAuthServiceTest {
             given(unavailableIDRepository.findAll()).willReturn(new ArrayList<>());
 
             // when
-            UserInfo userInfo = userAuthService.signUp(request);
+            CreatedUserInfo userInfo = userAuthService.signUp(request);
 
             // then
             assertThat(userInfo).isNotNull();

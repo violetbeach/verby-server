@@ -64,7 +64,7 @@ public class UserAuthService {
         user.resetPassword(encodedPassword);
     }
 
-    public UserInfo signUp(SignUpRequest request) {
+    public CreatedUserInfo signUp(SignUpRequest request) {
         VerificationToken verificationToken = verificationTokenRepository.findByKey(request.getToken())
                 .orElseThrow(() -> new TokenNotFoundException(request.getToken()));
         verifyToken(verificationToken);
@@ -90,7 +90,7 @@ public class UserAuthService {
 
         userRepository.save(user);
 
-        return UserInfo.from(user);
+        return CreatedUserInfo.from(user);
     }
 
     private void verifyAvailableLoginId(SignUpRequest request) {

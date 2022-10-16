@@ -1,7 +1,7 @@
 package com.verby.restapi.user.presentation;
 
 import com.verby.restapi.user.command.application.UserAdminService;
-import com.verby.restapi.user.command.application.UserInfo;
+import com.verby.restapi.user.command.application.CreatedUserInfo;
 import com.verby.restapi.user.command.application.CreateAdminRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -21,8 +21,8 @@ public class UserAdminController {
     private final UserAdminService userAdminService;
 
     @PostMapping
-    private ResponseEntity<UserInfo> create(@RequestBody @Valid CreateAdminRequest createAdminRequest) {
-        UserInfo userInfo = userAdminService.createAdmin(createAdminRequest);
+    private ResponseEntity<CreatedUserInfo> create(@RequestBody @Valid CreateAdminRequest createAdminRequest) {
+        CreatedUserInfo userInfo = userAdminService.createAdmin(createAdminRequest);
         return new ResponseEntity<>(userInfo, HttpStatus.CREATED);
     }
 
