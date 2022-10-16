@@ -24,8 +24,8 @@ spring:
 
   sql:
     init:
-      schema-locations: classpath:sql/schema-h2.sql
-      data-locations: classpath:sql/init-users.sql
+      schema-locations: classpath:sql/ddl/*
+      data-locations: classpath:sql/init/*
       mode: always
 
 cloud:

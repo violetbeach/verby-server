@@ -160,7 +160,7 @@ class UserAuthControllerTest extends BaseControllerTest {
         VerificationToken verificationToken = generateVerificationToken(phone);
         SignUpRequest signUpRequest = SignUpRequest.builder()
                 .loginId("test123")
-                .password("password12@")
+                .password("password1234@")
                 .name("TestName")
                 .birthday(LocalDate.of(1994, 2, 10))
                 .phone(phone)
