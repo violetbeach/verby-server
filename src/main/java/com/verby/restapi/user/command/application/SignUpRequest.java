@@ -24,7 +24,9 @@ public class SignUpRequest {
     @NotBlank
     private final String name;
     private final LocalDate birthday;
-    @PhoneValidation
+    @NotBlank
+    @Size(min = 11, max = 13)
+    @Pattern(regexp = "^\\d*$", message = "숫자만 사용할 수 있습니다")
     private final String phone;
     private final Gender gender;
     @NotNull
