@@ -55,7 +55,8 @@ class UserAdminControllerTest extends BaseControllerTest {
                 ),
                 responseFields(
                         fieldWithPath("id").type(JsonFieldType.NUMBER).description("계정 일련번호"),
-                        fieldWithPath("login_id").type(JsonFieldType.STRING).description("계정 로그인 ID")
+                        fieldWithPath("login_id").type(JsonFieldType.STRING).description("계정 로그인 ID"),
+                        fieldWithPath("created_at").type(JsonFieldType.STRING).description("생성 일자")
                 )));
     }
 

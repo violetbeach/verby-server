@@ -16,7 +16,7 @@ public class UserAdminService {
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public UserInfo createAdmin(CreateAdminRequest request) {
+    public CreatedUserInfo createAdmin(CreateAdminRequest request) {
         if(userRepository.existsByLoginId(request.getLoginId())) {
             throw new LoginIdDuplicateException(request.getLoginId());
         }
@@ -36,7 +36,7 @@ public class UserAdminService {
 
         userRepository.save(adminUser);
 
-        return UserInfo.from(adminUser);
+        return CreatedUserInfo.from(adminUser);
     }
 
 }
