@@ -48,7 +48,7 @@ public class UserAuthService {
         User user = userRepository.findByPhone(verificationToken.getPhone())
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.USER_NOT_FOUND, "Not found."));
 
-        return new UserLoginId(user.getId(), user.getLoginId());
+        return new UserLoginId(user.getId(), user.getLoginId(), user.getCreatedAt());
     }
 
     @Transactional
