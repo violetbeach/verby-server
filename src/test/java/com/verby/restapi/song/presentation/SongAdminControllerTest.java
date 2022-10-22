@@ -48,7 +48,7 @@ class SongAdminControllerTest extends BaseControllerTest {
         Artist artist = generateArtist();
         CreateSongRequest createSongRequest = new CreateSongRequest("사랑했지만");
         MockMultipartFile requestJson = new MockMultipartFile("song", "test", "application/json", objectMapper.writeValueAsBytes(createSongRequest));
-        MockMultipartFile imageFile = new MockMultipartFile("song_image", "img.png", "image/png", "Album - BinaryData".getBytes());
+        MockMultipartFile imageFile = new MockMultipartFile("song_image", "image.png", "image/png", getClass().getResourceAsStream("/multipart/image.png"));
 
         // when
         ResultActions result = mockMvc.perform(multipart("/admin/artists/{artistId}/songs", artist.getId())
