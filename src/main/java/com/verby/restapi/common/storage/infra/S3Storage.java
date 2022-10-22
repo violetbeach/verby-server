@@ -47,9 +47,7 @@ public class S3Storage implements StaticStorage {
     }
 
     private void removeNewFile(File targetFile) {
-        if (targetFile.delete()) {
-            log.info("파일이 삭제되었습니다.");
-        } else {
+        if (!targetFile.delete()) {
             log.info("파일이 삭제되지 못했습니다.");
         }
     }
