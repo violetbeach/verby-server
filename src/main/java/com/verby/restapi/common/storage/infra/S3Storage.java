@@ -62,7 +62,7 @@ public class S3Storage implements StaticStorage {
                 return Optional.of(convertFile);
             }
         } catch (IOException e) {
-            throw new StaticStorageExcpetion(ErrorCode.FILE_UPLOAD_CONFLICT, "Conflict while uploading file.");
+            throw new StaticStorageExcpetion(ErrorCode.FILE_UPLOAD_CONFLICT, e.getMessage());
         }
 
         return Optional.empty();
