@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Getter
 @Entity
-@Table(name = "unavailable_ID")
+@Table(name = "unavailable_id")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UnavailableID {
 
