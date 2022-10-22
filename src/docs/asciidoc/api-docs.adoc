@@ -104,6 +104,16 @@ operation::유저 중복 확인[snippets='http-request,request-parameters,http-r
 
 operation::유저 정보 조회[snippets='http-request,http-response,response-fields']
 
+[[covers]]
+== 커버
+
+[[create-cover]]
+=== 커버 등록
+
+커버 영상을 등록할 수 있다.
+
+operation::커버 등록[snippets='http-request,request-parts,http-response,response-fields']
+
 [[sms-auth]]
 == SMS 인증
 

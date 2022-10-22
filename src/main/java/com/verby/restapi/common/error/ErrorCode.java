@@ -3,6 +3,7 @@ package com.verby.restapi.common.error;
 public enum ErrorCode {
 
     INVALID_INPUT_VALUE(400, "COMMON-001", "유효성 검증에 실패한 경우"),
+    FILE_UPLOAD_CONFLICT(409, "COMMON-002", "파일 업로드 중 실패한 경우"),
 
     DUPLICATE_LOGIN_ID(400, "USER-001", "계정명이 중복된 경우"),
     UNAUTHORIZED(401, "USER-002", "인증에 실패한 경우"),
