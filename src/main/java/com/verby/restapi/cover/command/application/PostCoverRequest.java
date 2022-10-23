@@ -1,5 +1,6 @@
 package com.verby.restapi.cover.command.application;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,10 +11,14 @@ import org.springframework.web.multipart.MultipartFile;
 public class PostCoverRequest {
 
     private long contestId;
-    private long userId;
     private String title;
+    @JsonIgnore
+    private long userId;
+    @JsonIgnore
     private MultipartFile video;
+    @JsonIgnore
     private MultipartFile highlight;
+    @JsonIgnore
     private MultipartFile image;
 
     public void setUserId(long userId) {
