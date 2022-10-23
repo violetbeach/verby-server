@@ -13,6 +13,7 @@ CREATE TABLE `user`
     `bio`                             varchar(255) NULL,
     `profile_image`                   varchar(255) NULL,
     `phone`                           varchar(13)  NULL,
+    `gender`                          varchar(11)  NULL,
     `status`                          varchar(30)  NOT NULL,
     `allow_to_marketing_notification` boolean      NOT NULL,
     `created_at`                      datetime     NOT NULL DEFAULT NOW(),
@@ -24,16 +25,20 @@ ALTER TABLE `user`
 ALTER TABLE `user`
     ADD UNIQUE uk_phone (`phone`);
 
-DROP TABLE IF EXISTS `unavailable_ID`;
+DROP TABLE IF EXISTS `unavailable_id`;
 
-CREATE TABLE `unavailable_ID`
+CREATE TABLE `unavailable_id`
 (
-    `id`       bigint(20)  AUTO_INCREMENT PRIMARY KEY,
+    `id`       bigint(20) AUTO_INCREMENT PRIMARY KEY,
     `login_id` varchar(20) NOT NULL
 );
 
-INSERT INTO `unavailable_ID` (login_id)
-VALUES ('admin'), ('administration'), ('administer'), ('master'), ('manager');
+INSERT INTO `unavailable_id` (login_id)
+VALUES ('admin'),
+       ('administration'),
+       ('administer'),
+       ('master'),
+       ('manager');
 
 DROP TABLE IF EXISTS `phone_verification_token`;
 

@@ -60,23 +60,26 @@ class UserControllerTest extends BaseControllerTest {
     }
 
     @Test
-    @DisplayName("로그인 아이디의 중복 여부를 확인할 수 있다.")
-    void existsLoginId() throws Exception {
+    @DisplayName("UserSearchParam으로 유저 중복 여부를 확인할 수 있다.")
+    void existsUser() throws Exception {
         // given
         String loginId = "VioletBeach1";
-        generateUser(loginId);
+        String phone = "01030492093";
+        generateUser(loginId, phone);
 
         // when
         ResultActions result = mockMvc.perform(head("/users")
-                .param("login-id", loginId));
+                .param("loginId", loginId)
+                .param("phone", phone));
 
         // then
         result.andExpect(status().isOk())
-                .andDo(document("아이디 중복 확인",
+                .andDo(document("유저 존재 여부 확인",
                         getDocumentRequest(),
                         getDocumentResponse(),
                         requestParameters(
-                                parameterWithName("login-id").description("계정 로그인 아이디")
+                                parameterWithName("loginId").description("계정 로그인 아이디"),
+                                parameterWithName("phone").description("휴대폰 번호")
                         )));
     }
 

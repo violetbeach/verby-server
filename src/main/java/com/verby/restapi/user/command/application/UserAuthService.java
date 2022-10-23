@@ -48,7 +48,7 @@ public class UserAuthService {
         User user = userRepository.findByPhone(verificationToken.getPhone())
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.USER_NOT_FOUND, "Not found."));
 
-        return new UserLoginId(user.getId(), user.getLoginId());
+        return new UserLoginId(user.getId(), user.getLoginId(), user.getCreatedAt());
     }
 
     @Transactional
@@ -64,7 +64,7 @@ public class UserAuthService {
         user.resetPassword(encodedPassword);
     }
 
-    public UserInfo signUp(SignUpRequest request) {
+    public CreatedUserInfo signUp(SignUpRequest request) {
         VerificationToken verificationToken = verificationTokenRepository.findByKey(request.getToken())
                 .orElseThrow(() -> new TokenNotFoundException(request.getToken()));
         verifyToken(verificationToken);
@@ -83,13 +83,14 @@ public class UserAuthService {
                 passwordEncoder.encode(request.getPassword()),
                 request.getName(),
                 request.getPhone(),
+                request.getGender(),
                 new HashSet<>(List.of(role)),
                 request.getAllowToMarketingNotification()
         );
 
         userRepository.save(user);
 
-        return UserInfo.from(user);
+        return CreatedUserInfo.from(user);
     }
 
     private void verifyAvailableLoginId(SignUpRequest request) {

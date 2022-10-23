@@ -2,6 +2,7 @@ package com.verby.restapi.user.presentation;
 
 import com.verby.restapi.support.presentation.BaseControllerTest;
 import com.verby.restapi.user.command.application.*;
+import com.verby.restapi.user.command.domain.Gender;
 import com.verby.restapi.user.command.domain.User;
 import com.verby.restapi.user.command.domain.UserRepository;
 import com.verby.restapi.user.command.domain.VerificationToken;
@@ -117,7 +118,8 @@ class UserAuthControllerTest extends BaseControllerTest {
                 ),
                 responseFields(
                         fieldWithPath("id").type(JsonFieldType.NUMBER).description("계정 일련번호"),
-                        fieldWithPath("login_id").type(JsonFieldType.STRING).description("계정 로그인 ID")
+                        fieldWithPath("login_id").type(JsonFieldType.STRING).description("계정 로그인 ID"),
+                        fieldWithPath("created_at").type(JsonFieldType.STRING).description("생성 일자")
                 )
         ));
     }
@@ -164,6 +166,7 @@ class UserAuthControllerTest extends BaseControllerTest {
                 .name("TestName")
                 .birthday(LocalDate.of(1994, 2, 10))
                 .phone(phone)
+                .gender(Gender.MALE)
                 .allowToMarketingNotification(true)
                 .token(verificationToken.getKey())
                 .build();
@@ -186,6 +189,7 @@ class UserAuthControllerTest extends BaseControllerTest {
                         fieldWithPath("password").type(JsonFieldType.STRING).description("계정 비밀번호"),
                         fieldWithPath("name").type(JsonFieldType.STRING).description("이름"),
                         fieldWithPath("phone").type(JsonFieldType.STRING).description("전화번호"),
+                        fieldWithPath("gender").type(JsonFieldType.STRING).description("성별"),
                         fieldWithPath("birthday").type(JsonFieldType.STRING).description("생년월일").optional(),
                         fieldWithPath("allow_to_marketing_notification").type(JsonFieldType.BOOLEAN).description("마케팅 정보 수신 동의 여부"),
                         fieldWithPath("token").type(JsonFieldType.STRING).description("인증 토큰")
@@ -193,7 +197,8 @@ class UserAuthControllerTest extends BaseControllerTest {
                 ),
                 responseFields(
                         fieldWithPath("id").type(JsonFieldType.NUMBER).description("계정 일련번호"),
-                        fieldWithPath("login_id").type(JsonFieldType.STRING).description("계정 로그인 ID")
+                        fieldWithPath("login_id").type(JsonFieldType.STRING).description("계정 로그인 ID"),
+                        fieldWithPath("created_at").type(JsonFieldType.STRING).description("생성 일자")
                 )));
     }
 
