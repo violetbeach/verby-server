@@ -13,15 +13,17 @@ public class CoverService {
     private final CoverRepository coverRepository;
     private final CoverStorageService coverStorageService;
 
+    @Transactional
     public PostedCoverInfo upload(PostCoverRequest request) {
         UploadCoverResourceRequest uploadRequest = new UploadCoverResourceRequest(
                 request.getVideo(),
                 request.getHighlight(),
                 request.getImage()
         );
+
         CoverStoragePathProperties resourcesPath = coverStorageService.uploads(uploadRequest);
 
-        CreateCoverEntityRequest createEntityRequest = new CreateCoverEntityRequest(
+        Cover cover = new Cover(
                 request.getContestId(),
                 request.getUserId(),
                 request.getTitle(),
@@ -30,23 +32,9 @@ public class CoverService {
                 resourcesPath.getImage()
         );
 
-        Cover cover = createCover(createEntityRequest);
+        coverRepository.save(cover);
 
         return PostedCoverInfo.from(cover);
-    }
-
-    @Transactional
-    public Cover createCover(CreateCoverEntityRequest request) {
-        Cover cover = new Cover(
-                request.getContestId(),
-                request.getUserId(),
-                request.getTitle(),
-                request.getVideo(),
-                request.getHighlight(),
-                request.getImage()
-        );
-
-        return coverRepository.save(cover);
     }
 
 }
