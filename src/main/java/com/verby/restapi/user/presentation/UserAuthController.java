@@ -29,14 +29,14 @@ public class UserAuthController {
     }
 
     @GetMapping("/login-id")
-    private ResponseEntity<UserLoginId> findLoginId(@RequestParam(value = "verification_token") String token) {
+    private ResponseEntity<UserLoginId> findLoginId(@RequestParam(value = "verificationToken") String token) {
         UserLoginId loginId = userAuthService.findLoginId(token);
         return new ResponseEntity<>(loginId, HttpStatus.OK);
     }
 
     @PutMapping("/password")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    private void resetPassword(@RequestParam(value = "verification_token") String token, @RequestBody @Valid ResetPasswordRequest request) {
+    private void resetPassword(@RequestParam(value = "verificationToken") String token, @RequestBody @Valid ResetPasswordRequest request) {
         request.setToken(token);
         userAuthService.resetPassword(request);
     }

@@ -103,7 +103,7 @@ class UserAuthControllerTest extends BaseControllerTest {
 
         // when
         ResultActions result = mockMvc.perform(get("/users/login-id")
-                .param("verification_token", verificationToken.getKey()));
+                .param("verificationToken", verificationToken.getKey()));
 
         // then
         result.andExpect(status().isOk())
@@ -114,7 +114,7 @@ class UserAuthControllerTest extends BaseControllerTest {
                 getDocumentRequest(),
                 getDocumentResponse(),
                 requestParameters(
-                        parameterWithName("verification_token").description("인증 토큰")
+                        parameterWithName("verificationToken").description("인증 토큰")
                 ),
                 responseFields(
                         fieldWithPath("id").type(JsonFieldType.NUMBER).description("계정 일련번호"),
@@ -135,7 +135,7 @@ class UserAuthControllerTest extends BaseControllerTest {
 
         // when
         ResultActions result = mockMvc.perform(put("/users/password")
-                .param("verification_token", verificationToken.getKey())
+                .param("verificationToken", verificationToken.getKey())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(request)));
 
@@ -147,7 +147,7 @@ class UserAuthControllerTest extends BaseControllerTest {
                 getDocumentRequest(),
                 getDocumentResponse(),
                 requestParameters(
-                        parameterWithName("verification_token").description("인증 토큰")
+                        parameterWithName("verificationToken").description("인증 토큰")
                 ),
                 requestFields(
                         fieldWithPath("new_password").type(JsonFieldType.STRING).description("재설정할 비밀번호")
