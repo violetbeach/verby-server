@@ -14,6 +14,7 @@ Jerry;
 
 본 REST API에서 사용하는 전체 규칙입니다.
 
+[[overview-url]]
 === URL
 
 |===
@@ -69,6 +70,24 @@ Jerry;
 
 | `404 Not Found`
 | 요청한 리소스가 없음.
+|===
+
+[[overview-http-message]]
+=== HTTP 메시지 Spec
+
+본 REST API에서 사용하는 HTTP 메시지의 명세 표기(case) 규칙입니다.
+
+|===
+| 대상 | 표기(Case)
+
+| `Path Variable`
+| Kebab case
+
+| `Query Parameter`
+| Camel case
+
+| `Payload`
+| Snake case
 |===
 
 [[users]]
