@@ -42,8 +42,8 @@ public class UserAuthController {
     }
 
     @PostMapping
-    private ResponseEntity<UserInfo> signup(@RequestBody @Valid SignUpRequest request) {
-        UserInfo userInfo = userAuthService.signUp(request);
+    private ResponseEntity<CreatedUserInfo> signup(@RequestBody @Valid SignUpRequest request) {
+        CreatedUserInfo userInfo = userAuthService.signUp(request);
         return new ResponseEntity<>(userInfo, HttpStatus.CREATED);
     }
 

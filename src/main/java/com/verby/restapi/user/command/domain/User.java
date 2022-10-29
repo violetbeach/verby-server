@@ -28,6 +28,9 @@ public class User extends BaseEntity implements Serializable {
 
     private LocalDate birthday;
 
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
     @Column(unique = true)
     private String phone;
 
@@ -47,11 +50,12 @@ public class User extends BaseEntity implements Serializable {
 
     private boolean allowToMarketingNotification;
 
-    public User(String loginId, String password, String name, String phone, Set<UserRole> roles, boolean allowToMarketingNotification) {
+    public User(String loginId, String password, String name, String phone, Gender gender, Set<UserRole> roles, boolean allowToMarketingNotification) {
         this.loginId = loginId;
         this.password = password;
         this.name = name;
         this.phone = phone;
+        this.gender = gender;
         this.roles = roles;
         this.status = UserStatus.ACTIVE;
         this.allowToMarketingNotification = allowToMarketingNotification;

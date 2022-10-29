@@ -11,7 +11,7 @@ public class ContestService {
 
     private final ContestRepository contestRepository;
 
-    public Contest create(CreateContestRequest createContestRequest) {
+    public CreatedContestInfo create(CreateContestRequest createContestRequest) {
 
         Contest contest = new Contest(
                 createContestRequest.getSongId(),
@@ -21,7 +21,9 @@ public class ContestService {
                 createContestRequest.getEndTime()
         );
 
-        return contestRepository.save(contest);
+        contestRepository.save(contest);
+
+        return CreatedContestInfo.from(contest);
     }
 
 }

@@ -9,11 +9,7 @@ import java.util.Optional;
 
 public interface UserDataDao extends Repository<UserData, Long> {
 
-    Optional<UserData> findById(long id);
-
     @Query("SELECT new com.verby.restapi.user.query.dto.UserSummary(u.id, u.loginId, u.bio, u.profileImage) FROM User u WHERE u.id = :id")
     Optional<UserSummary> findSummaryById(long id);
-
-    Optional<UserData> findByLoginId(String loginId);
 
 }

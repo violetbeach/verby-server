@@ -16,7 +16,7 @@ class UserTest {
         String password = "password12";
 
         // when
-        User user = new User(loginId, password, "honey", "01012345678", null, false);
+        User user = new User(loginId, password, "honey", "01012345678", Gender.MALE, null, false);
 
         // then
         assertThat(user).isNotNull();
@@ -29,7 +29,7 @@ class UserTest {
     public void resetPassword() {
         // given
         String newPassword = "changedPassword";
-        User user = new User("loginId", "password", "honey", "01012345678", null, false);
+        User user = new User("loginId", "password", "honey", "01012345678", Gender.MALE, null, false);
 
         // when
         user.resetPassword(newPassword);

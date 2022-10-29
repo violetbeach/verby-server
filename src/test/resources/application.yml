@@ -45,5 +45,9 @@ logging:
 
 static:
   paths:
+    cover:
+      video: static/cover/videos
+      highlight: static/cover/highlight
+      image: static/cover/image
     song:
       image: static/song/images
