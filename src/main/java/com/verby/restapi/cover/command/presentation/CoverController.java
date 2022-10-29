@@ -35,7 +35,7 @@ public class CoverController {
         request.setHighlight(highlight);
         request.setImage(image);
 
-        PostedCoverInfo cover = coverService.upload(request);
+        PostedCoverInfo cover = coverService.post(request);
 
         return new ResponseEntity<>(cover, HttpStatus.ACCEPTED);
     }
