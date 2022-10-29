@@ -1,11 +1,13 @@
 package com.verby.restapi.user.command.application;
 
 import com.verby.restapi.user.command.CertificationType;
+import com.verby.restapi.common.event.Events;
 import lombok.Getter;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.index.Indexed;
 
-import javax.persistence.*;
+import javax.persistence.Id;
+import java.time.LocalDateTime;
 
 @Getter
 @RedisHash(value = "Certification", timeToLive = 300)
@@ -23,6 +25,7 @@ public class Certification {
         this.phone = phone;
         this.certificationNumber = certificationNumber;
         this.type = type;
+        Events.raise(new CertificationCreatedEvent(phone, certificationNumber, LocalDateTime.now()));
     }
 
 
