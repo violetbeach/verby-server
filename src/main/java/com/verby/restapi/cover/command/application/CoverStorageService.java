@@ -2,7 +2,6 @@ package com.verby.restapi.cover.command.application;
 
 import com.verby.restapi.common.storage.StaticStorage;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,9 +11,6 @@ public class CoverStorageService {
 
     private final StaticStorage staticStorage;
     private final CoverStoragePathProperties storagePathProperties;
-
-    @Value("${static.paths.song.image}")
-    private String imageBasePath;
 
     public CoverStoragePathProperties uploads(UploadCoverResourceRequest request) {
         return new CoverStoragePathProperties(
