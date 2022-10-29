@@ -2,6 +2,7 @@ package com.verby.restapi.cover.command.application;
 
 import com.verby.restapi.cover.command.domain.Cover;
 import com.verby.restapi.cover.command.domain.CoverRepository;
+import com.verby.restapi.user.command.application.UploadedResourcesPath;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,15 +14,17 @@ public class CoverService {
     private final CoverRepository coverRepository;
     private final CoverStorageService coverStorageService;
 
-    public PostedCoverInfo upload(PostCoverRequest request) {
+    @Transactional
+    public PostedCoverInfo post(PostCoverRequest request) {
         UploadCoverResourceRequest uploadRequest = new UploadCoverResourceRequest(
                 request.getVideo(),
                 request.getHighlight(),
                 request.getImage()
         );
-        CoverStoragePathProperties resourcesPath = coverStorageService.uploads(uploadRequest);
 
-        CreateCoverEntityRequest createEntityRequest = new CreateCoverEntityRequest(
+        UploadedResourcesPath resourcesPath = coverStorageService.uploads(uploadRequest);
+
+        Cover cover = new Cover(
                 request.getContestId(),
                 request.getUserId(),
                 request.getTitle(),
@@ -30,23 +33,9 @@ public class CoverService {
                 resourcesPath.getImage()
         );
 
-        Cover cover = createCover(createEntityRequest);
+        coverRepository.save(cover);
 
         return PostedCoverInfo.from(cover);
-    }
-
-    @Transactional
-    public Cover createCover(CreateCoverEntityRequest request) {
-        Cover cover = new Cover(
-                request.getContestId(),
-                request.getUserId(),
-                request.getTitle(),
-                request.getVideo(),
-                request.getHighlight(),
-                request.getImage()
-        );
-
-        return coverRepository.save(cover);
     }
 
 }

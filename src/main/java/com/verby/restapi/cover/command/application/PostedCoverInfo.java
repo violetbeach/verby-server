@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class PostedCoverInfo {
 
-    private final long id;
+    private final Long id;
     private final long contestId;
     private final String title;
     private final String video;

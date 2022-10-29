@@ -2,6 +2,7 @@ package com.verby.restapi.user.command.application;
 
 import com.verby.restapi.common.error.ErrorCode;
 import com.verby.restapi.common.error.exception.EntityNotFoundException;
+import com.verby.restapi.user.command.CertificationType;
 import com.verby.restapi.user.command.domain.*;
 import com.verby.restapi.user.exception.*;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -26,7 +26,15 @@ public class UserAuthService {
     private final PasswordEncoder passwordEncoder;
 
     public void sendCertificationSMS(SendCertificationSMSRequest request) {
-        Certification certification = new Certification(request.getPhone(), generateCertificationNumber());
+        Certification certification = new Certification(request.getPhone(), generateCertificationNumber(), CertificationType.NORMAL);
+        certificationRepository.save(certification);
+    }
+
+    public void resetPasswordCertificationSMS(SendResetPasswordSMSRequest request) {
+        userRepository.findByLoginIdAndPhone(request.getLoginId(), request.getPhone())
+                .orElseThrow(() -> new EntityNotFoundException(ErrorCode.USER_NOT_FOUND, "User not found."));
+
+        Certification certification = new Certification(request.getPhone(), generateCertificationNumber(), CertificationType.RESET_PASSWORD);
         certificationRepository.save(certification);
     }
 
@@ -125,13 +133,7 @@ public class UserAuthService {
     }
 
     private void verifyCertificationRequest(String phone, int certificationNumber) {
-        Optional<Certification> result = certificationRepository.findByPhone(phone);
 
-        if(result.isEmpty() || result.get().getCertificationNumber() != certificationNumber) {
-            throw new InvalidCertificationNumberException(certificationNumber);
-        }
-
-        certificationRepository.delete(result.get());
     }
 
 }

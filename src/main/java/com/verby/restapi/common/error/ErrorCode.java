@@ -16,6 +16,7 @@ public enum ErrorCode {
     INVALID_CERTIFICATION_NUMBER(403, "AUTH-001", "휴대전화 인증 번호가 유효하지 않은 경우"),
     EXPIRED_VERIFICATION_TOKEN(403, "AUTH-002", "인증 토큰이 만료된 경우"),
     INVALID_VERIFICATION_TOKEN(403, "AUTH-003", "토큰이 유효하지 않은 경우"),
+    CERTIFICATION_TYPE_NOT_MATCH(403, "AUTH-004", "인증 타입이 일치하지 않은 경우"),
 
     ARTIST_NOT_FOUND(404, "ARTIST-001", "가수를 찾을 수 없는 경우"),
 

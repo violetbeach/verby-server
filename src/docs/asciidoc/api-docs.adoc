@@ -10,7 +10,19 @@ Jerry;
 :operation-http-response-title: Example response
 
 [[overview]]
-== 개요
+== 공통 사항
+
+본 REST API에서 사용하는 전체 규칙입니다.
+
+[[overview-url]]
+=== URL
+
+|===
+| 환경 | Domain
+
+| 운영서버
+| `https://api.verby.co.kr`
+|===
 
 [[overview-http-verbs]]
 === HTTP 동사
@@ -60,11 +72,29 @@ Jerry;
 | 요청한 리소스가 없음.
 |===
 
+[[overview-http-message]]
+=== HTTP 메시지 Spec
+
+본 REST API에서 사용하는 HTTP 메시지의 명세 표기(case) 규칙입니다.
+
+|===
+| 대상 | 표기(Case)
+
+| `Path Variable`
+| Kebab case
+
+| `Query Parameter`
+| Camel case
+
+| `Payload`
+| Snake case
+|===
+
 [[users]]
 == 유저
 
 [[users-create-session]]
-=== 세션 등록(로그인)
+=== 세션 등록 (로그인)
 `POST` 요청을 사용해서 인증 세션을 등록할 수 있습니다.
 
 operation::세션 등록(로그인)[snippets='http-request,request-fields,http-response']
@@ -118,9 +148,14 @@ operation::커버 등록[snippets='http-request,request-parts,http-response,resp
 == SMS 인증
 
 [[auth-send-sms]]
-=== 인증 SMS 발송
+=== 인증 SMS 발송 (회원가입, ID 찾기)
 
 operation::인증 SMS 발송[snippets='http-request,request-fields,http-response']
+
+[[auth-send-sms-find-password]]
+=== 인증 SMS 발송 (비밀번호 찾기)
+
+operation::비밀번호 찾기 SMS 발송[snippets='http-request,request-fields,http-response']
 
 [[auth-create-token]]
 === 인증 토큰 생성
