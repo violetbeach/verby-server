@@ -1,6 +1,7 @@
 package com.verby.restapi.cover.command.application;
 
 import com.verby.restapi.common.storage.StaticStorage;
+import com.verby.restapi.user.command.application.UploadedResourcesPath;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -61,7 +62,7 @@ class CoverStorageServiceTest {
             UploadCoverResourceRequest request = new UploadCoverResourceRequest(video, highlight, thumbnail);
 
             // when
-            CoverStoragePathProperties result = coverStorageService.uploads(request);
+            UploadedResourcesPath result = coverStorageService.uploads(request);
 
             // then
             assertThat(result.getVideo()).isEqualTo(mockResult.get(0));

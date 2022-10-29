@@ -1,6 +1,7 @@
 package com.verby.restapi.cover.command.application;
 
 import com.verby.restapi.common.storage.StaticStorage;
+import com.verby.restapi.user.command.application.UploadedResourcesPath;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,8 +13,8 @@ public class CoverStorageService {
     private final StaticStorage staticStorage;
     private final CoverStoragePathProperties storagePathProperties;
 
-    public CoverStoragePathProperties uploads(UploadCoverResourceRequest request) {
-        return new CoverStoragePathProperties(
+    public UploadedResourcesPath uploads(UploadCoverResourceRequest request) {
+        return new UploadedResourcesPath(
                 uploadVideo(request.getVideo()),
                 uploadHighlight(request.getHighlight()),
                 uploadImage(request.getImage())
