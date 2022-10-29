@@ -41,6 +41,12 @@ public class UserAuthController {
         userAuthService.resetPassword(request);
     }
 
+    @PostMapping("/reset-password/send-certification-sms")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    private void resetPasswordCertificationSMS(@RequestBody SendResetPasswordSMSRequest request) {
+        userAuthService.resetPasswordCertificationSMS(request);
+    }
+
     @PostMapping
     private ResponseEntity<CreatedUserInfo> signup(@RequestBody @Valid SignUpRequest request) {
         CreatedUserInfo userInfo = userAuthService.signUp(request);

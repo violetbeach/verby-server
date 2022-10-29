@@ -17,6 +17,6 @@ public class SendCertificationSMSRequest {
     @NotBlank
     @Size(min = 11, max = 13)
     @Pattern(regexp = "^\\d*$", message = "숫자만 사용할 수 있습니다")
-    String phone;
+    private String phone;
 
 }

@@ -1,6 +1,7 @@
 package com.verby.restapi.user.presentation;
 
 import com.verby.restapi.support.presentation.BaseControllerTest;
+import com.verby.restapi.user.command.CertificationType;
 import com.verby.restapi.user.command.application.*;
 import com.verby.restapi.user.command.domain.Gender;
 import com.verby.restapi.user.command.domain.User;
@@ -64,7 +65,7 @@ class UserAuthControllerTest extends BaseControllerTest {
     void createToken() throws Exception {
         // given
         String phone = "01020492039";
-        Certification certification = generateCertification(phone);
+        Certification certification = generateCertification(phone, CertificationType.NORMAL);
         SMSCertificationRequest request = new SMSCertificationRequest(phone, certification.getCertificationNumber());
 
         // when
@@ -120,6 +121,32 @@ class UserAuthControllerTest extends BaseControllerTest {
                         fieldWithPath("id").type(JsonFieldType.NUMBER).description("계정 일련번호"),
                         fieldWithPath("login_id").type(JsonFieldType.STRING).description("계정 로그인 ID"),
                         fieldWithPath("created_at").type(JsonFieldType.STRING).description("생성 일자")
+                )
+        ));
+    }
+
+    @Test
+    @DisplayName("loginId, phone으로 비밀번호 찾기를 위한 인증번호를 발송할 수 있다.")
+    void resetPasswordCertificationSMS() throws Exception {
+        // given
+        User user = generateUser();
+        SendResetPasswordSMSRequest request = new SendResetPasswordSMSRequest(user.getPhone(), user.getLoginId());
+
+        // when
+        ResultActions result = mockMvc.perform(post("/users/reset-password/send-certification-sms")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(request)));
+
+        // then
+        result.andExpect(status().isNoContent());
+
+        // docs
+        result.andDo(document("비밀번호 찾기 SMS 발송",
+                getDocumentRequest(),
+                getDocumentResponse(),
+                requestFields(
+                        fieldWithPath("phone").type(JsonFieldType.STRING).description("휴대 전화 번호"),
+                        fieldWithPath("login_id").type(JsonFieldType.STRING).description("로그인 ID")
                 )
         ));
     }
@@ -207,8 +234,8 @@ class UserAuthControllerTest extends BaseControllerTest {
         return verificationRepository.save(verificationToken);
     };
 
-    private Certification generateCertification(String phone) {
-        return certificationRepository.save(new Certification(phone, 7248));
+    private Certification generateCertification(String phone, CertificationType type) {
+        return certificationRepository.save(new Certification(phone, 7248, type));
     }
 
     User generateUser() {
