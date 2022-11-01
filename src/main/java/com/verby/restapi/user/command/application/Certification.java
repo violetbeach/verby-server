@@ -1,11 +1,13 @@
 package com.verby.restapi.user.command.application;
 
-import com.verby.restapi.user.command.CertificationType;
 import com.verby.restapi.common.event.Events;
+import com.verby.restapi.user.command.CertificationType;
 import lombok.Getter;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.index.Indexed;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 
