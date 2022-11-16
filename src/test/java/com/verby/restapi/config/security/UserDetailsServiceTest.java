@@ -1,9 +1,10 @@
 
 package com.verby.restapi.config.security;
 
-import com.verby.restapi.account.command.application.AccountService;
-import com.verby.restapi.account.command.application.SignUpRequest;
-import org.hamcrest.Matchers;
+import com.verby.restapi.user.command.application.SignUpRequest;
+import com.verby.restapi.user.command.application.UserAuthService;
+import com.verby.restapi.user.command.application.VerificationTokenRepository;
+import com.verby.restapi.user.command.domain.VerificationToken;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,10 +23,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class UserDetailsServiceTest {
 
     @Autowired
-    AccountService accountService;
+    UserAuthService userAuthService;
 
     @Autowired
     UserDetailsService userDetailsService;
+
+    @Autowired
+    VerificationTokenRepository tokenRepository;
 
     @Autowired
     PasswordEncoder passwordEncoder;
@@ -59,13 +63,20 @@ class UserDetailsServiceTest {
     }
 
     void generateAccount(String loginId, String password) {
+        String phone = "01012345030";
+
+        VerificationToken verificationToken = new VerificationToken(phone);
+        tokenRepository.save(verificationToken);
+
         SignUpRequest signUpRequest = SignUpRequest.builder()
                 .loginId(loginId)
                 .password(password)
                 .name("testName")
+                .phone(phone)
                 .allowToMarketingNotification(false)
+                .token(verificationToken.getKey())
                 .build();
-        accountService.signUp(signUpRequest);
+        userAuthService.signUp(signUpRequest);
     }
 
 }
