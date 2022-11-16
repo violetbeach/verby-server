@@ -28,7 +28,7 @@ public class AuthenticationManagerImpl implements AuthenticationManager {
             throw new BadCredentialsException("password not matched.");
         }
 
-        return new UsernamePasswordAuthenticationToken(user.getUsername(), null, user.getAuthorities());
+        return new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
     }
 
 }

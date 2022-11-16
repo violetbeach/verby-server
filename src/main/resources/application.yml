@@ -2,6 +2,10 @@ spring:
   jackson:
     property-naming-strategy: SNAKE_CASE
 
+  servlet:
+    multipart:
+      max-file-size: 100MB
+
   session:
     store-type: redis
     redis:
@@ -9,3 +13,16 @@ spring:
 
   jpa:
     database-platform: org.hibernate.dialect.MariaDB106Dialect
+    open-in-view: false
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true
+
+static:
+  paths:
+    cover:
+      video: static/cover/videos
+      highlight: static/cover/highlight
+      image: static/cover/image
+    song:
+      image: static/song/images

@@ -24,7 +24,7 @@ public class AuthenticationFilter extends AbstractAuthenticationProcessingFilter
                                 AuthenticationSuccessHandler authenticationSuccessHandler,
                                 AuthenticationFailureHandler authenticationFailureHandler,
                                 ObjectMapper objectMapper) {
-        super(new AntPathRequestMatcher("/accounts/sessions", "POST"), authenticationManager);
+        super(new AntPathRequestMatcher("/users/sessions", "POST"), authenticationManager);
         this.setAuthenticationSuccessHandler(authenticationSuccessHandler);
         this.setAuthenticationFailureHandler(authenticationFailureHandler);
         this.objectMapper = objectMapper;

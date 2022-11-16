@@ -1,7 +1,7 @@
 package com.verby.restapi.config.security;
 
-import com.verby.restapi.account.command.domain.Account;
-import com.verby.restapi.account.command.domain.AccountRepository;
+import com.verby.restapi.user.command.domain.User;
+import com.verby.restapi.user.command.domain.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,19 +13,19 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final AccountRepository accountRepository;
+    private final UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String loginId) throws UsernameNotFoundException {
-        Account account = accountRepository.findByLoginId(loginId)
-                .orElseThrow(() -> new UsernameNotFoundException(String.format("loginId(%s) not found", loginId)));
-
+        User user = use=======rRepository.findByLoginId(loginId)
+                .orElseThrow(() -> new UsernameNotFoundException("loginId not found"));
 
         return new SecurityUser(
-                account.getLoginId(),
-                account.getPassword(),
+                user.getId(),
+                user.getLoginId(),
+                user.getPassword(),
                 AuthorityUtils.createAuthorityList(
-                        account.getRoles().stream().map(r -> String.format("ROLE_%s", r.getName().toString()))
+                        user.getRoles().stream().map(r -> String.format("ROLE_%s", r.getName().toString()))
                                 .toArray(String[]::new)
                 )
         );
