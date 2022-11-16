@@ -35,7 +35,7 @@ class CoverServiceTest {
 
         @Test
         @DisplayName("PostCoverRequest로 해당 자원들을 스토리지에 업로드한다.")
-        void success() {
+        void ItReturnPostedCoverInfo() {
             // given
             PostCoverRequest request = new PostCoverRequest(1L, "커버 영상 제목입니다.");
             request.setVideo(new MockMultipartFile("video", "cover.mp4", "video/mp4",  "Video Binary Data".getBytes()));

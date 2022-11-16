@@ -35,7 +35,7 @@ class UserAdminServiceTest {
         
         @Test
         @DisplayName("CreateAdminRequest를 가지고 관리자 회원을 생성한다.")
-        void success() {
+        void ItReturnCreatedUserInfo() {
             // given
             CreateAdminRequest createAdminRequest = CreateAdminRequest.builder()
                     .loginId("violet13")
@@ -53,7 +53,7 @@ class UserAdminServiceTest {
 
         @Test
         @DisplayName("로그인 ID가 이미 존재하면 LoginIdDuplicateException를 발생한다.")
-        void fail_duplicatedLoginId() {
+        void withDuplicatedLoginId_ItThrowLoginIdDeuplicateException() {
             // given
             CreateAdminRequest createAdminRequest = CreateAdminRequest.builder()
                     .loginId("violet13")

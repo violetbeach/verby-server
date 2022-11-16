@@ -5,6 +5,8 @@ import com.verby.restapi.user.command.application.SignUpRequest;
 import com.verby.restapi.user.command.application.UserAuthService;
 import com.verby.restapi.user.command.application.VerificationTokenRepository;
 import com.verby.restapi.user.command.domain.VerificationToken;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,11 +17,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @Transactional
 @SpringBootTest
+@DisplayName("UserDetailsService의")
 class UserDetailsServiceTest {
 
     @Autowired
@@ -34,49 +36,52 @@ class UserDetailsServiceTest {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    @Test
-    public void findByUsername() {
-        // Given
-        String id = "honey13";
-        String password = "violetBeach1";
-        generateAccount(id, password);
 
-        // When
-        UserDetails userDetails = userDetailsService.loadUserByUsername(id);
+    @Nested
+    @DisplayName("findByUsername 메서드는")
+    class findByUsername {
+        @Test
+        @DisplayName("UserDetails를 반환한다.")
+        public void ItReturnUserDetails() {
+            // Given
+            String id = "honey13";
+            String password = "violetBeach1";
+            generateAccount(id, password);
 
-        // Then
-        assertThat(passwordEncoder.matches(password, userDetails.getPassword())).isTrue();
-    }
+            // When
+            UserDetails userDetails = userDetailsService.loadUserByUsername(id);
 
-    @Test
-    public void findByUsernameFail() {
-        // Given
-        String id = "noexists123";
+            // Then
+            assertThat(passwordEncoder.matches(password, userDetails.getPassword())).isTrue();
+        }
 
-        // When + Then
-        UsernameNotFoundException exception = assertThrows(UsernameNotFoundException.class, () -> {
-            userDetailsService.loadUserByUsername(id);
-        });
+        @Test
+        @DisplayName("해당 loginId가 존재하지 않으면 UsernameNotFoundException를 발생시킨다.")
+        public void withNotExistsLoginId_ItThrowUsernameNotFoundException() {
+            // Given
+            String id = "noexists123";
 
-        assertTrue(exception.getMessage().contains(id));
+            // When + Then
+            assertThatThrownBy(() -> userDetailsService.loadUserByUsername(id))
+                    .isInstanceOf(UsernameNotFoundException.class);
+        }
 
-    }
+        void generateAccount(String loginId, String password) {
+            String phone = "01012345030";
 
-    void generateAccount(String loginId, String password) {
-        String phone = "01012345030";
+            VerificationToken verificationToken = new VerificationToken(phone);
+            tokenRepository.save(verificationToken);
 
-        VerificationToken verificationToken = new VerificationToken(phone);
-        tokenRepository.save(verificationToken);
-
-        SignUpRequest signUpRequest = SignUpRequest.builder()
-                .loginId(loginId)
-                .password(password)
-                .name("testName")
-                .phone(phone)
-                .allowToMarketingNotification(false)
-                .token(verificationToken.getKey())
-                .build();
-        userAuthService.signUp(signUpRequest);
+            SignUpRequest signUpRequest = SignUpRequest.builder()
+                    .loginId(loginId)
+                    .password(password)
+                    .name("testName")
+                    .phone(phone)
+                    .allowToMarketingNotification(false)
+                    .token(verificationToken.getKey())
+                    .build();
+            userAuthService.signUp(signUpRequest);
+        }
     }
 
 }

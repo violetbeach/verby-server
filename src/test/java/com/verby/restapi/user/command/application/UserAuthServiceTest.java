@@ -45,7 +45,7 @@ class UserAuthServiceTest {
 
         @Test
         @DisplayName("ResetPasswordRequest를 가지고 해당 token의 회원의 비밀번호를 재설정한다.")
-        void success() {
+        void ItResetUserPassword() {
             // given
             ResetPasswordRequest request = new ResetPasswordRequest("token", "new_password1234");
             User user = new User("violetBeach13", "password13", "honey", "01012345678", Gender.MALE,null, false);
@@ -80,7 +80,7 @@ class UserAuthServiceTest {
 
         @Test
         @DisplayName("생성할 회원 데이터를 가지고 회원을 생성하고, 생성한 회원을 반환한다.")
-        void success() {
+        void ItReturnCreatedUserInfo() {
             // given
             given(roleRepository.findByName(Role.MEMBER)).willReturn(new UserRole(Role.MEMBER));
             given(unavailableIDRepository.findAll()).willReturn(new ArrayList<>());
@@ -93,8 +93,8 @@ class UserAuthServiceTest {
         }
 
         @Test
-        @DisplayName("Request의 로그인 ID가 이미 존재하면 LoginIdDuplicateException이 발생한다.")
-        void fail_duplicateLoginId() {
+        @DisplayName("Request의 로그인 ID가 이미 존재하면 LoginIdDuplicateException을 발생시킨다.")
+        void withExistsLoginId_ItThrowLoginIdDuplicateException() {
             // given;
             given(userRepository.existsByLoginId(request.getLoginId()))
                     .willReturn(true);
@@ -105,8 +105,8 @@ class UserAuthServiceTest {
         }
 
         @Test
-        @DisplayName("Request의 휴대폰 번호가 이미 존재하면 LoginIdDuplicateException이 발생한다.")
-        void fail_duplicatePhoneNumber() {
+        @DisplayName("Request의 휴대폰 번호가 이미 존재하면 PhoneNumberDuplicateException을 발생시킨다.")
+        void withExistsPhone_ItThrowPhoneNumberDuplicateException() {
             // given;
             given(userRepository.existsByPhone(request.getPhone()))
                     .willReturn(true);
@@ -117,8 +117,8 @@ class UserAuthServiceTest {
         }
 
         @Test
-        @DisplayName("Request의 Login id가 사용 불가능한 ID라면 UnAvailableLoginIdException이 발생한다.")
-        void fail_unavailable_login_id() {
+        @DisplayName("Request의 Login id가 사용 불가능한 ID라면 UnAvailableLoginIdException을 발생시킨다.")
+        void withUnavailableLoginId_ItThrowUnavailableLoginIdException() {
             // given;
             given(unavailableIDRepository.findAll())
                     .willReturn(List.of(new UnavailableID(request.getLoginId())));

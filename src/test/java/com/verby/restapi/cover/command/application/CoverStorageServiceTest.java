@@ -57,7 +57,7 @@ class CoverStorageServiceTest {
 
         @Test
         @DisplayName("UploadCoverResourceRequest로 해당 자원들을 스토리지에 업로드한다.")
-        void success() {
+        void ItReturnUploadedResourcesPath() {
             // given
             UploadCoverResourceRequest request = new UploadCoverResourceRequest(video, highlight, thumbnail);
 
