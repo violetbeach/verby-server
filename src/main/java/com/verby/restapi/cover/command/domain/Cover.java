@@ -21,7 +21,7 @@ public class Cover extends BaseEntity {
 
     private long contestId;
 
-    private long userId;
+    private long covererId;
 
     private String title;
 
@@ -33,9 +33,9 @@ public class Cover extends BaseEntity {
 
     private long hits;
 
-    public Cover(long contestId, long userId, String title, String video, String highlight, String image) {
+    public Cover(long contestId, long covererId, String title, String video, String highlight, String image) {
         this.contestId = contestId;
-        this.userId = userId;
+        this.covererId = covererId;
         this.title = title;
         this.video = video;
         this.highlight = highlight;
