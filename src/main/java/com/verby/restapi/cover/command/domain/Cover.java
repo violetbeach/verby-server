@@ -5,10 +5,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Entity
@@ -21,6 +18,7 @@ public class Cover extends BaseEntity {
 
     private long contestId;
 
+    @Column(name = "user_id")
     private long publisherId;
 
     private String title;
