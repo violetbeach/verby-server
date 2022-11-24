@@ -5,10 +5,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Entity
@@ -21,7 +18,8 @@ public class Cover extends BaseEntity {
 
     private long contestId;
 
-    private long userId;
+    @Column(name = "user_id")
+    private long publisherId;
 
     private String title;
 
@@ -33,9 +31,9 @@ public class Cover extends BaseEntity {
 
     private long hits;
 
-    public Cover(long contestId, long userId, String title, String video, String highlight, String image) {
+    public Cover(long contestId, long publisherId, String title, String video, String highlight, String image) {
         this.contestId = contestId;
-        this.userId = userId;
+        this.publisherId = publisherId;
         this.title = title;
         this.video = video;
         this.highlight = highlight;
