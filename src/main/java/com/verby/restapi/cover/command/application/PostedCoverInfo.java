@@ -13,6 +13,7 @@ public class PostedCoverInfo {
     private final Long id;
     private final long contestId;
     private final String title;
+    private final String content;
     private final String video;
     private final String highlight;
     private final String image;
@@ -23,6 +24,7 @@ public class PostedCoverInfo {
                 cover.getId(),
                 cover.getContestId(),
                 cover.getTitle(),
+                cover.getContent(),
                 cover.getVideo(),
                 cover.getHighlight(),
                 cover.getImage(),

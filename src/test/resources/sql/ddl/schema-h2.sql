@@ -79,6 +79,7 @@ CREATE TABLE `cover`
     `contest_id` bigint(20)   NOT NULL,
     `user_id`    bigint(20)   NOT NULL,
     `title`      varchar(100) NOT NULL,
+    `content`    text         NULL,
     `video`      varchar(255) NOT NULL,
     `highlight`  varchar(255) NULL,
     `image`      varchar(255) NULL,

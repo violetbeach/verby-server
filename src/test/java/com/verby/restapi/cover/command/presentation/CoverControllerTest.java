@@ -43,7 +43,8 @@ class CoverControllerTest extends BaseControllerTest {
         // given
         PostCoverRequest request = new PostCoverRequest(
                 1L,
-                "title"
+                "title",
+                "content"
         );
         MockMultipartFile requestJson = new MockMultipartFile("request", "test", "application/json", objectMapper.writeValueAsBytes(request));
         MockMultipartFile video = new MockMultipartFile("video", "cover.mp4", "video/mp4",  "Video Binary Data".getBytes());
@@ -65,7 +66,7 @@ class CoverControllerTest extends BaseControllerTest {
                 getDocumentRequest(),
                 getDocumentResponse(),
                 requestParts(
-                        partWithName("request").description("커버 정보 ({ contest_id: number, title: string })"),
+                        partWithName("request").description("커버 정보 ({ contest_id: number, title: string, content: string })"),
                         partWithName("video").description("비디오 경로"),
                         partWithName("highlight").description("하이라이트 경로"),
                         partWithName("image").description("썸네일 이미지 경로")
@@ -74,6 +75,7 @@ class CoverControllerTest extends BaseControllerTest {
                         fieldWithPath("id").type(JsonFieldType.NUMBER).description("커버 일련번호"),
                         fieldWithPath("contest_id").type(JsonFieldType.NUMBER).description("선정곡 일련번호"),
                         fieldWithPath("title").type(JsonFieldType.STRING).description("제목"),
+                        fieldWithPath("content").type(JsonFieldType.STRING).description("내용"),
                         fieldWithPath("video").type(JsonFieldType.STRING).description("풀 영상 url"),
                         fieldWithPath("highlight").type(JsonFieldType.STRING).description("하이라이트 url"),
                         fieldWithPath("image").type(JsonFieldType.STRING).description("썸네일 이미지 url"),

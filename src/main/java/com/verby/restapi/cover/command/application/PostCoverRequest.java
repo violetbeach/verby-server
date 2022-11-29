@@ -6,12 +6,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.NotEmpty;
+
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class PostCoverRequest {
 
     private long contestId;
+    @NotEmpty
     private String title;
+    private String content;
     @JsonIgnore
     private long userId;
     @JsonIgnore
@@ -37,8 +41,9 @@ public class PostCoverRequest {
         this.image = image;
     }
 
-    public PostCoverRequest(long contestId, String title) {
+    public PostCoverRequest(long contestId, String title, String content) {
         this.contestId = contestId;
         this.title = title;
+        this.content = content;
     }
 }

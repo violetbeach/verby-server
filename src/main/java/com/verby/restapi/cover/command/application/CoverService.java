@@ -28,6 +28,7 @@ public class CoverService {
                 request.getContestId(),
                 request.getUserId(),
                 request.getTitle(),
+                request.getContent(),
                 resourcesPath.getVideo(),
                 resourcesPath.getHighlight(),
                 resourcesPath.getImage()

@@ -23,6 +23,8 @@ public class Cover extends BaseEntity {
 
     private String title;
 
+    private String content;
+
     private String video;
 
     private String highlight;
@@ -31,10 +33,11 @@ public class Cover extends BaseEntity {
 
     private long hits;
 
-    public Cover(long contestId, long publisherId, String title, String video, String highlight, String image) {
+    public Cover(long contestId, long publisherId, String title, String content, String video, String highlight, String image) {
         this.contestId = contestId;
         this.publisherId = publisherId;
         this.title = title;
+        this.content = content;
         this.video = video;
         this.highlight = highlight;
         this.image = image;
