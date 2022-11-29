@@ -16,7 +16,7 @@ import javax.persistence.Id;
          SELECT c.id as id,
              c.contest_id,
              u.login_id as publisher_name,
-             c.user_id as publisher_id, c.title, c.video, c.highlight, c.image,
+             c.user_id as publisher_id, c.title, c.content, c.video, c.highlight, c.image,
              s.artist_id, a.name as artist_name,
              ct.song_id, s.name as song_name    
          FROM cover c    
@@ -36,6 +36,7 @@ public class CoverSummary {
     private long publisherId;
     private String publisherName;
     private String title;
+    private String content;
     private String video;
     private String highlight;
     private String image;

@@ -144,6 +144,13 @@ operation::유저 정보 조회[snippets='http-request,http-response,response-fi
 
 operation::커버 등록[snippets='http-request,request-parts,http-response,response-fields']
 
+[[findById-cover]]
+=== 커버 단일 조회
+
+커버 일련번호로 조회할 수 있다.
+
+operation::커버 단일 조회[snippets='http-request,path-parameters,http-response,response-fields']
+
 [[sms-auth]]
 == SMS 인증
 
