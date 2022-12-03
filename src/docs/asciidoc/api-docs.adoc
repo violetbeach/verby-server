@@ -151,6 +151,13 @@ operation::커버 등록[snippets='http-request,request-parts,http-response,resp
 
 operation::커버 단일 조회[snippets='http-request,path-parameters,http-response,response-fields']
 
+[[noOffsetSearch-cover]]
+=== 커버 전체 조회
+
+커버를 No Offset 방식으로 조회할 수 있다.
+
+operation::커버 전체 조회[snippets='http-request,request-parameters,http-response,response-fields']
+
 [[sms-auth]]
 == SMS 인증
 

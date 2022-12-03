@@ -470,6 +470,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#create-cover">커버 등록</a></li>
 <li><a href="#findById-cover">커버 단일 조회</a></li>
+<li><a href="#noOffsetSearch-cover">커버 전체 조회</a></li>
 </ul>
 </li>
 <li><a href="#sms-auth">SMS 인증</a>
@@ -715,7 +716,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=M2Y0MGEzMGEtZWUzNy00ZGI3LWIxZTAtMDcyNTgyMTM5NzI2; Path=/; HttpOnly; SameSite=Lax</code></pre>
+Set-Cookie: SESSION=MjkyNjg0NmMtYTUxNy00NGExLTgwZWQtZWFlNmY3NTRhYzFk; Path=/; HttpOnly; SameSite=Lax</code></pre>
 </div>
 </div>
 </div>
@@ -742,7 +743,7 @@ Host: api.verby.co.kr
   "phone" : "01013524302",
   "gender" : "MALE",
   "allow_to_marketing_notification" : true,
-  "token" : "b6db2950-ff41-470d-b30c-fa562ab9170c"
+  "token" : "6d225d7c-755f-465e-8c28-2f394f9f393f"
 }</code></pre>
 </div>
 </div>
@@ -831,7 +832,7 @@ Content-Length: 87
 {
   "id" : 6,
   "login_id" : "test123",
-  "created_at" : "2022-11-29T21:53:20.463259"
+  "created_at" : "2022-12-03T19:37:26.105408"
 }</code></pre>
 </div>
 </div>
@@ -878,7 +879,7 @@ Content-Length: 87
 <h4 id="users-find-loginid_http_request"><a class="link" href="#users-find-loginid_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /users/login-id?verificationToken=a722b165-bbb2-477a-a2ad-d0042267e8e4 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /users/login-id?verificationToken=8dc848c7-9534-44c5-8af5-39c98eb57902 HTTP/1.1
 Host: api.verby.co.kr</code></pre>
 </div>
 </div>
@@ -921,7 +922,7 @@ Content-Length: 90
 {
   "id" : 9,
   "login_id" : "member1234",
-  "created_at" : "2022-11-29T21:53:20.803989"
+  "created_at" : "2022-12-03T19:37:26.417307"
 }</code></pre>
 </div>
 </div>
@@ -968,7 +969,7 @@ Content-Length: 90
 <h4 id="users-reset-password_http_request"><a class="link" href="#users-reset-password_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PUT /users/password?verificationToken=879817bc-f560-4af2-aaac-408d936e9d4a HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PUT /users/password?verificationToken=63b809a0-37ba-4620-932d-a7337e591bab HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Content-Length: 38
 Host: api.verby.co.kr
@@ -1121,7 +1122,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=MDQ4MTU5YjQtZDFlMC00YTgxLWIwZWItYWIwOGUzZGJmMGM2; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=MjExOTU5M2EtY2RlOS00MzUzLWI0MjgtNjc1M2JkYzc4YWQ3; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 81
 
 {
@@ -1258,18 +1259,18 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=ZDJjZjc1MWUtZTNjZi00MDliLThlNTEtNWY1YmRlN2ZkYzY3; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=Y2NjYjg1ZGYtZTBhMS00ZjI0LTk1NmYtZWExYmQ5ZmU0YzY1; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 380
 
 {
-  "id" : 2,
+  "id" : 5,
   "contest_id" : 1,
   "title" : "title",
   "content" : "content",
   "video" : "http://localhost:8001/verby-deploy/static/cover/videos/cover.mp4",
   "highlight" : "http://localhost:8001/verby-deploy/static/cover/highlight/highlight.mp4",
   "image" : "http://localhost:8001/verby-deploy/static/cover/image/thumbnail.png",
-  "created_at" : "2022-11-29T21:53:17.51382"
+  "created_at" : "2022-12-03T19:37:23.44488"
 }</code></pre>
 </div>
 </div>
@@ -1341,7 +1342,7 @@ Content-Length: 380
 <h4 id="findById-cover_http_request"><a class="link" href="#findById-cover_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /covers/1 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /covers/4 HTTP/1.1
 Host: api.verby.co.kr</code></pre>
 </div>
 </div>
@@ -1382,22 +1383,22 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=YzhiYWI3ZjAtNTA1OS00MzczLWI5ZGItMDM1ZGM3YzBhMzU0; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=ZDM4MjJmOTItYjIyMi00YzE0LTg4NDktNGJlNGY4NTkwMjEz; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 379
 
 {
-  "id" : 1,
-  "contest_id" : 1,
-  "publisher_id" : 3,
+  "id" : 4,
+  "contest_id" : 2,
+  "publisher_id" : 4,
   "publisher_name" : "member1234",
   "title" : "테스트 커버 영상",
   "content" : "영상 설명 내용",
   "video" : "/test/video/test.mp4",
   "highlight" : "/test/highlight/test.mp4",
   "image" : "/image/highlight/test.mp4",
-  "artist_id" : 1,
+  "artist_id" : 2,
   "artist_name" : "IU",
-  "song_id" : 1,
+  "song_id" : 2,
   "song_name" : "좋은 날"
 }</code></pre>
 </div>
@@ -1479,6 +1480,189 @@ Content-Length: 379
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>song_name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">곡 이름</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="noOffsetSearch-cover"><a class="link" href="#noOffsetSearch-cover">커버 전체 조회</a></h3>
+<div class="paragraph">
+<p>커버를 No Offset 방식으로 조회할 수 있다.</p>
+</div>
+<div class="sect3">
+<h4 id="noOffsetSearch-cover_http_request"><a class="link" href="#noOffsetSearch-cover_http_request">HTTP request</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /covers?coverIdLt=10&amp;pageSize=10 HTTP/1.1
+Host: api.verby.co.kr</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="noOffsetSearch-cover_request_parameters"><a class="link" href="#noOffsetSearch-cover_request_parameters">Request parameters</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>coverIdLt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">커버 id 조건 (lt)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pageSize</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">페이지 사이즈</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="noOffsetSearch-cover_http_response"><a class="link" href="#noOffsetSearch-cover_http_response">Example response</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Set-Cookie: SESSION=OTE2MGRmOTQtMGE0MC00ODdkLWI2MTQtOGYwNzc0YTJkY2Fm; Path=/; HttpOnly; SameSite=Lax
+Content-Length: 1145
+
+[ {
+  "id" : 3,
+  "contest_id" : 1,
+  "publisher_id" : 3,
+  "publisher_name" : "member1234",
+  "title" : "테스트 커버 영상",
+  "content" : "영상 설명 내용",
+  "video" : "/test/video/test.mp4",
+  "highlight" : "/test/highlight/test.mp4",
+  "image" : "/image/highlight/test.mp4",
+  "artist_id" : 1,
+  "artist_name" : "IU",
+  "song_id" : 1,
+  "song_name" : "좋은 날"
+}, {
+  "id" : 2,
+  "contest_id" : 1,
+  "publisher_id" : 3,
+  "publisher_name" : "member1234",
+  "title" : "테스트 커버 영상",
+  "content" : "영상 설명 내용",
+  "video" : "/test/video/test.mp4",
+  "highlight" : "/test/highlight/test.mp4",
+  "image" : "/image/highlight/test.mp4",
+  "artist_id" : 1,
+  "artist_name" : "IU",
+  "song_id" : 1,
+  "song_name" : "좋은 날"
+}, {
+  "id" : 1,
+  "contest_id" : 1,
+  "publisher_id" : 3,
+  "publisher_name" : "member1234",
+  "title" : "테스트 커버 영상",
+  "content" : "영상 설명 내용",
+  "video" : "/test/video/test.mp4",
+  "highlight" : "/test/highlight/test.mp4",
+  "image" : "/image/highlight/test.mp4",
+  "artist_id" : 1,
+  "artist_name" : "IU",
+  "song_id" : 1,
+  "song_name" : "좋은 날"
+} ]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="noOffsetSearch-cover_response_fields"><a class="link" href="#noOffsetSearch-cover_response_fields">Response fields</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">필드명</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">타입</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">설명</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">커버 일련번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].contest_id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">선정곡 일련번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].title</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">제목</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].content</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].video</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">풀 영상 url</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].highlight</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">하이라이트 url</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].image</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">썸네일 이미지 url</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].publisher_id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">유저 일련번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].publisher_name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">유저 닉네임</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].artist_id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">가수 일련번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].artist_name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">가수 이름</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].song_id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">곡 일련번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].song_name</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">곡 이름</p></td>
 </tr>
@@ -1677,10 +1861,10 @@ Content-Length: 190
 
 {
   "id" : 2,
-  "key" : "dc2bc360-35d2-4864-92f8-1ce08eb12afb",
+  "key" : "3da5266f-d436-4fb2-875b-23e0c5f23776",
   "phone" : "01020492039",
-  "expiration_date" : "2022-12-06T21:53:20.617382",
-  "created_at" : "2022-11-29T21:53:20.617821"
+  "expiration_date" : "2022-12-10T19:37:26.239137",
+  "created_at" : "2022-12-03T19:37:26.239454"
 }</code></pre>
 </div>
 </div>
@@ -1881,13 +2065,13 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=ZGJiNzA0OTEtY2I4Mi00MzM0LWJkZGEtNDg0Mjc3ZTkwOGMx; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=MjlhZThkZGEtNzAyNi00NmU2LTg4NjYtOTA4ZjdjNTQxMDVj; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 87
 
 {
   "id" : 5,
   "login_id" : "test123",
-  "created_at" : "2022-11-29T21:53:20.262693"
+  "created_at" : "2022-12-03T19:37:25.906831"
 }</code></pre>
 </div>
 </div>
@@ -1982,7 +2166,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=N2RmNGY5MjgtNWU5Mi00ZmY1LWE2M2ItZWY2MzYwYzhlYjM5; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=NTU4MmNkZTQtNGU5Yy00NDI5LWE1MGItYjUyODU3ZWZjZTUx; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 31
 
 {
@@ -2108,7 +2292,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=YWUyOWQ3NmYtNjAxMS00YTYwLTkzMzAtNGVhZDZkMzhiOWVl; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=MGIxYjYyZjMtZTc4Yy00MzU1LTk2YjItZTAxNTIzY2EzZjY0; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 142
 
 {
@@ -2243,7 +2427,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=Nzg0MDQ3YjYtMzNmOS00NmNlLTllNGUtOGYwYzVlYzExMmVk; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=ODYwM2I1MzUtNDFmMC00NGFiLThmMWYtODRjMDBhMjIwZjFm; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 233
 
 {
@@ -2253,7 +2437,7 @@ Content-Length: 233
   "round" : 148,
   "start_time" : "2022-08-01T00:00:00",
   "end_time" : "2022-08-02T00:00:00",
-  "created_at" : "2022-11-29T21:53:11.897927"
+  "created_at" : "2022-12-03T19:37:17.979883"
 }</code></pre>
 </div>
 </div>
@@ -2380,14 +2564,14 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=ZTRiNWQxYTEtZGNlYy00MWQ3LWI2MTItNWYzYjhmZWY0OWY3; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=N2YwZmYzMzItNWM4MS00NzdiLWJmNWQtYjM1Y2UyMTVjODYz; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 199
 
 {
   "id" : 1,
   "title" : "커버 영상 업로드 관련 문의입니다.",
   "content" : "커버 영상을 어떻게 올리는 지 모르겠어요.",
-  "created_at" : "2022-11-29T21:53:17.633591"
+  "created_at" : "2022-12-03T19:37:23.569694"
 }</code></pre>
 </div>
 </div>
@@ -2456,7 +2640,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=YmZlOWYzOTYtYTJlNC00NTE5LWI0NzEtMTRlODJmM2Q5MmZh; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=ZThiM2IzNWYtZGE1ZS00ZTMwLTllZDktZGQ3MGZkMzI0NDg1; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 304
 
 [ {
@@ -2467,7 +2651,7 @@ Content-Length: 304
   "content" : "노래가 재생되지 않는데 어떻게 하죠?",
   "answer" : null,
   "status" : "WAITING_ANSWER",
-  "created_at" : "2022-11-29T21:53:17.680047",
+  "created_at" : "2022-12-03T19:37:23.612687",
   "answered_at" : null
 } ]</code></pre>
 </div>
@@ -2558,7 +2742,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=NDRhYjBiMTAtNWI5MC00ZDMxLThmYWYtMzJmYmYyMWI4YTdk; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=YzAyYzM5MDMtNDhlMC00ZWVlLWEzMjgtZjU0NGM2YjBmM2I1; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 61
 
 {
@@ -2694,7 +2878,7 @@ Content-Length: 61
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2022-11-29 21:50:10 +0900
+Last updated 2022-12-03 19:36:47 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">

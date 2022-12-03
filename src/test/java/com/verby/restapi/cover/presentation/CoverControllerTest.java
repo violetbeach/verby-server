@@ -28,6 +28,7 @@ import static com.verby.restapi.support.fixture.domain.ArtistFixture.IU;
 import static com.verby.restapi.support.fixture.domain.CoverFixture.NORMAL_COVER;
 import static com.verby.restapi.support.fixture.domain.SongFixture.좋은_날;
 import static com.verby.restapi.support.fixture.domain.UserFixture.NORMAL_USER;
+import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.multipart;
@@ -50,6 +51,53 @@ class CoverControllerTest extends BaseControllerTest {
     @AfterEach
     public void tearDown() {
         s3Mock.stop();
+    }
+
+    @Test
+    @DisplayName("CoverSummary를 전체 조회할 수 있다.")
+    void findAll() throws Exception {
+        // given
+        User user = 유저_생성();
+        Artist artist = 가수_생성();
+        Song song = 곡_생성(artist);
+        Contest contest = 선정곡_생성(song);
+
+        커버_영상_생성(user, contest);
+        커버_영상_생성(user, contest);
+        커버_영상_생성(user, contest);
+
+        // when
+        ResultActions result = mockMvc.perform(get("/covers")
+                .param("coverIdLt", "10")
+                .param("pageSize", "10"));
+
+        // then
+        result.andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(3)));
+
+        result.andDo(document("커버 전체 조회",
+                getDocumentRequest(),
+                getDocumentResponse(),
+                requestParameters(
+                        parameterWithName("coverIdLt").description("커버 id 조건 (lt)"),
+                        parameterWithName("pageSize").description("페이지 사이즈")
+                ),
+                responseFields(
+                        fieldWithPath("[].id").type(JsonFieldType.NUMBER).description("커버 일련번호"),
+                        fieldWithPath("[].contest_id").type(JsonFieldType.NUMBER).description("선정곡 일련번호"),
+                        fieldWithPath("[].title").type(JsonFieldType.STRING).description("제목"),
+                        fieldWithPath("[].content").type(JsonFieldType.STRING).description("내용"),
+                        fieldWithPath("[].video").type(JsonFieldType.STRING).description("풀 영상 url"),
+                        fieldWithPath("[].highlight").type(JsonFieldType.STRING).description("하이라이트 url"),
+                        fieldWithPath("[].image").type(JsonFieldType.STRING).description("썸네일 이미지 url"),
+                        fieldWithPath("[].publisher_id").type(JsonFieldType.NUMBER).description("유저 일련번호"),
+                        fieldWithPath("[].publisher_name").type(JsonFieldType.STRING).description("유저 닉네임"),
+                        fieldWithPath("[].artist_id").type(JsonFieldType.NUMBER).description("가수 일련번호"),
+                        fieldWithPath("[].artist_name").type(JsonFieldType.STRING).description("가수 이름"),
+                        fieldWithPath("[].song_id").type(JsonFieldType.NUMBER).description("곡 일련번호"),
+                        fieldWithPath("[].song_name").type(JsonFieldType.STRING).description("곡 이름")
+                )
+        ));
     }
 
     @Test

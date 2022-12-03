@@ -25,4 +25,8 @@ public enum CoverFixture {
         return new Cover(contestId, publisherId, title, content, video, highlight, image);
     }
 
+    public Cover getCover(long contestId, long publisherId, String title) {
+        return new Cover(contestId, publisherId, title, content, video, highlight, image);
+    }
+
 }

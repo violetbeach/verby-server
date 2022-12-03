@@ -6,7 +6,6 @@ import org.springframework.data.repository.Repository;
 import java.util.Optional;
 
 public interface CoverSummaryDao extends Repository<CoverSummary, Long> {
-
     Optional<CoverSummary> findById(long id);
 
 }
