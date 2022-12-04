@@ -469,6 +469,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#covers">커버</a>
 <ul class="sectlevel2">
 <li><a href="#create-cover">커버 등록</a></li>
+<li><a href="#upload-cover">커버 영상 업로드</a></li>
+<li><a href="#upload-highlight-cover">커버 하이라이트 업로드</a></li>
+<li><a href="#upload-thumbnail-cover">커버 썸네일 이미지 업로드</a></li>
 <li><a href="#findById-cover">커버 단일 조회</a></li>
 <li><a href="#noOffsetSearch-cover">커버 전체 조회</a></li>
 </ul>
@@ -716,7 +719,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=MjkyNjg0NmMtYTUxNy00NGExLTgwZWQtZWFlNmY3NTRhYzFk; Path=/; HttpOnly; SameSite=Lax</code></pre>
+Set-Cookie: SESSION=YjhhMmQyYzEtNDJlNy00YzBiLTgwNGQtNjI5Y2JiNzU0NGM1; Path=/; HttpOnly; SameSite=Lax</code></pre>
 </div>
 </div>
 </div>
@@ -743,7 +746,7 @@ Host: api.verby.co.kr
   "phone" : "01013524302",
   "gender" : "MALE",
   "allow_to_marketing_notification" : true,
-  "token" : "6d225d7c-755f-465e-8c28-2f394f9f393f"
+  "token" : "00826a8e-156a-4d30-8104-d713b6ae653e"
 }</code></pre>
 </div>
 </div>
@@ -832,7 +835,7 @@ Content-Length: 87
 {
   "id" : 6,
   "login_id" : "test123",
-  "created_at" : "2022-12-03T19:37:26.105408"
+  "created_at" : "2022-12-04T22:06:39.667759"
 }</code></pre>
 </div>
 </div>
@@ -879,7 +882,7 @@ Content-Length: 87
 <h4 id="users-find-loginid_http_request"><a class="link" href="#users-find-loginid_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /users/login-id?verificationToken=8dc848c7-9534-44c5-8af5-39c98eb57902 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /users/login-id?verificationToken=c4bf1d46-7d5e-48e4-9ff6-c559981ac29a HTTP/1.1
 Host: api.verby.co.kr</code></pre>
 </div>
 </div>
@@ -922,7 +925,7 @@ Content-Length: 90
 {
   "id" : 9,
   "login_id" : "member1234",
-  "created_at" : "2022-12-03T19:37:26.417307"
+  "created_at" : "2022-12-04T22:06:39.993937"
 }</code></pre>
 </div>
 </div>
@@ -969,7 +972,7 @@ Content-Length: 90
 <h4 id="users-reset-password_http_request"><a class="link" href="#users-reset-password_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PUT /users/password?verificationToken=63b809a0-37ba-4620-932d-a7337e591bab HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PUT /users/password?verificationToken=33d6b852-0a77-45f2-bbf6-2f88f55414bb HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Content-Length: 38
 Host: api.verby.co.kr
@@ -1122,7 +1125,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=MjExOTU5M2EtY2RlOS00MzUzLWI0MjgtNjc1M2JkYzc4YWQ3; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=ZmYyMTkwODgtNDRhNy00NmFlLWFhNWMtNjNiYjUxNDcwMTc0; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 81
 
 {
@@ -1187,61 +1190,71 @@ Content-Length: 81
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /covers HTTP/1.1
-Content-Type: multipart/form-data;charset=UTF-8; boundary=6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
+Content-Type: application/json;charset=UTF-8
+Content-Length: 252
 Host: api.verby.co.kr
 
---6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
-Content-Disposition: form-data; name=video; filename=cover.mp4
-Content-Type: video/mp4
-
-Video Binary Data
---6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
-Content-Disposition: form-data; name=highlight; filename=highlight.mp4
-Content-Type: video/mp4
-
-Video Binary Data
---6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
-Content-Disposition: form-data; name=image; filename=thumbnail.png
-Content-Type: image/png
-
-Image Binary Data
---6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
-Content-Disposition: form-data; name=request; filename=test
-Content-Type: application/json
-
-{"contest_id":1,"title":"title","content":"content"}
---6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm--</code></pre>
+{
+  "contest_id" : 1,
+  "title" : "커버 영상 제목입니다.",
+  "content" : "커버 영상 설명",
+  "video" : "/static/cover/video/sample.mp4",
+  "highlight" : "/static/cover/highlight/sample.mp4",
+  "image" : "/static/cover/image/sample.png"
+}</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="create-cover_request_parts"><a class="link" href="#create-cover_request_parts">Request parts</a></h4>
+<h4 id="create-cover_request_fields"><a class="link" href="#create-cover_request_fields">Request fields</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Part</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>request</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">커버 정보 ({ contest_id: number, title: string, content: string })</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">필드명</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">타입</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">필수값</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">설명</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>contest_id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">선정곡 일련번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>title</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">제목</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>content</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>video</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">비디오 경로</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">전체 영상 경로</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>highlight</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">하이라이트 경로</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>image</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">썸네일 이미지 경로</p></td>
 </tr>
 </tbody>
@@ -1251,7 +1264,7 @@ Content-Type: application/json
 <h4 id="create-cover_http_response"><a class="link" href="#create-cover_http_response">Example response</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 202 Accepted
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 201 Created
 Content-Type: application/json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
@@ -1259,18 +1272,18 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=Y2NjYjg1ZGYtZTBhMS00ZjI0LTk1NmYtZWExYmQ5ZmU0YzY1; Path=/; HttpOnly; SameSite=Lax
-Content-Length: 380
+Set-Cookie: SESSION=YTQzM2JhNjgtZWVhMi00MjhjLWI3MmQtMTQxMmY4NDdiMDVm; Path=/; HttpOnly; SameSite=Lax
+Content-Length: 311
 
 {
-  "id" : 5,
+  "id" : 1,
   "contest_id" : 1,
-  "title" : "title",
-  "content" : "content",
-  "video" : "http://localhost:8001/verby-deploy/static/cover/videos/cover.mp4",
-  "highlight" : "http://localhost:8001/verby-deploy/static/cover/highlight/highlight.mp4",
-  "image" : "http://localhost:8001/verby-deploy/static/cover/image/thumbnail.png",
-  "created_at" : "2022-12-03T19:37:23.44488"
+  "title" : "커버 영상 제목입니다.",
+  "content" : "커버 영상 설명",
+  "video" : "/static/cover/video/sample.mp4",
+  "highlight" : "/static/cover/highlight/sample.mp4",
+  "image" : "/static/cover/image/sample.png",
+  "created_at" : "2022-12-04T22:06:36.051685"
 }</code></pre>
 </div>
 </div>
@@ -1334,6 +1347,195 @@ Content-Length: 380
 </div>
 </div>
 <div class="sect2">
+<h3 id="upload-cover"><a class="link" href="#upload-cover">커버 영상 업로드</a></h3>
+<div class="paragraph">
+<p>커버 영상을 업로드할 수 있다.</p>
+</div>
+<div class="sect3">
+<h4 id="upload-cover_http_request"><a class="link" href="#upload-cover_http_request">HTTP request</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /covers/videos HTTP/1.1
+Content-Type: multipart/form-data;charset=UTF-8; boundary=6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
+Host: api.verby.co.kr
+
+--6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
+Content-Disposition: form-data; name=video; filename=cover.mp4
+Content-Type: video/mp4
+
+Video Binary Data
+--6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm--</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="upload-cover_request_parts"><a class="link" href="#upload-cover_request_parts">Request parts</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Part</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>video</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">전체 영상 경로</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="upload-cover_http_response"><a class="link" href="#upload-cover_http_response">Example response</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 202 Accepted
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 64
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Set-Cookie: SESSION=YzYzMjdhZjItYTdmOS00OTBhLTg4NDMtMmQ2MzMzYzE3Mzhm; Path=/; HttpOnly; SameSite=Lax
+
+http://localhost:8001/verby-deploy/static/cover/videos/cover.mp4</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="upload-highlight-cover"><a class="link" href="#upload-highlight-cover">커버 하이라이트 업로드</a></h3>
+<div class="paragraph">
+<p>커버 하이라이트 영상을 업로드할 수 있다.</p>
+</div>
+<div class="sect3">
+<h4 id="upload-highlight-cover_http_request"><a class="link" href="#upload-highlight-cover_http_request">HTTP request</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /covers/highlights HTTP/1.1
+Content-Type: multipart/form-data;charset=UTF-8; boundary=6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
+Host: api.verby.co.kr
+
+--6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
+Content-Disposition: form-data; name=highlight; filename=highlight.mp4
+Content-Type: video/mp4
+
+Highlight Binary Data
+--6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm--</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="upload-highlight-cover_request_parts"><a class="link" href="#upload-highlight-cover_request_parts">Request parts</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Part</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>highlight</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">하이라이트 영상 경로</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="upload-highlight-cover_http_response"><a class="link" href="#upload-highlight-cover_http_response">Example response</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 202 Accepted
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 68
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Set-Cookie: SESSION=ZWJiNjgzOWYtNjRlMy00MDRjLWE0YjMtNDdlN2QxZjU1NGZh; Path=/; HttpOnly; SameSite=Lax
+
+http://localhost:8001/verby-deploy/static/cover/videos/highlight.mp4</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="upload-thumbnail-cover"><a class="link" href="#upload-thumbnail-cover">커버 썸네일 이미지 업로드</a></h3>
+<div class="paragraph">
+<p>커버 썸네일 이미지를 업로드할 수 있다.</p>
+</div>
+<div class="sect3">
+<h4 id="upload-thumbnail-cover_http_request"><a class="link" href="#upload-thumbnail-cover_http_request">HTTP request</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /covers/images HTTP/1.1
+Content-Type: multipart/form-data;charset=UTF-8; boundary=6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
+Host: api.verby.co.kr
+
+--6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
+Content-Disposition: form-data; name=image; filename=thumbnail.png
+Content-Type: image/png
+
+Image Binary Data
+--6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm--</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="upload-thumbnail-cover_request_parts"><a class="link" href="#upload-thumbnail-cover_request_parts">Request parts</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Part</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>image</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">썸네일 이미지 경로</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="upload-thumbnail-cover_http_response"><a class="link" href="#upload-thumbnail-cover_http_response">Example response</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 202 Accepted
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 68
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Set-Cookie: SESSION=MjA5MWM5MzgtMzlmMy00MzUyLWIxN2YtNTc4MDk2NWQ2NGUz; Path=/; HttpOnly; SameSite=Lax
+
+http://localhost:8001/verby-deploy/static/cover/videos/thumbnail.png</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="findById-cover"><a class="link" href="#findById-cover">커버 단일 조회</a></h3>
 <div class="paragraph">
 <p>커버 일련번호로 조회할 수 있다.</p>
@@ -1342,7 +1544,7 @@ Content-Length: 380
 <h4 id="findById-cover_http_request"><a class="link" href="#findById-cover_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /covers/4 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /covers/5 HTTP/1.1
 Host: api.verby.co.kr</code></pre>
 </div>
 </div>
@@ -1383,11 +1585,11 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=ZDM4MjJmOTItYjIyMi00YzE0LTg4NDktNGJlNGY4NTkwMjEz; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=ODE5NTY4YTItNmFlMy00NmMxLTk4ZTQtYTdkY2ViZDI2Nzhh; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 379
 
 {
-  "id" : 4,
+  "id" : 5,
   "contest_id" : 2,
   "publisher_id" : 4,
   "publisher_name" : "member1234",
@@ -1538,10 +1740,24 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=OTE2MGRmOTQtMGE0MC00ODdkLWI2MTQtOGYwNzc0YTJkY2Fm; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=NjdmZjE0MDAtZTNlMC00MGI4LWI2NGItMGEzNDRmNTUyZDg5; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 1145
 
 [ {
+  "id" : 4,
+  "contest_id" : 1,
+  "publisher_id" : 3,
+  "publisher_name" : "member1234",
+  "title" : "테스트 커버 영상",
+  "content" : "영상 설명 내용",
+  "video" : "/test/video/test.mp4",
+  "highlight" : "/test/highlight/test.mp4",
+  "image" : "/image/highlight/test.mp4",
+  "artist_id" : 1,
+  "artist_name" : "IU",
+  "song_id" : 1,
+  "song_name" : "좋은 날"
+}, {
   "id" : 3,
   "contest_id" : 1,
   "publisher_id" : 3,
@@ -1557,20 +1773,6 @@ Content-Length: 1145
   "song_name" : "좋은 날"
 }, {
   "id" : 2,
-  "contest_id" : 1,
-  "publisher_id" : 3,
-  "publisher_name" : "member1234",
-  "title" : "테스트 커버 영상",
-  "content" : "영상 설명 내용",
-  "video" : "/test/video/test.mp4",
-  "highlight" : "/test/highlight/test.mp4",
-  "image" : "/image/highlight/test.mp4",
-  "artist_id" : 1,
-  "artist_name" : "IU",
-  "song_id" : 1,
-  "song_name" : "좋은 날"
-}, {
-  "id" : 1,
   "contest_id" : 1,
   "publisher_id" : 3,
   "publisher_name" : "member1234",
@@ -1861,10 +2063,10 @@ Content-Length: 190
 
 {
   "id" : 2,
-  "key" : "3da5266f-d436-4fb2-875b-23e0c5f23776",
+  "key" : "04f23e82-c1b4-4b20-9174-4586c3b20eba",
   "phone" : "01020492039",
-  "expiration_date" : "2022-12-10T19:37:26.239137",
-  "created_at" : "2022-12-03T19:37:26.239454"
+  "expiration_date" : "2022-12-11T22:06:39.810519",
+  "created_at" : "2022-12-04T22:06:39.810848"
 }</code></pre>
 </div>
 </div>
@@ -2065,13 +2267,13 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=MjlhZThkZGEtNzAyNi00NmU2LTg4NjYtOTA4ZjdjNTQxMDVj; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=MDVkMTA3Y2UtZjA5NS00NDA5LTk4OTgtMDQ5MTlmYTNkNzJl; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 87
 
 {
   "id" : 5,
   "login_id" : "test123",
-  "created_at" : "2022-12-03T19:37:25.906831"
+  "created_at" : "2022-12-04T22:06:39.462507"
 }</code></pre>
 </div>
 </div>
@@ -2166,7 +2368,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=NTU4MmNkZTQtNGU5Yy00NDI5LWE1MGItYjUyODU3ZWZjZTUx; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=NjM1MDM2YTctMjdhYi00YTkwLWFmYjktODg4MzQzOGY1MTNh; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 31
 
 {
@@ -2292,7 +2494,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=MGIxYjYyZjMtZTc4Yy00MzU1LTk2YjItZTAxNTIzY2EzZjY0; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=MGFmMzFhYjMtMzcyYy00NzI4LWI3ODYtY2YxOWNkOWJhZmVj; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 142
 
 {
@@ -2427,7 +2629,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=ODYwM2I1MzUtNDFmMC00NGFiLThmMWYtODRjMDBhMjIwZjFm; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=M2RlNjllMDQtZmIyMy00MTk0LWJmYjEtZjRlYjljOWIwNGU3; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 233
 
 {
@@ -2437,7 +2639,7 @@ Content-Length: 233
   "round" : 148,
   "start_time" : "2022-08-01T00:00:00",
   "end_time" : "2022-08-02T00:00:00",
-  "created_at" : "2022-12-03T19:37:17.979883"
+  "created_at" : "2022-12-04T22:06:30.876262"
 }</code></pre>
 </div>
 </div>
@@ -2564,14 +2766,14 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=N2YwZmYzMzItNWM4MS00NzdiLWJmNWQtYjM1Y2UyMTVjODYz; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=NzQ0OWU0ZmYtZTk1My00YzBlLTkyN2EtNWMwZDE3YWY0MzVk; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 199
 
 {
   "id" : 1,
   "title" : "커버 영상 업로드 관련 문의입니다.",
   "content" : "커버 영상을 어떻게 올리는 지 모르겠어요.",
-  "created_at" : "2022-12-03T19:37:23.569694"
+  "created_at" : "2022-12-04T22:06:37.018074"
 }</code></pre>
 </div>
 </div>
@@ -2640,8 +2842,8 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=ZThiM2IzNWYtZGE1ZS00ZTMwLTllZDktZGQ3MGZkMzI0NDg1; Path=/; HttpOnly; SameSite=Lax
-Content-Length: 304
+Set-Cookie: SESSION=NTg3ZDJkNDYtNjBhZi00ZDFlLThhMzEtYzQ2NzAwODVmN2Mz; Path=/; HttpOnly; SameSite=Lax
+Content-Length: 302
 
 [ {
   "id" : 2,
@@ -2651,7 +2853,7 @@ Content-Length: 304
   "content" : "노래가 재생되지 않는데 어떻게 하죠?",
   "answer" : null,
   "status" : "WAITING_ANSWER",
-  "created_at" : "2022-12-03T19:37:23.612687",
+  "created_at" : "2022-12-04T22:06:37.0619",
   "answered_at" : null
 } ]</code></pre>
 </div>
@@ -2742,7 +2944,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=YzAyYzM5MDMtNDhlMC00ZWVlLWEzMjgtZjU0NGM2YjBmM2I1; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=MmVkNDQzMmEtYzY0My00NjY3LTk1ZTItYmMzZTU0MWQyMzAz; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 61
 
 {
@@ -2878,7 +3080,7 @@ Content-Length: 61
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2022-12-03 19:36:47 +0900
+Last updated 2022-12-04 19:39:27 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
