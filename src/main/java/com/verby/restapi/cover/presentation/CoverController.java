@@ -15,7 +15,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -44,19 +43,12 @@ public class CoverController {
     }
 
     @PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE })
-    private ResponseEntity<PostedCoverInfo> post(@AuthenticationPrincipal SecurityUser user,
-                                                 @RequestPart @Valid PostCoverRequest request,
-                                                 @RequestPart(value = "video") MultipartFile video,
-                                                 @RequestPart(value = "highlight") MultipartFile highlight,
-                                                 @RequestPart(value = "image") MultipartFile image) {
+    private ResponseEntity<PostedCoverInfo> create(@AuthenticationPrincipal SecurityUser user,
+                                                   @RequestBody @Valid PostCoverRequest request) {
         request.setUserId(user.getUserId());
-        request.setVideo(video);
-        request.setHighlight(highlight);
-        request.setImage(image);
 
-        PostedCoverInfo cover = coverService.post(request);
-
-        return new ResponseEntity<>(cover, HttpStatus.ACCEPTED);
+        PostedCoverInfo cover = coverService.create(request);
+        return new ResponseEntity<>(cover, HttpStatus.CREATED);
     }
 
 }

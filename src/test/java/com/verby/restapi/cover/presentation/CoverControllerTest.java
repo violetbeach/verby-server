@@ -15,7 +15,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
-import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.http.MediaType;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.ResultActions;
@@ -31,9 +31,8 @@ import static com.verby.restapi.support.fixture.domain.UserFixture.NORMAL_USER;
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.multipart;
-import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
-import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
+import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -143,37 +142,37 @@ class CoverControllerTest extends BaseControllerTest {
 
     @Test
     @DisplayName("PostCoverRequest, video, highlight, image로 Cover를 등록할 수 있다.")
-    void postCover() throws Exception {
+    void create() throws Exception {
         // given
         PostCoverRequest request = new PostCoverRequest(
                 1L,
-                "title",
-                "content"
+                "커버 영상 제목입니다.",
+                "커버 영상 설명",
+                "/static/cover/video/sample.mp4",
+                "/static/cover/highlight/sample.mp4",
+                "/static/cover/image/sample.png"
         );
-        MockMultipartFile requestJson = new MockMultipartFile("request", "test", "application/json", objectMapper.writeValueAsBytes(request));
-        MockMultipartFile video = new MockMultipartFile("video", "cover.mp4", "video/mp4",  "Video Binary Data".getBytes());
-        MockMultipartFile highlight = new MockMultipartFile("highlight", "highlight.mp4", "video/mp4", "Video Binary Data".getBytes());
-        MockMultipartFile thumbnail = new MockMultipartFile("image", "thumbnail.png", "image/png", "Image Binary Data".getBytes());
 
         // when
-        ResultActions result = mockMvc.perform(multipart("/covers")
-                .file(video)
-                .file(highlight)
-                .file(thumbnail)
-                .file(requestJson));
+        ResultActions result = mockMvc.perform(post("/covers")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(request)));
 
         // then
-        result.andExpect(status().isAccepted())
+        result.andExpect(status().isCreated())
                 .andExpect(jsonPath("title").value(request.getTitle()));
 
+        // docs
         result.andDo(document("커버 등록",
                 getDocumentRequest(),
                 getDocumentResponse(),
-                requestParts(
-                        partWithName("request").description("커버 정보 ({ contest_id: number, title: string, content: string })"),
-                        partWithName("video").description("비디오 경로"),
-                        partWithName("highlight").description("하이라이트 경로"),
-                        partWithName("image").description("썸네일 이미지 경로")
+                requestFields(
+                        fieldWithPath("contest_id").type(JsonFieldType.NUMBER).description("선정곡 일련번호"),
+                        fieldWithPath("title").type(JsonFieldType.STRING).description("제목"),
+                        fieldWithPath("content").type(JsonFieldType.STRING).description("내용"),
+                        fieldWithPath("video").type(JsonFieldType.STRING).description("전체 영상 경로"),
+                        fieldWithPath("highlight").type(JsonFieldType.STRING).description("하이라이트 경로"),
+                        fieldWithPath("image").type(JsonFieldType.STRING).description("썸네일 이미지 경로")
                 ),
                 responseFields(
                         fieldWithPath("id").type(JsonFieldType.NUMBER).description("커버 일련번호"),
