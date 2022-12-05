@@ -43,7 +43,7 @@ public class S3Storage implements StaticStorage {
 
     private String putS3(File uploadFile, String fileName) {
         amazonS3Client.putObject(new PutObjectRequest(bucket, fileName, uploadFile).withCannedAcl(CannedAccessControlList.PublicRead));
-        return amazonS3Client.getUrl(bucket, fileName).toString();
+        return amazonS3Client.getResourceUrl(bucket, fileName);
     }
 
     private void removeNewFile(File targetFile) {
