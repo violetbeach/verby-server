@@ -28,6 +28,8 @@ public enum ErrorCode {
 
     INTERNAL_SERVER_ERROR(500, "SERVER-001", "서버가 요청을 처리할 수 없는 경우"),
 
+    RESOURCE_TYPE_MISMATCH(409, "STORAGE-001", "도메인이 리소스 타입을 허용하지 않는 경우")
+
     ;
 
     private final int status;
