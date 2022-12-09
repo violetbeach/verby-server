@@ -144,27 +144,6 @@ operation::유저 정보 조회[snippets='http-request,http-response,response-fi
 
 operation::커버 등록[snippets='http-request,request-fields,http-response,response-fields']
 
-[[upload-cover]]
-=== 커버 영상 업로드
-
-커버 영상을 업로드할 수 있다.
-
-operation::커버 영상 업로드[snippets='http-request,request-parts,http-response']
-
-[[upload-highlight-cover]]
-=== 커버 하이라이트 업로드
-
-커버 하이라이트 영상을 업로드할 수 있다.
-
-operation::커버 하이라이트 영상 업로드[snippets='http-request,request-parts,http-response']
-
-[[upload-thumbnail-cover]]
-=== 커버 썸네일 이미지 업로드
-
-커버 썸네일 이미지를 업로드할 수 있다.
-
-operation::커버 썸네일 이미지 업로드[snippets='http-request,request-parts,http-response']
-
 [[findById-cover]]
 === 커버 단일 조회
 
@@ -202,7 +181,16 @@ operation::토큰 생성[snippets='http-request,request-fields,http-response,res
 
 [[users-find-unavailable-ids]]
 === 사용 불가 ID 목록 조회
+
 operation::사용 불가 ID 목록 조회[snippets='http-request,http-response,response-fields']
+
+[[storage]]
+== 정적 컨텐츠
+
+[[create-upload-url]]
+=== 업로드 Url 발급
+
+operation::업로드 Url 발급[snippets='http-request,request-fields,http-response']
 
 [[admin]]
 == 관리자

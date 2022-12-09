@@ -1,12 +1,25 @@
 package com.verby.restapi.common.storage.dto;
 
 import lombok.AccessLevel;
-import lombok.Getter;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-@Getter
+import javax.validation.constraints.NotBlank;
+
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor
 public class CreateUploadUrlRequest {
-    private Domain domain;
-    private Resource resource;
+
+    @NotBlank
+    private String domainType;
+    @NotBlank
+    private String resourceType;
+
+    public Domain getDomainType() {
+        return Domain.valueOf(domainType);
+    }
+
+    public Resource getResourceType() {
+        return Resource.valueOf(resourceType);
+    }
 }
