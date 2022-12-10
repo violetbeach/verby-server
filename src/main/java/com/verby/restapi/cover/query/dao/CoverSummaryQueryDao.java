@@ -2,6 +2,7 @@ package com.verby.restapi.cover.query.dao;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.verby.restapi.cover.command.application.CoverSearchRequest;
 import com.verby.restapi.cover.query.dto.CoverSummary;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -16,22 +17,30 @@ public class CoverSummaryQueryDao {
 
     private final JPAQueryFactory queryFactory;
 
-    public List<CoverSummary> noOffsetSearch(Long coverId, int pageSize) {
+    public List<CoverSummary> noOffsetSearch(CoverSearchRequest request) {
         return queryFactory
                 .selectFrom(coverSummary)
                 .where(
-                        ltCoverId(coverId)
+                        coverIdLt(request.getCoverIdLt()),
+                        contestIdEq(request.getContestId())
                 )
                 .orderBy(coverSummary.id.desc())
-                .limit(pageSize)
+                .limit(request.getPageSize())
                 .fetch();
     }
 
-    private BooleanExpression ltCoverId(Long coverId) {
+    private BooleanExpression coverIdLt(Long coverId) {
         if (coverId == null) {
             return null;
         }
         return coverSummary.id.lt(coverId);
+    }
+
+    private BooleanExpression contestIdEq(Long contestId) {
+        if (contestId == null) {
+            return null;
+        }
+        return coverSummary.id.eq(contestId);
     }
 
 }

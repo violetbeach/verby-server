@@ -1,5 +1,6 @@
 package com.verby.restapi.cover.query.dao;
 
+import com.verby.restapi.cover.command.application.CoverSearchRequest;
 import com.verby.restapi.cover.command.domain.Cover;
 import com.verby.restapi.cover.query.dto.CoverSummary;
 import com.verby.restapi.support.fixture.domain.CoverFixture;
@@ -32,15 +33,16 @@ class CoverSummaryQueryDaoTest {
 
         void firstPage() {
             // given
-            String prefix = "title";
+            CoverSearchRequest request = new CoverSearchRequest(null, null, 10);
 
+            String prefix = "title";
             for(int i = 1; i < 30; i++) {
                 Cover cover = CoverFixture.NORMAL_COVER.getCover(1L, 1L, prefix + i);
                 em.persistAndFlush(cover);
             }
 
             // when
-            List<CoverSummary> coverSummaries = coverSummaryQueryDao.noOffsetSearch(null, 10);
+            List<CoverSummary> coverSummaries = coverSummaryQueryDao.noOffsetSearch(request);
 
             // then
             assertAll(

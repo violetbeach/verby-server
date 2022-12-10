@@ -3,6 +3,7 @@ package com.verby.restapi.cover.presentation;
 import com.verby.restapi.common.error.ErrorCode;
 import com.verby.restapi.common.error.exception.EntityNotFoundException;
 import com.verby.restapi.config.security.SecurityUser;
+import com.verby.restapi.cover.command.application.CoverSearchRequest;
 import com.verby.restapi.cover.command.application.CoverService;
 import com.verby.restapi.cover.command.application.PostCoverRequest;
 import com.verby.restapi.cover.command.application.PostedCoverInfo;
@@ -37,8 +38,8 @@ public class CoverController {
     }
 
     @GetMapping
-    private ResponseEntity<List<CoverSummary>> noOffsetSearch(@RequestParam(required = false) Long coverIdLt, @RequestParam int pageSize) {
-        List<CoverSummary> coverSummaries = coverSummaryQueryDao.noOffsetSearch(coverIdLt, pageSize);
+    private ResponseEntity<List<CoverSummary>> noOffsetSearch(CoverSearchRequest request) {
+        List<CoverSummary> coverSummaries = coverSummaryQueryDao.noOffsetSearch(request);
         return new ResponseEntity<>(coverSummaries, HttpStatus.OK);
     }
 

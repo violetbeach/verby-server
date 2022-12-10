@@ -62,23 +62,23 @@ class CoverControllerTest extends BaseControllerTest {
         Contest contest = 선정곡_생성(song);
 
         커버_영상_생성(user, contest);
-        커버_영상_생성(user, contest);
-        커버_영상_생성(user, contest);
 
         // when
         ResultActions result = mockMvc.perform(get("/covers")
                 .param("coverIdLt", "10")
+                .param("contestId", contest.getId().toString())
                 .param("pageSize", "10"));
 
         // then
         result.andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(3)));
+                .andExpect(jsonPath("$", hasSize(1)));
 
         result.andDo(document("커버 전체 조회",
                 getDocumentRequest(),
                 getDocumentResponse(),
                 requestParameters(
-                        parameterWithName("coverIdLt").description("커버 id 조건 (lt)"),
+                        parameterWithName("coverIdLt").description("커버 일련번호 (lt)"),
+                        parameterWithName("contestId").description("선정곡 일련번호 (eq)"),
                         parameterWithName("pageSize").description("페이지 사이즈")
                 ),
                 responseFields(
