@@ -14,8 +14,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
+
+import static com.verby.restapi.common.ip.ClientIPUtils.getRemoteIP;
 
 @RestController
 @RequestMapping("/covers")
@@ -39,8 +42,10 @@ public class CoverController {
 
     @PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE })
     private ResponseEntity<PostedCoverInfo> create(@AuthenticationPrincipal SecurityUser user,
-                                                   @RequestBody @Valid PostCoverRequest request) {
+                                                   @RequestBody @Valid PostCoverRequest request,
+                                                   HttpServletRequest servletRequest) {
         request.setUserId(user.getUserId());
+        request.setRequestedBy(getRemoteIP(servletRequest));
 
         PostedCoverInfo cover = coverService.create(request);
         return new ResponseEntity<>(cover, HttpStatus.CREATED);
