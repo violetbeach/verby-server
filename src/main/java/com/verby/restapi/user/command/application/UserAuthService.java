@@ -72,6 +72,7 @@ public class UserAuthService {
         user.resetPassword(encodedPassword);
     }
 
+    @Transactional
     public CreatedUserInfo signUp(SignUpRequest request) {
         VerificationToken verificationToken = verificationTokenRepository.findByKey(request.getToken())
                 .orElseThrow(() -> new TokenNotFoundException(request.getToken()));
