@@ -1,8 +1,9 @@
 package com.verby.restapi.config.database;
 
 
+import com.verby.restapi.user.command.application.Certification;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -14,25 +15,28 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 
 @Configuration
 @EnableRedisHttpSession(maxInactiveIntervalInSeconds = 14400)
-@EnableRedisRepositories
+@EnableRedisRepositories(basePackageClasses = Certification.class)
 @RequiredArgsConstructor
-public class RedisConfig {
+public class AuthRedisConfig {
 
-    private final RedisProperties redisProperties;
+    @Value("${infra.main-redis.host}")
+    private String host;
+    @Value("${infra.main-redis.port}")
+    private int port;
 
-    @Bean
+    @Bean("authRedisConnectionFactory")
     public RedisConnectionFactory redisConnectionFactory() {
-        return new LettuceConnectionFactory(redisProperties.getHost(), redisProperties.getPort());
+        return new LettuceConnectionFactory(host, port);
     }
 
-    @Bean
+    @Bean("authRedisTemplate")
     public RedisTemplate<?, ?> redisTemplate() {
         RedisTemplate<byte[], byte[]> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(redisConnectionFactory());
         return redisTemplate;
     }
 
-    @Bean
+    @Bean("authConfigureRedisAction")
     public ConfigureRedisAction configureRedisAction() {
         return ConfigureRedisAction.NO_OP;
     }

@@ -42,7 +42,7 @@ class CoverSummaryQueryDaoTest {
             }
 
             // when
-            List<CoverSummary> coverSummaries = coverSummaryQueryDao.noOffsetSearch(request);
+            List<CoverSummary> coverSummaries = coverSummaryQueryDao.findAll(request);
 
             // then
             assertAll(

@@ -1,14 +1,11 @@
 package com.verby.restapi.cover.presentation;
 
-import com.verby.restapi.common.error.ErrorCode;
-import com.verby.restapi.common.error.exception.EntityNotFoundException;
 import com.verby.restapi.config.security.SecurityUser;
 import com.verby.restapi.cover.command.application.CoverSearchRequest;
 import com.verby.restapi.cover.command.application.CoverService;
 import com.verby.restapi.cover.command.application.PostCoverRequest;
 import com.verby.restapi.cover.command.application.PostedCoverInfo;
-import com.verby.restapi.cover.query.dao.CoverSummaryDao;
-import com.verby.restapi.cover.query.dao.CoverSummaryQueryDao;
+import com.verby.restapi.cover.query.application.CoverSummaryQueryService;
 import com.verby.restapi.cover.query.dto.CoverSummary;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,20 +23,17 @@ import java.util.List;
 public class CoverController {
 
     private final CoverService coverService;
-    private final CoverSummaryDao coverSummaryDao;
-    private final CoverSummaryQueryDao coverSummaryQueryDao;
+    private final CoverSummaryQueryService coverSummaryQueryService;
 
     @GetMapping("/{id}")
     private ResponseEntity<CoverSummary> findById(@PathVariable long id) {
-        CoverSummary coverSummary = coverSummaryDao.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException(ErrorCode.COVER_NOT_FOUND, "Not found."));
-
+        CoverSummary coverSummary = coverSummaryQueryService.findById(id);
         return new ResponseEntity<>(coverSummary, HttpStatus.OK);
     }
 
     @GetMapping
-    private ResponseEntity<List<CoverSummary>> noOffsetSearch(CoverSearchRequest request) {
-        List<CoverSummary> coverSummaries = coverSummaryQueryDao.noOffsetSearch(request);
+    private ResponseEntity<List<CoverSummary>> findAll(CoverSearchRequest request) {
+        List<CoverSummary> coverSummaries = coverSummaryQueryService.findAll(request);
         return new ResponseEntity<>(coverSummaries, HttpStatus.OK);
     }
 

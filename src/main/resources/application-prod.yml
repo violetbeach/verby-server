@@ -5,10 +5,6 @@ spring:
     username: ${VERBY_MAIN_USERNAME}
     password: ${VERBY_MAIN_PASSWORD}
 
-  redis:
-    host: ${VERBY_AUTH_HOST}
-    port: ${VERBY_AUTH_PORT}
-
 cloud:
   aws:
     credentials:
@@ -20,3 +16,12 @@ cloud:
       static: ap-northeast-2
     stack:
       auto: false
+
+infra:
+  auth-redis:
+    host: ${VERBY_AUTH_HOST}
+    port: ${VERBY_AUTH_PORT}
+
+  main-redis:
+    host: ${VERBY_CACHE_HOST}
+    port: ${VERBY_CACHE_HOST}

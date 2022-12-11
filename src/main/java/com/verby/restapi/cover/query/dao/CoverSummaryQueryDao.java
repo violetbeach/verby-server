@@ -4,10 +4,12 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.verby.restapi.cover.command.application.CoverSearchRequest;
 import com.verby.restapi.cover.query.dto.CoverSummary;
+import com.verby.restapi.cover.query.dto.QCoverSummary;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.verby.restapi.cover.query.dto.QCoverSummary.coverSummary;
 
@@ -17,7 +19,7 @@ public class CoverSummaryQueryDao {
 
     private final JPAQueryFactory queryFactory;
 
-    public List<CoverSummary> noOffsetSearch(CoverSearchRequest request) {
+    public List<CoverSummary> findAll(CoverSearchRequest request) {
         return queryFactory
                 .selectFrom(coverSummary)
                 .where(
@@ -27,6 +29,23 @@ public class CoverSummaryQueryDao {
                 .orderBy(coverSummary.id.desc())
                 .limit(request.getPageSize())
                 .fetch();
+    }
+
+    public Optional<CoverSummary> findById(Long coverId) {
+        CoverSummary coverSummary = queryFactory
+                .selectFrom(QCoverSummary.coverSummary)
+                .where(
+                        coverIdEq(coverId)
+                )
+                .fetchOne();
+        return Optional.ofNullable(coverSummary);
+    }
+
+    private BooleanExpression coverIdEq(Long coverId) {
+        if (coverId == null) {
+            return null;
+        }
+        return coverSummary.id.eq(coverId);
     }
 
     private BooleanExpression coverIdLt(Long coverId) {
