@@ -65,7 +65,7 @@ class CoverControllerTest extends BaseControllerTest {
 
         // when
         ResultActions result = mockMvc.perform(get("/covers")
-                .param("coverIdLt", "10")
+                .param("coverIdLt", String.valueOf(contest.getId() + 1))
                 .param("contestId", contest.getId().toString())
                 .param("pageSize", "10"));
 
