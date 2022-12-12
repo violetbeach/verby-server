@@ -4,14 +4,10 @@ import com.verby.restapi.artist.command.domain.Artist;
 import com.verby.restapi.artist.command.domain.ArtistRepository;
 import com.verby.restapi.song.command.application.CreateSongRequest;
 import com.verby.restapi.support.presentation.BaseControllerTest;
-import com.verby.restapi.support.storage.S3TestConfig;
-import io.findify.s3mock.S3Mock;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Import;
-import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.http.MediaType;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.ResultActions;
@@ -19,45 +15,34 @@ import org.springframework.test.web.servlet.ResultActions;
 import static com.verby.restapi.support.documentation.ApiDocumentUtils.getDocumentRequest;
 import static com.verby.restapi.support.documentation.ApiDocumentUtils.getDocumentResponse;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.multipart;
-import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
-import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
-import static org.springframework.restdocs.request.RequestDocumentation.*;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
+import static org.springframework.restdocs.payload.PayloadDocumentation.*;
+import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
+import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@Import(S3TestConfig.class)
 @WithMockUser(roles = "ADMIN")
 class SongAdminControllerTest extends BaseControllerTest {
 
     @Autowired
     ArtistRepository artistRepository;
 
-    @Autowired
-    private S3Mock s3Mock;
-
-    @AfterEach
-    public void tearDown() {
-        s3Mock.stop();
-    }
-
     @Test
     @DisplayName("관리자는 곡을 추가할 수 있다.")
     void createSong() throws Exception {
         // given
         Artist artist = generateArtist();
-        CreateSongRequest createSongRequest = new CreateSongRequest("사랑했지만");
-        MockMultipartFile requestJson = new MockMultipartFile("song", "test", "application/json", objectMapper.writeValueAsBytes(createSongRequest));
-        MockMultipartFile imageFile = new MockMultipartFile("song_image", "image.png", "image/png", "Image Binary Data".getBytes());
+        CreateSongRequest request = new CreateSongRequest("사랑했지만", "/static/song/image.png");
 
         // when
-        ResultActions result = mockMvc.perform(multipart("/admin/artists/{artistId}/songs", artist.getId())
-                .file(imageFile)
-                .file(requestJson));
+        ResultActions result = mockMvc.perform(post("/admin/artists/{artistId}/songs", artist.getId())
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(request)));
 
         // then
         result.andExpect(status().isCreated())
-                .andExpect(jsonPath("name").value(createSongRequest.getName()));
+                .andExpect(jsonPath("name").value(request.getName()));
 
         // docs
         result.andDo(document("관리자 - 곡 추가",
@@ -66,9 +51,9 @@ class SongAdminControllerTest extends BaseControllerTest {
                 pathParameters(
                         parameterWithName("artistId").description("가수 일련번호")
                 ),
-                requestParts(
-                        partWithName("song").description("곡 정보 ({ name: string })"),
-                        partWithName("song_image").description("이미지 경로")
+                requestFields(
+                        fieldWithPath("name").type(JsonFieldType.STRING).description("곡 이름"),
+                        fieldWithPath("image").type(JsonFieldType.STRING).description("이미지 경로")
                 ),
                 responseFields(
                         fieldWithPath("id").type(JsonFieldType.NUMBER).description("곡 일련번호"),

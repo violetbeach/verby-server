@@ -1,8 +1,11 @@
 package com.verby.restapi.config.security.api;
 
-import com.verby.restapi.user.command.domain.*;
 import com.verby.restapi.config.security.AuthenticationRequest;
 import com.verby.restapi.support.presentation.BaseControllerTest;
+import com.verby.restapi.user.command.domain.Role;
+import com.verby.restapi.user.command.domain.RoleRepository;
+import com.verby.restapi.user.command.domain.UserRepository;
+import com.verby.restapi.user.command.domain.UserRole;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -15,9 +15,11 @@ public class CreateSongRequest {
     private Long artistId;
     @NotBlank
     private String name;
+    private String image;
 
-    public CreateSongRequest(String name) {
+    public CreateSongRequest(String name, String image) {
         this.name = name;
+        this.image = image;
     }
 
     public void setArtistId(Long artistId) {

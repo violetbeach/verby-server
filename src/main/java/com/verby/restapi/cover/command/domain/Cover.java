@@ -1,12 +1,16 @@
 package com.verby.restapi.cover.command.domain;
 
 import com.verby.restapi.common.domain.BaseEntity;
+import com.verby.restapi.common.event.Events;
+import com.verby.restapi.cover.command.application.CoverCreatedEvent;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
+@ToString
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -42,4 +46,10 @@ public class Cover extends BaseEntity {
         this.highlight = highlight;
         this.image = image;
     }
+
+    @PostPersist
+    private void onPostPersist() {
+        Events.raise(new CoverCreatedEvent(this));
+    }
+
 }

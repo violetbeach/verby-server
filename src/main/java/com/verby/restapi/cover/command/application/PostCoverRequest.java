@@ -20,9 +20,15 @@ public class PostCoverRequest {
     private String image;
     @JsonIgnore
     private long userId;
+    @JsonIgnore
+    private String requestedBy;
 
     public void setUserId(long userId) {
         this.userId = userId;
+    }
+
+    public void setRequestedBy(String requestedBy) {
+        this.requestedBy = requestedBy;
     }
 
     public PostCoverRequest(long contestId, String title, String content, String video, String highlight, String image) {

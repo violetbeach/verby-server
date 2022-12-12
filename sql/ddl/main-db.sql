@@ -100,6 +100,20 @@ CREATE TABLE `cover`
     `updated_at` datetime     NULL
 );
 
+DROP TABLE IF EXISTS `cover_event`;
+
+CREATE TABLE `cover_event`
+(
+    `id`           bigint(20) AUTO_INCREMENT PRIMARY KEY,
+    `cover_id`     bigint(20)   NOT NULL,
+    `type`         varchar(50)  NOT NULL,
+    `attributes`   text NOT NULL,
+    `created_at`   datetime     NOT NULL,
+    `is_published` boolean      NOT NULL,
+    `published_at` datetime     NULL,
+    `requested_by` varchar(50)  NULL
+);
+
 DROP TABLE IF EXISTS `inquiry`;
 
 CREATE TABLE `inquiry`

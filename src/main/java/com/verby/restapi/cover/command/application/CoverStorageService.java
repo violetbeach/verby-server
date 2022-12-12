@@ -1,27 +1,33 @@
 package com.verby.restapi.cover.command.application;
 
-import com.verby.restapi.common.storage.StaticStorage;
+import com.verby.restapi.common.storage.dto.Domain;
+import com.verby.restapi.common.storage.dto.Resource;
+import com.verby.restapi.common.storage.exception.ResourceTypeNotMatchException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartFile;
+import lombok.extern.slf4j.Slf4j;
 
-@Component
+@Slf4j
 @RequiredArgsConstructor
-public class CoverStorageService {
-
-    private final StaticStorage staticStorage;
+public abstract class CoverStorageService {
     private final CoverStoragePathProperties storagePathProperties;
+    abstract public String getPreSignedUrl(Resource resource);
 
-    public String uploadVideo(MultipartFile video) {
-        return staticStorage.upload(video, storagePathProperties.getVideo());
-    }
-
-    public String uploadHighlight(MultipartFile highlight) {
-        return staticStorage.upload(highlight, storagePathProperties.getHighlight());
-    }
-
-    public String uploadImage(MultipartFile image) {
-        return staticStorage.upload(image, storagePathProperties.getImage());
+    protected String getResourcePath(Resource resource) {
+        switch (resource) {
+            case FULL_VIDEO -> {
+                return storagePathProperties.getVideo();
+            }
+            case HIGHLIGHT -> {
+                return storagePathProperties.getHighlight();
+            }
+            case IMAGE -> {
+                return storagePathProperties.getImage();
+            }
+            default -> {
+                log.warn("Not allow resource Type (Cover -> {}).", resource);
+                throw new ResourceTypeNotMatchException(Domain.COVER, resource);
+            }
+        }
     }
 
 }

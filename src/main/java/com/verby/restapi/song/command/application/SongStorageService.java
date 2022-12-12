@@ -1,23 +1,23 @@
 package com.verby.restapi.song.command.application;
 
-import com.verby.restapi.common.storage.StaticStorage;
-import lombok.RequiredArgsConstructor;
+import com.verby.restapi.common.storage.dto.Domain;
+import com.verby.restapi.common.storage.dto.Resource;
+import com.verby.restapi.common.storage.exception.ResourceTypeNotMatchException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartFile;
 
-@Component
-@RequiredArgsConstructor
-public class SongStorageService {
-
-    private final StaticStorage staticStorage;
-
+@Slf4j
+public abstract class SongStorageService {
     @Value("${static.paths.song.image}")
     private String imageBasePath;
+    abstract public String getPreSignedUrl(Resource resource);
 
-    public String upload(MultipartFile image) {
-        return staticStorage.upload(image, imageBasePath);
+    protected String getResourcePath(Resource resource) {
+        if (resource == Resource.IMAGE) {
+            return imageBasePath;
+        }
+        log.warn("Not allow resource Type (Song -> {}).", resource);
+        throw new ResourceTypeNotMatchException(Domain.SONG, resource);
     }
-
 
 }
