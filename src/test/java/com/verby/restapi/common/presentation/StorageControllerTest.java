@@ -20,7 +20,8 @@ import static com.verby.restapi.support.documentation.ApiDocumentUtils.getDocume
 import static com.verby.restapi.support.documentation.ApiDocumentUtils.getDocumentResponse;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
-import static org.springframework.restdocs.payload.PayloadDocumentation.*;
+import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
+import static org.springframework.restdocs.payload.PayloadDocumentation.requestFields;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @Import(S3TestConfig.class)

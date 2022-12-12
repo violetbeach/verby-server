@@ -1,8 +1,8 @@
 package com.verby.restapi.user.presentation;
 
-import com.verby.restapi.user.command.application.UserAdminService;
-import com.verby.restapi.user.command.application.CreatedUserInfo;
 import com.verby.restapi.user.command.application.CreateAdminRequest;
+import com.verby.restapi.user.command.application.CreatedUserInfo;
+import com.verby.restapi.user.command.application.UserAdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

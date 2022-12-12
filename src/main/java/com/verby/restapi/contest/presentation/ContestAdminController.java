@@ -5,7 +5,6 @@ import com.verby.restapi.common.error.exception.EntityNotFoundException;
 import com.verby.restapi.contest.command.application.ContestService;
 import com.verby.restapi.contest.command.application.CreateContestRequest;
 import com.verby.restapi.contest.command.application.CreatedContestInfo;
-import com.verby.restapi.contest.command.domain.Contest;
 import com.verby.restapi.contest.command.domain.SongService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -3,7 +3,6 @@ package com.verby.restapi.song.command.application;
 import com.verby.restapi.common.storage.dto.Domain;
 import com.verby.restapi.common.storage.dto.Resource;
 import com.verby.restapi.common.storage.exception.ResourceTypeNotMatchException;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 
