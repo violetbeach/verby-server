@@ -4,13 +4,9 @@ import com.verby.restapi.artist.command.domain.Artist;
 import com.verby.restapi.artist.command.domain.ArtistRepository;
 import com.verby.restapi.song.command.application.CreateSongRequest;
 import com.verby.restapi.support.presentation.BaseControllerTest;
-import com.verby.restapi.support.storage.S3TestConfig;
-import io.findify.s3mock.S3Mock;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -26,20 +22,11 @@ import static org.springframework.restdocs.request.RequestDocumentation.pathPara
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@Import(S3TestConfig.class)
 @WithMockUser(roles = "ADMIN")
 class SongAdminControllerTest extends BaseControllerTest {
 
     @Autowired
     ArtistRepository artistRepository;
-
-    @Autowired
-    private S3Mock s3Mock;
-
-    @AfterEach
-    public void tearDown() {
-        s3Mock.stop();
-    }
 
     @Test
     @DisplayName("관리자는 곡을 추가할 수 있다.")

@@ -7,20 +7,16 @@ import com.verby.restapi.cover.command.domain.Cover;
 import com.verby.restapi.song.command.domain.Song;
 import com.verby.restapi.support.fixture.domain.ContestFixture;
 import com.verby.restapi.support.presentation.BaseControllerTest;
-import com.verby.restapi.support.storage.S3TestConfig;
 import com.verby.restapi.user.command.domain.User;
-import io.findify.s3mock.S3Mock;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.ResultActions;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import static com.verby.restapi.support.documentation.ApiDocumentUtils.getDocumentRequest;
 import static com.verby.restapi.support.documentation.ApiDocumentUtils.getDocumentResponse;
@@ -37,20 +33,11 @@ import static org.springframework.restdocs.request.RequestDocumentation.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@Import(S3TestConfig.class)
 @WithUserDetails("member")
 class CoverControllerTest extends BaseControllerTest {
 
-    @Autowired
-    private S3Mock s3Mock;
-
-    @Autowired
+    @PersistenceContext
     private EntityManager em;
-
-    @AfterEach
-    public void tearDown() {
-        s3Mock.stop();
-    }
 
     @Test
     @DisplayName("CoverSummary를 전체 조회할 수 있다.")
@@ -60,7 +47,6 @@ class CoverControllerTest extends BaseControllerTest {
         Artist artist = 가수_생성();
         Song song = 곡_생성(artist);
         Contest contest = 선정곡_생성(song);
-
         Cover cover = 커버_영상_생성(user, contest);
 
         // when
