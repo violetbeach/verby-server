@@ -14,7 +14,7 @@ import java.io.InputStreamReader;
 @Configuration
 public class EmbeddedRedisConfig {
 
-    @Value("${spring.redis.port}")
+    @Value("${infra.main-redis.port}")
     private int redisPort;
 
     private RedisServer redisServer;
