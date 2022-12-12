@@ -19,12 +19,10 @@ public class CoverSummaryQueryService {
 
     private final CoverSummaryQueryDao coverSummaryQueryDao;
 
-    @Cacheable(value = COVER_SUMMARY, key = "#id")
     public List<CoverSummary> findAll(CoverSearchRequest request) {
         return coverSummaryQueryDao.findAll(request);
     }
-
-    @Cacheable(value = COVER_SUMMARY, key = "#id")
+    
     public CoverSummary findById(Long id) {
         return coverSummaryQueryDao.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.COVER_NOT_FOUND, "Not found."));
