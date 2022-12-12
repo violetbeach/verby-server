@@ -59,7 +59,7 @@ public class CoverSummaryQueryDao {
         if (contestId == null) {
             return null;
         }
-        return coverSummary.id.eq(contestId);
+        return coverSummary.contestId.eq(contestId);
     }
 
 }
