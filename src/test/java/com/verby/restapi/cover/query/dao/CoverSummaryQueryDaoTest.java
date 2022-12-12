@@ -1,6 +1,7 @@
 package com.verby.restapi.cover.query.dao;
 
 import com.verby.restapi.artist.command.domain.Artist;
+import com.verby.restapi.config.QueryDslConfig;
 import com.verby.restapi.contest.command.domain.Contest;
 import com.verby.restapi.cover.command.application.CoverSearchRequest;
 import com.verby.restapi.cover.command.domain.Cover;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.context.annotation.Import;
 
 import java.util.List;
 
@@ -27,6 +29,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 @DataJpaTest
+@Import({QueryDslConfig.class, CoverSummaryQueryDao.class})
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @DisplayName("CoverSummaryQueryDao의")
 class CoverSummaryQueryDaoTest {
@@ -75,18 +78,20 @@ class CoverSummaryQueryDaoTest {
     }
 
     @Nested
-    @DisplayName("noOffsetSearch 메서드는")
-    class noOffsetSearch {
+    @DisplayName("findAll 메서드는")
+    class findAll {
 
+        @Test
+        @DisplayName("CoverSummary를 전체 조회한다.")
         void firstPage() {
             // given
-            CoverSearchRequest request = new CoverSearchRequest(null, null, 10);
-
             String prefix = "title";
-            for(int i = 1; i < 30; i++) {
+            for(int i = 1; i <= 30; i++) {
                 Cover cover = CoverFixture.NORMAL_COVER.getCover(1L, 1L, prefix + i);
                 em.persistAndFlush(cover);
             }
+
+            CoverSearchRequest request = new CoverSearchRequest(null, null, 10);
 
             // when
             List<CoverSummary> coverSummaries = coverSummaryQueryDao.findAll(request);
