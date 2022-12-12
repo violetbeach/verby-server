@@ -61,11 +61,11 @@ class CoverControllerTest extends BaseControllerTest {
         Song song = 곡_생성(artist);
         Contest contest = 선정곡_생성(song);
 
-        커버_영상_생성(user, contest);
+        Cover cover = 커버_영상_생성(user, contest);
 
         // when
         ResultActions result = mockMvc.perform(get("/covers")
-                .param("coverIdLt", String.valueOf(contest.getId() + 1))
+                .param("coverIdLt", String.valueOf(cover.getId() + 1))
                 .param("contestId", contest.getId().toString())
                 .param("pageSize", "10"));
 
