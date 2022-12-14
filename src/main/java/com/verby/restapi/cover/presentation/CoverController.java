@@ -6,7 +6,7 @@ import com.verby.restapi.cover.command.application.CoverService;
 import com.verby.restapi.cover.command.application.PostCoverRequest;
 import com.verby.restapi.cover.command.application.PostedCoverInfo;
 import com.verby.restapi.cover.query.application.CoverSummaryQueryService;
-import com.verby.restapi.cover.query.dto.CoverSummary;
+import com.verby.restapi.external.cover.infra.dto.CoverSummary;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

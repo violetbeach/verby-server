@@ -1,4 +1,4 @@
-package com.verby.restapi.cover.query.dto;
+package com.verby.restapi.external.cover.infra.dto;
 
 import com.amazonaws.annotation.Immutable;
 import lombok.Getter;
@@ -44,4 +44,5 @@ public class CoverSummary {
     private String artistName;
     private Long songId;
     private String songName;
+
 }

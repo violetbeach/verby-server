@@ -3,15 +3,15 @@ package com.verby.restapi.cover.query.dao;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.verby.restapi.cover.command.application.CoverSearchRequest;
-import com.verby.restapi.cover.query.dto.CoverSummary;
-import com.verby.restapi.cover.query.dto.QCoverSummary;
+import com.verby.restapi.external.cover.infra.dto.CoverSummary;
+import com.verby.restapi.external.cover.infra.dto.QCoverSummary;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
-import static com.verby.restapi.cover.query.dto.QCoverSummary.coverSummary;
+import static com.verby.restapi.external.cover.infra.dto.QCoverSummary.coverSummary;
 
 @Repository
 @RequiredArgsConstructor

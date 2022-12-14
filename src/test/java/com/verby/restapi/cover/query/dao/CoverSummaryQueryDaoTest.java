@@ -5,7 +5,7 @@ import com.verby.restapi.config.QueryDslConfig;
 import com.verby.restapi.contest.command.domain.Contest;
 import com.verby.restapi.cover.command.application.CoverSearchRequest;
 import com.verby.restapi.cover.command.domain.Cover;
-import com.verby.restapi.cover.query.dto.CoverSummary;
+import com.verby.restapi.external.cover.infra.dto.CoverSummary;
 import com.verby.restapi.song.command.domain.Song;
 import com.verby.restapi.support.fixture.domain.ContestFixture;
 import com.verby.restapi.support.fixture.domain.CoverFixture;

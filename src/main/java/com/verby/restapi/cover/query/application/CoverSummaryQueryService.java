@@ -4,7 +4,7 @@ import com.verby.restapi.common.error.ErrorCode;
 import com.verby.restapi.common.error.exception.EntityNotFoundException;
 import com.verby.restapi.cover.command.application.CoverSearchRequest;
 import com.verby.restapi.cover.query.dao.CoverSummaryQueryDao;
-import com.verby.restapi.cover.query.dto.CoverSummary;
+import com.verby.restapi.external.cover.infra.dto.CoverSummary;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

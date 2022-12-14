@@ -1,5 +1,6 @@
 package com.verby.restapi.cover.command.application;
 
+import com.verby.restapi.common.event.Events;
 import com.verby.restapi.cover.command.domain.Cover;
 import com.verby.restapi.cover.command.domain.CoverEvent;
 import com.verby.restapi.cover.command.domain.CoverEventRepository;
@@ -22,6 +23,7 @@ public class CoverCreatedEventHandler {
                 CoverEventType.CREATE,
                 cover.toString());
         coverEventRepository.save(coverEvent);
+        Events.raise(coverEvent);
     }
 
 }
