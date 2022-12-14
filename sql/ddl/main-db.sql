@@ -101,6 +101,9 @@ CREATE TABLE `cover`
     `updated_at` datetime     NULL
 );
 
+CREATE INDEX ix_user_id ON `cover` (`user_id`);
+CREATE INDEX ix_title ON `cover` (`title`);
+
 DROP TABLE IF EXISTS `cover_event`;
 
 CREATE TABLE `cover_event`
