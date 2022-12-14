@@ -83,6 +83,7 @@ CREATE TABLE `song`
     `image`     varchar(255) NULL
 );
 
+CREATE INDEX ix_artist_id ON `song` (`artist_id`);
 DROP TABLE IF EXISTS `cover`;
 
 CREATE TABLE `cover`
