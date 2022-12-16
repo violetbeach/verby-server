@@ -1,7 +1,8 @@
 package com.verby.restapi.config.database;
 
 
-import com.verby.restapi.external.cover.CoverQueryModel;
+import com.verby.restapi.cover.query.dao.CoverQueryDao;
+import com.verby.restapi.external.cover.ExternalCoverQueryDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.EnableCaching;
@@ -20,7 +21,7 @@ import org.springframework.session.data.redis.config.ConfigureRedisAction;
 
 @EnableCaching
 @Configuration
-@EnableRedisRepositories(basePackageClasses = CoverQueryModel.class)
+@EnableRedisRepositories(basePackageClasses = {ExternalCoverQueryDao.class, CoverQueryDao.class})
 @RequiredArgsConstructor
 public class CoverRedisConfig {
 

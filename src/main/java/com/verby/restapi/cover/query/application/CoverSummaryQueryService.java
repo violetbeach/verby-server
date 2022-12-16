@@ -3,8 +3,10 @@ package com.verby.restapi.cover.query.application;
 import com.verby.restapi.common.error.ErrorCode;
 import com.verby.restapi.common.error.exception.EntityNotFoundException;
 import com.verby.restapi.cover.command.application.CoverSearchRequest;
-import com.verby.restapi.cover.query.dao.CoverSummaryQueryDao;
-import com.verby.restapi.external.cover.infra.dto.CoverSummary;
+import com.verby.restapi.cover.query.dao.CoverDetailQueryDao;
+import com.verby.restapi.cover.query.dao.CoverQueryDao;
+import com.verby.restapi.cover.query.dto.CoverDetailQueryModel;
+import com.verby.restapi.cover.query.dto.CoverQueryModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,14 +16,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CoverSummaryQueryService {
 
-    private final CoverSummaryQueryDao coverSummaryQueryDao;
+    private final CoverDetailQueryDao coverDetailQueryDao;
+    private final CoverQueryDao coverQueryDao;
 
-    public List<CoverSummary> findAll(CoverSearchRequest request) {
-        return coverSummaryQueryDao.findAll(request);
+    public List<CoverDetailQueryModel> findAll(CoverSearchRequest request) {
+        return coverDetailQueryDao.findAll(request);
     }
 
-    public CoverSummary findById(Long id) {
-        return coverSummaryQueryDao.findById(id)
+    public CoverQueryModel findById(Long id) {
+        return coverQueryDao.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.COVER_NOT_FOUND, "Not found."));
     }
 

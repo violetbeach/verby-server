@@ -1,11 +1,9 @@
-package com.verby.restapi.external.cover;
+package com.verby.restapi.cover.query.dto;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
-import org.springframework.data.redis.core.index.Indexed;
-
-import javax.persistence.Id;
 
 import static com.verby.restapi.config.database.RedisHashKey.COVER_SUMMARY;
 
@@ -15,8 +13,6 @@ import static com.verby.restapi.config.database.RedisHashKey.COVER_SUMMARY;
 public class CoverQueryModel {
     @Id
     private Long id;
-    @Indexed
-    private final long coverId;
     private final Long contestId;
     private final Long publisherId;
     private final String publisherName;

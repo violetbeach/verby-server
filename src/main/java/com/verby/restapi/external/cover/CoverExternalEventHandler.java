@@ -11,13 +11,13 @@ import org.springframework.transaction.event.TransactionalEventListener;
 @RequiredArgsConstructor
 public class CoverExternalEventHandler {
 
-    private final CoverSummaryService coverSummaryService;
-    private final CoverQueryModelWriteDao queryModelWriteDao;
+    private final ExternalCoverSummaryService coverSummaryService;
+    private final ExternalCoverQueryDao queryModelWriteDao;
 
     @Async
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
     public void handle(CoverEvent event) {
-        CoverQueryModel queryModel = coverSummaryService.getQueryModel(event.getCoverId());
+        ExternalCoverQueryModel queryModel = coverSummaryService.getQueryModel(event.getCoverId());
         queryModelWriteDao.save(queryModel);
     }
 
