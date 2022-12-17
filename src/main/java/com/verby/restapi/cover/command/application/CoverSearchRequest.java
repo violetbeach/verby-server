@@ -1,15 +1,24 @@
 package com.verby.restapi.cover.command.application;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.verby.restapi.common.util.pagination.CursorRequest;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CoverSearchRequest {
-    private Long coverIdLt;
     private Long contestId;
-    private int pageSize = 10;
+
+    @JsonIgnore
+    private CursorRequest cursor;
+
+    public CoverSearchRequest(Long contestId) {
+        this.contestId = contestId;
+    }
+
+    public void setCursor(CursorRequest cursor) {
+        this.cursor = cursor;
+    }
 }

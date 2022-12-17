@@ -1,5 +1,7 @@
 package com.verby.restapi.cover.presentation;
 
+import com.verby.restapi.common.util.pagination.CursorRequest;
+import com.verby.restapi.common.util.pagination.CursorResponse;
 import com.verby.restapi.config.security.SecurityUser;
 import com.verby.restapi.cover.command.application.CoverSearchRequest;
 import com.verby.restapi.cover.command.application.CoverService;
@@ -19,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
-import static com.verby.restapi.common.ip.ClientIPUtils.getRemoteIP;
+import static com.verby.restapi.common.util.ip.ClientIPUtils.getRemoteIP;
 
 @RestController
 @RequestMapping("/covers")
@@ -36,9 +38,18 @@ public class CoverController {
     }
 
     @GetMapping
-    private ResponseEntity<List<CoverDetailQueryModel>> findAll(CoverSearchRequest request) {
+    private ResponseEntity<CursorResponse<CoverDetailQueryModel>> findAll(
+            CoverSearchRequest request, CursorRequest cursor) {
+        request.setCursor(cursor);
         List<CoverDetailQueryModel> coverDetailQueryModels = coverSummaryQueryService.findAll(request);
-        return new ResponseEntity<>(coverDetailQueryModels, HttpStatus.OK);
+
+        long nextKey = coverDetailQueryModels.stream()
+                .mapToLong(CoverDetailQueryModel::getId)
+                .min()
+                .orElse(CursorRequest.NONE_KEY);
+
+        return new ResponseEntity<>(
+                new CursorResponse<>(coverDetailQueryModels, cursor.next(nextKey)), HttpStatus.OK);
     }
 
     @PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE })

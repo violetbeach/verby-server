@@ -64,7 +64,7 @@ class CoverControllerTest extends BaseControllerTest {
 
         // then
         result.andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)));
+                .andExpect(jsonPath("$.data", hasSize(1)));
 
         result.andDo(document("커버 전체 조회",
                 getDocumentRequest(),
@@ -75,19 +75,22 @@ class CoverControllerTest extends BaseControllerTest {
                         parameterWithName("pageSize").description("페이지 사이즈")
                 ),
                 responseFields(
-                        fieldWithPath("[].id").type(JsonFieldType.NUMBER).description("커버 일련번호"),
-                        fieldWithPath("[].contest_id").type(JsonFieldType.NUMBER).description("선정곡 일련번호"),
-                        fieldWithPath("[].title").type(JsonFieldType.STRING).description("제목"),
-                        fieldWithPath("[].content").type(JsonFieldType.STRING).description("내용"),
-                        fieldWithPath("[].video").type(JsonFieldType.STRING).description("풀 영상 url"),
-                        fieldWithPath("[].highlight").type(JsonFieldType.STRING).description("하이라이트 url"),
-                        fieldWithPath("[].image").type(JsonFieldType.STRING).description("썸네일 이미지 url"),
-                        fieldWithPath("[].publisher_id").type(JsonFieldType.NUMBER).description("유저 일련번호"),
-                        fieldWithPath("[].publisher_name").type(JsonFieldType.STRING).description("유저 닉네임"),
-                        fieldWithPath("[].artist_id").type(JsonFieldType.NUMBER).description("가수 일련번호"),
-                        fieldWithPath("[].artist_name").type(JsonFieldType.STRING).description("가수 이름"),
-                        fieldWithPath("[].song_id").type(JsonFieldType.NUMBER).description("곡 일련번호"),
-                        fieldWithPath("[].song_name").type(JsonFieldType.STRING).description("곡 이름")
+                        fieldWithPath("data[].id").type(JsonFieldType.NUMBER).description("커버 일련번호"),
+                        fieldWithPath("data[].contest_id").type(JsonFieldType.NUMBER).description("선정곡 일련번호"),
+                        fieldWithPath("data[].title").type(JsonFieldType.STRING).description("제목"),
+                        fieldWithPath("data[].content").type(JsonFieldType.STRING).description("내용"),
+                        fieldWithPath("data[].video").type(JsonFieldType.STRING).description("풀 영상 url"),
+                        fieldWithPath("data[].highlight").type(JsonFieldType.STRING).description("하이라이트 url"),
+                        fieldWithPath("data[].image").type(JsonFieldType.STRING).description("썸네일 이미지 url"),
+                        fieldWithPath("data[].publisher_id").type(JsonFieldType.NUMBER).description("유저 일련번호"),
+                        fieldWithPath("data[].publisher_name").type(JsonFieldType.STRING).description("유저 닉네임"),
+                        fieldWithPath("data[].artist_id").type(JsonFieldType.NUMBER).description("가수 일련번호"),
+                        fieldWithPath("data[].artist_name").type(JsonFieldType.STRING).description("가수 이름"),
+                        fieldWithPath("data[].song_id").type(JsonFieldType.NUMBER).description("곡 일련번호"),
+                        fieldWithPath("data[].song_name").type(JsonFieldType.STRING).description("곡 이름"),
+
+                        fieldWithPath("next.key").type(JsonFieldType.NUMBER).description("No Offset 키"),
+                        fieldWithPath("next.size").type(JsonFieldType.NUMBER).description("검색 사이즈")
                 )
         ));
     }

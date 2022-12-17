@@ -1,4 +1,4 @@
-package com.verby.restapi.common.ip;
+package com.verby.restapi.common.util.ip;
 
 import javax.servlet.http.HttpServletRequest;
 

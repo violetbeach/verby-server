@@ -1,5 +1,6 @@
 package com.verby.restapi.cover.query.dao;
 
+import com.verby.restapi.common.util.pagination.CursorRequest;
 import com.verby.restapi.config.QueryDslConfig;
 import com.verby.restapi.cover.command.application.CoverSearchRequest;
 import com.verby.restapi.cover.command.domain.Cover;
@@ -45,7 +46,10 @@ class CoverDetailQueryDaoTest {
                 em.persistAndFlush(cover);
             }
 
-            CoverSearchRequest request = new CoverSearchRequest(null, null, 10);
+            CursorRequest cursor = new CursorRequest(null, 10);
+            CoverSearchRequest request = new CoverSearchRequest(null);
+
+            request.setCursor(cursor);
 
             // when
             List<CoverDetailQueryModel> coverDetailQueryModels = coverDetailQueryDao.findAll(request);
