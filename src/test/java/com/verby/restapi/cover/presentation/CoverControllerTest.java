@@ -2,14 +2,21 @@ package com.verby.restapi.cover.presentation;
 
 import com.verby.restapi.artist.command.domain.Artist;
 import com.verby.restapi.contest.command.domain.Contest;
+import com.verby.restapi.cover.command.application.CoverEventType;
 import com.verby.restapi.cover.command.application.PostCoverRequest;
 import com.verby.restapi.cover.command.domain.Cover;
+import com.verby.restapi.cover.command.domain.CoverEvent;
+import com.verby.restapi.external.cover.ExternalCoverQueryDao;
+import com.verby.restapi.external.cover.ExternalCoverQueryModel;
+import com.verby.restapi.external.cover.ExternalCoverSummaryService;
 import com.verby.restapi.song.command.domain.Song;
 import com.verby.restapi.support.fixture.domain.ContestFixture;
 import com.verby.restapi.support.presentation.BaseControllerTest;
 import com.verby.restapi.user.command.domain.User;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.security.test.context.support.WithUserDetails;
@@ -85,45 +92,66 @@ class CoverControllerTest extends BaseControllerTest {
         ));
     }
 
-    @Test
-    @DisplayName("id로 CoverSummary를 조회할 수 있다.")
-    void findById() throws Exception {
-        // given
-        User user = 유저_생성();
-        Artist artist = 가수_생성();
-        Song song = 곡_생성(artist);
-        Contest contest = 선정곡_생성(song);
-        Cover cover = 커버_영상_생성(user, contest);
+    @Nested
+    @DisplayName("findById 메서드는")
+    class findById {
 
-        // when
-        ResultActions result = mockMvc.perform(get("/covers/{id}", cover.getId()));
+        @Autowired
+        private ExternalCoverSummaryService externalCoverSummaryService;
+        @Autowired
+        private ExternalCoverQueryDao externalCoverQueryDao;
 
-        // then
-        result.andExpect(status().isOk())
-                .andExpect(jsonPath("title").value(cover.getTitle()));
+        @Test
+        @DisplayName("커버 조회 모델과 200 코드를 반환한다.")
+        void ItReturn200() throws Exception {
+            // given
+            User user = 유저_생성();
+            Artist artist = 가수_생성();
+            Song song = 곡_생성(artist);
+            Contest contest = 선정곡_생성(song);
+            Cover cover = 커버_영상_생성(user, contest);
 
-        result.andDo(document("커버 단일 조회",
-                getDocumentRequest(),
-                getDocumentResponse(),
-                pathParameters(
-                        parameterWithName("id").description("커버 일련번호")
-                ),
-                responseFields(
-                        fieldWithPath("id").type(JsonFieldType.NUMBER).description("커버 일련번호"),
-                        fieldWithPath("contest_id").type(JsonFieldType.NUMBER).description("선정곡 일련번호"),
-                        fieldWithPath("title").type(JsonFieldType.STRING).description("제목"),
-                        fieldWithPath("content").type(JsonFieldType.STRING).description("내용"),
-                        fieldWithPath("video").type(JsonFieldType.STRING).description("풀 영상 url"),
-                        fieldWithPath("highlight").type(JsonFieldType.STRING).description("하이라이트 url"),
-                        fieldWithPath("image").type(JsonFieldType.STRING).description("썸네일 이미지 url"),
-                        fieldWithPath("publisher_id").type(JsonFieldType.NUMBER).description("유저 일련번호"),
-                        fieldWithPath("publisher_name").type(JsonFieldType.STRING).description("유저 닉네임"),
-                        fieldWithPath("artist_id").type(JsonFieldType.NUMBER).description("가수 일련번호"),
-                        fieldWithPath("artist_name").type(JsonFieldType.STRING).description("가수 이름"),
-                        fieldWithPath("song_id").type(JsonFieldType.NUMBER).description("곡 일련번호"),
-                        fieldWithPath("song_name").type(JsonFieldType.STRING).description("곡 이름")
-                )
-        ));
+            커버_조회_모델_생성(cover);
+
+            // when
+            ResultActions result = mockMvc.perform(get("/covers/{id}", cover.getId()));
+
+            // then
+            result.andExpect(status().isOk())
+                    .andExpect(jsonPath("title").value(cover.getTitle()));
+
+            result.andDo(document("커버 단일 조회",
+                    getDocumentRequest(),
+                    getDocumentResponse(),
+                    pathParameters(
+                            parameterWithName("id").description("커버 일련번호")
+                    ),
+                    responseFields(
+                            fieldWithPath("id").type(JsonFieldType.NUMBER).description("커버 일련번호"),
+                            fieldWithPath("contest_id").type(JsonFieldType.NUMBER).description("선정곡 일련번호"),
+                            fieldWithPath("title").type(JsonFieldType.STRING).description("제목"),
+                            fieldWithPath("content").type(JsonFieldType.STRING).description("내용"),
+                            fieldWithPath("video").type(JsonFieldType.STRING).description("풀 영상 url"),
+                            fieldWithPath("highlight").type(JsonFieldType.STRING).description("하이라이트 url"),
+                            fieldWithPath("image").type(JsonFieldType.STRING).description("썸네일 이미지 url"),
+                            fieldWithPath("publisher_id").type(JsonFieldType.NUMBER).description("유저 일련번호"),
+                            fieldWithPath("publisher_name").type(JsonFieldType.STRING).description("유저 닉네임"),
+                            fieldWithPath("artist_id").type(JsonFieldType.NUMBER).description("가수 일련번호"),
+                            fieldWithPath("artist_name").type(JsonFieldType.STRING).description("가수 이름"),
+                            fieldWithPath("song_id").type(JsonFieldType.NUMBER).description("곡 일련번호"),
+                            fieldWithPath("song_name").type(JsonFieldType.STRING).description("곡 이름")
+                    )
+            ));
+
+        }
+
+        private void 커버_조회_모델_생성(Cover cover) {
+            CoverEvent coverEvent = new CoverEvent(cover.getId(), CoverEventType.CREATE, "");
+            ExternalCoverQueryModel queryModel = externalCoverSummaryService.getQueryModel(coverEvent.getCoverId());
+            externalCoverQueryDao.save(queryModel);
+        }
+
+
     }
 
     @Test

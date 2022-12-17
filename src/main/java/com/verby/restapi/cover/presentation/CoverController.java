@@ -6,7 +6,8 @@ import com.verby.restapi.cover.command.application.CoverService;
 import com.verby.restapi.cover.command.application.PostCoverRequest;
 import com.verby.restapi.cover.command.application.PostedCoverInfo;
 import com.verby.restapi.cover.query.application.CoverSummaryQueryService;
-import com.verby.restapi.cover.query.dto.CoverSummary;
+import com.verby.restapi.cover.query.dto.CoverDetailQueryModel;
+import com.verby.restapi.cover.query.dto.CoverQueryModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -29,15 +30,15 @@ public class CoverController {
     private final CoverSummaryQueryService coverSummaryQueryService;
 
     @GetMapping("/{id}")
-    private ResponseEntity<CoverSummary> findById(@PathVariable long id) {
-        CoverSummary coverSummary = coverSummaryQueryService.findById(id);
-        return new ResponseEntity<>(coverSummary, HttpStatus.OK);
+    private ResponseEntity<CoverQueryModel> findById(@PathVariable long id) {
+        CoverQueryModel coverQueryModel = coverSummaryQueryService.findById(id);
+        return new ResponseEntity<>(coverQueryModel, HttpStatus.OK);
     }
 
     @GetMapping
-    private ResponseEntity<List<CoverSummary>> findAll(CoverSearchRequest request) {
-        List<CoverSummary> coverSummaries = coverSummaryQueryService.findAll(request);
-        return new ResponseEntity<>(coverSummaries, HttpStatus.OK);
+    private ResponseEntity<List<CoverDetailQueryModel>> findAll(CoverSearchRequest request) {
+        List<CoverDetailQueryModel> coverDetailQueryModels = coverSummaryQueryService.findAll(request);
+        return new ResponseEntity<>(coverDetailQueryModels, HttpStatus.OK);
     }
 
     @PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE })

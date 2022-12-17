@@ -83,6 +83,7 @@ CREATE TABLE `song`
     `image`     varchar(255) NULL
 );
 
+CREATE INDEX ix_artist_id ON `song` (`artist_id`);
 DROP TABLE IF EXISTS `cover`;
 
 CREATE TABLE `cover`
@@ -99,6 +100,9 @@ CREATE TABLE `cover`
     `created_at` datetime     NOT NULL DEFAULT NOW(),
     `updated_at` datetime     NULL
 );
+
+CREATE INDEX ix_user_id ON `cover` (`user_id`);
+CREATE INDEX ix_title ON `cover` (`title`);
 
 DROP TABLE IF EXISTS `cover_event`;
 

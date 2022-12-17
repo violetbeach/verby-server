@@ -11,8 +11,10 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 
+import static com.verby.restapi.config.database.RedisHashKey.CERTIFICATION;
+
 @Getter
-@RedisHash(value = "Certification", timeToLive = 300)
+@RedisHash(value = CERTIFICATION, timeToLive = 300)
 public class Certification {
 
     @Id

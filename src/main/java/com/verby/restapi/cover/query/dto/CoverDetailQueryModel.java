@@ -12,24 +12,24 @@ import javax.persistence.Id;
 @Entity
 @Immutable
 @Subselect(
-         """
-         SELECT c.id as id,
-             c.contest_id,
-             u.login_id as publisher_name,
-             c.user_id as publisher_id, c.title, c.content, c.video, c.highlight, c.image,
-             s.artist_id, a.name as artist_name,
-             ct.song_id, s.name as song_name    
-         FROM cover c    
-         INNER JOIN user u    
-             ON c.user_id = u.id    
-         LEFT OUTER JOIN contest ct    
-             ON c.contest_id = ct.id    
-         LEFT OUTER JOIN song s    
-             ON ct.song_id = s.id    
-         LEFT OUTER Join artist a    
-             ON s.artist_id = a.id""")
+        """
+        SELECT c.id as id,
+            c.contest_id,
+            u.login_id as publisher_name,
+            c.user_id as publisher_id, c.title, c.content, c.video, c.highlight, c.image,
+            s.artist_id, a.name as artist_name,
+            ct.song_id, s.name as song_name    
+        FROM cover c    
+        INNER JOIN user u    
+            ON c.user_id = u.id    
+        LEFT OUTER JOIN contest ct    
+            ON c.contest_id = ct.id    
+        LEFT OUTER JOIN song s    
+            ON ct.song_id = s.id    
+        LEFT OUTER Join artist a    
+            ON s.artist_id = a.id""")
 @Synchronize({ "cover", "user", "contest", "song", "artist" })
-public class CoverSummary {
+public class CoverDetailQueryModel {
     @Id
     private long id;
     private Long contestId;
@@ -44,4 +44,5 @@ public class CoverSummary {
     private String artistName;
     private Long songId;
     private String songName;
+
 }
