@@ -75,6 +75,7 @@ class CoverControllerTest extends BaseControllerTest {
                         parameterWithName("pageSize").description("페이지 사이즈")
                 ),
                 responseFields(
+                        subsectionWithPath("data").type(JsonFieldType.ARRAY).description("커버 목록"),
                         fieldWithPath("data[].id").type(JsonFieldType.NUMBER).description("커버 일련번호"),
                         fieldWithPath("data[].contest_id").type(JsonFieldType.NUMBER).description("선정곡 일련번호"),
                         fieldWithPath("data[].title").type(JsonFieldType.STRING).description("제목"),
@@ -89,6 +90,7 @@ class CoverControllerTest extends BaseControllerTest {
                         fieldWithPath("data[].song_id").type(JsonFieldType.NUMBER).description("곡 일련번호"),
                         fieldWithPath("data[].song_name").type(JsonFieldType.STRING).description("곡 이름"),
 
+                        subsectionWithPath("next").type(JsonFieldType.OBJECT).description("조회 Meta-data"),
                         fieldWithPath("next.key").type(JsonFieldType.NUMBER).description("No Offset 키"),
                         fieldWithPath("next.size").type(JsonFieldType.NUMBER).description("검색 사이즈")
                 )
