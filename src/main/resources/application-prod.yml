@@ -24,4 +24,4 @@ infra:
 
   main-redis:
     host: ${VERBY_CACHE_HOST}
-    port: ${VERBY_CACHE_HOST}
+    port: ${VERBY_CACHE_PORT}
