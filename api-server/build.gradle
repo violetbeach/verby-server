@@ -1,0 +1,138 @@
+buildscript {
+	ext {
+		queryDslVersion = "5.0.0"
+	}
+}
+
+plugins {
+	id 'org.springframework.boot' version '2.7.1'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'io.freefair.lombok' version '6.5.0.3'
+	id 'org.asciidoctor.jvm.convert' version '3.3.2'
+	id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
+	id 'jacoco'
+	id 'java'
+}
+
+group = 'com.verby'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+	asciidoctorExtensions
+	querydsl.extendsFrom compileClasspath
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
+	implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
+
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'org.springframework.session:spring-session-data-redis'
+
+	implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+
+	testImplementation 'com.h2database:h2'
+	testImplementation 'it.ozimov:embedded-redis:0.7.2'
+	testImplementation 'io.findify:s3mock_2.13:0.2.6'
+
+	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+	asciidoctorExtensions 'org.springframework.restdocs:spring-restdocs-asciidoctor'
+}
+
+tasks.named('jar') {
+	enabled = false
+}
+
+bootJar {
+	dependsOn asciidoctor
+}
+
+test {
+	useJUnitPlatform()
+	finalizedBy jacocoTestReport
+}
+
+def querydslDir = "$buildDir/generated/querydsl"
+
+querydsl {
+	jpa = true
+	querydslSourcesDir = querydslDir
+}
+
+sourceSets {
+	main.java.srcDir querydslDir
+}
+
+compileQuerydsl{
+	options.annotationProcessorPath = configurations.querydsl
+}
+
+asciidoctor {
+	configurations 'asciidoctorExtensions'
+	dependsOn test
+}
+
+task copyDocument(type: Copy) {
+	dependsOn asciidoctor
+	from file('build/docs/asciidoc')
+	into file('src/main/resources/static/docs')
+}
+
+build {
+	dependsOn copyDocument
+}
+
+jacoco {
+	toolVersion = '0.8.7'
+}
+
+jacocoTestReport {
+	dependsOn test
+	reports {
+		html.enabled true
+		csv.enabled false
+		xml.enabled false
+	}
+	finalizedBy 'jacocoTestCoverageVerification'
+}
+
+jacocoTestCoverageVerification {
+	def Qdomains = []
+
+	for (qPattern in '*.QA'..'*.QZ') {
+		Qdomains.add(qPattern + '*')
+	}
+
+	violationRules {
+		rule {
+			enabled = true
+			element = 'CLASS'
+
+			limit {
+				counter = 'BRANCH'
+				value = 'COVEREDRATIO'
+				// minimum = 0.98
+			}
+
+			excludes = [] + Qdomains
+		}
+	}
+}
