@@ -168,6 +168,11 @@ operation::커버 좋아요[snippets='http-request,path-parameters,http-response
 
 operation::커버 좋아요 취소[snippets='http-request,path-parameters,http-response']
 
+[[hit-cover]]
+=== 커버 조회수 등록
+
+operation::커버 조회수 등록[snippets='http-request,path-parameters,http-response']
+
 [[sms-auth]]
 == SMS 인증
 
