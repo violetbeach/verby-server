@@ -30,7 +30,7 @@ logging:
 
 infra:
   auth-redis:
-    host: localhost
+    host: "localhost"
     port: 8342
 
   main-redis:

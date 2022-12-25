@@ -1,6 +1,5 @@
 package verby.apiserver.config.database;
 
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.EnableCaching;

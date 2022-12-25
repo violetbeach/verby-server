@@ -19,9 +19,9 @@ import verby.apiserver.user.command.application.Certification;
 @RequiredArgsConstructor
 public class AuthRedisConfig {
 
-    @Value("${infra.main-redis.host}")
+    @Value("${infra.auth-redis.host}")
     private String host;
-    @Value("${infra.main-redis.port}")
+    @Value("${infra.auth-redis.port}")
     private int port;
 
     @Bean("authRedisConnectionFactory")
