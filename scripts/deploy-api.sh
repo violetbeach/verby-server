@@ -1,8 +1,8 @@
 #!/bin/bash
 
-REPOSITORY=/home/ec2-user/app/deploy
+REPOSITORY=/home/ec2-user/app/deploy/api-server
 
-CURRENT_PID=$(pgrep -f restapi)
+CURRENT_PID=$(pgrep -f api-server)
 
 echo "$CURRENT_PID"
 
