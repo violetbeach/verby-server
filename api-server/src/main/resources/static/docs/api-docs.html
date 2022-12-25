@@ -473,6 +473,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#noOffsetSearch-cover">커버 전체 조회</a></li>
 <li><a href="#like-cover">커버 좋아요</a></li>
 <li><a href="#unlike-cover">커버 좋아요 취소</a></li>
+<li><a href="#hit-cover">커버 조회수 등록</a></li>
 </ul>
 </li>
 <li><a href="#sms-auth">SMS 인증</a>
@@ -723,7 +724,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=ZGRhN2VkNmItZTkzMi00ZWY2LTkyOWMtOGJiMTdlZDA5YWUy; Path=/; HttpOnly; SameSite=Lax</code></pre>
+Set-Cookie: SESSION=NTkyZTQ1MzUtODNlZS00ZDU5LThiZGQtZWYzOGIzZWMxZGEw; Path=/; HttpOnly; SameSite=Lax</code></pre>
 </div>
 </div>
 </div>
@@ -750,7 +751,7 @@ Host: api.verby.co.kr
   "phone" : "01013524302",
   "gender" : "MALE",
   "allow_to_marketing_notification" : true,
-  "token" : "eeed8d02-0ca8-4715-89f2-a93bcc988000"
+  "token" : "c52dc126-75c3-46bd-bed6-065615c44033"
 }</code></pre>
 </div>
 </div>
@@ -839,7 +840,7 @@ Content-Length: 87
 {
   "id" : 6,
   "login_id" : "test123",
-  "created_at" : "2022-12-18T18:10:12.817214"
+  "created_at" : "2022-12-25T11:26:28.123546"
 }</code></pre>
 </div>
 </div>
@@ -886,7 +887,7 @@ Content-Length: 87
 <h4 id="users-find-loginid_http_request"><a class="link" href="#users-find-loginid_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /users/login-id?verificationToken=dd91f3aa-046a-4e48-9a0f-c5037058800b HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /users/login-id?verificationToken=1e5bd8aa-6b0b-4a0c-8d0f-c31a49e1d875 HTTP/1.1
 Host: api.verby.co.kr</code></pre>
 </div>
 </div>
@@ -929,7 +930,7 @@ Content-Length: 90
 {
   "id" : 9,
   "login_id" : "member1234",
-  "created_at" : "2022-12-18T18:10:13.117861"
+  "created_at" : "2022-12-25T11:26:28.455959"
 }</code></pre>
 </div>
 </div>
@@ -976,7 +977,7 @@ Content-Length: 90
 <h4 id="users-reset-password_http_request"><a class="link" href="#users-reset-password_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PUT /users/password?verificationToken=b43d95ac-1dfa-40c6-9482-29fe00bf1261 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PUT /users/password?verificationToken=d6acaae2-7839-477b-b2b3-39935e945658 HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Content-Length: 38
 Host: api.verby.co.kr
@@ -1129,7 +1130,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=M2FiMzEzYWEtODFiZC00NTgyLWEwYTgtNDc1YjdkZDM3NWZj; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=OTJkYmQzYzEtYjc3Mi00MTMyLTlhN2ItNTRjNTRmNjk4Yzg5; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 81
 
 {
@@ -1276,7 +1277,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=ODJiYWQ0ZGUtY2JkMi00ZWY5LWI5Y2QtODY1MzYyYTUzN2Yx; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=ODk5Y2IwYjctNWI0Mi00NDI1LWI4OTYtNTViZDA5MGFkN2Fm; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 311
 
 {
@@ -1287,7 +1288,7 @@ Content-Length: 311
   "video" : "/static/cover/video/sample.mp4",
   "highlight" : "/static/cover/highlight/sample.mp4",
   "image" : "/static/cover/image/sample.png",
-  "created_at" : "2022-12-18T18:10:10.402513"
+  "created_at" : "2022-12-25T11:26:24.386176"
 }</code></pre>
 </div>
 </div>
@@ -1400,7 +1401,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=YmQ5ZjBiMTEtNzhjMC00ZTUyLTgwNWMtMzk0ZGVmNmI4YzVm; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=ZmZjNWRlYjMtOTg5MC00MzgzLTkwYTQtNzBiOWY0OThhZjA0; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 379
 
 {
@@ -1559,7 +1560,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=YzljNTIxZTYtOTA3Mi00ZjEwLWI1MzEtN2M0YWNmNDc5YWJl; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=ODhmNTAzOTMtM2Q4Ny00OWI5LWJlYjMtNzdkMWY3NjliZjM0; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 475
 
 {
@@ -1695,7 +1696,7 @@ Content-Length: 475
 <h4 id="like-cover_http_request"><a class="link" href="#like-cover_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /covers/5/likes HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /covers/6/likes HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Host: api.verby.co.kr</code></pre>
 </div>
@@ -1736,7 +1737,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=Y2NjYTEzMTMtOTQ0Yy00OGIyLWJlM2EtMzQ0OWRhOTJhZmQ5; Path=/; HttpOnly; SameSite=Lax</code></pre>
+Set-Cookie: SESSION=YWE4ZTRjYzMtN2FmYy00MGFkLTgzM2MtYmEyMWU5YjBmMTE3; Path=/; HttpOnly; SameSite=Lax</code></pre>
 </div>
 </div>
 </div>
@@ -1747,7 +1748,7 @@ Set-Cookie: SESSION=Y2NjYTEzMTMtOTQ0Yy00OGIyLWJlM2EtMzQ0OWRhOTJhZmQ5; Path=/; Ht
 <h4 id="unlike-cover_http_request"><a class="link" href="#unlike-cover_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /covers/4/likes HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /covers/5/likes HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Host: api.verby.co.kr</code></pre>
 </div>
@@ -1788,7 +1789,59 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=NjZjNmM0YmItYTgxYi00ODg3LTk3OGEtOWQ0Zjg4ZGIyNTIx; Path=/; HttpOnly; SameSite=Lax</code></pre>
+Set-Cookie: SESSION=MGY0ZDk4ZmMtNjk1NS00YWM4LWI5NzktZWFjYjM1ZmIyNmFm; Path=/; HttpOnly; SameSite=Lax</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="hit-cover"><a class="link" href="#hit-cover">커버 조회수 등록</a></h3>
+<div class="sect3">
+<h4 id="hit-cover_http_request"><a class="link" href="#hit-cover_http_request">HTTP request</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /covers/4/hits HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Host: api.verby.co.kr</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="hit-cover_path_parameters"><a class="link" href="#hit-cover_path_parameters">Path parameters</a></h4>
+<div class="paragraph">
+<p>/covers/{coverId}/hits</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">파라미터</th>
+<th class="tableblock halign-left valign-top">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>coverId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">커버 일련번호</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="hit-cover_http_response"><a class="link" href="#hit-cover_http_response">Example response</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 202 Accepted
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Set-Cookie: SESSION=Zjc3NGI1YTUtZTRhNC00OTc4LThiNDAtNTc5Y2VjNjkyMmRh; Path=/; HttpOnly; SameSite=Lax</code></pre>
 </div>
 </div>
 </div>
@@ -1980,14 +2033,14 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 189
+Content-Length: 190
 
 {
   "id" : 2,
-  "key" : "de42eb21-c009-4077-9e58-6ce821387dd5",
+  "key" : "66bc18b9-3f40-4082-9625-4563ea765f64",
   "phone" : "01020492039",
-  "expiration_date" : "2022-12-25T18:10:12.92993",
-  "created_at" : "2022-12-18T18:10:12.930404"
+  "expiration_date" : "2023-01-01T11:26:28.242247",
+  "created_at" : "2022-12-25T11:26:28.242707"
 }</code></pre>
 </div>
 </div>
@@ -2179,9 +2232,9 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=YzQ3NmY0MWQtNGRkOC00MDI1LWFjMTUtYzQ5NDgzNDBlYjcy; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=NDhmNTUxYzItODVmOS00M2E3LTgxOWQtMTE1NWE4YjhjNWFh; Path=/; HttpOnly; SameSite=Lax
 
-http://localhost:8001/verby-deploy/static/cover/image/18749a5b-3b61-47f3-8dcc-b98e7754c347?x-amz-acl=public-read</code></pre>
+http://localhost:8001/verby-deploy/static/cover/image/550a007f-b0fc-45b6-8946-5b7b357b9b9f?x-amz-acl=public-read</code></pre>
 </div>
 </div>
 </div>
@@ -2262,13 +2315,13 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=OTQzZjI4YTAtMGUxNS00ZmUyLWFmMjQtZWZjYTQwMDA5MGRi; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=N2FkMmZkMWItM2VhNy00Yzk2LWFhZDktYWU1MDI0ODNlMDg0; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 87
 
 {
   "id" : 5,
   "login_id" : "test123",
-  "created_at" : "2022-12-18T18:10:12.577494"
+  "created_at" : "2022-12-25T11:26:27.825701"
 }</code></pre>
 </div>
 </div>
@@ -2363,7 +2416,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=YjQ2NmQ1ZWMtZjVhMS00OWVjLWI5NzEtNWZlYmMxNDI2NWFi; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=ZDM1MzMxMTAtMTBiYS00OGM0LTg1MmUtNDFhMjFlMTMzODAy; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 31
 
 {
@@ -2448,7 +2501,9 @@ Host: api.verby.co.kr
 </div>
 <div class="sect3">
 <h4 id="admin-create-song_request_parts"><a class="link" href="#admin-create-song_request_parts">Request parts</a></h4>
-
+<div class="paragraph">
+<p>Snippet request-parts not found for operation::관리자 - 곡 추가</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="admin-create-song_http_response"><a class="link" href="#admin-create-song_http_response">Example response</a></h4>
@@ -2462,7 +2517,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=NDc4MmE4OWYtOWU0MC00NTkwLWJlZGYtZDdiMDE3NTU1Yzlh; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=NzU0MTNlOWItMzRjOC00Y2I2LWE1ZjUtMTY4ODVhY2ExODEy; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 101
 
 {
@@ -2597,7 +2652,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=YWYxYjRkY2UtMzFhNy00ZjEyLTlmMTQtZGJmMDQ2MTJkYmZj; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=YmY3Y2E0MWYtNTBmYy00OWY0LTk4ZWQtZGVmZGMyN2QxZTMw; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 233
 
 {
@@ -2607,7 +2662,7 @@ Content-Length: 233
   "round" : 148,
   "start_time" : "2022-08-01T00:00:00",
   "end_time" : "2022-08-02T00:00:00",
-  "created_at" : "2022-12-18T18:10:10.039989"
+  "created_at" : "2022-12-25T11:26:24.040041"
 }</code></pre>
 </div>
 </div>
@@ -2734,14 +2789,14 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=MmE4MTYzMmQtYzgxZS00Yzc4LWFjYmUtZGI3YTkwNDE5NmNk; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=MTdkNTE1MDItMWM0Ni00YTU4LTgzNTEtODNhM2IzZDE0ODJj; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 199
 
 {
   "id" : 1,
   "title" : "커버 영상 업로드 관련 문의입니다.",
   "content" : "커버 영상을 어떻게 올리는 지 모르겠어요.",
-  "created_at" : "2022-12-18T18:10:11.964328"
+  "created_at" : "2022-12-25T11:26:26.937351"
 }</code></pre>
 </div>
 </div>
@@ -2810,7 +2865,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=ZGUzNTBiNzAtY2MwMy00ZmIwLWJmNjctNzBlNWVlZTVkMWVk; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=ODM1MDRlZTAtMzIxOS00NDc4LWIwMmEtNTc0NmFmYzE5MDdk; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 304
 
 [ {
@@ -2821,7 +2876,7 @@ Content-Length: 304
   "content" : "노래가 재생되지 않는데 어떻게 하죠?",
   "answer" : null,
   "status" : "WAITING_ANSWER",
-  "created_at" : "2022-12-18T18:10:12.058736",
+  "created_at" : "2022-12-25T11:26:27.043516",
   "answered_at" : null
 } ]</code></pre>
 </div>
@@ -2912,7 +2967,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=NTFlZmQ0NjgtOTg0Mi00NmNjLWI3NGUtNmMyMjkxMjNhNDgw; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=YTA2ZDI2YzktZWJkZi00ZTk4LWFmZWEtZjE1NDNlMTM5ZDY5; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 61
 
 {
@@ -3056,7 +3111,7 @@ Content-Length: 61
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2022-12-18 18:09:23 +0900
+Last updated 2022-12-24 20:25:11 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
