@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: ${VERBY_MAIN_URL}/verby_main?serverTimezone=Asia/Seoul
+    username: ${VERBY_MAIN_USERNAME}
+    password: ${VERBY_MAIN_PASSWORD}
+
+cloud:
+  aws:
+    credentials:
+      accessKey: ${S3_ACCESS_KEY_ID}       # AWS IAM AccessKey 적기
+      secretKey: ${S3_SECRET_ACCESS_KEY}   # AWS IAM SecretKey 적기
+    s3:
+      bucket: verby-deploy
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
+
+infra:
+  auth-redis:
+    host: ${VERBY_AUTH_HOST}
+    port: ${VERBY_AUTH_PORT}
+
+  main-redis:
+    host: ${VERBY_CACHE_HOST}
+    port: ${VERBY_CACHE_PORT}
