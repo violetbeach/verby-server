@@ -13,7 +13,6 @@ import verby.apiserver.artist.command.domain.Artist;
 import verby.apiserver.contest.command.domain.Contest;
 import verby.apiserver.cover.command.application.CoverEventType;
 import verby.apiserver.cover.command.application.PostCoverRequest;
-import verby.apiserver.cover.command.domain.Cover;
 import verby.apiserver.cover.command.domain.CoverEvent;
 import verby.apiserver.external.cover.ExternalCoverQueryDao;
 import verby.apiserver.external.cover.ExternalCoverQueryModel;
@@ -22,6 +21,7 @@ import verby.apiserver.song.command.domain.Song;
 import verby.apiserver.support.fixture.domain.ContestFixture;
 import verby.apiserver.support.presentation.BaseControllerTest;
 import verby.apiserver.user.command.domain.User;
+import verby.core.cover.Cover;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

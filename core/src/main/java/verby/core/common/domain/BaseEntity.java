@@ -1,4 +1,4 @@
-package verby.apiserver.common.domain;
+package verby.core.common.domain;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;

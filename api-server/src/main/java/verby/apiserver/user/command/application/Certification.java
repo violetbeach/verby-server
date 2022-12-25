@@ -3,8 +3,8 @@ package verby.apiserver.user.command.application;
 import lombok.Getter;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.index.Indexed;
-import verby.apiserver.common.event.Events;
-import verby.apiserver.config.database.RedisHashKey;
+import verby.core.common.event.Events;
+import verby.core.config.database.RedisHashKey;
 import verby.apiserver.user.command.CertificationType;
 
 import javax.persistence.EnumType;

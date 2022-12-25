@@ -2,7 +2,7 @@ package verby.apiserver.cover.command.application;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import verby.apiserver.cover.command.domain.Cover;
+import verby.core.cover.Cover;
 
 import java.time.LocalDateTime;
 

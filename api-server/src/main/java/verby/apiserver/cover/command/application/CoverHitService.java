@@ -2,8 +2,8 @@ package verby.apiserver.cover.command.application;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import verby.apiserver.cover.command.domain.CoverHit;
 import verby.apiserver.cover.command.domain.CoverHitRepository;
+import verby.core.cover.CoverHit;
 
 @Service
 @RequiredArgsConstructor

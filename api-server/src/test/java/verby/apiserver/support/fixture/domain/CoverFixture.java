@@ -1,6 +1,6 @@
 package verby.apiserver.support.fixture.domain;
 
-import verby.apiserver.cover.command.domain.Cover;
+import verby.core.cover.Cover;
 
 public enum CoverFixture {
 

@@ -3,7 +3,7 @@ package verby.apiserver.user.query.dto;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import verby.apiserver.common.domain.BaseEntity;
+import verby.core.common.domain.BaseEntity;
 import verby.apiserver.user.command.domain.UserRole;
 
 import javax.persistence.*;

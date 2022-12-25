@@ -8,9 +8,9 @@ import org.mockito.AdditionalAnswers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import verby.apiserver.cover.command.domain.Cover;
 import verby.apiserver.cover.command.domain.CoverRepository;
 import verby.apiserver.user.command.application.UploadedResourcesPath;
+import verby.core.cover.Cover;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;

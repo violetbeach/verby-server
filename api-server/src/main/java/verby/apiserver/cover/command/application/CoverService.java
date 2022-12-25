@@ -3,8 +3,8 @@ package verby.apiserver.cover.command.application;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import verby.apiserver.cover.command.domain.Cover;
 import verby.apiserver.cover.command.domain.CoverRepository;
+import verby.core.cover.Cover;
 
 @Service
 @RequiredArgsConstructor

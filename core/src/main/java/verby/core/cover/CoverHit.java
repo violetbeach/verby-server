@@ -1,9 +1,9 @@
-package verby.apiserver.cover.command.domain;
+package verby.core.cover;
 
 import lombok.Getter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
-import verby.apiserver.config.database.RedisHashKey;
+import verby.core.config.database.RedisHashKey;
 
 import java.util.HashSet;
 import java.util.Set;

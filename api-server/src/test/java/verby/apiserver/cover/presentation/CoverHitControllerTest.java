@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.ResultActions;
-import verby.apiserver.cover.command.domain.Cover;
 import verby.apiserver.support.fixture.domain.CoverFixture;
 import verby.apiserver.support.presentation.BaseControllerTest;
+import verby.core.cover.Cover;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

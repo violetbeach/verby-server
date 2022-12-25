@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
-import verby.apiserver.config.database.RedisHashKey;
+import verby.core.config.database.RedisHashKey;
 
 @Getter
 @RedisHash(value = RedisHashKey.COVER_SUMMARY)

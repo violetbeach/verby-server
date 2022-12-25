@@ -1,4 +1,4 @@
-package verby.apiserver.config.database;
+package verby.core.config.database;
 
 public class RedisHashKey {
 

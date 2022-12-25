@@ -12,9 +12,9 @@ import org.springframework.context.annotation.Import;
 import verby.apiserver.common.util.pagination.CursorRequest;
 import verby.apiserver.config.QueryDslConfig;
 import verby.apiserver.cover.command.application.CoverSearchRequest;
-import verby.apiserver.cover.command.domain.Cover;
 import verby.apiserver.cover.query.dto.CoverDetailQueryModel;
 import verby.apiserver.support.fixture.domain.CoverFixture;
+import verby.core.cover.Cover;
 
 import java.util.List;
 

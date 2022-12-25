@@ -12,11 +12,11 @@ import org.springframework.context.annotation.Import;
 import verby.apiserver.artist.command.domain.Artist;
 import verby.apiserver.config.QueryDslConfig;
 import verby.apiserver.contest.command.domain.Contest;
-import verby.apiserver.cover.command.domain.Cover;
 import verby.apiserver.cover.query.dto.CoverQueryModel;
 import verby.apiserver.song.command.domain.Song;
 import verby.apiserver.support.fixture.domain.ContestFixture;
 import verby.apiserver.user.command.domain.User;
+import verby.core.cover.Cover;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;

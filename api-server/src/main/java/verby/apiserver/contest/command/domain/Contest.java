@@ -3,7 +3,7 @@ package verby.apiserver.contest.command.domain;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import verby.apiserver.common.domain.BaseEntity;
+import verby.core.common.domain.BaseEntity;
 import verby.apiserver.contest.exception.InvalidContestDateException;
 
 import javax.persistence.Entity;

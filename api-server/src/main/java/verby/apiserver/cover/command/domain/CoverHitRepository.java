@@ -1,6 +1,7 @@
 package verby.apiserver.cover.command.domain;
 
 import org.springframework.data.repository.Repository;
+import verby.core.cover.CoverHit;
 
 import java.util.Optional;
 

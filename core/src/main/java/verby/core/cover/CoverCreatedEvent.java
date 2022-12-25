@@ -1,8 +1,7 @@
-package verby.apiserver.cover.command.application;
+package verby.core.cover;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import verby.apiserver.cover.command.domain.Cover;
 
 @Getter
 @RequiredArgsConstructor

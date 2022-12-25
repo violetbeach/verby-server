@@ -4,10 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.event.TransactionPhase;
 import org.springframework.transaction.event.TransactionalEventListener;
-import verby.apiserver.common.event.Events;
-import verby.apiserver.cover.command.domain.Cover;
 import verby.apiserver.cover.command.domain.CoverEvent;
 import verby.apiserver.cover.command.domain.CoverEventRepository;
+import verby.core.common.event.Events;
+import verby.core.cover.Cover;
+import verby.core.cover.CoverCreatedEvent;
 
 @Service
 @RequiredArgsConstructor

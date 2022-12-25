@@ -1,12 +1,11 @@
-package verby.apiserver.cover.command.domain;
+package verby.core.cover;
 
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import verby.apiserver.common.domain.BaseEntity;
-import verby.apiserver.common.event.Events;
-import verby.apiserver.cover.command.application.CoverCreatedEvent;
+import verby.core.common.domain.BaseEntity;
+import verby.core.common.event.Events;
 
 import javax.persistence.*;
 
