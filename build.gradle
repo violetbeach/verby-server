@@ -65,9 +65,6 @@ subprojects {
 
 		testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-		implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-
 		implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
 		implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
 	}

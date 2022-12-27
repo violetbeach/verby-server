@@ -1,7 +1,7 @@
 package verby.core.cover;
 
 import lombok.Getter;
-import org.springframework.data.annotation.Id;
+import nonapi.io.github.classgraph.json.Id;
 import org.springframework.data.redis.core.RedisHash;
 import verby.core.config.database.RedisHashKey;
 
