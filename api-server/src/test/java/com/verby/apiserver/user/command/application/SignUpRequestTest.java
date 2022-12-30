@@ -1,5 +1,6 @@
 package com.verby.apiserver.user.command.application;
 
+import com.verby.core.user.command.application.SignUpRequest;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

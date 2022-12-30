@@ -1,19 +1,19 @@
 package com.verby.apiserver.cover.presentation;
 
 
-import com.verby.apiserver.artist.command.domain.Artist;
-import com.verby.apiserver.contest.command.domain.Contest;
-import com.verby.apiserver.cover.command.application.CoverEventType;
-import com.verby.apiserver.cover.command.application.PostCoverRequest;
-import com.verby.apiserver.cover.command.domain.CoverEvent;
+import com.verby.core.artist.command.domain.Artist;
+import com.verby.core.contest.command.domain.Contest;
+import com.verby.core.cover.command.application.CoverEventType;
+import com.verby.core.cover.command.application.PostCoverRequest;
+import com.verby.core.cover.command.domain.CoverEvent;
 import com.verby.apiserver.external.cover.ExternalCoverQueryDao;
 import com.verby.apiserver.external.cover.ExternalCoverQueryModel;
 import com.verby.apiserver.external.cover.ExternalCoverSummaryService;
-import com.verby.apiserver.song.command.domain.Song;
+import com.verby.core.song.command.domain.Song;
 import com.verby.apiserver.support.documentation.ApiDocumentUtils;
 import com.verby.apiserver.support.fixture.domain.*;
 import com.verby.apiserver.support.presentation.BaseControllerTest;
-import com.verby.apiserver.user.command.domain.User;
+import com.verby.core.user.command.domain.User;
 import com.verby.core.cover.Cover;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

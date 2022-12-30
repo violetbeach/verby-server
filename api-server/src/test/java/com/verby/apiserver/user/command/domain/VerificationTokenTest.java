@@ -1,6 +1,8 @@
 package com.verby.apiserver.user.command.domain;
 
 import com.verby.apiserver.support.fixture.domain.UserFixture;
+import com.verby.core.user.command.domain.User;
+import com.verby.core.user.command.domain.VerificationToken;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

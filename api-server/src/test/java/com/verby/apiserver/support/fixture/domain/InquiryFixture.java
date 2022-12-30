@@ -1,6 +1,6 @@
 package com.verby.apiserver.support.fixture.domain;
 
-import com.verby.apiserver.inquiry.command.domain.Inquiry;
+import com.verby.core.inquiry.command.domain.Inquiry;
 
 public enum InquiryFixture {
 

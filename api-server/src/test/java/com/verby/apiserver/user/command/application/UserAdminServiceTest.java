@@ -1,9 +1,12 @@
 package com.verby.apiserver.user.command.application;
 
 
-import com.verby.apiserver.user.command.domain.RoleRepository;
-import com.verby.apiserver.user.command.domain.UserRepository;
-import com.verby.apiserver.user.exception.LoginIdDuplicateException;
+import com.verby.core.user.command.application.CreateAdminRequest;
+import com.verby.core.user.command.application.CreatedUserInfo;
+import com.verby.core.user.command.application.UserAdminService;
+import com.verby.core.user.command.domain.RoleRepository;
+import com.verby.core.user.command.domain.UserRepository;
+import com.verby.core.user.exception.LoginIdDuplicateException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

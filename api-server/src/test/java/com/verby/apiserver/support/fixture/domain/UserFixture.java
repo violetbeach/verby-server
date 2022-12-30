@@ -1,8 +1,8 @@
 package com.verby.apiserver.support.fixture.domain;
 
-import com.verby.apiserver.user.command.domain.Gender;
-import com.verby.apiserver.user.command.domain.User;
-import com.verby.apiserver.user.command.domain.UserRole;
+import com.verby.core.user.command.domain.Gender;
+import com.verby.core.user.command.domain.User;
+import com.verby.core.user.command.domain.UserRole;
 
 import java.util.Set;
 

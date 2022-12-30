@@ -1,7 +1,9 @@
 package com.verby.apiserver.cover.command.application;
 
 
-import com.verby.apiserver.common.storage.dto.Resource;
+import com.verby.core.storage.dto.Resource;
+import com.verby.core.cover.command.application.CoverStoragePathProperties;
+import com.verby.core.cover.command.application.CoverStorageService;
 import org.apache.logging.log4j.util.Strings;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

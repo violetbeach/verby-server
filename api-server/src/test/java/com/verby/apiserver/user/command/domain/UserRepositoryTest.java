@@ -1,5 +1,8 @@
 package com.verby.apiserver.user.command.domain;
 
+import com.verby.core.user.command.domain.Gender;
+import com.verby.core.user.command.domain.User;
+import com.verby.core.user.command.domain.UserRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

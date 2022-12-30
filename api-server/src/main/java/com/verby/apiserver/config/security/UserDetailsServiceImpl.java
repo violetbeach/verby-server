@@ -1,7 +1,7 @@
 package com.verby.apiserver.config.security;
 
-import com.verby.apiserver.user.command.domain.User;
-import com.verby.apiserver.user.command.domain.UserRepository;
+import com.verby.core.user.command.domain.User;
+import com.verby.core.user.command.domain.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;

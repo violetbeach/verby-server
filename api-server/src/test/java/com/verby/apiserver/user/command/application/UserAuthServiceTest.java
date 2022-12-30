@@ -1,9 +1,10 @@
 package com.verby.apiserver.user.command.application;
 
-import com.verby.apiserver.user.command.domain.*;
-import com.verby.apiserver.user.exception.LoginIdDuplicateException;
-import com.verby.apiserver.user.exception.PhoneNumberDuplicateException;
-import com.verby.apiserver.user.exception.UnavailableLoginIdException;
+import com.verby.core.user.command.application.*;
+import com.verby.core.user.command.domain.*;
+import com.verby.core.user.exception.LoginIdDuplicateException;
+import com.verby.core.user.exception.PhoneNumberDuplicateException;
+import com.verby.core.user.exception.UnavailableLoginIdException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

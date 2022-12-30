@@ -1,9 +1,9 @@
 package com.verby.apiserver.common.presentation;
 
 
-import com.verby.apiserver.common.storage.dto.CreateUploadUrlRequest;
-import com.verby.apiserver.common.storage.dto.Domain;
-import com.verby.apiserver.common.storage.dto.Resource;
+import com.verby.core.storage.dto.CreateUploadUrlRequest;
+import com.verby.core.storage.dto.Domain;
+import com.verby.core.storage.dto.Resource;
 import com.verby.apiserver.support.documentation.ApiDocumentUtils;
 import com.verby.apiserver.support.presentation.BaseControllerTest;
 import com.verby.apiserver.support.storage.S3TestConfig;

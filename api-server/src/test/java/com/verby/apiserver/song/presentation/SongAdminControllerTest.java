@@ -1,9 +1,9 @@
 package com.verby.apiserver.song.presentation;
 
 
-import com.verby.apiserver.artist.command.domain.Artist;
-import com.verby.apiserver.artist.command.domain.ArtistRepository;
-import com.verby.apiserver.song.command.application.CreateSongRequest;
+import com.verby.core.artist.command.domain.Artist;
+import com.verby.core.artist.command.domain.ArtistRepository;
+import com.verby.core.song.command.application.CreateSongRequest;
 import com.verby.apiserver.support.documentation.ApiDocumentUtils;
 import com.verby.apiserver.support.presentation.BaseControllerTest;
 import org.junit.jupiter.api.DisplayName;

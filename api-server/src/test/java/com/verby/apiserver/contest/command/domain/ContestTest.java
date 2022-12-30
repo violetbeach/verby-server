@@ -1,7 +1,8 @@
 package com.verby.apiserver.contest.command.domain;
 
 
-import com.verby.apiserver.contest.exception.InvalidContestDateException;
+import com.verby.core.contest.command.domain.Contest;
+import com.verby.core.contest.exception.InvalidContestDateException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -3,8 +3,8 @@ package com.verby.apiserver.user.presentation;
 
 import com.verby.apiserver.support.documentation.ApiDocumentUtils;
 import com.verby.apiserver.support.presentation.BaseControllerTest;
-import com.verby.apiserver.user.command.application.CreateAdminRequest;
-import com.verby.apiserver.user.command.domain.UserRepository;
+import com.verby.core.user.command.application.CreateAdminRequest;
+import com.verby.core.user.command.domain.UserRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

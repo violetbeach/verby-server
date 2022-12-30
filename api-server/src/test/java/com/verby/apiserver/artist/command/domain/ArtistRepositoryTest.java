@@ -1,5 +1,7 @@
 package com.verby.apiserver.artist.command.domain;
 
+import com.verby.core.artist.command.domain.Artist;
+import com.verby.core.artist.command.domain.ArtistRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;

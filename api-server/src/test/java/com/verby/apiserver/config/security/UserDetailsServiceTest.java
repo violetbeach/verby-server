@@ -2,10 +2,10 @@
 package com.verby.apiserver.config.security;
 
 
-import com.verby.apiserver.user.command.application.SignUpRequest;
-import com.verby.apiserver.user.command.application.UserAuthService;
-import com.verby.apiserver.user.command.application.VerificationTokenRepository;
-import com.verby.apiserver.user.command.domain.VerificationToken;
+import com.verby.core.user.command.application.SignUpRequest;
+import com.verby.core.user.command.application.UserAuthService;
+import com.verby.core.user.command.application.VerificationTokenRepository;
+import com.verby.core.user.command.domain.VerificationToken;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

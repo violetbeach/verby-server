@@ -6,7 +6,7 @@ public class Events {
 
     private static ApplicationEventPublisher publisher;
 
-    public static void setPublisher(ApplicationEventPublisher publisher) {
+    static void setPublisher(ApplicationEventPublisher publisher) {
         Events.publisher = publisher;
     }
 

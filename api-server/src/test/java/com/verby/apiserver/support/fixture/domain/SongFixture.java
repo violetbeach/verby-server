@@ -1,7 +1,7 @@
 package com.verby.apiserver.support.fixture.domain;
 
 
-import com.verby.apiserver.song.command.domain.Song;
+import com.verby.core.song.command.domain.Song;
 
 public enum SongFixture {
 

@@ -1,12 +1,13 @@
 package com.verby.apiserver.cover.query.dao;
 
-import com.verby.apiserver.artist.command.domain.Artist;
-import com.verby.apiserver.config.QueryDslConfig;
-import com.verby.apiserver.contest.command.domain.Contest;
-import com.verby.apiserver.cover.query.dto.CoverQueryModel;
-import com.verby.apiserver.song.command.domain.Song;
+import com.verby.core.artist.command.domain.Artist;
+import com.verby.core.config.QueryDslConfig;
+import com.verby.core.contest.command.domain.Contest;
+import com.verby.core.cover.query.dao.CoverQueryDao;
+import com.verby.core.cover.query.dto.CoverQueryModel;
+import com.verby.core.song.command.domain.Song;
 import com.verby.apiserver.support.fixture.domain.ContestFixture;
-import com.verby.apiserver.user.command.domain.User;
+import com.verby.core.user.command.domain.User;
 import com.verby.core.cover.Cover;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;

@@ -1,7 +1,7 @@
 package com.verby.apiserver.config.database;
 
 
-import com.verby.apiserver.user.command.application.Certification;
+import com.verby.core.user.command.application.Certification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

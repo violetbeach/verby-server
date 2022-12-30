@@ -1,5 +1,7 @@
 package com.verby.apiserver.user.command.domain;
 
+import com.verby.core.user.command.domain.Gender;
+import com.verby.core.user.command.domain.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

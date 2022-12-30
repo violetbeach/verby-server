@@ -1,7 +1,7 @@
 package com.verby.apiserver.support.fixture.domain;
 
 
-import com.verby.apiserver.contest.command.domain.Contest;
+import com.verby.core.contest.command.domain.Contest;
 
 import java.time.LocalDateTime;
 

@@ -1,7 +1,7 @@
 package com.verby.apiserver.support.fixture.domain;
 
 
-import com.verby.apiserver.artist.command.domain.Artist;
+import com.verby.core.artist.command.domain.Artist;
 
 public enum ArtistFixture {
 

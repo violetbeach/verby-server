@@ -1,6 +1,6 @@
 package com.verby.apiserver.external.cover;
 
-import com.verby.apiserver.cover.command.domain.CoverEvent;
+import com.verby.core.cover.command.domain.CoverEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,10 @@
 package com.verby.apiserver.cover.command.application;
 
-import com.verby.apiserver.cover.command.domain.CoverRepository;
-import com.verby.apiserver.user.command.application.UploadedResourcesPath;
+import com.verby.core.cover.command.application.CoverService;
+import com.verby.core.cover.command.application.PostCoverRequest;
+import com.verby.core.cover.command.application.PostedCoverInfo;
+import com.verby.core.cover.command.domain.CoverRepository;
+import com.verby.core.user.command.application.UploadedResourcesPath;
 import com.verby.core.cover.Cover;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

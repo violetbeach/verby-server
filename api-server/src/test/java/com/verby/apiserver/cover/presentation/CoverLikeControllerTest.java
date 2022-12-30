@@ -1,7 +1,7 @@
 package com.verby.apiserver.cover.presentation;
 
 
-import com.verby.apiserver.cover.command.domain.CoverLike;
+import com.verby.core.cover.command.domain.CoverLike;
 import com.verby.apiserver.support.documentation.ApiDocumentUtils;
 import com.verby.apiserver.support.fixture.domain.CoverFixture;
 import com.verby.apiserver.support.presentation.BaseControllerTest;

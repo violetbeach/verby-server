@@ -1,10 +1,11 @@
 package com.verby.apiserver.cover.query.dao;
 
 
-import com.verby.apiserver.common.util.pagination.CursorRequest;
-import com.verby.apiserver.config.QueryDslConfig;
-import com.verby.apiserver.cover.command.application.CoverSearchRequest;
-import com.verby.apiserver.cover.query.dto.CoverDetailQueryModel;
+import com.verby.core.util.pagination.CursorRequest;
+import com.verby.core.config.QueryDslConfig;
+import com.verby.core.cover.command.application.CoverSearchRequest;
+import com.verby.core.cover.query.dao.CoverDetailQueryDao;
+import com.verby.core.cover.query.dto.CoverDetailQueryModel;
 import com.verby.apiserver.support.fixture.domain.CoverFixture;
 import com.verby.core.cover.Cover;
 import org.junit.jupiter.api.DisplayName;
