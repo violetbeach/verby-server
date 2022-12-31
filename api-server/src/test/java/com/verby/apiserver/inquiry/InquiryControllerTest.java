@@ -1,11 +1,11 @@
 package com.verby.apiserver.inquiry;
 
+import com.verby.apiserver.support.documentation.ApiDocumentUtils;
+import com.verby.apiserver.support.presentation.BaseControllerTest;
 import com.verby.core.inquiry.command.application.InquiryRequest;
 import com.verby.core.inquiry.command.domain.Inquiry;
 import com.verby.core.inquiry.command.domain.InquiryRepository;
-import com.verby.apiserver.support.documentation.ApiDocumentUtils;
-import com.verby.apiserver.support.fixture.domain.InquiryFixture;
-import com.verby.apiserver.support.presentation.BaseControllerTest;
+import fixture.InquiryFixture;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

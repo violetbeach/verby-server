@@ -1,6 +1,6 @@
 package com.verby.apiserver.song;
 
-import com.verby.apiserver.common.error.ErrorCode;
+import com.verby.core.common.error.ErrorCode;
 import com.verby.core.common.error.exception.EntityNotFoundException;
 import com.verby.core.song.command.application.CreateSongRequest;
 import com.verby.core.song.command.application.SongService;

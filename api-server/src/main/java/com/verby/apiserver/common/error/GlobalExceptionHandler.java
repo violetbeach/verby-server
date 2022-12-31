@@ -1,5 +1,6 @@
 package com.verby.apiserver.common.error;
 
+import com.verby.core.common.error.ErrorCode;
 import com.verby.core.common.error.exception.BusinessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

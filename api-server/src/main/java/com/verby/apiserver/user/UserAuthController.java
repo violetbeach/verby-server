@@ -1,8 +1,7 @@
 package com.verby.apiserver.user;
 
-import com.verby.apiserver.user.command.application.*;
-import com.verby.core.user.command.domain.VerificationToken;
 import com.verby.core.user.command.application.*;
+import com.verby.core.user.command.domain.VerificationToken;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

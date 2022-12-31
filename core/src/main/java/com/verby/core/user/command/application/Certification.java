@@ -1,8 +1,8 @@
 package com.verby.core.user.command.application;
 
-import com.verby.core.user.command.CertificationType;
 import com.verby.core.common.event.Events;
 import com.verby.core.config.database.RedisHashKey;
+import com.verby.core.user.command.CertificationType;
 import lombok.Getter;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.index.Indexed;

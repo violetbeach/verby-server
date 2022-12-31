@@ -1,7 +1,7 @@
 package com.verby.apiserver.cover;
 
-import com.verby.core.util.ip.ClientIPUtils;
 import com.verby.core.cover.command.application.CoverHitService;
+import com.verby.apiserver.util.ip.ClientIPUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,7 @@
 package com.verby.core.contest.exception;
 
-import com.verby.apiserver.common.error.ErrorCode;
-import com.verby.apiserver.common.error.exception.BusinessException;
+import com.verby.core.common.error.ErrorCode;
+import com.verby.core.common.error.exception.BusinessException;
 
 public class InvalidContestDateException extends BusinessException {
 

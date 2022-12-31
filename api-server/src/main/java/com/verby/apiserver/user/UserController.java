@@ -1,8 +1,8 @@
 package com.verby.apiserver.user;
 
-import com.verby.apiserver.common.error.ErrorCode;
-import com.verby.core.common.error.exception.EntityNotFoundException;
 import com.verby.apiserver.config.security.SecurityUser;
+import com.verby.core.common.error.ErrorCode;
+import com.verby.core.common.error.exception.EntityNotFoundException;
 import com.verby.core.user.query.dao.UserDataDao;
 import com.verby.core.user.query.dao.UserDataQueryDao;
 import com.verby.core.user.query.dto.UserData;

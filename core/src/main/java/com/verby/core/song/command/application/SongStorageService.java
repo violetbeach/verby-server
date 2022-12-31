@@ -1,8 +1,8 @@
 package com.verby.core.song.command.application;
 
-import com.verby.apiserver.common.storage.dto.Domain;
-import com.verby.apiserver.common.storage.dto.Resource;
-import com.verby.apiserver.common.storage.exception.ResourceTypeNotMatchException;
+import com.verby.core.storage.dto.Domain;
+import com.verby.core.storage.dto.Resource;
+import com.verby.core.storage.exception.ResourceTypeNotMatchException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 

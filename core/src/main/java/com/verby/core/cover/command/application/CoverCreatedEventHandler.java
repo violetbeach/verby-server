@@ -1,10 +1,10 @@
 package com.verby.core.cover.command.application;
 
-import com.verby.core.cover.command.domain.CoverEvent;
-import com.verby.core.cover.command.domain.CoverEventRepository;
 import com.verby.core.common.event.Events;
 import com.verby.core.cover.Cover;
 import com.verby.core.cover.CoverCreatedEvent;
+import com.verby.core.cover.command.domain.CoverEvent;
+import com.verby.core.cover.command.domain.CoverEventRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.event.TransactionPhase;

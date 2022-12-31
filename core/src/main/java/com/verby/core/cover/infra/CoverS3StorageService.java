@@ -5,10 +5,10 @@ import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.Headers;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
-import com.verby.apiserver.common.storage.StorageUtils;
-import com.verby.apiserver.common.storage.dto.Resource;
 import com.verby.core.cover.command.application.CoverStoragePathProperties;
 import com.verby.core.cover.command.application.CoverStorageService;
+import com.verby.core.storage.StorageUtils;
+import com.verby.core.storage.dto.Resource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

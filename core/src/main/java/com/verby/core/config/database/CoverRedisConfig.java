@@ -2,7 +2,7 @@ package com.verby.core.config.database;
 
 import com.verby.core.cover.command.domain.CoverHitRepository;
 import com.verby.core.cover.query.dao.CoverQueryDao;
-import com.verby.apiserver.external.cover.ExternalCoverQueryDao;
+import com.verby.core.external.cover.ExternalCoverQueryDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.EnableCaching;
@@ -17,7 +17,6 @@ import org.springframework.data.redis.repository.configuration.EnableRedisReposi
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
-import org.springframework.session.data.redis.config.ConfigureRedisAction;
 
 @EnableCaching
 @Configuration
@@ -61,11 +60,6 @@ public class CoverRedisConfig {
                 .fromConnectionFactory(redisConnectionFactory)
                 .cacheDefaults(redisCacheConfiguration)
                 .build();
-    }
-
-    @Bean
-    public ConfigureRedisAction configureRedisAction() {
-        return ConfigureRedisAction.NO_OP;
     }
 
 }

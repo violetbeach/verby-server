@@ -1,10 +1,8 @@
 package com.verby.core.user.command.application;
 
-import com.verby.apiserver.common.error.ErrorCode;
-import com.verby.apiserver.common.error.exception.EntityNotFoundException;
+import com.verby.core.common.error.ErrorCode;
+import com.verby.core.common.error.exception.EntityNotFoundException;
 import com.verby.core.user.command.CertificationType;
-import com.verby.apiserver.user.command.domain.*;
-import com.verby.apiserver.user.exception.*;
 import com.verby.core.user.command.domain.*;
 import com.verby.core.user.exception.*;
 import lombok.RequiredArgsConstructor;

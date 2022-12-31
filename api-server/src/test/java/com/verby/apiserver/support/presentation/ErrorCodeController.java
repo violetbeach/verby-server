@@ -1,6 +1,6 @@
 package com.verby.apiserver.support.presentation;
 
-import com.verby.apiserver.common.error.ErrorCode;
+import com.verby.core.common.error.ErrorCode;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,7 +1,7 @@
 package com.verby.core.cover.command.application;
 
-import com.verby.core.cover.command.domain.CoverRepository;
 import com.verby.core.cover.Cover;
+import com.verby.core.cover.command.domain.CoverRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

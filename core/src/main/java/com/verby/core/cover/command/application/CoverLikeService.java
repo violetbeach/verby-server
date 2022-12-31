@@ -1,7 +1,7 @@
 package com.verby.core.cover.command.application;
 
-import com.verby.apiserver.common.error.ErrorCode;
-import com.verby.apiserver.common.error.exception.EntityNotFoundException;
+import com.verby.core.common.error.ErrorCode;
+import com.verby.core.common.error.exception.EntityNotFoundException;
 import com.verby.core.cover.command.domain.CoverLike;
 import com.verby.core.cover.command.domain.CoverLikeRepository;
 import lombok.RequiredArgsConstructor;

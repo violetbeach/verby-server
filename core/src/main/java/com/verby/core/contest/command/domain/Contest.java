@@ -1,7 +1,7 @@
 package com.verby.core.contest.command.domain;
 
-import com.verby.core.contest.exception.InvalidContestDateException;
 import com.verby.core.common.domain.BaseEntity;
+import com.verby.core.contest.exception.InvalidContestDateException;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

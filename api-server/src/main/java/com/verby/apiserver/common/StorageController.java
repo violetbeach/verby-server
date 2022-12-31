@@ -1,8 +1,8 @@
 package com.verby.apiserver.common;
 
-import com.verby.core.storage.dto.CreateUploadUrlRequest;
 import com.verby.core.cover.command.application.CoverStorageService;
 import com.verby.core.song.command.application.SongStorageService;
+import com.verby.core.storage.dto.CreateUploadUrlRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

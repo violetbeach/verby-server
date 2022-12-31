@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-import static com.verby.apiserver.user.query.dto.QUserData.userData;
+import static com.verby.core.user.query.dto.QUserData.userData;
 
 @Repository
 @RequiredArgsConstructor
@@ -20,7 +20,7 @@ public class UserDataQueryDao {
 
     public Optional<UserData> searchOne(UserSearchParam userSearchParam) {
         return Optional.ofNullable(queryFactory
-                .selectFrom(QUserData.userData)
+                .selectFrom(userData)
                 .where(loginIdEq(userSearchParam.getLoginId()),
                         phoneEq(userSearchParam.getPhone()))
                 .fetchOne());
@@ -30,14 +30,14 @@ public class UserDataQueryDao {
         if (loginIdCond == null) {
             return null;
         }
-        return QUserData.userData.loginId.eq(loginIdCond);
+        return userData.loginId.eq(loginIdCond);
     }
 
     private BooleanExpression phoneEq(String phoneCond) {
         if (phoneCond == null) {
             return null;
         }
-        return QUserData.userData.phone.eq(phoneCond);
+        return userData.phone.eq(phoneCond);
     }
 
 }

@@ -1,6 +1,6 @@
 package com.verby.core.common.error.exception;
 
-import com.verby.apiserver.common.error.ErrorCode;
+import com.verby.core.common.error.ErrorCode;
 
 public class StaticStorageExcpetion extends BusinessException {
 

@@ -1,7 +1,7 @@
 package com.verby.core.storage.exception;
 
 
-import com.verby.apiserver.common.error.ErrorCode;
+import com.verby.core.common.error.ErrorCode;
 import com.verby.core.common.error.exception.BusinessException;
 import com.verby.core.storage.dto.Domain;
 import com.verby.core.storage.dto.Resource;

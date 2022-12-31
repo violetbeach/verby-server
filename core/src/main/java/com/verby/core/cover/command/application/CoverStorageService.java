@@ -1,8 +1,8 @@
 package com.verby.core.cover.command.application;
 
-import com.verby.apiserver.common.storage.dto.Domain;
-import com.verby.apiserver.common.storage.dto.Resource;
-import com.verby.apiserver.common.storage.exception.ResourceTypeNotMatchException;
+import com.verby.core.storage.dto.Domain;
+import com.verby.core.storage.dto.Resource;
+import com.verby.core.storage.exception.ResourceTypeNotMatchException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -14,13 +14,13 @@ public abstract class CoverStorageService {
 
     protected String getResourcePath(Resource resource) {
         switch (resource) {
-            case Resource.FULL_VIDEO -> {
+            case FULL_VIDEO -> {
                 return storagePathProperties.getVideo();
             }
-            case Resource.HIGHLIGHT -> {
+            case HIGHLIGHT -> {
                 return storagePathProperties.getHighlight();
             }
-            case Resource.IMAGE -> {
+            case IMAGE -> {
                 return storagePathProperties.getImage();
             }
             default -> {

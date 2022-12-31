@@ -1,12 +1,12 @@
 package com.verby.apiserver.config.security.api;
 
 import com.verby.apiserver.config.security.AuthenticationRequest;
-import com.verby.apiserver.support.fixture.domain.UserFixture;
 import com.verby.apiserver.support.presentation.BaseControllerTest;
 import com.verby.core.user.command.domain.Role;
 import com.verby.core.user.command.domain.RoleRepository;
 import com.verby.core.user.command.domain.UserRepository;
 import com.verby.core.user.command.domain.UserRole;
+import fixture.UserFixture;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +42,7 @@ class AuthenticationFilterTest extends BaseControllerTest {
         // given
         String loginId = "test1234";
         String password = "test5678";
-        generateUser(loginId, password);
+
         AuthenticationRequest request = new AuthenticationRequest(loginId, password);
 
         // when

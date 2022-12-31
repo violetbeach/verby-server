@@ -1,8 +1,8 @@
 package com.verby.apiserver.config.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.verby.apiserver.common.error.ErrorCode;
 import com.verby.apiserver.common.error.ErrorResponse;
+import com.verby.core.common.error.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

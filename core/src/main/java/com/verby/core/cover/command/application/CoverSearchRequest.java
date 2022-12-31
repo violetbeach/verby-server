@@ -1,7 +1,7 @@
 package com.verby.core.cover.command.application;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.verby.apiserver.common.util.pagination.CursorRequest;
+import com.verby.core.util.pagination.CursorRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

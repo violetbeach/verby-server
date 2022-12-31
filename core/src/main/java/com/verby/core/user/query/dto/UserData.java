@@ -1,7 +1,7 @@
 package com.verby.core.user.query.dto;
 
-import com.verby.core.user.command.domain.UserRole;
 import com.verby.core.common.domain.BaseEntity;
+import com.verby.core.user.command.domain.UserRole;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
