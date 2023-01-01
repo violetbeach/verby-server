@@ -1,6 +1,22 @@
 bootJar { enabled = false }
 jar { enabled = true }
 
+buildscript {
+    ext {
+        queryDslVersion = '5.0.0'
+    }
+
+    repositories {
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+
+    dependencies {
+        classpath("gradle.plugin.com.ewerk.gradle.plugins:querydsl-plugin:1.0.10")
+    }
+}
+
+apply plugin: 'com.ewerk.gradle.plugins.querydsl'
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
@@ -8,6 +24,10 @@ dependencies {
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
+    implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
+
     implementation 'org.springframework.session:spring-session-data-redis'
 
     implementation 'org.springframework.security:spring-security-crypto'
@@ -18,4 +38,20 @@ dependencies {
     testFixturesImplementation 'io.findify:s3mock_2.13:0.2.6'
     testFixturesImplementation 'it.ozimov:embedded-redis:0.7.2'
 
+}
+
+def querydslDir = "$buildDir/generated/querydsl"
+
+querydsl {
+    library = "com.querydsl:querydsl-apt"
+    jpa = true
+    querydslSourcesDir = querydslDir
+}
+
+sourceSets {
+    main.java.srcDir querydslDir
+}
+
+compileQuerydsl{
+    options.annotationProcessorPath = configurations.querydsl
 }

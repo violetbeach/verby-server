@@ -1,17 +1,14 @@
 buildscript {
 	ext {
 		springBootVersion = '2.7.1'
-		queryDslVersion = '5.0.0'
 	}
 	repositories {
 		mavenCentral()
-		maven { url "https://plugins.gradle.org/m2/" }
 	}
 
 	dependencies {
 		classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
 		classpath "io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE"
-		classpath "gradle.plugin.com.ewerk.gradle.plugins:querydsl-plugin:1.0.10"
 	}
 
 }
@@ -27,7 +24,6 @@ subprojects {
 	apply plugin: 'io.spring.dependency-management'
 	apply plugin: 'jacoco'
 	apply plugin: 'java-test-fixtures'
-	apply plugin: "com.ewerk.gradle.plugins.querydsl"
 
 	sourceCompatibility = '17'
 
@@ -43,32 +39,13 @@ subprojects {
 		maven { url 'https://jitpack.io' }
 	}
 
-	def querydslDir = "$buildDir/generated/querydsl"
-
-	querydsl {
-		library = "com.querydsl:querydsl-apt"
-		jpa = true
-		querydslSourcesDir = querydslDir
-	}
-
-	sourceSets {
-		main.java.srcDir querydslDir
-	}
-
-	compileQuerydsl{
-		options.annotationProcessorPath = configurations.querydsl
-	}
-
 	dependencies {
 		compileOnly 'org.projectlombok:lombok'
 		annotationProcessor 'org.projectlombok:lombok'
 		testCompileOnly 'org.projectlombok:lombok'
 		testAnnotationProcessor 'org.projectlombok:lombok'
 
-		implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
-		implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
-
-		implementation 'com.github.kingbbode:spring-boot-custom-yaml-importer:0.3.0'
+		compileOnly 'com.github.kingbbode:spring-boot-custom-yaml-importer:0.3.0'
 
 		testImplementation('org.springframework.boot:spring-boot-starter-test') {
 			exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

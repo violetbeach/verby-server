@@ -36,7 +36,7 @@ class SongAdminControllerTest extends BaseControllerTest {
         CreateSongRequest request = new CreateSongRequest("사랑했지만", "/static/song/image.png");
 
         // when
-        ResultActions result = mockMvc.perform(post("/admin/artists/{artistId}/songs", artist.getId())
+        ResultActions result = mockMvc.perform(post("/adminAartists/{artistId}/songs", artist.getId())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(request)));
 
