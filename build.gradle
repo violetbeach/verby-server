@@ -40,6 +40,7 @@ subprojects {
 
 	repositories {
 		mavenCentral()
+		maven { url 'https://jitpack.io' }
 	}
 
 	def querydslDir = "$buildDir/generated/querydsl"
@@ -66,6 +67,8 @@ subprojects {
 
 		implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
 		implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
+
+		implementation 'com.github.kingbbode:spring-boot-custom-yaml-importer:0.3.0'
 
 		testImplementation('org.springframework.boot:spring-boot-starter-test') {
 			exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

@@ -42,6 +42,7 @@ class AuthenticationFilterTest extends BaseControllerTest {
         // given
         String loginId = "test1234";
         String password = "test5678";
+        generateUser(loginId, password);
 
         AuthenticationRequest request = new AuthenticationRequest(loginId, password);
 

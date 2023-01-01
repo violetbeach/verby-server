@@ -7,8 +7,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class WriteBackCoverHitsScheduler {
 
-    private final CoverHitRepository coverHitRepository;
-
     // TODO
     public void execute() {
 
