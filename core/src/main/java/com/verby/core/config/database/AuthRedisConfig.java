@@ -1,4 +1,4 @@
-package com.verby.apiserver.config.database;
+package com.verby.core.config.database;
 
 
 import com.verby.core.user.command.application.Certification;
