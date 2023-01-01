@@ -6,6 +6,10 @@ spring:
     password: ${VERBY_MAIN_PASSWORD}e
 
 infra:
+  auth-redis:
+    host: ${VERBY_AUTH_HOST}
+    port: ${VERBY_AUTH_PORT}
+
   main-redis:
     host: ${VERBY_CACHE_HOST}
     port: ${VERBY_CACHE_PORT}
