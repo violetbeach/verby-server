@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:8341/verby_main?serverTimezone=Asia/Seoul
+    username: root
+    password: root
+
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+infra:
+  auth-redis:
+    host: localhost
+    port: 8342
+
+  main-redis:
+    host: localhost
+    port: 8342

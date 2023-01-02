@@ -1,0 +1,31 @@
+spring:
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDB106Dialect
+    open-in-view: false
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true
+
+cloud:
+  aws:
+    credentials:
+      accessKey: ${S3_ACCESS_KEY_ID}       # AWS IAM AccessKey 적기
+      secretKey: ${S3_SECRET_ACCESS_KEY}   # AWS IAM SecretKey 적기
+    s3:
+      bucket: verby-deploy
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
+
+static:
+  paths:
+    cover:
+      video: static/cover/videos
+      highlight: static/cover/highlight
+      image: static/cover/image
+    song:
+      image: static/song/images

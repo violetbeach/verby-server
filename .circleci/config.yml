@@ -16,9 +16,6 @@ jobs:
             - v1-dependencies-{{ checksum "build.gradle" }}
             - v1-dependencies-
 
-      - run:
-          command: ./gradlew dependencies
-
       - save_cache:
           key: v1-dependencies-{{ checksum "build.gradle" }}
           paths:

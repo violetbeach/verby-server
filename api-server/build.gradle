@@ -1,73 +1,39 @@
-buildscript {
-	ext {
-		queryDslVersion = "5.0.0"
-	}
-}
-
 plugins {
 	id 'org.asciidoctor.jvm.convert' version '3.3.2'
-	id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
 }
 
 configurations {
 	asciidoctorExtensions
-	querydsl.extendsFrom compileClasspath
-}
-
-dependencies {
-	implementation project(':core')
-
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
-	implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
-
-	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-	implementation 'org.springframework.session:spring-session-data-redis'
-
-	implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
-
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.security:spring-security-test'
-
-	testImplementation 'com.h2database:h2'
-	testImplementation 'it.ozimov:embedded-redis:0.7.2'
-	testImplementation 'io.findify:s3mock_2.13:0.2.6'
-
-	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
-	asciidoctorExtensions 'org.springframework.restdocs:spring-restdocs-asciidoctor'
-}
-
-tasks.named('jar') {
-	enabled = false
 }
 
 bootJar {
 	dependsOn asciidoctor
 }
 
-test {
-	useJUnitPlatform()
-	finalizedBy jacocoTestReport
-}
+dependencies {
+	implementation project(':core')
+	testImplementation(testFixtures(project(":core")))
 
-def querydslDir = "$buildDir/generated/querydsl"
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 
-querydsl {
-	jpa = true
-	querydslSourcesDir = querydslDir
-}
+	implementation 'org.springframework.session:spring-session-data-redis'
 
-sourceSets {
-	main.java.srcDir querydslDir
-}
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
-compileQuerydsl{
-	options.annotationProcessorPath = configurations.querydsl
+	implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+
+	testImplementation 'org.springframework.security:spring-security-test'
+
+	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+
+	testImplementation 'com.h2database:h2'
+	testImplementation 'io.findify:s3mock_2.13:0.2.6'
+	testImplementation 'it.ozimov:embedded-redis:0.7.2'
+
+	asciidoctorExtensions 'org.springframework.restdocs:spring-restdocs-asciidoctor'
+
 }
 
 asciidoctor {

@@ -1,41 +1,55 @@
-plugins {
-	id 'java'
-	id 'org.springframework.boot' version '2.7.1'
-}
-
-repositories {
-	mavenCentral()
-}
-
-bootJar.enabled = false
-
-subprojects {
-	group = 'com.verby'
-	version = '0.0.1-SNAPSHOT'
-	sourceCompatibility = '17'
-
-	apply plugin: 'java'
-	apply plugin: 'org.springframework.boot'
-	apply plugin: 'io.spring.dependency-management'
-	apply plugin: 'jacoco'
-
-	configurations {
-		compileOnly {
-			extendsFrom annotationProcessor
-		}
+buildscript {
+	ext {
+		springBootVersion = '2.7.1'
 	}
-
 	repositories {
 		mavenCentral()
 	}
 
 	dependencies {
-		compileOnly 'org.projectlombok:lombok'
-		annotationProcessor 'org.projectlombok:lombok'
+		classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+		classpath "io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE"
 	}
 
-	task wrapper(type: Wrapper) {
-		gradleVersion = '7.5'
+}
+
+allprojects {
+	group = 'com.verby'
+	version = '0.0.1-SNAPSHOT'
+}
+
+subprojects {
+	apply plugin: 'java'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+	apply plugin: 'jacoco'
+	apply plugin: 'java-test-fixtures'
+
+	sourceCompatibility = '17'
+
+	configurations {
+		compileOnly {
+			extendsFrom annotationProcessor
+		}
+		querydsl.extendsFrom compileClasspath
+	}
+
+	repositories {
+		mavenCentral()
+		maven { url 'https://jitpack.io' }
+	}
+
+	dependencies {
+		compileOnly 'org.projectlombok:lombok'
+		annotationProcessor 'org.projectlombok:lombok'
+		testCompileOnly 'org.projectlombok:lombok'
+		testAnnotationProcessor 'org.projectlombok:lombok'
+
+		compileOnly 'com.github.kingbbode:spring-boot-custom-yaml-importer:0.3.0'
+
+		testImplementation('org.springframework.boot:spring-boot-starter-test') {
+			exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+		}
 	}
 
 	test {
