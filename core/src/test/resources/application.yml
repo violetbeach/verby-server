@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:verby_test;MODE=MYSQL;NON_KEYWORDS=USER,KEY
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        show_sql: true
+        format_sql: true
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: none
+
+  sql:
+    init:
+      schema-locations: classpath:sql/ddl/*
+      data-locations: classpath:sql/init/*
+      mode: always
+
+static:
+  paths:
+    cover:
+      video: static/cover/videos
+      highlight: static/cover/highlight
+      image: static/cover/image
+    song:
+      image: static/song/images
+
+infra:
+  main-redis:
+    host: localhost
+    port: 8342
