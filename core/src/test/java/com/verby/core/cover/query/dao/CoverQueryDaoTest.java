@@ -6,15 +6,14 @@ import com.verby.core.contest.command.domain.Contest;
 import com.verby.core.cover.Cover;
 import com.verby.core.cover.query.dto.CoverQueryModel;
 import com.verby.core.song.command.domain.Song;
-import fixture.ContestFixture;
+import com.verby.core.support.repository.BaseRepositoryTest;
 import com.verby.core.user.command.domain.User;
+import fixture.ContestFixture;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.context.annotation.Import;
 
@@ -25,11 +24,9 @@ import static fixture.UserFixture.NORMAL_USER;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-@DataJpaTest
 @Import({QueryDslConfig.class, CoverQueryDaoTest.class})
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @DisplayName("CoverSummaryQueryDao의")
-class CoverQueryDaoTest {
+class CoverQueryDaoTest extends BaseRepositoryTest {
 
     @Autowired
     private CoverQueryDao coverQueryDao;
