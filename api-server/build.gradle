@@ -10,7 +10,7 @@ bootJar {
 	dependsOn asciidoctor
 }
 
-jar {
+tasks.named("jar") {
 	enabled = false
 }
 
