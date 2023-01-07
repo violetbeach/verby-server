@@ -27,13 +27,6 @@ subprojects {
 
 	sourceCompatibility = '17'
 
-	configurations {
-		compileOnly {
-			extendsFrom annotationProcessor
-		}
-		querydsl.extendsFrom compileClasspath
-	}
-
 	repositories {
 		mavenCentral()
 		maven { url 'https://jitpack.io' }

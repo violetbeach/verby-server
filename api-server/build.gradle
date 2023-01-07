@@ -10,10 +10,6 @@ bootJar {
 	dependsOn asciidoctor
 }
 
-tasks.named("jar") {
-	enabled = false
-}
-
 dependencies {
 	implementation project(':core')
 	testImplementation(testFixtures(project(":core")))

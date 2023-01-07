@@ -1,21 +1,19 @@
-bootJar { enabled = false }
-jar { enabled = true }
-
 buildscript {
     ext {
-        queryDslVersion = '5.0.0'
-    }
-
-    repositories {
-        maven { url "https://plugins.gradle.org/m2/" }
-    }
-
-    dependencies {
-        classpath("gradle.plugin.com.ewerk.gradle.plugins:querydsl-plugin:1.0.10")
+        queryDslVersion = "5.0.0"
     }
 }
 
-apply plugin: 'com.ewerk.gradle.plugins.querydsl'
+plugins {
+    id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
+}
+
+repositories {
+    maven { url "https://plugins.gradle.org/m2/" }
+}
+
+bootJar { enabled = false }
+jar { enabled = true }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
@@ -45,13 +43,19 @@ dependencies {
 def querydslDir = "$buildDir/generated/querydsl"
 
 querydsl {
-    library = "com.querydsl:querydsl-apt"
     jpa = true
     querydslSourcesDir = querydslDir
 }
 
 sourceSets {
     main.java.srcDir querydslDir
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+    querydsl.extendsFrom compileClasspath
 }
 
 compileQuerydsl{
