@@ -12,7 +12,7 @@ public class CoverHitService {
     private final CoverHitRepository coverHitRepository;
 
     public void hit(Long coverId, String requestIP) {
-        CoverHit coverHit = coverHitRepository.findById(coverId)
+        CoverHit coverHit = coverHitRepository.findByCoverId(coverId)
                 .orElseGet(() -> new CoverHit(coverId));
         coverHit.hit(requestIP);
 

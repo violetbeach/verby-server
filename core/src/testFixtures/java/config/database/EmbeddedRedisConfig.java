@@ -1,7 +1,7 @@
 package config.database;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.util.StringUtils;
 import redis.embedded.RedisServer;
 
@@ -11,7 +11,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-@Configuration
+@TestConfiguration
 public class EmbeddedRedisConfig {
 
     @Value("${infra.main-redis.port}")

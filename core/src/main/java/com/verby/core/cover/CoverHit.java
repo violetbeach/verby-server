@@ -2,7 +2,7 @@ package com.verby.core.cover;
 
 import com.verby.core.config.database.RedisHashKey;
 import lombok.Getter;
-import nonapi.io.github.classgraph.json.Id;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
 import java.util.HashSet;
@@ -12,11 +12,11 @@ import java.util.Set;
 @RedisHash(value = RedisHashKey.COVER_HIT)
 public class CoverHit {
     @Id
-    private Long id;
+    private Long coverId;
     private Set<String> requestIPs = new HashSet<>();
 
-    public CoverHit(Long id) {
-        this.id = id;
+    public CoverHit(Long coverId) {
+        this.coverId = coverId;
     }
 
     public void hit(String requestIP) {

@@ -46,6 +46,10 @@ public class Cover extends BaseEntity {
         this.image = image;
     }
 
+    public void hit(long hit) {
+        this.hits += hit;
+    }
+
     @PostPersist
     private void onPostPersist() {
         Events.raise(new CoverCreatedEvent(this));
