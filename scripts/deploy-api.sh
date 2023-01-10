@@ -17,6 +17,8 @@ fi
 echo "> 새 어플리케이션 배포"
 
 echo "> Build 파일 복사"
+
+mkdir $REPOSITORY/jar
 cp $REPOSITORY/build/libs/*.jar $REPOSITORY/jar/
 
 
