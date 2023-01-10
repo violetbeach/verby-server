@@ -38,7 +38,7 @@ subprojects {
 		testCompileOnly 'org.projectlombok:lombok'
 		testAnnotationProcessor 'org.projectlombok:lombok'
 
-		compileOnly 'com.github.kingbbode:spring-boot-custom-yaml-importer:0.3.0'
+		implementation 'com.github.kingbbode:spring-boot-custom-yaml-importer:0.3.0'
 
 		testImplementation('org.springframework.boot:spring-boot-starter-test') {
 			exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
