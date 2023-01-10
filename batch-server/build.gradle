@@ -2,6 +2,10 @@ plugins {
 	id 'org.asciidoctor.jvm.convert' version '3.3.2'
 }
 
+jar {
+	enabled = false
+}
+
 dependencies {
 	implementation project(':core')
 	testImplementation(testFixtures(project(":core")))
