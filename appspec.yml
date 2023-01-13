@@ -18,5 +18,5 @@ hooks:
       runas: ec2-user
 
     - location: scripts/deploy-batch.sh
-        timeout: 60
-        runas: ec2-user
+      timeout: 60
+      runas: ec2-user
