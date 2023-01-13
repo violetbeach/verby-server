@@ -24,4 +24,5 @@ public class ExternalCoverQueryModel {
     private final String artistName;
     private final Long songId;
     private final String songName;
+    private final Long hits;
 }

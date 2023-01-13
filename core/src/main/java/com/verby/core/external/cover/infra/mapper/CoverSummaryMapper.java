@@ -21,7 +21,8 @@ public class CoverSummaryMapper {
                 coverSummary.getArtistId(),
                 coverSummary.getArtistName(),
                 coverSummary.getSongId(),
-                coverSummary.getSongName()
+                coverSummary.getSongName(),
+                coverSummary.getHits()
         );
     }
 

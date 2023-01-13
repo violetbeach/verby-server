@@ -5,3 +5,6 @@ spring:
 
   jpa:
     database-platform: org.hibernate.dialect.MariaDB106Dialect
+
+server:
+  port: 8081
