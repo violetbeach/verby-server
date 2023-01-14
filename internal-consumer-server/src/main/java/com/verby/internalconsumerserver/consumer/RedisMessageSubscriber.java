@@ -13,10 +13,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class RedisMessageSubscriber implements MessageListener {
 
-    private final RedisTemplate<String, Object> redisTemplate;
+    private final RedisTemplate<?, ?> redisTemplate;
     private final CoverUpdatedEventHandler coverExternalEventHandler;
 
-    public RedisMessageSubscriber(RedisTemplate<String, Object> redisTemplate,
+    public RedisMessageSubscriber(RedisTemplate<?, ?> redisTemplate,
                                   RedisMessageListenerContainer redisMessageListener,
                                   CoverUpdatedEventHandler handler) {
         this.redisTemplate = redisTemplate;

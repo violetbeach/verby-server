@@ -1,5 +1,6 @@
 package com.verby.core.cover.command.domain;
 
+import com.verby.core.common.event.internal.InternalEvent;
 import com.verby.core.cover.command.application.CoverEventType;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -13,31 +14,22 @@ import java.time.LocalDateTime;
 @Getter
 @Entity
 @EntityListeners(AuditingEntityListener.class)
+@Table(name = "cover_event")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class CoverEvent {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private long coverId;
+public class InternalCoverEvent extends InternalEvent {
+    private Long coverId;
     @Enumerated(value = EnumType.STRING)
     private CoverEventType type;
     private String attributes;
     @CreatedDate
     private LocalDateTime createdAt;
-    private boolean isPublished;
-    private LocalDateTime publishedAt;
     private String requestedBy;
 
-    public CoverEvent(long coverId, CoverEventType type, String attributes) {
+    public InternalCoverEvent(Long coverId, CoverEventType type, String attributes) {
         this.coverId = coverId;
         this.type = type;
         this.attributes = attributes;
         this.isPublished = false;
     }
 
-    public void publish() {
-        this.isPublished = true;
-        this.publishedAt = LocalDateTime.now();
-    }
 }
