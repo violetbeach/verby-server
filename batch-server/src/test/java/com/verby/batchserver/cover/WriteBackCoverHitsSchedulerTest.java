@@ -1,7 +1,7 @@
 package com.verby.batchserver.cover;
 
-import com.verby.core.cover.Cover;
-import com.verby.core.cover.CoverHit;
+import com.verby.core.cover.command.domain.Cover;
+import com.verby.core.cover.command.domain.CoverHit;
 import com.verby.core.cover.command.domain.CoverHitRepository;
 import com.verby.core.cover.command.domain.CoverRepository;
 import config.database.EmbeddedRedisConfig;

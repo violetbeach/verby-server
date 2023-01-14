@@ -1,6 +1,6 @@
 package fixture;
 
-import com.verby.core.cover.Cover;
+import com.verby.core.cover.command.domain.Cover;
 
 public enum CoverFixture {
 

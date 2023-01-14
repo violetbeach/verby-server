@@ -3,7 +3,7 @@ package com.verby.core.cover.query.dao;
 import com.verby.core.artist.command.domain.Artist;
 import com.verby.core.config.QueryDslConfig;
 import com.verby.core.contest.command.domain.Contest;
-import com.verby.core.cover.Cover;
+import com.verby.core.cover.command.domain.Cover;
 import com.verby.core.cover.query.dto.CoverQueryModel;
 import com.verby.core.song.command.domain.Song;
 import com.verby.core.support.repository.BaseRepositoryTest;

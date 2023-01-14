@@ -35,4 +35,9 @@ public class CoverEvent {
         this.attributes = attributes;
         this.isPublished = false;
     }
+
+    public void publish() {
+        this.isPublished = true;
+        this.publishedAt = LocalDateTime.now();
+    }
 }

@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:8341/verby_main?serverTimezone=Asia/Seoul
+    username: root
+    password: root
+
+  redis:
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 10
+        min-idle: 2
+
+    host: 127.0.0.1
+    port: 8342
+
+logging:
+  level:
+    root: INFO
+    com.amazonaws.util.EC2MetadataUtils: error

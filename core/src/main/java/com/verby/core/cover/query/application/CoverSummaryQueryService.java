@@ -24,6 +24,8 @@ public class CoverSummaryQueryService {
     }
 
     public CoverQueryModel findById(Long id) {
+        CoverQueryModel cover = coverQueryDao.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(ErrorCode.COVER_NOT_FOUND, "Not found."));
         return coverQueryDao.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.COVER_NOT_FOUND, "Not found."));
     }

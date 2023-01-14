@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:verby_test;MODE=MYSQL;NON_KEYWORDS=USER,KEY
+
+  redis:
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 10
+        min-idle: 2
+    host: 127.0.0.1
+    port: 9342
+
+logging:
+  level:
+    root: INFO
+    com.amazonaws.util.EC2MetadataUtils: error

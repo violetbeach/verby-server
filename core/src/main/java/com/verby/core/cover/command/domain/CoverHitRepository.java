@@ -1,6 +1,5 @@
 package com.verby.core.cover.command.domain;
 
-import com.verby.core.cover.CoverHit;
 import org.springframework.data.repository.Repository;
 
 import java.util.List;

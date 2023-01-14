@@ -51,8 +51,8 @@ static:
 infra:
   auth-redis:
     host: localhost
-    port: 8342
+    port: 9342
 
   main-redis:
     host: localhost
-    port: 8342
+    port: 9342

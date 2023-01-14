@@ -1,7 +1,9 @@
 package com.verby.apiserver.support.auth;
 
+import com.verby.apiserver.support.repository.cover.TestCoverQueryModelRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 import org.springframework.util.StringUtils;
 import redis.embedded.RedisServer;
 
@@ -12,6 +14,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 @Configuration
+@EnableRedisRepositories(basePackageClasses = {TestCoverQueryModelRepository.class})
 public class EmbeddedRedisConfig {
 
     @Value("${infra.auth-redis.port}")

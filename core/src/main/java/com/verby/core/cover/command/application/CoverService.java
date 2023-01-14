@@ -1,6 +1,6 @@
 package com.verby.core.cover.command.application;
 
-import com.verby.core.cover.Cover;
+import com.verby.core.cover.command.domain.Cover;
 import com.verby.core.cover.command.domain.CoverRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
