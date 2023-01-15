@@ -22,14 +22,9 @@ import javax.validation.Valid;
 public class ContestAdminController {
 
     private final ContestService contestService;
-    private final SongService songService;
 
     @PostMapping("/contests")
     private ResponseEntity<CreatedContestInfo> create(@RequestBody @Valid CreateContestRequest createContestRequest) {
-        if(!songService.existsSong(createContestRequest.getSongId())) {
-            throw new EntityNotFoundException(ErrorCode.SONG_NOT_FOUND, "Not found.");
-        }
-
         CreatedContestInfo contest = contestService.create(createContestRequest);
         return new ResponseEntity<>(contest, HttpStatus.CREATED);
     }
