@@ -169,8 +169,12 @@ class CoverControllerTest extends BaseControllerTest {
     @DisplayName("PostCoverRequest, video, highlight, image로 Cover를 등록할 수 있다.")
     void create() throws Exception {
         // given
+        Artist artist = 가수_생성();
+        Song song = 곡_생성(artist);
+        Contest contest = 선정곡_생성(song);
+
         PostCoverRequest request = new PostCoverRequest(
-                1L,
+                contest.getId(),
                 "커버 영상 제목입니다.",
                 "커버 영상 설명",
                 "/static/cover/video/sample.mp4",

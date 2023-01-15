@@ -1,5 +1,6 @@
 package com.verby.core.cover.command.application;
 
+import com.verby.core.cover.command.domain.ContestService;
 import com.verby.core.cover.command.domain.Cover;
 import com.verby.core.cover.command.domain.CoverRepository;
 import com.verby.core.user.command.application.UploadedResourcesPath;
@@ -26,6 +27,9 @@ class CoverServiceTest {
     @Mock
     CoverRepository coverRepository;
 
+    @Mock
+    ContestService contestService;
+
     @Nested
     @DisplayName("create 메서드는")
     class create {
@@ -43,6 +47,9 @@ class CoverServiceTest {
                     "/static/cover/image/sample.png");
 
             UploadedResourcesPath uploadedPaths = new UploadedResourcesPath("/static/cover/video/11039", "/static/cover/highlight/13092", "/static/cover/image/33242");
+
+            given(contestService.existsById(request.getContestId()))
+                    .willReturn(true);
 
             given(coverRepository.save(any(Cover.class)))
                     .will(AdditionalAnswers.returnsFirstArg());
