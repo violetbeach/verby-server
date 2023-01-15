@@ -22,7 +22,7 @@ mkdir $REPOSITORY/jar
 cp $REPOSITORY/build/libs/*.jar $REPOSITORY/jar/
 
 
-JAR_NAME=$(ls $REPOSITORY/jar/ |grep 'batch-server' | tail -n 1)
+JAR_NAME=$(ls $REPOSITORY/jar/ |grep 'batch-server' | head -n 1)
 
 echo "> JAR Name: $JAR_NAME"
 
