@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: ${VERBY_MAIN_URL}/verby_main?serverTimezone=Asia/Seoul
+    username: ${VERBY_MAIN_USERNAME}
+    password: ${VERBY_MAIN_PASSWORD}
+
+  redis:
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 10
+        min-idle: 2
+
+    host: ${VERBY_AUTH_HOST}
+    port: ${VERBY_AUTH_PORT}

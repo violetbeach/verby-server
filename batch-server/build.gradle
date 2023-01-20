@@ -4,6 +4,7 @@ plugins {
 
 dependencies {
 	implementation project(':core')
+	testImplementation(testFixtures(project(":core")))
 
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 

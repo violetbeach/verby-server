@@ -22,7 +22,8 @@ public enum ErrorCode {
 
     SONG_NOT_FOUND(404, "SONG-001", "곡을 찾을 수 없는 경우"),
 
-    CONTEST_INVALID_DATE(400, "CONTEST-001", "선정 곡 날짜가 적절치 않은 경우"),
+    CONTEST_NOT_FOUND(404, "CONTEST-001", "선정 곡을 찾을 수 없는 경우"),
+    CONTEST_INVALID_DATE(400, "CONTEST-002", "선정 곡 날짜가 적절치 않은 경우"),
 
     COVER_NOT_FOUND(404, "COVER-001", "커버를 찾을 수 없는 경우"),
     LIKE_NOT_FOUND(404, "COVER-002", "좋아요를 찾을 수 없는 경우"),

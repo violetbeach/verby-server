@@ -2,8 +2,8 @@ package com.verby.core.cover.command.domain;
 
 import org.springframework.data.repository.Repository;
 
-public interface CoverEventRepository extends Repository<CoverEvent, Long> {
+public interface CoverEventRepository extends Repository<InternalCoverEvent, Long> {
 
-    void save(CoverEvent event);
+    void save(InternalCoverEvent event);
 
 }

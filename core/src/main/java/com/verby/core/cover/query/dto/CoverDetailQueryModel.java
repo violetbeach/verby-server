@@ -16,7 +16,7 @@ import javax.persistence.Id;
         SELECT c.id as id,
             c.contest_id,
             u.login_id as publisher_name,
-            c.user_id as publisher_id, c.title, c.content, c.video, c.highlight, c.image,
+            c.user_id as publisher_id, c.title, c.content, c.video, c.highlight, c.image, c.hits,
             s.artist_id, a.name as artist_name,
             ct.song_id, s.name as song_name    
         FROM cover c    
@@ -44,5 +44,6 @@ public class CoverDetailQueryModel {
     private String artistName;
     private Long songId;
     private String songName;
+    private Long hits;
 
 }

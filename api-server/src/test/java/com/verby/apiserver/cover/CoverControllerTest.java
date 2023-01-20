@@ -3,15 +3,12 @@ package com.verby.apiserver.cover;
 
 import com.verby.apiserver.support.documentation.ApiDocumentUtils;
 import com.verby.apiserver.support.presentation.BaseControllerTest;
+import com.verby.apiserver.support.repository.cover.TestCoverQueryModelRepository;
 import com.verby.core.artist.command.domain.Artist;
 import com.verby.core.contest.command.domain.Contest;
-import com.verby.core.cover.Cover;
-import com.verby.core.cover.command.application.CoverEventType;
 import com.verby.core.cover.command.application.PostCoverRequest;
-import com.verby.core.cover.command.domain.CoverEvent;
-import com.verby.core.external.cover.ExternalCoverQueryDao;
-import com.verby.core.external.cover.ExternalCoverQueryModel;
-import com.verby.core.external.cover.ExternalCoverSummaryService;
+import com.verby.core.cover.command.domain.Cover;
+import com.verby.core.cover.query.dto.CoverQueryModel;
 import com.verby.core.song.command.domain.Song;
 import com.verby.core.user.command.domain.User;
 import fixture.*;
@@ -41,6 +38,9 @@ class CoverControllerTest extends BaseControllerTest {
 
     @PersistenceContext
     private EntityManager em;
+
+    @Autowired
+    TestCoverQueryModelRepository queryModelRepository;
 
     @Test
     @DisplayName("CoverSummary를 전체 조회할 수 있다.")
@@ -97,11 +97,6 @@ class CoverControllerTest extends BaseControllerTest {
     @DisplayName("findById 메서드는")
     class findById {
 
-        @Autowired
-        private ExternalCoverSummaryService externalCoverSummaryService;
-        @Autowired
-        private ExternalCoverQueryDao externalCoverQueryDao;
-
         @Test
         @DisplayName("커버 조회 모델과 200 코드를 반환한다.")
         void ItReturn200() throws Exception {
@@ -140,16 +135,31 @@ class CoverControllerTest extends BaseControllerTest {
                             fieldWithPath("artist_id").type(JsonFieldType.NUMBER).description("가수 일련번호"),
                             fieldWithPath("artist_name").type(JsonFieldType.STRING).description("가수 이름"),
                             fieldWithPath("song_id").type(JsonFieldType.NUMBER).description("곡 일련번호"),
-                            fieldWithPath("song_name").type(JsonFieldType.STRING).description("곡 이름")
+                            fieldWithPath("song_name").type(JsonFieldType.STRING).description("곡 이름"),
+                            fieldWithPath("hits").type(JsonFieldType.NUMBER).description("조회수")
                     )
             ));
 
         }
 
         private void 커버_조회_모델_생성(Cover cover) {
-            CoverEvent coverEvent = new CoverEvent(cover.getId(), CoverEventType.CREATE, "");
-            ExternalCoverQueryModel queryModel = externalCoverSummaryService.getQueryModel(coverEvent.getCoverId());
-            externalCoverQueryDao.save(queryModel);
+            CoverQueryModel coverQueryModel = new CoverQueryModel(
+                    cover.getId(),
+                    cover.getContestId(),
+                    cover.getPublisherId(),
+                    "작성자 닉네임",
+                    cover.getTitle(),
+                    cover.getContent(),
+                    cover.getVideo(),
+                    cover.getHighlight(),
+                    cover.getImage(),
+                    1L,
+                    "가수 이름",
+                    1L,
+                    "곡 이름",
+                    cover.getHits()
+            );
+            queryModelRepository.save(coverQueryModel);
         }
 
 
@@ -159,8 +169,12 @@ class CoverControllerTest extends BaseControllerTest {
     @DisplayName("PostCoverRequest, video, highlight, image로 Cover를 등록할 수 있다.")
     void create() throws Exception {
         // given
+        Artist artist = 가수_생성();
+        Song song = 곡_생성(artist);
+        Contest contest = 선정곡_생성(song);
+
         PostCoverRequest request = new PostCoverRequest(
-                1L,
+                contest.getId(),
                 "커버 영상 제목입니다.",
                 "커버 영상 설명",
                 "/static/cover/video/sample.mp4",

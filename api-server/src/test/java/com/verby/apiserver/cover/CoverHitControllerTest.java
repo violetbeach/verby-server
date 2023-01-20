@@ -2,7 +2,7 @@ package com.verby.apiserver.cover;
 
 import com.verby.apiserver.support.documentation.ApiDocumentUtils;
 import com.verby.apiserver.support.presentation.BaseControllerTest;
-import com.verby.core.cover.Cover;
+import com.verby.core.cover.command.domain.Cover;
 import fixture.CoverFixture;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

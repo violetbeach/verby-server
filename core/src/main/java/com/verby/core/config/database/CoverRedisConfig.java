@@ -2,7 +2,6 @@ package com.verby.core.config.database;
 
 import com.verby.core.cover.command.domain.CoverHitRepository;
 import com.verby.core.cover.query.dao.CoverQueryDao;
-import com.verby.core.external.cover.ExternalCoverQueryDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.EnableCaching;
@@ -15,12 +14,13 @@ import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactor
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @EnableCaching
 @Configuration
-@EnableRedisRepositories(basePackageClasses = {ExternalCoverQueryDao.class, CoverQueryDao.class, CoverHitRepository.class})
+@EnableRedisRepositories(basePackageClasses = {CoverQueryDao.class, CoverHitRepository.class})
 @RequiredArgsConstructor
 public class CoverRedisConfig {
 
@@ -39,7 +39,7 @@ public class CoverRedisConfig {
         RedisTemplate<byte[], byte[]> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(redisConnectionFactory());
         redisTemplate.setKeySerializer(new StringRedisSerializer());
-        redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer());
+        redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer<>(String.class));
         return redisTemplate;
     }
 

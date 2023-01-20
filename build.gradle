@@ -15,24 +15,17 @@ buildscript {
 
 allprojects {
 	group = 'com.verby'
-	version = '0.0.1-SNAPSHOT'
+	version = '0.0.1'
 }
 
 subprojects {
-	apply plugin: 'java'
+	apply plugin: 'java-library'
 	apply plugin: 'org.springframework.boot'
 	apply plugin: 'io.spring.dependency-management'
 	apply plugin: 'jacoco'
 	apply plugin: 'java-test-fixtures'
 
 	sourceCompatibility = '17'
-
-	configurations {
-		compileOnly {
-			extendsFrom annotationProcessor
-		}
-		querydsl.extendsFrom compileClasspath
-	}
 
 	repositories {
 		mavenCentral()
@@ -44,8 +37,6 @@ subprojects {
 		annotationProcessor 'org.projectlombok:lombok'
 		testCompileOnly 'org.projectlombok:lombok'
 		testAnnotationProcessor 'org.projectlombok:lombok'
-
-		compileOnly 'com.github.kingbbode:spring-boot-custom-yaml-importer:0.3.0'
 
 		testImplementation('org.springframework.boot:spring-boot-starter-test') {
 			exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

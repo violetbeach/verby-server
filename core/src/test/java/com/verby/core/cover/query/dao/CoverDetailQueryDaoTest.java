@@ -2,7 +2,7 @@ package com.verby.core.cover.query.dao;
 
 
 import com.verby.core.config.QueryDslConfig;
-import com.verby.core.cover.Cover;
+import com.verby.core.cover.command.domain.Cover;
 import com.verby.core.cover.command.application.CoverSearchRequest;
 import com.verby.core.cover.query.dto.CoverDetailQueryModel;
 import com.verby.core.support.repository.BaseRepositoryTest;

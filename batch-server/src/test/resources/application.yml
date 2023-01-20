@@ -12,6 +12,12 @@ spring:
     hibernate:
       ddl-auto: none
 
+  sql:
+    init:
+      schema-locations: classpath:sql/ddl/*
+      data-locations: classpath:sql/init/*
+      mode: always
+
 cloud:
   aws:
     region:
@@ -34,8 +40,8 @@ static:
 infra:
   auth-redis:
     host: localhost
-    port: 8342
+    port: 9342
 
   main-redis:
     host: localhost
-    port: 8342
+    port: 9342
