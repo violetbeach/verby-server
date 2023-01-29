@@ -56,4 +56,9 @@ public class Cover extends BaseEntity {
         Events.raise(new CoverUpdatedEvent(this));
     }
 
+    @PostUpdate
+    private void onPostUpdate() {
+        Events.raise(new CoverUpdatedEvent(this));
+    }
+
 }
