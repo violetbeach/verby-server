@@ -2,6 +2,10 @@ spring:
   datasource:
     url: jdbc:h2:mem:verby_test;MODE=MYSQL;NON_KEYWORDS=USER,KEY
 
+  mongodb:
+    embedded:
+      version: 3.5.5
+
   redis:
     lettuce:
       pool:

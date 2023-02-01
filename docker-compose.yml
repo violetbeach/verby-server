@@ -18,3 +18,9 @@ services:
       - "8342:6379"
     command: redis-server
     restart: always
+
+  query-db:
+    image: mongo:5.0.8
+    container_name: verby-query-db
+    ports:
+      - "8343:27017"

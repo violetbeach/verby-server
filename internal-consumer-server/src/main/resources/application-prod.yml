@@ -5,6 +5,12 @@ spring:
     username: ${VERBY_MAIN_USERNAME}
     password: ${VERBY_MAIN_PASSWORD}
 
+  data:
+    mongodb:
+      host: ${VERBY_QUERY_HOST}
+      port: ${VERBY_QUERY_PORT}
+      database: verby_query
+
   redis:
     lettuce:
       pool:

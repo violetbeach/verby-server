@@ -1,13 +1,12 @@
 package com.verby.internalconsumerserver.cover;
 
-import com.verby.internalconsumerserver.config.RedisHashKey;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
-@RedisHash(value = RedisHashKey.COVER_SUMMARY)
+@Document(collation = "cover")
 @AllArgsConstructor
 public class CoverQueryModel {
     @Id

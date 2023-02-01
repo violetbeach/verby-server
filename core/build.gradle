@@ -21,6 +21,7 @@ dependencies {
 
     implementation 'org.mariadb.jdbc:mariadb-java-client'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
     implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
@@ -37,7 +38,6 @@ dependencies {
     testFixturesImplementation 'org.springframework.boot:spring-boot-starter-test'
     testFixturesImplementation 'io.findify:s3mock_2.13:0.2.6'
     testFixturesImplementation 'it.ozimov:embedded-redis:0.7.2'
-
 }
 
 def querydslDir = "$buildDir/generated/querydsl"
