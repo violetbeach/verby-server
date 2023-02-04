@@ -1,7 +1,6 @@
 package com.verby.core.config.database;
 
 import com.verby.core.cover.command.domain.CoverHitRepository;
-import com.verby.core.cover.query.dao.CoverQueryDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.EnableCaching;
@@ -20,7 +19,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @EnableCaching
 @Configuration
-@EnableRedisRepositories(basePackageClasses = {CoverQueryDao.class, CoverHitRepository.class})
+@EnableRedisRepositories(basePackageClasses = {CoverHitRepository.class})
 @RequiredArgsConstructor
 public class CoverRedisConfig {
 
