@@ -6,7 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
-@Document(collation = "cover")
+@Document(collection = "cover")
 @AllArgsConstructor
 public class CoverQueryModel {
     @Id
