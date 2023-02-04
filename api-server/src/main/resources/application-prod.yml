@@ -12,6 +12,7 @@ spring:
       username: ${VERBY_QUERY_USERNAME}
       password: ${VERBY_QUERY_PASSWORD}
       database: verby_query
+      authentication-database: admin
 
 infra:
   auth-redis:
