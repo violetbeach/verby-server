@@ -9,7 +9,7 @@ spring:
     mongodb:
       host: ${VERBY_QUERY_HOST}
       port: ${VERBY_QUERY_PORT}
-      user: ${VERBY_QUERY_USER}
+      username: ${VERBY_QUERY_USERNAME}
       password: ${VERBY_QUERY_PASSWORD}
       database: verby_query
 
