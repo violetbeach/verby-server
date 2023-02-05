@@ -1,6 +1,7 @@
 package com.verby.internalconsumerserver.cover;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -10,9 +11,11 @@ public class CoverUpdatedEventHandler {
     private final CoverQueryModelService coverSummaryService;
     private final CoverQueryModelRepository queryModelWriteDao;
 
-    public void handle(Long coverId) {
-        CoverQueryModel queryModel = coverSummaryService.getQueryModel(coverId);
-        queryModelWriteDao.save(queryModel);
+
+    @CachePut(value = "Cover", key = "#id")
+    public CoverQueryModel handle(Long id) {
+        CoverQueryModel queryModel = coverSummaryService.getQueryModel(id);
+        return queryModelWriteDao.save(queryModel);
     }
 
 }
