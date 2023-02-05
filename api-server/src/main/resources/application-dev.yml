@@ -5,6 +5,12 @@ spring:
     username: root
     password: root
 
+  data:
+    mongodb:
+      host: localhost
+      port: 8343
+      database: verby_query
+
   jpa:
     properties:
       hibernate:

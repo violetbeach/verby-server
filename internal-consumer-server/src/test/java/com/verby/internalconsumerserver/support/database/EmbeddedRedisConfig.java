@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 @Configuration
-@EnableRedisRepositories(basePackageClasses = {TestCoverQueryModelRepository.class})
 public class EmbeddedRedisConfig {
 
     @Value("${spring.redis.port}")
