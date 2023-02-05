@@ -19,7 +19,7 @@ public class ConsumerConfig {
     }
 
     @Bean
-    public RedisTemplate<?, ?> redisTemplate(RedisConnectionFactory connectionFactory) {
+    public RedisTemplate<String, Long> messageRedisTemplate(RedisConnectionFactory connectionFactory) {
         RedisTemplate<String, Long> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(connectionFactory);
         redisTemplate.setKeySerializer(new StringRedisSerializer());
