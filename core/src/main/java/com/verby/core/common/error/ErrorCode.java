@@ -13,10 +13,12 @@ public enum ErrorCode {
     DUPLICATE_PHONE_NUMBER(400, "USER-006", "휴대폰 번호가 중복된 경우"),
     UNAVAILABLE_LOGIN_ID(400, "USER-007", "사용 불가한 로그인 ID일 경우"),
 
-    INVALID_CERTIFICATION_NUMBER(403, "AUTH-001", "휴대전화 인증 번호가 유효하지 않은 경우"),
-    EXPIRED_VERIFICATION_TOKEN(403, "AUTH-002", "인증 토큰이 만료된 경우"),
-    INVALID_VERIFICATION_TOKEN(403, "AUTH-003", "토큰이 유효하지 않은 경우"),
-    CERTIFICATION_TYPE_NOT_MATCH(403, "AUTH-004", "인증 타입이 일치하지 않은 경우"),
+    CERTIFICATION_NOT_FOUND(404, "AUTH-001", "인증 정보가 존재하지 않는 경우"),
+    INVALID_CERTIFICATION_NUMBER(403, "AUTH-002", "휴대전화 인증 번호가 유효하지 않은 경우"),
+    EXPIRED_VERIFICATION_TOKEN(403, "AUTH-003", "인증 토큰이 만료된 경우"),
+    INVALID_VERIFICATION_TOKEN(403, "AUTH-004", "토큰이 유효하지 않은 경우"),
+    CERTIFICATION_TYPE_NOT_MATCH(403, "AUTH-005", "인증 타입이 일치하지 않은 경우"),
+
 
     ARTIST_NOT_FOUND(404, "ARTIST-001", "가수를 찾을 수 없는 경우"),
 

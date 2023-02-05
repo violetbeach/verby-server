@@ -134,7 +134,14 @@ public class UserAuthService {
     }
 
     private void verifyCertificationRequest(String phone, int certificationNumber) {
+        Certification certification = certificationRepository.findByPhone(phone)
+                .orElseThrow(() -> new EntityNotFoundException(ErrorCode.CERTIFICATION_NOT_FOUND, "Not found."));
 
+        if(certification.getCertificationNumber() != certificationNumber) {
+            throw new InvalidCertificationNumberException(certificationNumber);
+        }
+
+        certificationRepository.delete(certification);
     }
 
 }
