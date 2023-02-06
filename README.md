@@ -174,7 +174,7 @@
 
 ### BackEnd
 
-> TODO) 이미지
+> Link: https://drive.google.com/file/d/1uWQcvmy768GgIKrWY0OrHf2J5FEVfacf/view?usp=sharing
 
 ### CI/CD
 
