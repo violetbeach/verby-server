@@ -162,7 +162,7 @@
 
 ## ERD
 
-<img src="./docs/erd.png" />
+<img src="./docs/erd.png" style="border:1px solid; border-radius: 12px;"/>
 
 > Link: https://www.erdcloud.com/d/uCXnKBd5X6DAZmjhD
  
@@ -174,13 +174,19 @@
 
 ### API Server
 
+<img src="./docs/project-architecture/api-server.png" style="background-color:white;border:1px solid; border-radius: 12px;"/>
+
 > Link: https://drive.google.com/file/d/1uWQcvmy768GgIKrWY0OrHf2J5FEVfacf/view?usp=sharing
 
 ### Batch Server
 
+<img src="./docs/project-architecture/batch-server.png" style="background-color:white;border:1px solid; border-radius: 12px;"/>
+
 > Link: https://drive.google.com/file/d/1ncHeFbQsga0g9eu7wFaAVakgpxWWl_OJ/view?usp=sharing
 
 ### Consumer Server
+
+<img src="./docs/project-architecture/consumer-server.png" style="background-color:white;border:1px solid; border-radius: 12px;"/>
 
 > Link: https://drive.google.com/file/d/1Wk3fphFL0jvmqTJxvwJoYa8rNkSKYtI9/view?usp=sharing
 
