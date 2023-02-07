@@ -172,11 +172,19 @@
 
 ## 프로젝트 구조도
 
-### BackEnd
+### API Server
 
 > Link: https://drive.google.com/file/d/1uWQcvmy768GgIKrWY0OrHf2J5FEVfacf/view?usp=sharing
 
-### CI/CD
+### Batch Server
+
+> Link: https://drive.google.com/file/d/1ncHeFbQsga0g9eu7wFaAVakgpxWWl_OJ/view?usp=sharing
+
+### Consumer Server
+
+> Link: https://drive.google.com/file/d/1Wk3fphFL0jvmqTJxvwJoYa8rNkSKYtI9/view?usp=sharing
+
+## CI/CD
 
 > TODO) 이미지
 
