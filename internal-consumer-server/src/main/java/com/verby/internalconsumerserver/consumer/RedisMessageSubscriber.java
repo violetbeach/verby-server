@@ -2,6 +2,7 @@ package com.verby.internalconsumerserver.consumer;
 
 import com.verby.internalconsumerserver.cover.CoverUpdatedEventHandler;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.connection.MessageListener;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -13,10 +14,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class RedisMessageSubscriber implements MessageListener {
 
-    private final RedisTemplate<?, ?> redisTemplate;
+    private final RedisTemplate<String, Long> redisTemplate;
     private final CoverUpdatedEventHandler coverExternalEventHandler;
 
-    public RedisMessageSubscriber(RedisTemplate<?, ?> redisTemplate,
+    public RedisMessageSubscriber(@Qualifier("messageRedisTemplate") RedisTemplate<String, Long> redisTemplate,
                                   RedisMessageListenerContainer redisMessageListener,
                                   CoverUpdatedEventHandler handler) {
         this.redisTemplate = redisTemplate;

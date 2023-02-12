@@ -8,6 +8,7 @@ import com.verby.core.cover.query.dao.CoverQueryDao;
 import com.verby.core.cover.query.dto.CoverDetailQueryModel;
 import com.verby.core.cover.query.dto.CoverQueryModel;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class CoverSummaryQueryService {
         return coverDetailQueryDao.findAll(request);
     }
 
+    @Cacheable(value = "Cover", key ="#id")
     public CoverQueryModel findById(Long id) {
         return coverQueryDao.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.COVER_NOT_FOUND, "Not found."));

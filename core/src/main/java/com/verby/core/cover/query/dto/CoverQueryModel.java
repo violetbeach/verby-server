@@ -1,27 +1,35 @@
 package com.verby.core.cover.query.dto;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serializable;
+
 @Getter
 @Document("covers")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class CoverQueryModel {
+public class CoverQueryModel implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Id
-    private final Long id;
-    private final Long contestId;
-    private final Long publisherId;
-    private final String publisherName;
-    private final String title;
-    private final String content;
-    private final String video;
-    private final String highlight;
-    private final String image;
-    private final Long artistId;
-    private final String artistName;
-    private final Long songId;
-    private final String songName;
-    private final Long hits;
+    private Long id;
+    private Long contestId;
+    private Long publisherId;
+    private String publisherName;
+    private String title;
+    private String content;
+    private String video;
+    private String highlight;
+    private String image;
+    private Long artistId;
+    private String artistName;
+    private Long songId;
+    private String songName;
+    private Long hits;
 }
