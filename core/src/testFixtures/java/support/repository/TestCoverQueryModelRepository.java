@@ -1,4 +1,4 @@
-package com.verby.apiserver.support.repository.cover;
+package support.repository;
 
 import com.verby.core.cover.query.dto.CoverQueryModel;
 import org.springframework.data.repository.Repository;

@@ -5,7 +5,7 @@ import org.springframework.data.repository.Repository;
 
 import java.util.Optional;
 
-public interface CoverQueryDao extends Repository<CoverQueryModel, Long> {
+public interface CoverQueryDao extends Repository<CoverQueryModel, Long>, CustomCoverQueryDao {
 
     Optional<CoverQueryModel> findById(long id);
 

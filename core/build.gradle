@@ -34,7 +34,9 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
 
     testImplementation 'com.h2database:h2'
+    testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.5.4'
 
+    testFixturesImplementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
     testFixturesImplementation 'org.springframework.boot:spring-boot-starter-test'
     testFixturesImplementation 'io.findify:s3mock_2.13:0.2.6'
     testFixturesImplementation 'it.ozimov:embedded-redis:0.7.2'

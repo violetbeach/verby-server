@@ -1,8 +1,8 @@
-package com.verby.apiserver.support.database;
+package config.database;
 
-import support.repository.TestCoverQueryModelRepository;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import support.repository.TestCoverQueryModelRepository;
 
 @Configuration
 @EnableMongoRepositories(basePackageClasses = TestCoverQueryModelRepository.class)
