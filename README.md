@@ -180,13 +180,13 @@
 
 ### Batch Server
 
-<img src="./docs/project-architecture/batch-server.png" style="border:1px solid black; border-radius: 12px;" width="55%"/>
+<img src="./docs/project-architecture/batch-server.png" style="border:1px solid black; border-radius: 12px;" width="45%"/>
 
 > Link: https://drive.google.com/file/d/1ncHeFbQsga0g9eu7wFaAVakgpxWWl_OJ/view?usp=sharing
 
 ### Consumer Server
 
-<img src="./docs/project-architecture/consumer-server.png" style="border:1px solid black; border-radius: 12px;" width="70%"/>
+<img src="./docs/project-architecture/consumer-server.png" style="border:1px solid black; border-radius: 12px;" width="55%"/>
 
 > Link: https://drive.google.com/file/d/1Wk3fphFL0jvmqTJxvwJoYa8rNkSKYtI9/view?usp=sharing
 
