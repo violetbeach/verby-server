@@ -3,7 +3,6 @@ package com.verby.apiserver.cover;
 
 import com.verby.apiserver.support.documentation.ApiDocumentUtils;
 import com.verby.apiserver.support.presentation.BaseControllerTest;
-import support.repository.TestCoverQueryModelRepository;
 import com.verby.core.artist.command.domain.Artist;
 import com.verby.core.contest.command.domain.Contest;
 import com.verby.core.cover.command.application.PostCoverRequest;
@@ -21,6 +20,7 @@ import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.ResultActions;
+import support.repository.TestCoverQueryModelRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -147,7 +147,7 @@ class CoverControllerTest extends BaseControllerTest {
     }
 
     @Test
-    @DisplayName("PostCoverRequest, video, highlight, image로 Cover를 등록할 수 있다.")
+    @DisplayName("PostCoverRequest로 Cover를 등록할 수 있다.")
     void create() throws Exception {
         // given
         Artist artist = 가수_생성();
