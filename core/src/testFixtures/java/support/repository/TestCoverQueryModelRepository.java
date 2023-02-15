@@ -5,6 +5,6 @@ import org.springframework.data.repository.Repository;
 
 public interface TestCoverQueryModelRepository extends Repository<CoverQueryModel, Long> {
 
-    void save(CoverQueryModel model);
+    CoverQueryModel save(CoverQueryModel model);
 
 }

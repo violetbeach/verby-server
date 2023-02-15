@@ -173,6 +173,16 @@ operation::커버 좋아요 취소[snippets='http-request,path-parameters,http-r
 
 operation::커버 조회수 등록[snippets='http-request,path-parameters,http-response']
 
+[[cover-comments]]
+== 커버 댓글
+
+[[create-cover-comment]]
+=== 커버 댓글 등록
+
+커버 댓글을 등록할 수 있다.
+
+operation::커버 댓글 등록[snippets='http-request,request-fields,path-parameters,http-response,response-fields']
+
 [[sms-auth]]
 == SMS 인증
 

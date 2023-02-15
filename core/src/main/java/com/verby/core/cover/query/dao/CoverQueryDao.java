@@ -8,5 +8,6 @@ import java.util.Optional;
 public interface CoverQueryDao extends Repository<CoverQueryModel, Long>, CustomCoverQueryDao {
 
     Optional<CoverQueryModel> findById(long id);
+    boolean existsById(long id);
 
 }
