@@ -3,7 +3,6 @@ package com.verby.apiserver.cover;
 
 import com.verby.apiserver.support.documentation.ApiDocumentUtils;
 import com.verby.apiserver.support.presentation.BaseControllerTest;
-import com.verby.apiserver.support.repository.cover.TestCoverQueryModelRepository;
 import com.verby.core.artist.command.domain.Artist;
 import com.verby.core.contest.command.domain.Contest;
 import com.verby.core.cover.command.application.PostCoverRequest;
@@ -21,6 +20,7 @@ import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.ResultActions;
+import support.repository.TestCoverQueryModelRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -51,6 +51,8 @@ class CoverControllerTest extends BaseControllerTest {
         Song song = 곡_생성(artist);
         Contest contest = 선정곡_생성(song);
         Cover cover = 커버_영상_생성(user, contest);
+
+        커버_조회_모델_생성(cover);
 
         // when
         ResultActions result = mockMvc.perform(get("/covers")
@@ -142,31 +144,10 @@ class CoverControllerTest extends BaseControllerTest {
 
         }
 
-        private void 커버_조회_모델_생성(Cover cover) {
-            CoverQueryModel coverQueryModel = new CoverQueryModel(
-                    cover.getId(),
-                    cover.getContestId(),
-                    cover.getPublisherId(),
-                    "작성자 닉네임",
-                    cover.getTitle(),
-                    cover.getContent(),
-                    cover.getVideo(),
-                    cover.getHighlight(),
-                    cover.getImage(),
-                    1L,
-                    "가수 이름",
-                    1L,
-                    "곡 이름",
-                    cover.getHits()
-            );
-            queryModelRepository.save(coverQueryModel);
-        }
-
-
     }
 
     @Test
-    @DisplayName("PostCoverRequest, video, highlight, image로 Cover를 등록할 수 있다.")
+    @DisplayName("PostCoverRequest로 Cover를 등록할 수 있다.")
     void create() throws Exception {
         // given
         Artist artist = 가수_생성();
@@ -244,6 +225,26 @@ class CoverControllerTest extends BaseControllerTest {
         User user = UserFixture.NORMAL_USER.getUser();
         em.persist(user);
         return user;
+    }
+
+    private void 커버_조회_모델_생성(Cover cover) {
+        CoverQueryModel coverQueryModel = new CoverQueryModel(
+                cover.getId(),
+                cover.getContestId(),
+                cover.getPublisherId(),
+                "작성자 닉네임",
+                cover.getTitle(),
+                cover.getContent(),
+                cover.getVideo(),
+                cover.getHighlight(),
+                cover.getImage(),
+                1L,
+                "가수 이름",
+                1L,
+                "곡 이름",
+                cover.getHits()
+        );
+        queryModelRepository.save(coverQueryModel);
     }
 
 }

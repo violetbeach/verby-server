@@ -476,6 +476,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#hit-cover">커버 조회수 등록</a></li>
 </ul>
 </li>
+<li><a href="#cover-comments">커버 댓글</a>
+<ul class="sectlevel2">
+<li><a href="#create-cover-comment">커버 댓글 등록</a></li>
+</ul>
+</li>
 <li><a href="#sms-auth">SMS 인증</a>
 <ul class="sectlevel2">
 <li><a href="#auth-send-sms">인증 SMS 발송 (회원가입, ID 찾기)</a></li>
@@ -724,7 +729,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=MDhmZTYzMDQtMjNmOC00Y2I3LWJhNTAtNmRlMGZkNmEwMGI4; Path=/; HttpOnly; SameSite=Lax</code></pre>
+Set-Cookie: SESSION=ZmVjMGQwNDQtNDcwNy00MTNiLWJhYzctNmE1OGM0NjI0ZGQ0; Path=/; HttpOnly; SameSite=Lax</code></pre>
 </div>
 </div>
 </div>
@@ -751,7 +756,7 @@ Host: api.verby.co.kr
   "phone" : "01013524302",
   "gender" : "MALE",
   "allow_to_marketing_notification" : true,
-  "token" : "ff0e2464-57ca-41da-8da4-721a46196731"
+  "token" : "5ed971fe-c7de-415e-bd9b-bc057351b947"
 }</code></pre>
 </div>
 </div>
@@ -835,12 +840,12 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 87
+Content-Length: 86
 
 {
   "id" : 8,
   "login_id" : "test123",
-  "created_at" : "2023-01-17T22:01:29.899459"
+  "created_at" : "2023-02-15T21:03:58.27386"
 }</code></pre>
 </div>
 </div>
@@ -887,7 +892,7 @@ Content-Length: 87
 <h4 id="users-find-loginid_http_request"><a class="link" href="#users-find-loginid_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /users/login-id?verificationToken=12392574-6e59-4584-9eb4-37644448b30f HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /users/login-id?verificationToken=24a372f4-3ef1-47c2-a210-3f434868697f HTTP/1.1
 Host: api.verby.co.kr</code></pre>
 </div>
 </div>
@@ -930,7 +935,7 @@ Content-Length: 91
 {
   "id" : 11,
   "login_id" : "member1234",
-  "created_at" : "2023-01-17T22:01:30.246109"
+  "created_at" : "2023-02-15T21:03:58.444273"
 }</code></pre>
 </div>
 </div>
@@ -977,7 +982,7 @@ Content-Length: 91
 <h4 id="users-reset-password_http_request"><a class="link" href="#users-reset-password_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PUT /users/password?verificationToken=01fe276d-b0f1-4842-ac0e-965262955297 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PUT /users/password?verificationToken=db75535a-8314-4a7f-9da4-9e19d6b92262 HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Content-Length: 38
 Host: api.verby.co.kr
@@ -1130,7 +1135,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=ZmNkZThkMGQtYWYzZC00YzBjLTlkYzktMjExYjhjZjFkNzk4; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=ZWVkY2MxOGMtMDY3MC00MzQyLTg1OTYtNTVkZGQyMTkwOWE2; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 81
 
 {
@@ -1277,8 +1282,8 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=YzJkMDEyZWQtYmY1Zi00MGUyLWEwNzQtOGYyMTc2Yjc4YWNh; Path=/; HttpOnly; SameSite=Lax
-Content-Length: 309
+Set-Cookie: SESSION=MTM1YzljYjQtZmJhNi00N2JkLWI5M2QtZmQzZDYwZTRmZTU4; Path=/; HttpOnly; SameSite=Lax
+Content-Length: 311
 
 {
   "id" : 1,
@@ -1288,7 +1293,7 @@ Content-Length: 309
   "video" : "/static/cover/video/sample.mp4",
   "highlight" : "/static/cover/highlight/sample.mp4",
   "image" : "/static/cover/image/sample.png",
-  "created_at" : "2023-01-17T22:01:28.4487"
+  "created_at" : "2023-02-15T21:03:57.279057"
 }</code></pre>
 </div>
 </div>
@@ -1401,7 +1406,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=Yjg5NzFkYTgtZDZmMi00NDE3LTg3ZTgtMDRiYjlmNWQ4MGQ5; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=ZTgyZDRlMzAtNDk2NC00NTNhLWJkNDItZjY5NWQ1MjgyZDg0; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 413
 
 {
@@ -1566,24 +1571,24 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=YmY2N2Q2ZjctZTViNi00ZmQzLTgyZjYtMjA0ZTAwYmRiZmYz; Path=/; HttpOnly; SameSite=Lax
-Content-Length: 491
+Set-Cookie: SESSION=YzAwZTdlMDctMzE1Ny00Y2I1LTg3MTYtY2NmNGNlZmQ5MzY4; Path=/; HttpOnly; SameSite=Lax
+Content-Length: 511
 
 {
   "data" : [ {
     "id" : 2,
     "contest_id" : 3,
     "publisher_id" : 5,
-    "publisher_name" : "member1234",
+    "publisher_name" : "작성자 닉네임",
     "title" : "테스트 커버 영상",
     "content" : "영상 설명 내용",
     "video" : "/test/video/test.mp4",
     "highlight" : "/test/highlight/test.mp4",
     "image" : "/image/highlight/test.mp4",
-    "artist_id" : 3,
-    "artist_name" : "IU",
-    "song_id" : 3,
-    "song_name" : "좋은 날",
+    "artist_id" : 1,
+    "artist_name" : "가수 이름",
+    "song_id" : 1,
+    "song_name" : "곡 이름",
     "hits" : 0
   } ],
   "next" : {
@@ -1744,7 +1749,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=YTQ2NGNkMTktN2NiZC00NTE4LWI5ZTItZTRmZTE1Y2M5YTA1; Path=/; HttpOnly; SameSite=Lax</code></pre>
+Set-Cookie: SESSION=YzQ2NzE1ZGUtMDNjYy00YWQyLTgwYTQtNjc4NjY4NzQ4Zjk2; Path=/; HttpOnly; SameSite=Lax</code></pre>
 </div>
 </div>
 </div>
@@ -1796,7 +1801,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=Y2RjZGJlZDEtMGYwZS00NGY1LTkzNzUtZmIzZDMzYmU5MjVh; Path=/; HttpOnly; SameSite=Lax</code></pre>
+Set-Cookie: SESSION=YTBlNjAzNGYtOTVlMC00MTY2LTgwZDctNmRiYWUxZDQxNjRm; Path=/; HttpOnly; SameSite=Lax</code></pre>
 </div>
 </div>
 </div>
@@ -1848,9 +1853,164 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=ODRiOTliMDQtMzM0ZC00OTAzLThlMjUtMzYyYTZlMzY5OWE2; Path=/; HttpOnly; SameSite=Lax</code></pre>
+Set-Cookie: SESSION=Y2Y1NDg2NDQtMmJiMS00OGQyLWFjN2YtM2E5NjE0ZjM0Zjcx; Path=/; HttpOnly; SameSite=Lax</code></pre>
 </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cover-comments"><a class="link" href="#cover-comments">커버 댓글</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="create-cover-comment"><a class="link" href="#create-cover-comment">커버 댓글 등록</a></h3>
+<div class="paragraph">
+<p>커버 댓글을 등록할 수 있다.</p>
+</div>
+<div class="sect3">
+<h4 id="create-cover-comment_http_request"><a class="link" href="#create-cover-comment_http_request">HTTP request</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /covers/1/comments HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Content-Length: 59
+Host: api.verby.co.kr
+
+{
+  "content" : "Comment 입니다.",
+  "reply_to" : null
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="create-cover-comment_request_fields"><a class="link" href="#create-cover-comment_request_fields">Request fields</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">필드명</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">타입</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">필수값</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">설명</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>content</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reply_to</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">답글 대상 댓글 일련번호</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="create-cover-comment_path_parameters"><a class="link" href="#create-cover-comment_path_parameters">Path parameters</a></h4>
+<div class="paragraph">
+<p>/covers/{coverId}/comments</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">파라미터</th>
+<th class="tableblock halign-left valign-top">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>coverId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cover Id</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="create-cover-comment_http_response"><a class="link" href="#create-cover-comment_http_response">Example response</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 201 Created
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Set-Cookie: SESSION=NDNhYzY1OWEtNzQ3OC00ODdjLWJlMTYtZmVmYzg1MWFkY2Mz; Path=/; HttpOnly; SameSite=Lax
+Content-Length: 158
+
+{
+  "id" : 1,
+  "cover_id" : 1,
+  "commenter_id" : 2,
+  "content" : "Comment 입니다.",
+  "reply_to" : null,
+  "created_at" : "2023-02-15T21:03:57.905179"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="create-cover-comment_response_fields"><a class="link" href="#create-cover-comment_response_fields">Response fields</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">필드명</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">타입</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">설명</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">커버 일련번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cover_id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">커버 일련번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>commenter_id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">댓글 작성자 일련번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>content</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reply_to</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">답글 대상 댓글 일련번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>created_at</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">생성 일자</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -2044,10 +2204,10 @@ Content-Length: 190
 
 {
   "id" : 3,
-  "key" : "a173f041-17cd-4571-be5d-42b95e7af433",
+  "key" : "c5c15f21-5f4a-449c-851d-20e8f058b38d",
   "phone" : "01020492039",
-  "expiration_date" : "2023-01-24T22:01:30.022143",
-  "created_at" : "2023-01-17T22:01:30.022654"
+  "expiration_date" : "2023-02-22T21:03:58.336175",
+  "created_at" : "2023-02-15T21:03:58.336469"
 }</code></pre>
 </div>
 </div>
@@ -2239,9 +2399,9 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=MGE2NzU2M2QtNjMyMy00MjJkLTgzNDctMTMxN2Y2MTA1N2Jl; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=Yjg2ZjRhYjQtODIzZS00MjhlLTkzOWMtYzZiM2ZiYzg5MDUz; Path=/; HttpOnly; SameSite=Lax
 
-http://localhost:8001/verby-deploy/static/cover/image/70dc101d-0d17-4912-b98d-b235b5f89598?x-amz-acl=public-read</code></pre>
+http://localhost:8001/verby-deploy/static/cover/image/5456b097-c4fa-4964-85ab-862e2214e069?x-amz-acl=public-read</code></pre>
 </div>
 </div>
 </div>
@@ -2322,13 +2482,13 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=ZDE3NzUzYjQtZWZhZC00YzhkLWE0ZjItZGFjNDg5ODY0Mzk0; Path=/; HttpOnly; SameSite=Lax
-Content-Length: 86
+Set-Cookie: SESSION=OWFkZWFhYWMtZmQ3Mi00MGExLThmMDgtMDc5OWY1NTUyNDE4; Path=/; HttpOnly; SameSite=Lax
+Content-Length: 87
 
 {
   "id" : 7,
   "login_id" : "test123",
-  "created_at" : "2023-01-17T22:01:29.59616"
+  "created_at" : "2023-02-15T21:03:58.150398"
 }</code></pre>
 </div>
 </div>
@@ -2423,7 +2583,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=YjYwODhlZjAtN2JkZS00NTc2LWE4MTMtYzU1Yzk4OWE2ZDRk; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=ZWU3OWJiZTktNThmZS00YjZkLWIyYzQtZmEzNzEzM2I2ZDA5; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 31
 
 {
@@ -2507,12 +2667,6 @@ Host: api.verby.co.kr
 </table>
 </div>
 <div class="sect3">
-<h4 id="admin-create-song_request_parts"><a class="link" href="#admin-create-song_request_parts">Request parts</a></h4>
-<div class="paragraph">
-<p>Snippet request-parts not found for operation::관리자 - 곡 추가</p>
-</div>
-</div>
-<div class="sect3">
 <h4 id="admin-create-song_http_response"><a class="link" href="#admin-create-song_http_response">Example response</a></h4>
 <div class="listingblock">
 <div class="content">
@@ -2524,7 +2678,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=NTlhNmNlMTYtZjliNi00OTVlLTk2NDYtNGRjM2ExYTc4ZDFj; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=NDViZDc3OTktZWFiMi00NWNkLWI4ZmUtMGM5NmYyNDg0NWM4; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 101
 
 {
@@ -2659,7 +2813,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=M2UzMjA0YjQtNDEwNi00Mjc0LWJlNWItNDBmYjg0OGY5OTVk; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=OTNkMTFiZWItYjkwNi00ODAwLTg5NWQtYzdjYjBkMTU2ZTY1; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 233
 
 {
@@ -2669,7 +2823,7 @@ Content-Length: 233
   "round" : 148,
   "start_time" : "2022-08-01T00:00:00",
   "end_time" : "2022-08-02T00:00:00",
-  "created_at" : "2023-01-17T22:01:28.305279"
+  "created_at" : "2023-02-15T21:03:57.178758"
 }</code></pre>
 </div>
 </div>
@@ -2796,14 +2950,14 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=Y2VhMGU0ZGUtZmJkMS00NGJjLWE2YjYtODAxMTM2MjY0NzI3; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=NzFjNmUxMWItOGNiMi00MjgyLWE4NDEtNzQ5YmM5ODUxZWQy; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 199
 
 {
   "id" : 1,
   "title" : "커버 영상 업로드 관련 문의입니다.",
   "content" : "커버 영상을 어떻게 올리는 지 모르겠어요.",
-  "created_at" : "2023-01-17T22:01:29.161545"
+  "created_at" : "2023-02-15T21:03:57.951974"
 }</code></pre>
 </div>
 </div>
@@ -2872,7 +3026,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=ZWNhMWViMmItMDJkNi00ODg4LWE4MWItZDM3NGI4NTNjZjU3; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=MTU1ZTBmNTMtNWMyNi00OTUzLTlmMDYtMTgwOTcwZjQ2ZWU1; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 304
 
 [ {
@@ -2883,7 +3037,7 @@ Content-Length: 304
   "content" : "노래가 재생되지 않는데 어떻게 하죠?",
   "answer" : null,
   "status" : "WAITING_ANSWER",
-  "created_at" : "2023-01-17T22:01:29.214285",
+  "created_at" : "2023-02-15T21:03:57.980182",
   "answered_at" : null
 } ]</code></pre>
 </div>
@@ -2974,7 +3128,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Set-Cookie: SESSION=YWZlNjk3ZjQtNWYwZC00YTUwLThlZGItZjBjYzFmZGU3Yjg4; Path=/; HttpOnly; SameSite=Lax
+Set-Cookie: SESSION=NTRkY2YyYjEtODI2Yy00MTRlLWFhM2MtMzdmZDY3YzM3ZGFm; Path=/; HttpOnly; SameSite=Lax
 Content-Length: 61
 
 {
@@ -3067,18 +3221,22 @@ Content-Length: 61
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>AUTH-001</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">휴대전화 인증 번호가 유효하지 않은 경우</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">인증 정보가 존재하지 않는 경우</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>AUTH-002</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">인증 토큰이 만료된 경우</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">휴대전화 인증 번호가 유효하지 않은 경우</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>AUTH-003</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">토큰이 유효하지 않은 경우</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">인증 토큰이 만료된 경우</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>AUTH-004</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">토큰이 유효하지 않은 경우</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AUTH-005</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">인증 타입이 일치하지 않은 경우</p></td>
 </tr>
 <tr>
@@ -3122,7 +3280,7 @@ Content-Length: 61
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1<br>
-Last updated 2022-12-24 20:25:11 +0900
+Last updated 2023-02-15 21:00:52 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">

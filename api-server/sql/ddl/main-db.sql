@@ -145,9 +145,9 @@ INSERT INTO `role` (name)
 VALUES ('ADMIN'),
        ('MEMBER');
 
-DROP TABLE IF EXISTS `comment`;
+DROP TABLE IF EXISTS `cover_comment`;
 
-CREATE TABLE `comment`
+CREATE TABLE `cover_comment`
 (
     `id`         bigint(20) AUTO_INCREMENT PRIMARY KEY,
     `cover_id`   bigint(20) NOT NULL,

@@ -1,10 +1,10 @@
-package com.verby.apiserver.support.repository.cover;
+package support.repository;
 
 import com.verby.core.cover.query.dto.CoverQueryModel;
 import org.springframework.data.repository.Repository;
 
 public interface TestCoverQueryModelRepository extends Repository<CoverQueryModel, Long> {
 
-    void save(CoverQueryModel model);
+    CoverQueryModel save(CoverQueryModel model);
 
 }

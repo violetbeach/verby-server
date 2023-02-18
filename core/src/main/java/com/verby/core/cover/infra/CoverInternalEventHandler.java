@@ -4,7 +4,6 @@ import com.verby.core.common.event.internal.InternalEventPublisher;
 import com.verby.core.cover.command.domain.InternalCoverEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,6 +11,8 @@ import org.springframework.transaction.event.TransactionPhase;
 import org.springframework.transaction.event.TransactionalEventListener;
 
 import javax.persistence.EntityManager;
+
+import static com.verby.core.common.event.internal.infra.InternalEventTopic.COVER_EVENT;
 
 @Slf4j
 @Service
@@ -26,7 +27,7 @@ public class CoverInternalEventHandler {
     public void handle(InternalCoverEvent event) {
         publish(event);
         try {
-            publisher.publish(ChannelTopic.of("cover_event"), event.getCoverId());
+            publisher.publish(COVER_EVENT, event.getCoverId());
         } catch (RuntimeException e) {
             log.warn("Internal Cover event publish failed {}.", e.getMessage());
         }

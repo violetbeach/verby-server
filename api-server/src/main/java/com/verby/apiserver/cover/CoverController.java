@@ -6,7 +6,6 @@ import com.verby.core.cover.command.application.CoverService;
 import com.verby.core.cover.command.application.PostCoverRequest;
 import com.verby.core.cover.command.application.PostedCoverInfo;
 import com.verby.core.cover.query.application.CoverSummaryQueryService;
-import com.verby.core.cover.query.dto.CoverDetailQueryModel;
 import com.verby.core.cover.query.dto.CoverQueryModel;
 import com.verby.apiserver.util.ip.ClientIPUtils;
 import com.verby.core.util.pagination.CursorRequest;
@@ -37,18 +36,18 @@ public class CoverController {
     }
 
     @GetMapping
-    private ResponseEntity<CursorResponse<CoverDetailQueryModel>> findAll(
+    private ResponseEntity<CursorResponse<CoverQueryModel>> findAll(
             CoverSearchRequest request, CursorRequest cursor) {
         request.setCursor(cursor);
-        List<CoverDetailQueryModel> coverDetailQueryModels = coverSummaryQueryService.findAll(request);
+        List<CoverQueryModel> coverQueryModels = coverSummaryQueryService.findAll(request);
 
-        long nextKey = coverDetailQueryModels.stream()
-                .mapToLong(CoverDetailQueryModel::getId)
+        long nextKey = coverQueryModels.stream()
+                .mapToLong(CoverQueryModel::getId)
                 .min()
                 .orElse(CursorRequest.NONE_KEY);
 
         return new ResponseEntity<>(
-                new CursorResponse<>(coverDetailQueryModels, cursor.next(nextKey)), HttpStatus.OK);
+                new CursorResponse<>(coverQueryModels, cursor.next(nextKey)), HttpStatus.OK);
     }
 
     @PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE })
