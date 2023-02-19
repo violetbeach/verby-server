@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class ContestServiceImpl implements ContestService {
+class ContestServiceImpl implements ContestService {
 
     private final ContestDataDao contestDataDao;
 

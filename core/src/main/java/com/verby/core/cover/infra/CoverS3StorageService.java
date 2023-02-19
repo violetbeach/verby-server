@@ -16,7 +16,7 @@ import java.net.URL;
 import java.util.UUID;
 
 @Component
-public class CoverS3StorageService extends CoverStorageService {
+class CoverS3StorageService extends CoverStorageService {
     private final AmazonS3Client amazonS3Client;
     @Value("${cloud.aws.s3.bucket}")
     private String bucket;
