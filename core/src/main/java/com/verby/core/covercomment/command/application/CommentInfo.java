@@ -31,7 +31,7 @@ public class CommentInfo {
                     comment.getCoverId(),
                     comment.getCommenterId(),
                     comment.getContent(),
-                    comment.getReplyTo(),
+                    comment.getReplyTo() != null ? comment.getReplyTo().getId() : null,
                     comment.getCreatedAt());
         }
     }

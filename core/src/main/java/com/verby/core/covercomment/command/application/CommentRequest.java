@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CommentRequest {
     private String content;
-    private Long replyTo;
     @JsonIgnore
     private long userId;
     @JsonIgnore
@@ -23,9 +22,8 @@ public class CommentRequest {
         this.userId = userId;
     }
 
-    public CommentRequest(String content, Long replyTo) {
+    public CommentRequest(String content) {
         this.content = content;
-        this.replyTo = replyTo;
     }
 }
 

@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Entity
@@ -23,12 +24,16 @@ public class CoverComment extends BaseEntity {
 
     private String content;
 
-    private Long replyTo;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "reply_to")
+    private CoverComment replyTo;
 
-    public CoverComment(long coverId, long commenterId, String content, Long replyTo) {
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "replyTo", cascade = CascadeType.ALL)
+    private List<CoverComment> replies;
+
+    public CoverComment(long coverId, long commenterId, String content) {
         this.coverId = coverId;
         this.commenterId = commenterId;
         this.content = content;
-        this.replyTo = replyTo;
     }
 }
