@@ -59,7 +59,7 @@ class CoverUpdatedEventHandlerTest {
             given(coverSummaryDao.findById(coverSummary.getId()))
                     .willReturn(coverSummary);
 
-            given(coverLikeSummaryDao.countById(coverSummary.getId()))
+            given(coverLikeSummaryDao.countByCoverId(coverSummary.getId()))
                     .willReturn(likeCount);
 
         }

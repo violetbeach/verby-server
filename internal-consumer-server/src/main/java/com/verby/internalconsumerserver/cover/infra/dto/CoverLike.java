@@ -18,15 +18,17 @@ import javax.persistence.Id;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Subselect(
         """
-        SELECT c.id as cover_id,
+        SELECT cl.id as id,
+            cl.cover_id as cover_id,
             cl.user_id as user_id
-        FROM cover c
-        LEFT OUTER JOIN cover_like cl
+        FROM cover_like cl
+        LEFT OUTER JOIN cover c
             ON c.id = cl.cover_id
         """)
-@Synchronize({ "cover", "cover_like" })
+@Synchronize({ "cover_like", "cover" })
 public class CoverLike {
     @Id
+    private long id;
     private long coverId;
     private long userId;
 

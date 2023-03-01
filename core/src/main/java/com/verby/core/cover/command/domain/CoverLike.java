@@ -18,12 +18,14 @@ public class CoverLike {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private long userId;
-    private long coverId;
+    @ManyToOne
+    @JoinColumn(name = "cover_id")
+    private Cover cover;
     @CreatedDate
     private LocalDateTime createdAt;
 
-    public CoverLike(long userId, long coverId) {
+    public CoverLike(long userId, Cover cover) {
         this.userId = userId;
-        this.coverId = coverId;
+        this.cover = cover;
     }
 }

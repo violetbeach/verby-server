@@ -18,7 +18,7 @@ public class CoverQueryModelServiceImpl implements CoverQueryModelService {
     @Override
     public CoverQueryModel getQueryModel(long id) {
         CoverSummary coverSummary = coverSummaryDao.findById(id);
-        long likeCount = coverLikeSummaryDao.countById(id);
+        long likeCount = coverLikeSummaryDao.countByCoverId(id);
 
         return mapper.toQueryModel(coverSummary, likeCount);
     }

@@ -5,6 +5,6 @@ import org.springframework.data.repository.Repository;
 
 public interface CoverLikeSummaryDao extends Repository<CoverLike, Long> {
 
-    long countById(long coverId);
+    long countByCoverId(long coverId);
 
 }
