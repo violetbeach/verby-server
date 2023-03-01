@@ -1,5 +1,6 @@
 package com.verby.core.cover.command.domain;
 
+import com.verby.core.common.event.Events;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,5 +28,15 @@ public class CoverLike {
     public CoverLike(long userId, Cover cover) {
         this.userId = userId;
         this.cover = cover;
+    }
+
+    @PostPersist
+    private void onPostPersist() {
+        Events.raise(new CoverUpdatedEvent(cover));
+    }
+
+    @PostRemove
+    private void onPostRemove() {
+        Events.raise(new CoverUpdatedEvent(cover));
     }
 }

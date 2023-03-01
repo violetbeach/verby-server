@@ -29,8 +29,6 @@ public class CoverLikeService {
 
         CoverLike like = new CoverLike(userId, cover);
         likeRepository.save(like);
-
-        cover.onPostUpdate();
     }
 
     public void unlike(long userId, long coverId) {
@@ -38,8 +36,6 @@ public class CoverLikeService {
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.COVER_LIKE_NOT_FOUND, "Like not found."));
 
         likeRepository.delete(like);
-
-        like.getCover().onPostUpdate();
     }
 
 }
