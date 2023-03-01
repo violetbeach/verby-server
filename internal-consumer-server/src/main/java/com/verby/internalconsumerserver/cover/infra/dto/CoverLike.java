@@ -19,27 +19,15 @@ import javax.persistence.Id;
 @Subselect(
         """
         SELECT c.id as cover_id,
-            cl.user_id
-        FROM cover c    
+            cl.user_id as user_id
+        FROM cover c
         LEFT OUTER JOIN cover_like cl
             ON c.id = cl.cover_id
         """)
 @Synchronize({ "cover", "cover_like" })
 public class CoverLike {
     @Id
-    private long id;
-    private Long contestId;
-    private long publisherId;
-    private String publisherName;
-    private String title;
-    private String content;
-    private String video;
-    private String highlight;
-    private String image;
-    private Long artistId;
-    private String artistName;
-    private Long songId;
-    private String songName;
-    private Long hits;
+    private long coverId;
+    private long userId;
 
 }
