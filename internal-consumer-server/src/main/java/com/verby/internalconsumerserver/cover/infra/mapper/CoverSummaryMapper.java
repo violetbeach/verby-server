@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CoverSummaryMapper {
 
-    public CoverQueryModel toQueryModel(CoverSummary coverSummary, long coverCount) {
+    public CoverQueryModel toQueryModel(CoverSummary coverSummary, long likeCount) {
         return new CoverQueryModel(
                 coverSummary.getId(),
                 coverSummary.getContestId(),
@@ -22,7 +22,7 @@ public class CoverSummaryMapper {
                 coverSummary.getArtistName(),
                 coverSummary.getSongId(),
                 coverSummary.getSongName(),
-                coverCount,
+                likeCount,
                 coverSummary.getHits()
         );
     }
