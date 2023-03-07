@@ -32,5 +32,6 @@ public class CoverQueryModel implements Serializable {
     private Long songId;
     private String songName;
     private Long likeCount;
+    private Long commentCount;
     private Long hits;
 }

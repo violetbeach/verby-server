@@ -1,6 +1,6 @@
 package com.verby.internalconsumerserver.cover;
 
-import com.verby.internalconsumerserver.cover.infra.client.CoverLikeSummaryDao;
+import com.verby.internalconsumerserver.cover.infra.client.CoverLikeDao;
 import com.verby.internalconsumerserver.cover.infra.client.CoverSummaryDao;
 import com.verby.internalconsumerserver.cover.infra.dto.CoverSummary;
 import com.verby.internalconsumerserver.support.repository.TestCoverQueryModelRepository;
@@ -30,7 +30,7 @@ class CoverUpdatedEventHandlerTest {
     @MockBean
     CoverSummaryDao coverSummaryDao;
     @MockBean
-    CoverLikeSummaryDao coverLikeSummaryDao;
+    CoverLikeDao coverLikeSummaryDao;
 
     @Nested
     @DisplayName("handle 메서드는")

@@ -88,6 +88,7 @@ class CoverControllerTest extends BaseControllerTest {
                         fieldWithPath("data[].song_id").type(JsonFieldType.NUMBER).description("곡 일련번호"),
                         fieldWithPath("data[].song_name").type(JsonFieldType.STRING).description("곡 이름"),
                         fieldWithPath("data[].like_count").type(JsonFieldType.NUMBER).description("좋아요 수"),
+                        fieldWithPath("data[].comment_count").type(JsonFieldType.NUMBER).description("댓글 수"),
                         fieldWithPath("data[].hits").type(JsonFieldType.NUMBER).description("조회수"),
 
                         subsectionWithPath("next").type(JsonFieldType.OBJECT).description("조회 Meta-data"),
@@ -141,6 +142,7 @@ class CoverControllerTest extends BaseControllerTest {
                             fieldWithPath("song_id").type(JsonFieldType.NUMBER).description("곡 일련번호"),
                             fieldWithPath("song_name").type(JsonFieldType.STRING).description("곡 이름"),
                             fieldWithPath("like_count").type(JsonFieldType.NUMBER).description("좋아요 수"),
+                            fieldWithPath("comment_count").type(JsonFieldType.NUMBER).description("댓글 수"),
                             fieldWithPath("hits").type(JsonFieldType.NUMBER).description("조회수")
                     )
             ));
@@ -245,6 +247,7 @@ class CoverControllerTest extends BaseControllerTest {
                 "가수 이름",
                 1L,
                 "곡 이름",
+                0L,
                 0L,
                 cover.getHits()
         );

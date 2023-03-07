@@ -12,15 +12,16 @@ import org.springframework.stereotype.Service;
 public class CoverQueryModelServiceImpl implements CoverQueryModelService {
 
     private final CoverSummaryDao coverSummaryDao;
-    private final CoverLikeSummaryDao coverLikeSummaryDao;
+    private final CoverLikeDao coverLikeDao;
+    private final CoverCommentDao coverCommentDao;
     private final CoverSummaryMapper mapper;
 
     @Override
     public CoverQueryModel getQueryModel(long id) {
         CoverSummary coverSummary = coverSummaryDao.findById(id);
-        long likeCount = coverLikeSummaryDao.countByCoverId(id);
-
-        return mapper.toQueryModel(coverSummary, likeCount);
+        long likeCount = coverLikeDao.countByCoverId(id);
+        long commentCount = coverCommentDao.countByCoverId(id);
+        return mapper.toQueryModel(coverSummary, likeCount, commentCount);
     }
 
 }
