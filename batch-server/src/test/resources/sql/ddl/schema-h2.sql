@@ -152,6 +152,8 @@ CREATE TABLE `cover_like`
     `created_at` datetime   NOT NULL DEFAULT NOW()
 );
 
+CREATE UNIQUE INDEX `uq_cover_id_user_id` ON `cover_like` (`cover_id`, `user_id`);
+
 DROP TABLE IF EXISTS `comment_like`;
 
 CREATE TABLE `comment_like`
@@ -161,6 +163,8 @@ CREATE TABLE `comment_like`
     `user_id`    bigint(20) NOT NULL,
     `created_at` datetime   NOT NULL DEFAULT NOW()
 );
+
+CREATE UNIQUE INDEX `uq_comment_id_user_id` ON `comment_like` (`comment_id`, `user_id`);
 
 DROP TABLE IF EXISTS `user_role`;
 

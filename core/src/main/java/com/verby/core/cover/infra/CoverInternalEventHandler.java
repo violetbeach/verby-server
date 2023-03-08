@@ -18,7 +18,7 @@ import static com.verby.core.common.event.internal.infra.InternalEventTopic.COVE
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class CoverInternalEventHandler {
+class CoverInternalEventHandler {
     private final InternalEventPublisher publisher;
     private final EntityManager em;
 

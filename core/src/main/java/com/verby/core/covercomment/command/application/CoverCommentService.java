@@ -24,8 +24,7 @@ public class CoverCommentService {
         CoverComment coverComment = new CoverComment(
                 request.getCoverId(),
                 request.getUserId(),
-                request.getContent(),
-                request.getReplyTo()
+                request.getContent()
         );
 
         commentRepository.save(coverComment);

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class ArtistServiceImpl implements ArtistService {
+class ArtistServiceImpl implements ArtistService {
 
     private final ArtistDataDao artistDataDao;
 

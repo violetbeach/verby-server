@@ -17,7 +17,7 @@ import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
-public class SongS3StorageService extends SongStorageService {
+class SongS3StorageService extends SongStorageService {
     private final AmazonS3Client amazonS3Client;
 
     @Value("${cloud.aws.s3.bucket}")

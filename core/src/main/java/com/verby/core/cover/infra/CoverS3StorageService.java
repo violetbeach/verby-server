@@ -16,7 +16,7 @@ import java.net.URL;
 import java.util.UUID;
 
 @Component
-public class CoverS3StorageService extends CoverStorageService {
+class CoverS3StorageService extends CoverStorageService {
     private final AmazonS3Client amazonS3Client;
     @Value("${cloud.aws.s3.bucket}")
     private String bucket;
@@ -35,7 +35,7 @@ public class CoverS3StorageService extends CoverStorageService {
 
     private GeneratePresignedUrlRequest getGeneratePreSignedUrlRequest(String bucket, String path) {
         GeneratePresignedUrlRequest generatePresignedUrlRequest = new GeneratePresignedUrlRequest(bucket, path)
-                .withMethod(HttpMethod.PUT)
+                .withMethod(HttpMethod.POST)
                 .withExpiration(StorageUtils.generatePreSignedUrlExpiration());
         generatePresignedUrlRequest.addRequestParameter(
                 Headers.S3_CANNED_ACL,

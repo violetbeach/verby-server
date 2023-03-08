@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class SongServiceImpl implements SongService {
+class SongServiceImpl implements SongService {
 
     private final SongDataDao songDataDao;
 

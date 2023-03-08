@@ -59,7 +59,7 @@ class CoverLikeControllerTest extends BaseControllerTest {
         Cover cover = CoverFixture.NORMAL_COVER.getCover(1L, 149029L);
         em.persist(cover);
 
-        CoverLike like = new CoverLike(memberId, cover.getId());
+        CoverLike like = new CoverLike(memberId, cover);
         em.persist(like);
 
         // when

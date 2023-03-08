@@ -5,6 +5,12 @@ spring:
     username: root
     password: root
 
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
   data:
     mongodb:
       host: localhost

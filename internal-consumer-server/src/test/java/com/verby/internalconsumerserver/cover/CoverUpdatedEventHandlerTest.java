@@ -1,5 +1,6 @@
 package com.verby.internalconsumerserver.cover;
 
+import com.verby.internalconsumerserver.cover.infra.client.CoverLikeDao;
 import com.verby.internalconsumerserver.cover.infra.client.CoverSummaryDao;
 import com.verby.internalconsumerserver.cover.infra.dto.CoverSummary;
 import com.verby.internalconsumerserver.support.repository.TestCoverQueryModelRepository;
@@ -28,11 +29,14 @@ class CoverUpdatedEventHandlerTest {
     TestCoverQueryModelRepository queryModelRepository;
     @MockBean
     CoverSummaryDao coverSummaryDao;
+    @MockBean
+    CoverLikeDao coverLikeSummaryDao;
 
     @Nested
     @DisplayName("handle 메서드는")
     class handle {
         CoverSummary coverSummary;
+        long likeCount;
 
         @BeforeEach
         void setup() {
@@ -54,6 +58,9 @@ class CoverUpdatedEventHandlerTest {
             );
             given(coverSummaryDao.findById(coverSummary.getId()))
                     .willReturn(coverSummary);
+
+            given(coverLikeSummaryDao.countByCoverId(coverSummary.getId()))
+                    .willReturn(likeCount);
 
         }
 
@@ -80,6 +87,7 @@ class CoverUpdatedEventHandlerTest {
                     () -> assertThat(result.getArtistName()).isEqualTo(coverSummary.getArtistName()),
                     () -> assertThat(result.getSongId()).isEqualTo(coverSummary.getSongId()),
                     () -> assertThat(result.getSongName()).isEqualTo(coverSummary.getSongName()),
+                    () -> assertThat(result.getLikeCount()).isEqualTo(likeCount),
                     () -> assertThat(result.getHits()).isEqualTo(coverSummary.getHits())
             );
 

@@ -39,7 +39,7 @@ public enum CoverQueryModelFixture {
     }
 
     public CoverQueryModel getCoverQueryModel(Long id) {
-        return new CoverQueryModel(id, contestId, publisherId, publisherName, title, content, video, highlight, image, artistId, artistName, songId, songName, hits);
+        return new CoverQueryModel(id, contestId, publisherId, publisherName, title, content, video, highlight, image, artistId, artistName, songId, songName, 0L, 0L, hits);
     }
 
 }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class CoverServiceImpl implements CoverService {
+class CoverServiceImpl implements CoverService {
 
     private final CoverQueryDao coverQueryDao;
 

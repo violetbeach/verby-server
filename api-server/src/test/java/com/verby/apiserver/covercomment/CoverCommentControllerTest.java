@@ -41,8 +41,7 @@ class CoverCommentControllerTest extends BaseControllerTest {
         CoverQueryModel cover = 커버_생성();
 
         CommentRequest request = new CommentRequest(
-                "Comment 입니다.",
-                null
+                "Comment 입니다."
         );
 
         // when
@@ -62,8 +61,7 @@ class CoverCommentControllerTest extends BaseControllerTest {
                         parameterWithName("coverId").description("Cover Id")
                 ),
                 requestFields(
-                        fieldWithPath("content").type(JsonFieldType.STRING).description("내용"),
-                        fieldWithPath("reply_to").type(JsonFieldType.NUMBER).description("답글 대상 댓글 일련번호").optional()
+                        fieldWithPath("content").type(JsonFieldType.STRING).description("내용")
                 ),
                 responseFields(
                         fieldWithPath("id").type(JsonFieldType.NUMBER).description("커버 일련번호"),
