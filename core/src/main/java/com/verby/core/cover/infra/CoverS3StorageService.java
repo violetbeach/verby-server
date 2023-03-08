@@ -35,7 +35,7 @@ class CoverS3StorageService extends CoverStorageService {
 
     private GeneratePresignedUrlRequest getGeneratePreSignedUrlRequest(String bucket, String path) {
         GeneratePresignedUrlRequest generatePresignedUrlRequest = new GeneratePresignedUrlRequest(bucket, path)
-                .withMethod(HttpMethod.PUT)
+                .withMethod(HttpMethod.POST)
                 .withExpiration(StorageUtils.generatePreSignedUrlExpiration());
         generatePresignedUrlRequest.addRequestParameter(
                 Headers.S3_CANNED_ACL,
