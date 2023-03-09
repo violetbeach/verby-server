@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
-import java.util.UUID;
 
 @Component
 class CoverS3StorageService extends CoverStorageService {
@@ -26,8 +25,8 @@ class CoverS3StorageService extends CoverStorageService {
         this.amazonS3Client = amazonS3Client;
     }
 
-    public String getPreSignedUrl(Resource resource) {
-        String path = getResourcePath(resource) + "/" + UUID.randomUUID();
+    public String getPreSignedUrl(Resource resource, String fileName) {
+        String path = getResourcePath(resource) + "/" + fileName;
         GeneratePresignedUrlRequest generatePresignedUrlRequest = getGeneratePreSignedUrlRequest(bucket, path);
         URL url = amazonS3Client.generatePresignedUrl(generatePresignedUrlRequest);
         return url.toString();

@@ -28,10 +28,10 @@ public class StorageController {
     private String getPreSignedUrl(CreateUploadUrlRequest request) {
         switch (request.getDomainType()) {
             case SONG -> {
-                return songStorageService.getPreSignedUrl(request.getResourceType());
+                return songStorageService.getPreSignedUrl(request.getResourceType(), request.getFileName());
             }
             case COVER -> {
-                return coverStorageService.getPreSignedUrl(request.getResourceType());
+                return coverStorageService.getPreSignedUrl(request.getResourceType(), request.getFileName());
             }
             default -> {
                 log.error("Not allow Domain Type ({}).", request.getDomainType());
