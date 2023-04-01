@@ -22,7 +22,7 @@ jobs:
             - ~/.gradle
 
       - run:
-          command: ./gradlew clean build
+          command: ./gradlew clean build test
 
       - run:
           command: |
