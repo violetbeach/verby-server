@@ -34,7 +34,7 @@ class CoverStorageServiceTest {
         }
 
         @Override
-        public String getPreSignedUrl(Resource resource) {
+        public String getPreSignedUrl(Resource resource, String fileName) {
             getResourcePath(resource);
             return Strings.EMPTY;
         }
