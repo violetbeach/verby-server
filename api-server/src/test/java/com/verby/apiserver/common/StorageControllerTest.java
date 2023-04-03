@@ -40,7 +40,7 @@ class StorageControllerTest extends BaseControllerTest {
     @DisplayName("리소스를 업로드할 수 있는 url을 반환한다.")
     public void publishPreSignUrl() throws Exception {
         // given
-        CreateUploadUrlRequest request = new CreateUploadUrlRequest(Domain.COVER.toString(), Resource.IMAGE.toString());
+        CreateUploadUrlRequest request = new CreateUploadUrlRequest(Domain.COVER.toString(), Resource.IMAGE.toString(), "test.png");
 
         // when
         ResultActions result = mockMvc.perform(post("/upload-urls")
@@ -56,7 +56,8 @@ class StorageControllerTest extends BaseControllerTest {
                 ApiDocumentUtils.getDocumentResponse(),
                 requestFields(
                         fieldWithPath("domain_type").type(JsonFieldType.STRING).description("도메인 타입(COVER, IMAGE)"),
-                        fieldWithPath("resource_type").type(JsonFieldType.STRING).description("리소스 타입(FULL_VIDEO, HIGHLIGHT, IMAGE)")
+                        fieldWithPath("resource_type").type(JsonFieldType.STRING).description("리소스 타입(FULL_VIDEO, HIGHLIGHT, IMAGE)"),
+                        fieldWithPath("file_name").type(JsonFieldType.STRING).description("파일 명")
                 )));
     }
 

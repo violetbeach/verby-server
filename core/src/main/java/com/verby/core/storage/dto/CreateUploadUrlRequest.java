@@ -14,6 +14,8 @@ public class CreateUploadUrlRequest {
     private String domainType;
     @NotBlank
     private String resourceType;
+    @NotBlank
+    private String fileName;
 
     public Domain getDomainType() {
         return Domain.valueOf(domainType);
@@ -21,5 +23,9 @@ public class CreateUploadUrlRequest {
 
     public Resource getResourceType() {
         return Resource.valueOf(resourceType);
+    }
+
+    public String getFileName() {
+        return fileName;
     }
 }
