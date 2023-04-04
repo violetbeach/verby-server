@@ -29,16 +29,21 @@ jobs:
             ./gradlew --build-cache clean :$UPDATED_MODULES:build test
             fi
 
+        when:
+          paths:
+            - "src/**"
+            - "test/**"
+
       - run:
           command: |
             zip verby-rest-api.zip -r ./*
             mkdir -p deploy
             mv verby-rest-api.zip deploy/verby-rest-api.zip
 
-      - paths:
-          - only:
-              - "src/**"
-              - "test/**"
+        when:
+          paths:
+            - "src/**"
+            - "test/**"
 
       - persist_to_workspace:
           root: .
