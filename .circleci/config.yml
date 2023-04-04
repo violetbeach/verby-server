@@ -22,13 +22,23 @@ jobs:
             - ~/.gradle
 
       - run:
-          command: ./gradlew clean build test
+          command: |
+            # 변경된 모듈만 빌드
+            UPDATED_MODULES=$(git diff --name-only HEAD^ HEAD | awk -F "/" '{print $1}' | uniq)
+            if [ ! -z "$UPDATED_MODULES" ]; then
+            ./gradlew --build-cache clean :$UPDATED_MODULES:build test
+            fi
 
       - run:
           command: |
             zip verby-rest-api.zip -r ./*
             mkdir -p deploy
             mv verby-rest-api.zip deploy/verby-rest-api.zip
+
+      - paths:
+          - only:
+              - "src/**"
+              - "test/**"
 
       - persist_to_workspace:
           root: .

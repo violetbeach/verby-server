@@ -4,6 +4,7 @@ files:
   - source: /
     destination: /home/ec2-user/app/deploy/build
     overwrite: yes
+    file_exists_behavior: OVERWRITE
 
 permissions:
   - object: /
@@ -13,14 +14,8 @@ permissions:
 
 hooks:
   ApplicationStart:
-    - location: scripts/deploy-api.sh
+    - location: scripts/deploy.sh
       timeout: 60
       runas: ec2-user
-
-    - location: scripts/deploy-batch.sh
-      timeout: 60
-      runas: ec2-user
-
-    - location: scripts/deploy-internal-consumer.sh
-      timeout: 60
-      runas: ec2-user
+      environment:
+        MODULES: $(git diff --name-only $DEPLOYMENT_BASE_REVISION $DEPLOYMENT_TARGET_BRANCH | awk -F/ '{ print $1 }' | uniq)
