@@ -25,8 +25,8 @@ jobs:
           command: |
             # 변경된 모듈만 빌드
             UPDATED_MODULES=$(git diff --name-only HEAD^ HEAD | awk -F "/" '{print $1}' | uniq)
-            if [ ! -z "$UPDATED_MODULES" ]; then
-            ./gradlew --build-cache clean :$UPDATED_MODULES:build test
+            if [[ -n "$UPDATED_MODULES" ]]; then
+              ./gradlew --build-cache clean :$UPDATED_MODULES:build test
             fi
 
       - run:
