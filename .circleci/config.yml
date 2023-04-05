@@ -24,7 +24,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - '*/build/libs/api-consumer-server-0.0.1.jar'
+            - '*/build/libs/api-server-0.0.1.jar'
   # Batch server 빌드
   build-batch:
     docker:
@@ -89,7 +89,7 @@ jobs:
           deployment-config: CodeDeployDefault.AllAtOnce
           bundle-bucket: verby-deploy
           bundle-key: api-server-0.0.1
-          bundle-type: jar
+          bundle-type: zip
 
   deploy-batch:
     docker:
@@ -110,7 +110,7 @@ jobs:
           deployment-config: CodeDeployDefault.AllAtOnce
           bundle-bucket: verby-deploy
           bundle-key: batch-server-0.0.1
-          bundle-type: jar
+          bundle-type: zip
 
   deploy-consumer:
     docker:
@@ -131,25 +131,31 @@ jobs:
           deployment-config: CodeDeployDefault.AllAtOnce
           bundle-bucket: verby-deploy
           bundle-key: internal-consumer-server-0.0.1
-          bundle-type: jar
+          bundle-type: zip
 
 workflows:
   version: 2
 
-  build-deploy:
+  build-deploy-api:
     jobs:
       - build-api
-      - build-batch
-      - build-consumer
       - deploy-api:
           context: AWS
           requires:
             - build-api
-      - deploy-batch:
+
+  build-deploy-batch:
+    jobs:
+      - build-batch
+      - deploy-api:
           context: AWS
           requires:
             - build-batch
-      - deploy-consumer:
+
+  build-deploy-consumer:
+    jobs:
+      - build-consumer
+      - deploy-api:
           context: AWS
           requires:
             - build-consumer
