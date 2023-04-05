@@ -5,10 +5,6 @@ orbs:
 jobs:
   # API server 빌드
   build-api:
-    when:
-      paths:
-        - "api-server/**"
-        - "core/**"
     docker:
       - image: circleci/openjdk:17-jdk-buster
     steps:
