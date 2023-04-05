@@ -2,20 +2,21 @@ version: 2.1
 orbs:
   aws-s3: circleci/aws-s3@1.0.13
   aws-code-deploy: circleci/aws-code-deploy@0.0.12
-
 jobs:
-  build:
+  # API server 빌드
+  build-api:
+    when:
+      paths:
+        - "api-server/**"
+        - "core/**"
     docker:
       - image: circleci/openjdk:17-jdk-buster
-
     steps:
       - checkout
-
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "build.gradle" }}
             - v1-dependencies-
-
       - save_cache:
           key: v1-dependencies-{{ checksum "build.gradle" }}
           paths:
@@ -23,24 +24,73 @@ jobs:
 
       - run:
           command: |
-            # 변경된 모듈만 빌드
-            UPDATED_MODULES=$(git diff --name-only HEAD^ HEAD | awk -F "/" '{print $1}' | uniq)
-            if [ -n "$UPDATED_MODULES" ]; then
-              ./gradlew --build-cache clean :$UPDATED_MODULES:build test
-            fi
+          ./gradlew :api-server:build
 
       - run:
           command: |
             zip verby-rest-api.zip -r ./*
             mkdir -p deploy
             mv verby-rest-api.zip deploy/verby-rest-api.zip
+      - persist_to_workspace:
+          root: .
+          paths:
+            - '*/build/libs/api-server-0.0.1.jar'
+  # Batch server 빌드
+  build-batch:
+    when:
+      paths:
+        - "batch-server/**"
+        - "core/**"
+    docker:
+      - image: circleci/openjdk:17-jdk-buster
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "build.gradle" }}
+            - v1-dependencies-
+      - save_cache:
+          key: v1-dependencies-{{ checksum "build.gradle" }}
+          paths:
+            - ~/.gradle
+
+      - run:
+          command: |
+          ./gradlew :batch-server:build
 
       - persist_to_workspace:
           root: .
           paths:
-            - deploy
+            - '*/build/libs/batch-server-0.0.1.jar'
+  # Internal consumer server 빌드
+  build-consumer:
+    when:
+      paths:
+        - "internal-consumer-server/**"
+        - "core/**"
+    docker:
+      - image: circleci/openjdk:17-jdk-buster
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "build.gradle" }}
+            - v1-dependencies-
+      - save_cache:
+          key: v1-dependencies-{{ checksum "build.gradle" }}
+          paths:
+            - ~/.gradle
 
-  deploy:
+      - run:
+          command: |
+          ./gradlew :internal-consumer-server:build
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - '*/build/libs/internal-consumer-server-0.0.1.jar'
+
+  deploy-api:
     docker:
       - image: circleci/python:2.7
 
@@ -58,20 +108,68 @@ jobs:
           deployment-group: verby-group
           deployment-config: CodeDeployDefault.AllAtOnce
           bundle-bucket: verby-deploy
-          bundle-key: verby-rest-api
-          bundle-type: zip
+          bundle-key: api-server-0.0.1
+          bundle-type: jar
+
+  deploy-batch:
+    docker:
+      - image: circleci/python:2.7
+
+    steps:
+      - attach_workspace:
+          at: .
+
+      - aws-s3/copy:
+          from: deploy/*
+          to: 's3://verby-deploy'
+          aws-region: AWS_DEFAULT_REGION
+
+      - aws-code-deploy/deploy-bundle:
+          application-name: verby-server
+          deployment-group: verby-group
+          deployment-config: CodeDeployDefault.AllAtOnce
+          bundle-bucket: verby-deploy
+          bundle-key: batch-server-0.0.1
+          bundle-type: jar
+
+  deploy-consumer:
+    docker:
+      - image: circleci/python:2.7
+
+    steps:
+      - attach_workspace:
+          at: .
+
+      - aws-s3/copy:
+          from: deploy/*
+          to: 's3://verby-deploy'
+          aws-region: AWS_DEFAULT_REGION
+
+      - aws-code-deploy/deploy-bundle:
+          application-name: verby-server
+          deployment-group: verby-group
+          deployment-config: CodeDeployDefault.AllAtOnce
+          bundle-bucket: verby-deploy
+          bundle-key: internal-consumer-server-0.0.1
+          bundle-type: jar
 
 workflows:
   version: 2
 
   build-deploy:
-    when:
-      paths:
-        - "src/**"
-        - "test/**"
     jobs:
-      - build
-      - deploy:
+      - build-api
+      - build-batch
+      - build-consumer
+      - deploy-api:
           context: AWS
           requires:
-            - build
+            - build-api
+      - deploy-batch:
+          context: AWS
+          requires:
+            - build-batch
+      - deploy-consumer:
+          context: AWS
+          requires:
+            - build-consumer

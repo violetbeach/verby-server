@@ -17,5 +17,3 @@ hooks:
     - location: scripts/deploy.sh
       timeout: 60
       runas: ec2-user
-      environment:
-        MODULES: $(git diff --name-only $DEPLOYMENT_BASE_REVISION $DEPLOYMENT_TARGET_BRANCH | awk -F/ '{ print $1 }' | uniq)
