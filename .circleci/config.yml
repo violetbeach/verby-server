@@ -23,14 +23,8 @@ jobs:
             - ~/.gradle
 
       - run:
-          command: |
-          ./gradlew :api-server:build
+          command: ./gradlew :api-server:build
 
-      - run:
-          command: |
-            zip verby-rest-api.zip -r ./*
-            mkdir -p deploy
-            mv verby-rest-api.zip deploy/verby-rest-api.zip
       - persist_to_workspace:
           root: .
           paths:
@@ -55,8 +49,7 @@ jobs:
             - ~/.gradle
 
       - run:
-          command: |
-          ./gradlew :batch-server:build
+          command: ./gradlew :batch-server:build
 
       - persist_to_workspace:
           root: .
@@ -82,8 +75,7 @@ jobs:
             - ~/.gradle
 
       - run:
-          command: |
-          ./gradlew :internal-consumer-server:build
+          command: ./gradlew :internal-consumer-server:build
 
       - persist_to_workspace:
           root: .
