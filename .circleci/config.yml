@@ -28,7 +28,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - '*/build/libs/api-server-0.0.1.jar'
+            - 'api-server-0.0.1.jar'
   # Batch server 빌드
   build-batch:
     when:
@@ -54,7 +54,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - '*/build/libs/batch-server-0.0.1.jar'
+            - '*/batch-server-0.0.1.jar'
   # Internal consumer server 빌드
   build-consumer:
     when:
@@ -91,7 +91,7 @@ jobs:
           at: .
 
       - aws-s3/copy:
-          from: deploy/*
+          from: '*/build/libs/api-server-0.0.1.jar'
           to: 's3://verby-deploy'
           aws-region: AWS_DEFAULT_REGION
 
@@ -112,7 +112,7 @@ jobs:
           at: .
 
       - aws-s3/copy:
-          from: deploy/*
+          from: '*/build/libs/batch-server-0.0.1.jar'
           to: 's3://verby-deploy'
           aws-region: AWS_DEFAULT_REGION
 
@@ -133,7 +133,7 @@ jobs:
           at: .
 
       - aws-s3/copy:
-          from: deploy/*
+          from: '*/build/libs/internal-consumer-server-0.0.1.jar'
           to: 's3://verby-deploy'
           aws-region: AWS_DEFAULT_REGION
 
