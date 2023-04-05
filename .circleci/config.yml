@@ -5,11 +5,6 @@ orbs:
 jobs:
   # API server 빌드
   build-api:
-    filters:
-      paths:
-        include:
-          - "api-server/**"
-          - "core/**"
     docker:
       - image: circleci/openjdk:17-jdk-buster
     steps:
@@ -32,11 +27,6 @@ jobs:
             - '*/build/libs/api-consumer-server-0.0.1.jar'
   # Batch server 빌드
   build-batch:
-    filters:
-      paths:
-        include:
-          - "batch-server/**"
-          - "core/**"
     docker:
       - image: circleci/openjdk:17-jdk-buster
     steps:
@@ -59,11 +49,6 @@ jobs:
             - '*/build/libs/batch-server-0.0.1.jar'
   # Internal consumer server 빌드
   build-consumer:
-    filters:
-      paths:
-        include:
-          - "internal-consumer-server/**"
-          - "core/**"
     docker:
       - image: circleci/openjdk:17-jdk-buster
     steps:
