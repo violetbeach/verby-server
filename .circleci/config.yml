@@ -26,9 +26,9 @@ jobs:
           command: ./gradlew :api-server:build
 
       - persist_to_workspace:
-          root: .
+          root: ./api-server
           paths:
-            - 'api-server-0.0.1.jar'
+            - '*/build/libs/api-consumer-server-0.0.1.jar'
   # Batch server 빌드
   build-batch:
     when:
@@ -52,9 +52,9 @@ jobs:
           command: ./gradlew :batch-server:build
 
       - persist_to_workspace:
-          root: .
+          root: ./batch-server
           paths:
-            - '*/batch-server-0.0.1.jar'
+            - '*/build/libs/batch-server-0.0.1.jar'
   # Internal consumer server 빌드
   build-consumer:
     when:
@@ -78,7 +78,7 @@ jobs:
           command: ./gradlew :internal-consumer-server:build
 
       - persist_to_workspace:
-          root: .
+          root: ./internal-consumer-server
           paths:
             - '*/build/libs/internal-consumer-server-0.0.1.jar'
 
