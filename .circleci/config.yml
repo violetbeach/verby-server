@@ -25,6 +25,10 @@ jobs:
           root: ./api-server
           paths:
             - '*/build/libs/api-consumer-server-0.0.1.jar'
+    when:
+      paths:
+        - "api-server/**"
+        - "core/**"
   # Batch server 빌드
   build-batch:
     when:
