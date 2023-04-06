@@ -80,7 +80,7 @@ jobs:
 
       - run:
           command: |
-            zip verby-consumer-server.zip ./internal-consumer/build/libs/internal-consumer-server-0.0.1.jar
+            zip verby-consumer-server.zip ./internal-consumer-server/build/libs/internal-consumer-server-0.0.1.jar
             mkdir -p deploy
             mv verby-consumer-server.zip deploy/verby-consumer-server.zip
 
