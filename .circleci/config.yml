@@ -107,7 +107,7 @@ jobs:
           deployment-group: verby-group
           deployment-config: CodeDeployDefault.AllAtOnce
           bundle-bucket: verby-deploy
-          bundle-key: api-server
+          bundle-key: verby-api-server
           bundle-type: zip
 
   deploy-batch:
@@ -128,7 +128,7 @@ jobs:
           deployment-group: verby-group
           deployment-config: CodeDeployDefault.AllAtOnce
           bundle-bucket: verby-deploy
-          bundle-key: batch-server
+          bundle-key: verby-batch-server
           bundle-type: zip
 
   deploy-consumer:
@@ -149,7 +149,7 @@ jobs:
           deployment-group: verby-group
           deployment-config: CodeDeployDefault.AllAtOnce
           bundle-bucket: verby-deploy
-          bundle-key: internal-consumer-server
+          bundle-key: verby-internal-consumer-server
           bundle-type: zip
 
 workflows:
