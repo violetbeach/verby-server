@@ -23,7 +23,7 @@ jobs:
 
       - run:
           command: |
-            zip verby-api-server.zip ./build/libs/api-server-0.0.1.jar
+            zip verby-api-server.zip ./api-server/build/libs/api-server-0.0.1.jar
             mkdir -p deploy
             mv verby-api-server.zip deploy/verby-api-server.zip
 
@@ -51,7 +51,7 @@ jobs:
 
       - run:
           command: |
-            zip verby-batch-server.zip ./build/libs/batch-server-0.0.1.jar
+            zip verby-batch-server.zip ./batch-server/build/libs/batch-server-0.0.1.jar
             mkdir -p deploy
             mv verby-batch-server.zip deploy/verby-batch-server.zip
 
@@ -80,7 +80,7 @@ jobs:
 
       - run:
           command: |
-            zip verby-consumer-server.zip ./build/libs/internal-consumer-server-0.0.1.jar
+            zip verby-consumer-server.zip ./internal-consumer/build/libs/internal-consumer-server-0.0.1.jar
             mkdir -p deploy
             mv verby-consumer-server.zip deploy/verby-consumer-server.zip
 
