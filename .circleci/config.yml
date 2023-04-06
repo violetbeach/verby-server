@@ -158,7 +158,7 @@ jobs:
           deployment-group: verby-group
           deployment-config: CodeDeployDefault.AllAtOnce
           bundle-bucket: verby-deploy
-          bundle-key: verby-internal-consumer-server
+          bundle-key: verby-consumer-server
           bundle-type: zip
 
 workflows:
@@ -175,7 +175,7 @@ workflows:
   build-deploy-batch:
     jobs:
       - build-batch
-      - deploy-api:
+      - deploy-batch:
           context: AWS
           requires:
             - build-batch
@@ -183,7 +183,7 @@ workflows:
   build-deploy-consumer:
     jobs:
       - build-consumer
-      - deploy-api:
+      - deploy-consumer:
           context: AWS
           requires:
             - build-consumer
