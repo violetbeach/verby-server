@@ -93,6 +93,9 @@ jobs:
     docker:
       - image: circleci/python:2.7
 
+    environment:
+      MODULE: api-server
+
     steps:
       - attach_workspace:
           at: .
@@ -114,6 +117,9 @@ jobs:
     docker:
       - image: circleci/python:2.7
 
+    environment:
+      MODULE: batch-server
+
     steps:
       - attach_workspace:
           at: .
@@ -134,6 +140,9 @@ jobs:
   deploy-consumer:
     docker:
       - image: circleci/python:2.7
+
+    environment:
+      MODULE: internal-consumer-server
 
     steps:
       - attach_workspace:
