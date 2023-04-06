@@ -4,7 +4,6 @@ files:
   - source: /
     destination: /home/ec2-user/deploy
     overwrite: yes
-    file_exists_behavior: OVERWRITE
 
 permissions:
   - object: /
