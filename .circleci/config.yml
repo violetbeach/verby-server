@@ -84,7 +84,7 @@ jobs:
             mkdir -p deploy
             mv verby-consumer-server.zip deploy/verby-consumer-server.zip
 
-       - persist_to_workspace:
+      - persist_to_workspace:
           root: .
           paths:
             - deploy
