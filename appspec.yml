@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ec2-user/deploy/${MODULE}
+    destination: /home/ec2-user/deploy/<deployment-group-name>
     overwrite: yes
 
 permissions:
