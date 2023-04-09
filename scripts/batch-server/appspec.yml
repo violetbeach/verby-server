@@ -13,6 +13,6 @@ permissions:
 
 hooks:
   ApplicationStart:
-    - location: deploy.sh verby-batch-server
+    - location: ./deploy.sh verby-batch-server
       timeout: 60
       runas: ec2-user

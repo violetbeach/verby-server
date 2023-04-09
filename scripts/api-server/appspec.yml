@@ -13,6 +13,6 @@ permissions:
 
 hooks:
   ApplicationStart:
-    - location: deploy.sh verby-api-server
+    - location: ./deploy.sh verby-api-server
       timeout: 60
       runas: ec2-user

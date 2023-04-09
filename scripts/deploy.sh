@@ -4,11 +4,11 @@
 MODULE = "$1"
 echo ${MODULE};
 
-if [ MODULE = "verby-api" ]; then
+if [ MODULE = "verby-api-server" ]; then
   JAR_NAME="api-server"
-elif [ MODULE = "verby-batch" ]; then
+elif [ MODULE = "verby-batch-server" ]; then
   JAR_NAME="batch-server"
-elif [ MODULE = "verby-consumer" ]; then
+elif [ MODULE = "verby-consumer-server" ]; then
   JAR_NAME="internal-consumer-server"
 else
   echo "Unsupported Module: ${MODULE}"
