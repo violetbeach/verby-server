@@ -2,13 +2,13 @@
 
 # 배포 모듈 (변경된 모듈) 확인
 MODULE="$1"
-echo ${MODULE};
+echo "$MODULE"
 
-if [ MODULE = "verby-api-server" ]; then
+if [ "$MODULE" = "verby-api-server" ]; then
   JAR_NAME="api-server"
-elif [ MODULE = "verby-batch-server" ]; then
+elif [ "$MODULE" = "verby-batch-server" ]; then
   JAR_NAME="batch-server"
-elif [ MODULE = "verby-consumer-server" ]; then
+elif [ "$MODULE" = "verby-consumer-server" ]; then
   JAR_NAME="internal-consumer-server"
 else
   echo "Unsupported Module: ${MODULE}"
