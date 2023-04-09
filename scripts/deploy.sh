@@ -1,14 +1,34 @@
 #!/bin/bash
 
-# 변경된 모듈 환경변수 확인
-echo $MODULE;
+# 배포 그룹 (변경된 모듈) 확인
+echo ${DEPLOYMENT_GROUP};
 
 # 모듈 배포
-deploy_module($MODULE)
+MODULE=""
+JAR_NAME=""
+
+if [ "${DEPLOYMENT_GROUP}" = "verby-api" ]; then
+  MODULE="verby-api-server"
+  JAR_NAME="api-server"
+elif [ "${DEPLOYMENT_GROUP}" = "verby-batch" ]; then
+  MODULE="verby-batch-server"
+  JAR_NAME="batch-server"
+elif [ "${DEPLOYMENT_GROUP}" = "verby-consumer" ]; then
+  MODULE="verby-consumer-server"
+  JAR_NAME="internal-consumer-server"
+else
+  echo "Unsupported deployment group: ${DEPLOYMENT_GROUP}"
+  exit 1
+fi
+
+deploy_module "$MODULE" "$JAR_NAME"
 
 function deploy_module {
-  local repository_path="/home/ec2-user/deploy"
-  local current_pid=$(pgrep -f "${MODULE}")
+  local MODULE=$1
+  local JAR_NAME=$2
+  local REPOSITORY_PATH="/home/ec2-user/deploy/$MODULE"
+
+  local current_pid=$(pgrep -f "$JAR_NAME")
 
   echo "$current_pid"
 
@@ -24,11 +44,11 @@ function deploy_module {
 
   echo "> Build 파일 복사"
 
-  jar_name=$(ls "$repository_path/" | grep "${MODULE}" | head -n 1)
+  jar_name=$(ls "$REPOSITORY_PATH/" | grep "$JAR_NAME" | head -n 1)
 
   echo "> JAR Name: $jar_name"
 
   source /home/ec2-user/.bash_profile
 
-  nohup /opt/jdk-17/bin/java -jar "$repository_path/$jar_name" --spring.profiles.active=prod > "$repository_path/nohup.out" 2>&1 &
+  nohup /opt/jdk-17/bin/java -jar "$REPOSITORY_PATH/$jar_name" --spring.profiles.active=prod > "$REPOSITORY_PATH/nohup.out" 2>&1 &
 }

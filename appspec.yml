@@ -17,4 +17,4 @@ hooks:
       timeout: 60
       runas: ec2-user
       environment:
-        MODULE: ${MODULE}
+        DEPLOYMENT_GROUP: <deployment-group-name>
