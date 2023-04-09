@@ -107,7 +107,7 @@ jobs:
 
       - aws-code-deploy/deploy-bundle:
           application-name: verby-server
-          deployment-group: verby-group
+          deployment-group: verby-api
           deployment-config: CodeDeployDefault.AllAtOnce
           bundle-bucket: verby-deploy
           bundle-key: verby-api-server
@@ -131,7 +131,7 @@ jobs:
 
       - aws-code-deploy/deploy-bundle:
           application-name: verby-server
-          deployment-group: verby-group
+          deployment-group: verby-batch
           deployment-config: CodeDeployDefault.AllAtOnce
           bundle-bucket: verby-deploy
           bundle-key: verby-batch-server
@@ -155,7 +155,7 @@ jobs:
 
       - aws-code-deploy/deploy-bundle:
           application-name: verby-server
-          deployment-group: verby-group
+          deployment-group: verby-consumer
           deployment-config: CodeDeployDefault.AllAtOnce
           bundle-bucket: verby-deploy
           bundle-key: verby-consumer-server
