@@ -1,16 +1,14 @@
 #!/bin/bash
 
 # 배포 모듈 (변경된 모듈) 확인
+MODULE = "$1"
 echo ${MODULE};
 
-if [ "${MODULE}" = "verby-api" ]; then
-  MODULE="verby-api-server"
+if [ MODULE = "verby-api" ]; then
   JAR_NAME="api-server"
-elif [ "${MODULE}" = "verby-batch" ]; then
-  MODULE="verby-batch-server"
+elif [ MODULE = "verby-batch" ]; then
   JAR_NAME="batch-server"
-elif [ "${MODULE}" = "verby-consumer" ]; then
-  MODULE="verby-consumer-server"
+elif [ MODULE = "verby-consumer" ]; then
   JAR_NAME="internal-consumer-server"
 else
   echo "Unsupported Module: ${MODULE}"

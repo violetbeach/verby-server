@@ -13,8 +13,6 @@ permissions:
 
 hooks:
   ApplicationStart:
-    - location: deploy.sh
+    - location: deploy.sh verby-consumer-server
       timeout: 60
       runas: ec2-user
-      environment:
-        MODULE: verby-consumer-server
