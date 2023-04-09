@@ -1,23 +1,19 @@
 #!/bin/bash
 
-# 배포 그룹 (변경된 모듈) 확인
-echo ${DEPLOYMENT_GROUP};
+# 배포 모듈 (변경된 모듈) 확인
+echo ${MODULE};
 
-# 모듈 배포
-MODULE=""
-JAR_NAME=""
-
-if [ "${DEPLOYMENT_GROUP}" = "verby-api" ]; then
+if [ "${MODULE}" = "verby-api" ]; then
   MODULE="verby-api-server"
   JAR_NAME="api-server"
-elif [ "${DEPLOYMENT_GROUP}" = "verby-batch" ]; then
+elif [ "${MODULE}" = "verby-batch" ]; then
   MODULE="verby-batch-server"
   JAR_NAME="batch-server"
-elif [ "${DEPLOYMENT_GROUP}" = "verby-consumer" ]; then
+elif [ "${MODULE}" = "verby-consumer" ]; then
   MODULE="verby-consumer-server"
   JAR_NAME="internal-consumer-server"
 else
-  echo "Unsupported deployment group: ${DEPLOYMENT_GROUP}"
+  echo "Unsupported Module: ${MODULE}"
   exit 1
 fi
 

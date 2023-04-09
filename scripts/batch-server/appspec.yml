@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ec2-user/deploy/<deployment-group-name>
+    destination: /home/ec2-user/deploy/verby-batch-server
     overwrite: yes
 
 permissions:
@@ -17,4 +17,4 @@ hooks:
       timeout: 60
       runas: ec2-user
       environment:
-        DEPLOYMENT_GROUP: <deployment-group-name>
+        MODULE: verby-batch-server
