@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# 변경된 모듈에 대한 작업 수행
+# 변경된 모듈 환경변수 확인
+echo $MODULE;
+
+# 모듈 배포
 deploy_module($MODULE)
 
 function deploy_module {
