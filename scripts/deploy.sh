@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 배포 모듈 (변경된 모듈) 확인
-MODULE = "$1"
+MODULE="$1"
 echo ${MODULE};
 
 if [ MODULE = "verby-api-server" ]; then
