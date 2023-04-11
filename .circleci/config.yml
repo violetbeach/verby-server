@@ -1,7 +1,5 @@
 version: 2.1
 
-setup: true
-
 orbs:
   path-filtering: circleci/path-filtering@0.1.4
 
@@ -9,7 +7,7 @@ workflows:
   setup-workflow:
     jobs:
       - path-filtering/filter:
-          base-revision: main
+          base-revision: $GITHUB_PR_BASE_BRANCH
           config-path: .circleci/continue-config.yml
           mapping: |
             api-server/.* api-server true
