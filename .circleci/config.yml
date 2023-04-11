@@ -1,68 +1,18 @@
 version: 2.1
+
+setup: true
+
 orbs:
-  aws-s3: circleci/aws-s3@1.0.13
-  aws-code-deploy: circleci/aws-code-deploy@0.0.12
-
-jobs:
-  build:
-    docker:
-      - image: circleci/openjdk:17-jdk-buster
-
-    steps:
-      - checkout
-
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "build.gradle" }}
-            - v1-dependencies-
-
-      - save_cache:
-          key: v1-dependencies-{{ checksum "build.gradle" }}
-          paths:
-            - ~/.gradle
-
-      - run:
-          command: ./gradlew clean build test
-
-      - run:
-          command: |
-            zip verby-rest-api.zip -r ./*
-            mkdir -p deploy
-            mv verby-rest-api.zip deploy/verby-rest-api.zip
-
-      - persist_to_workspace:
-          root: .
-          paths:
-            - deploy
-
-  deploy:
-    docker:
-      - image: circleci/python:2.7
-
-    steps:
-      - attach_workspace:
-          at: .
-
-      - aws-s3/copy:
-          from: deploy/*
-          to: 's3://verby-deploy'
-          aws-region: AWS_DEFAULT_REGION
-
-      - aws-code-deploy/deploy-bundle:
-          application-name: verby-server
-          deployment-group: verby-group
-          deployment-config: CodeDeployDefault.AllAtOnce
-          bundle-bucket: verby-deploy
-          bundle-key: verby-rest-api
-          bundle-type: zip
+  path-filtering: circleci/path-filtering@0.1.4
 
 workflows:
-  version: 2
-
-  build-deploy:
+  setup-workflow:
     jobs:
-      - build
-      - deploy:
-          context: AWS
-          requires:
-            - build
+      - path-filtering/filter:
+          base-revision: master
+          config-path: .circleci/continue-config.yml
+          mapping: |
+            api-server/.* api-server true
+            batch-server/.* batch-server true
+            internal-consumer-server/.* consumer-server true
+            core/.* core true

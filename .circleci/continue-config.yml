@@ -1,0 +1,216 @@
+version: 2.1
+orbs:
+  aws-s3: circleci/aws-s3@1.0.13
+  aws-code-deploy: circleci/aws-code-deploy@0.0.12
+
+parameters:
+  api-server:
+    type: boolean
+    default: false
+  batch-server:
+    type: boolean
+    default: false
+  consumer-server:
+    type: boolean
+    default: false
+  core:
+    type: boolean
+    default: false
+
+jobs:
+  # API server 빌드
+  build-api:
+    docker:
+      - image: circleci/openjdk:17-jdk-buster
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "build.gradle" }}
+            - v1-dependencies-
+      - save_cache:
+          key: v1-dependencies-{{ checksum "build.gradle" }}
+          paths:
+            - ~/.gradle
+
+      - run:
+          command: ./gradlew :api-server:build
+
+      - run:
+          command: |
+            zip verby-api-server.zip ./api-server/build/libs/api-server-0.0.1.jar ./scripts/api-server/* -j
+            mkdir -p deploy
+            mv verby-api-server.zip deploy/verby-api-server.zip
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - deploy
+  # Batch server 빌드
+  build-batch:
+    docker:
+      - image: circleci/openjdk:17-jdk-buster
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "build.gradle" }}
+            - v1-dependencies-
+      - save_cache:
+          key: v1-dependencies-{{ checksum "build.gradle" }}
+          paths:
+            - ~/.gradle
+
+      - run:
+          command: ./gradlew :batch-server:build
+
+      - run:
+          command: |
+            zip verby-batch-server.zip ./batch-server/build/libs/batch-server-0.0.1.jar ./scripts/batch-server/* -j
+            mkdir -p deploy
+            mv verby-batch-server.zip deploy/verby-batch-server.zip
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - deploy
+
+  # Internal consumer server 빌드
+  build-consumer:
+    docker:
+      - image: circleci/openjdk:17-jdk-buster
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "build.gradle" }}
+            - v1-dependencies-
+      - save_cache:
+          key: v1-dependencies-{{ checksum "build.gradle" }}
+          paths:
+            - ~/.gradle
+
+      - run:
+          command: ./gradlew :internal-consumer-server:build
+
+      - run:
+          command: |
+            zip verby-consumer-server.zip ./internal-consumer-server/build/libs/internal-consumer-server-0.0.1.jar ./scripts/consumer-server/* -j
+            mkdir -p deploy
+            mv verby-consumer-server.zip deploy/verby-consumer-server.zip
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - deploy
+
+  deploy-api:
+    docker:
+      - image: circleci/python:2.7
+
+    environment:
+      MODULE: api-server
+
+    steps:
+      - attach_workspace:
+          at: .
+
+      - aws-s3/copy:
+          from: deploy/*
+          to: 's3://verby-deploy'
+          aws-region: AWS_DEFAULT_REGION
+
+      - aws-code-deploy/deploy-bundle:
+          application-name: verby-server
+          deployment-group: verby-api-server
+          deployment-config: CodeDeployDefault.AllAtOnce
+          bundle-bucket: verby-deploy
+          bundle-key: verby-api-server
+          bundle-type: zip
+
+  deploy-batch:
+    docker:
+      - image: circleci/python:2.7
+
+    environment:
+      MODULE: batch-server
+
+    steps:
+      - attach_workspace:
+          at: .
+
+      - aws-s3/copy:
+          from: deploy/*
+          to: 's3://verby-deploy'
+          aws-region: AWS_DEFAULT_REGION
+
+      - aws-code-deploy/deploy-bundle:
+          application-name: verby-server
+          deployment-group: verby-batch-server
+          deployment-config: CodeDeployDefault.AllAtOnce
+          bundle-bucket: verby-deploy
+          bundle-key: verby-batch-server
+          bundle-type: zip
+
+  deploy-consumer:
+    docker:
+      - image: circleci/python:2.7
+
+    environment:
+      MODULE: internal-consumer-server
+
+    steps:
+      - attach_workspace:
+          at: .
+
+      - aws-s3/copy:
+          from: deploy/*
+          to: 's3://verby-deploy'
+          aws-region: AWS_DEFAULT_REGION
+
+      - aws-code-deploy/deploy-bundle:
+          application-name: verby-server
+          deployment-group: verby-consumer-server
+          deployment-config: CodeDeployDefault.AllAtOnce
+          bundle-bucket: verby-deploy
+          bundle-key: verby-consumer-server
+          bundle-type: zip
+
+workflows:
+  version: 2
+
+  build-deploy-api:
+    when:
+      or:
+        - << pipeline.parameters.api-server >>
+        - << pipeline.parameters.core >>
+    jobs:
+      - build-api
+      - deploy-api:
+          context: AWS
+          requires:
+            - build-api
+
+  build-deploy-batch:
+    when:
+      or:
+        - << pipeline.parameters.batch-server >>
+        - << pipeline.parameters.core >>
+    jobs:
+      - build-batch
+      - deploy-batch:
+          context: AWS
+          requires:
+            - build-batch
+
+  build-deploy-consumer:
+    when:
+      or:
+        - << pipeline.parameters.consumer-server >>
+        - << pipeline.parameters.core >>
+    jobs:
+      - build-consumer
+      - deploy-consumer:
+          context: AWS
+          requires:
+            - build-consumer
