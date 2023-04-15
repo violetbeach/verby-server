@@ -1,9 +1,7 @@
-# (DRAFT!) VERBY - 커버 영상 공유 플랫폼
+# VERBY - 커버 영상 공유 플랫폼
 
-> (TODO) 로고 및 소개글
+Verby는 <mark>Verse by</mark>의 약자로 커버 곡 영상을 공유하는 플랫폼입니다.
 
-> Main:
->
 > API: http://api.verby.co.kr/docs/api-docs.html
 
 --- 
