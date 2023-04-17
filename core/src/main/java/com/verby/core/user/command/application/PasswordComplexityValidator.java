@@ -7,9 +7,9 @@ import java.util.regex.Pattern;
 public class PasswordComplexityValidator implements ConstraintValidator<Complexity, Object> {
 
     private int min;
-    private final String engReg = "[a-zA-Z]";
-    private final String numReg = "[0-9]";
-    private final String specReg = "[^0-9a-zA-Z]";
+    private static final String engReg = "[a-zA-Z]";
+    private static final String numReg = "\\d";
+    private static final String specReg = "[^0-9a-zA-Z]";
 
     @Override
     public void initialize(Complexity passwordComplexity) {
