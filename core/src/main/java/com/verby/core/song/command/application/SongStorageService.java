@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 public abstract class SongStorageService {
     @Value("${static.paths.song.image}")
     private String imageBasePath;
-    abstract public String getPreSignedUrl(Resource resource, String fileName);
+    public abstract String getPreSignedUrl(Resource resource, String fileName);
 
     protected String getResourcePath(Resource resource) {
         if (resource == Resource.IMAGE) {
