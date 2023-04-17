@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public abstract class CoverStorageService {
     private final CoverStoragePathProperties storagePathProperties;
-    abstract public String getPreSignedUrl(Resource resource, String fileName);
+    public abstract String getPreSignedUrl(Resource resource, String fileName);
 
     protected String getResourcePath(Resource resource) {
         switch (resource) {
