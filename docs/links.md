@@ -12,6 +12,9 @@
 ## erd
 - https://www.erdcloud.com/d/uCXnKBd5X6DAZmjhD
 
+## cicd
+- https://drive.google.com/file/d/1hyGNI8enRlCLZHCBLOcG0CuemmbYJt25/view?usp=sharing
+
 ## notion
 - team
   - https://bevel-buzzard-64c.notion.site/verby-3d934aa2c3044000b61361e443166d90

@@ -184,7 +184,7 @@ Verby는 <mark>Verse by</mark>의 약자로 커버 곡 영상을 공유하는 �
 
 ## CI/CD
 
-> TODO) 이미지
+<img src="./docs/cicd.png" style="border: 1px solid black;border-radius: 12px;" width="80%"/>
 
 ## 기타 문서
 
