@@ -1,9 +1,7 @@
-# (DRAFT!) VERBY - 커버 영상 공유 플랫폼
+# VERBY - 커버 영상 공유 플랫폼
 
-> (TODO) 로고 및 소개글
+Verby는 <mark>Verse by</mark>의 약자로 커버 곡 영상을 공유하는 플랫폼입니다.
 
-> Main:
->
 > API: http://api.verby.co.kr/docs/api-docs.html
 
 --- 
@@ -176,23 +174,17 @@
 
 <img src="./docs/project-architecture/api-server.png" style="border: 1px solid black;border-radius: 12px;" width="100%"/>
 
-> Link: https://drive.google.com/file/d/1uWQcvmy768GgIKrWY0OrHf2J5FEVfacf/view?usp=sharing
-
 ### Batch Server
 
 <img src="./docs/project-architecture/batch-server.png" style="border:1px solid black; border-radius: 12px;" width="45%"/>
-
-> Link: https://drive.google.com/file/d/1ncHeFbQsga0g9eu7wFaAVakgpxWWl_OJ/view?usp=sharing
 
 ### Consumer Server
 
 <img src="./docs/project-architecture/consumer-server.png" style="border:1px solid black; border-radius: 12px;" width="55%"/>
 
-> Link: https://drive.google.com/file/d/1Wk3fphFL0jvmqTJxvwJoYa8rNkSKYtI9/view?usp=sharing
-
 ## CI/CD
 
-> TODO) 이미지
+<img src="./docs/cicd.png" style="border: 1px solid black;border-radius: 12px;" width="80%"/>
 
 ## 기타 문서
 

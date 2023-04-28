@@ -34,7 +34,7 @@ jobs:
             - ~/.gradle
 
       - run:
-          command: ./gradlew :api-server:build
+          command: ./gradlew :api-server:buildNeeded
 
       - run:
           command: |
@@ -62,7 +62,7 @@ jobs:
             - ~/.gradle
 
       - run:
-          command: ./gradlew :batch-server:build
+          command: ./gradlew :batch-server:buildNeeded
 
       - run:
           command: |
@@ -91,7 +91,7 @@ jobs:
             - ~/.gradle
 
       - run:
-          command: ./gradlew :internal-consumer-server:build
+          command: ./gradlew :internal-consumer-server:buildNeeded
 
       - run:
           command: |
