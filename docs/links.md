@@ -2,6 +2,9 @@
 - http://api.verby.co.kr/docs/api-docs.html
 
 ## project-structure
+
+base width: 1467, height: 819
+
 - api-server
   - https://drive.google.com/file/d/1uWQcvmy768GgIKrWY0OrHf2J5FEVfacf/view?usp=sharing
 - batch-server
@@ -13,7 +16,7 @@
 - https://www.erdcloud.com/d/uCXnKBd5X6DAZmjhD
 
 ## cicd
-- https://drive.google.com/file/d/1hyGNI8enRlCLZHCBLOcG0CuemmbYJt25/view?usp=sharing
+- https://drive.google.com/file/d/1hyGNI8enRlCLZHCBLOcG0CuemmbYJt25/view?usp=sharing![img.png](img.png)
 
 ## notion
 - team

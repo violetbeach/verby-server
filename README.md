@@ -164,11 +164,52 @@ Verby는 <mark>Verse by</mark>의 약자로 커버 곡 영상을 공유하는 �
 
 > Link: https://www.erdcloud.com/d/uCXnKBd5X6DAZmjhD
  
-## 프로젝트 설계
+## 패키지 구조
 
-> (TODO) Package Structure
+```
+com.verby.core
+    +- cover
+         +- command
+             +- application
+             |   +- CoverService.java
+             |   +- CoverHitService.java
+             |   +- PostCoverRequest.java
+             |   +- PostedCoverInfo.java
+             |   +- CoverStorageService.java
+             |   +- CoverLikeService.java
+             |   +- ...
+             +- domain
+             |   +- Cover.java
+             |   +- CoverHit.java
+             |   +- CoverLike.java
+             |   +- CoverRepository.java
+             |   +- ContestService.java
+             |   +- ...
+         +- query
+             +- application
+             |   +- CoverSummaryQueryService.java
+             |   +- CoverSearchRequest.java
+             |   +- CoverDetailService.java
+             |   +- ...
+             +- domain
+             |   +- CoverQueryModel.java
+             |   +- CoverQueryModelRepository.java
+             |   +- ...
+         +- infrastructure
+         |   +- CoverQueryModelRepositoryImpl.java
+         |   +- CoverServiceImpl.java
+         |   +- ContestServiceImpl.java
+         |   +- SongServiceImpl.java
+         |   +- ...
+         +- exception
+         |   +- CoverExistsAlreadyException.java
+      +- artist
+      +- song
+      +- contest
+      +- ...
+```
 
-## 프로젝트 구조도
+## System Architecture
 
 ### API Server
 
@@ -176,15 +217,15 @@ Verby는 <mark>Verse by</mark>의 약자로 커버 곡 영상을 공유하는 �
 
 ### Batch Server
 
-<img src="./docs/project-architecture/batch-server.png" style="border:1px solid black; border-radius: 12px;" width="45%"/>
+<img src="./docs/project-architecture/batch-server.png" style="border:1px solid black; border-radius: 12px;" width="50%%"/>
 
 ### Consumer Server
 
-<img src="./docs/project-architecture/consumer-server.png" style="border:1px solid black; border-radius: 12px;" width="55%"/>
+<img src="./docs/project-architecture/consumer-server.png" style="border:1px solid black; border-radius: 12px;" width="50%"/>
 
 ## CI/CD
 
-<img src="./docs/cicd.png" style="border: 1px solid black;border-radius: 12px;" width="60%"/>
+<img src="./docs/cicd.png" style="border: 1px solid black;border-radius: 12px;" width="100%"/>
 
 ## 기타 문서
 
