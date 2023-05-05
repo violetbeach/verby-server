@@ -6,7 +6,7 @@ Verby는 <mark>Verse by</mark>의 약자로 커버 곡 영상을 공유하는 �
 
 --- 
 
-## 팀 소개
+## 🚩 팀 소개
 
 ### 기획
 
@@ -121,7 +121,7 @@ Verby는 <mark>Verse by</mark>의 약자로 커버 곡 영상을 공유하는 �
 
 [Verby-Github-Repository](https://github.com/verby-korea)
 
-## 프로젝트 소개
+## 🎵 프로젝트 소개
 
 ### 프로젝트 기간
 
@@ -129,7 +129,7 @@ Verby는 <mark>Verse by</mark>의 약자로 커버 곡 영상을 공유하는 �
 - 프로젝트 구현 : 22.07.27 ~
 - 버그 수정 및 리팩토링 :
 
-## 기술 스택
+## 🔧 기술 스택
 
 <div align=left>
 <img src="https://img.shields.io/badge/java 17-007396?style=for-the-badge&logo=java&logoColor=white">
@@ -158,7 +158,7 @@ Verby는 <mark>Verse by</mark>의 약자로 커버 곡 영상을 공유하는 �
 <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">
 </div>
 
-## ERD
+## 📖 ERD
 
 <img src="./docs/erd.png" style="border:1px solid; border-radius: 12px;"/>
 
@@ -225,11 +225,11 @@ com.verby.core
 
 <img src="./docs/project-architecture/consumer-server.png" style="border:1px solid black; border-radius: 12px;" width="50%"/>
 
-## CI/CD
+## ♻ 배포
 
 <img src="./docs/cicd.png" style="border: 1px solid black;border-radius: 12px;" width="100%"/>
 
-## 기타 문서
+## 📜 기타 문서
 
 > 팀 전체 노션: https://bevel-buzzard-64c.notion.site/verby-3d934aa2c3044000b61361e443166d90
 > 
