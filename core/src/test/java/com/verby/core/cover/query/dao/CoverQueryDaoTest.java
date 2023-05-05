@@ -1,40 +1,28 @@
 package com.verby.core.cover.query.dao;
 
-import com.verby.core.artist.command.domain.Artist;
-import com.verby.core.config.QueryDslConfig;
-import com.verby.core.contest.command.domain.Contest;
-import com.verby.core.cover.command.domain.Cover;
 import com.verby.core.cover.query.dto.CoverQueryModel;
-import com.verby.core.song.command.domain.Song;
-import com.verby.core.support.repository.BaseRepositoryTest;
-import com.verby.core.user.command.domain.User;
-import fixture.ContestFixture;
-import org.junit.jupiter.api.Disabled;
+import config.database.EmbeddedMongoConfig;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.data.mongodb.core.MongoTemplate;
 
-import static fixture.ArtistFixture.IU;
-import static fixture.CoverFixture.NORMAL_COVER;
-import static fixture.SongFixture.좋은_날;
-import static fixture.UserFixture.NORMAL_USER;
+import static fixture.CoverQueryModelFixture.NORMAL_COVER_QUERY_MODEL;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-@Import({QueryDslConfig.class, CoverQueryDaoTest.class})
+@Import({EmbeddedMongoConfig.class})
+@DataMongoTest
 @DisplayName("CoverSummaryQueryDao의")
-class CoverQueryDaoTest extends BaseRepositoryTest {
-
+class CoverQueryDaoTest {
     @Autowired
-    private CoverQueryDao coverQueryDao;
-
+    CoverQueryDao coverQueryDao;
     @Autowired
-    private TestEntityManager em;
+    MongoTemplate mongoTemplate;
 
-    @Disabled("조회 모델 DB 추가 예정에 따라 보류 (현재 Redis를 활용한 조회)")
     @Nested
     @DisplayName("findById 메서드는")
     class findById {
@@ -42,63 +30,30 @@ class CoverQueryDaoTest extends BaseRepositoryTest {
         @Test
         @DisplayName("coverId로 CoverSummary를 조회한다.")
         void ItReturnCoverSummary() {
-            User user = 유저_생성();
-            Artist artist = 가수_생성();
-            Song song = 곡_생성(artist);
-            Contest contest = 선정곡_생성(song);
-            Cover cover = 커버_영상_생성(user, contest);
+            CoverQueryModel insert = NORMAL_COVER_QUERY_MODEL.getCoverQueryModel(1L);
+            mongoTemplate.insert(insert);
 
             // when
-            CoverQueryModel coverQueryModel = coverQueryDao.findById(cover.getId()).get();
+            CoverQueryModel result = coverQueryDao.findById(insert.getId()).get();
 
             // then
             assertAll(
-                    () -> assertThat(coverQueryModel.getTitle()).isEqualTo(cover.getTitle()),
-                    () -> assertThat(coverQueryModel.getVideo()).isEqualTo(cover.getVideo()),
-                    () -> assertThat(coverQueryModel.getHighlight()).isEqualTo(cover.getHighlight()),
-                    () -> assertThat(coverQueryModel.getImage()).isEqualTo(cover.getImage()),
+                    () -> assertThat(result.getTitle()).isEqualTo(insert.getTitle()),
+                    () -> assertThat(result.getVideo()).isEqualTo(insert.getVideo()),
+                    () -> assertThat(result.getHighlight()).isEqualTo(insert.getHighlight()),
+                    () -> assertThat(result.getImage()).isEqualTo(insert.getImage()),
 
-                    () -> assertThat(coverQueryModel.getPublisherId()).isEqualTo(user.getId()),
-                    () -> assertThat(coverQueryModel.getPublisherName()).isEqualTo(user.getLoginId()),
+                    () -> assertThat(result.getPublisherId()).isEqualTo(insert.getPublisherId()),
+                    () -> assertThat(result.getPublisherName()).isEqualTo(insert.getPublisherName()),
 
-                    () -> assertThat(coverQueryModel.getContestId()).isEqualTo(cover.getContestId()),
+                    () -> assertThat(result.getContestId()).isEqualTo(insert.getContestId()),
 
-                    () -> assertThat(coverQueryModel.getArtistId()).isEqualTo(artist.getId()),
-                    () -> assertThat(coverQueryModel.getArtistName()).isEqualTo(artist.getName()),
+                    () -> assertThat(result.getArtistId()).isEqualTo(insert.getArtistId()),
+                    () -> assertThat(result.getArtistName()).isEqualTo(insert.getArtistName()),
 
-                    () -> assertThat(coverQueryModel.getSongId()).isEqualTo(song.getId()),
-                    () -> assertThat(coverQueryModel.getSongName()).isEqualTo(song.getName())
+                    () -> assertThat(result.getSongId()).isEqualTo(insert.getSongId()),
+                    () -> assertThat(result.getSongName()).isEqualTo(insert.getSongName())
             );
-        }
-
-        private Cover 커버_영상_생성(User user, Contest contest) {
-            Cover cover = NORMAL_COVER.getCover(contest.getId(), user.getId());
-            em.persistAndFlush(cover);
-            return cover;
-        }
-
-        private Contest 선정곡_생성(Song song) {
-            Contest contest = ContestFixture.선정곡_IU_좋은날.getContest(song.getId());
-            em.persistAndFlush(contest);
-            return contest;
-        }
-
-        private Song 곡_생성(Artist artist) {
-            Song song = 좋은_날.getSong(artist.getId());
-            em.persistAndFlush(song);
-            return song;
-        }
-
-        private Artist 가수_생성() {
-            Artist artist = IU.getArtist();
-            em.persistAndFlush(artist);
-            return artist;
-        }
-
-        private User 유저_생성() {
-            User user = NORMAL_USER.getUser();
-            em.persistAndFlush(user);
-            return user;
         }
 
     }

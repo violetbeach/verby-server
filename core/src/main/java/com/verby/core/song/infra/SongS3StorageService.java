@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Component
 @RequiredArgsConstructor
@@ -23,8 +25,8 @@ class SongS3StorageService extends SongStorageService {
     private String bucket;
 
     public String getPreSignedUrl(Resource resource, String fileName) {
-        String path = getResourcePath(resource) + "/" + fileName;
-        GeneratePresignedUrlRequest generatePresignedUrlRequest = getGeneratePreSignedUrlRequest(bucket, path);
+        Path path = Paths.get(getResourcePath(resource), fileName);
+        GeneratePresignedUrlRequest generatePresignedUrlRequest = getGeneratePreSignedUrlRequest(bucket, path.toString());
         URL url = amazonS3Client.generatePresignedUrl(generatePresignedUrlRequest);
         return url.toString();
     }

@@ -1,7 +1,10 @@
 package com.verby.core.storage;
 
+import lombok.experimental.UtilityClass;
+
 import java.util.Date;
 
+@UtilityClass
 public class StorageUtils {
 
     public static Date generatePreSignedUrlExpiration() {

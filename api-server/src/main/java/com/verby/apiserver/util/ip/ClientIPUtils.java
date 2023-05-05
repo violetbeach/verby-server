@@ -1,7 +1,10 @@
 package com.verby.apiserver.util.ip;
 
+import lombok.experimental.UtilityClass;
+
 import javax.servlet.http.HttpServletRequest;
 
+@UtilityClass
 public class ClientIPUtils {
 
     public static String getRemoteIP(HttpServletRequest request){

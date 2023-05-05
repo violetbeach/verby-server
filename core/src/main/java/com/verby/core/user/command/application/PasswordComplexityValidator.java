@@ -7,9 +7,9 @@ import java.util.regex.Pattern;
 public class PasswordComplexityValidator implements ConstraintValidator<Complexity, Object> {
 
     private int min;
-    private final String engReg = "[a-zA-Z]";
-    private final String numReg = "[0-9]";
-    private final String specReg = "[^0-9a-zA-Z]";
+    private static final String ENG_REGEX = "[a-zA-Z]";
+    private static final String NUM_REGEX = "\\d";
+    private static final String SPEC_REGEX = "[^0-9a-zA-Z]";
 
     @Override
     public void initialize(Complexity passwordComplexity) {
@@ -21,9 +21,9 @@ public class PasswordComplexityValidator implements ConstraintValidator<Complexi
         String password = object.toString();
 
         int complexity = 0;
-        complexity += Pattern.compile(engReg).matcher(password).find() ? 1:0;
-        complexity += Pattern.compile(numReg).matcher(password).find() ? 1:0;
-        complexity += Pattern.compile(specReg).matcher(password).find() ? 1:0;
+        complexity += Pattern.compile(ENG_REGEX).matcher(password).find() ? 1:0;
+        complexity += Pattern.compile(NUM_REGEX).matcher(password).find() ? 1:0;
+        complexity += Pattern.compile(SPEC_REGEX).matcher(password).find() ? 1:0;
 
         return complexity >= min;
     }

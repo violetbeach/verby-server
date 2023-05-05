@@ -17,7 +17,7 @@ public class CursorRequest {
         this.size = size == null ? 10 : size;
     }
 
-    public Boolean hasKey() {
+    public boolean hasKey() {
         return key != null;
     }
 
