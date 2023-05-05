@@ -166,6 +166,8 @@ Verby는 <mark>Verse by</mark>의 약자로 커버 곡 영상을 공유하는 �
  
 ## 패키지 구조
 
+패키지 구조는 DDD(Domain-Driven-Design)의 바운디드 컨텍스트를 기반으로 합니다.
+
 ```
 com.verby.core
     +- cover
