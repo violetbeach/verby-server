@@ -209,7 +209,7 @@ com.verby.core
       +- ...
 ```
 
-## 프로젝트 구조도
+## System Architecture
 
 ### API Server
 
@@ -217,15 +217,15 @@ com.verby.core
 
 ### Batch Server
 
-<img src="./docs/project-architecture/batch-server.png" style="border:1px solid black; border-radius: 12px;" width="45%"/>
+<img src="./docs/project-architecture/batch-server.png" style="border:1px solid black; border-radius: 12px;" width="50%%"/>
 
 ### Consumer Server
 
-<img src="./docs/project-architecture/consumer-server.png" style="border:1px solid black; border-radius: 12px;" width="55%"/>
+<img src="./docs/project-architecture/consumer-server.png" style="border:1px solid black; border-radius: 12px;" width="50%"/>
 
 ## CI/CD
 
-<img src="./docs/cicd.png" style="border: 1px solid black;border-radius: 12px;" width="80%"/>
+<img src="./docs/cicd.png" style="border: 1px solid black;border-radius: 12px;" width="100%"/>
 
 ## 기타 문서
 
