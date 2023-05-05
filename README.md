@@ -164,7 +164,7 @@ Verby는 <mark>Verse by</mark>의 약자로 커버 곡 영상을 공유하는 �
 
 > Link: https://www.erdcloud.com/d/uCXnKBd5X6DAZmjhD
  
-## 패키지 구조
+## 📦 패키지
 
 패키지 구조는 DDD(Domain-Driven-Design)의 바운디드 컨텍스트를 기반으로 합니다.
 
@@ -211,7 +211,7 @@ com.verby.core
       +- ...
 ```
 
-## System Architecture
+## 🌈 시스템 아키텍처
 
 ### API Server
 
