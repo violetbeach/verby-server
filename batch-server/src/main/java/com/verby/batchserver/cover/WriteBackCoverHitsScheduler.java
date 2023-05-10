@@ -20,7 +20,7 @@ public class WriteBackCoverHitsScheduler {
     private final CoverHitRepository coverHitRepository;
     private final CoverRepository coverRepository;
 
-    @Scheduled(cron = "0 5 * * * *")
+    @Scheduled(cron = "0 0/5 * * * ?")
     public void execute() {
         List<CoverHit> hits = coverHitRepository.findAll();
         hits.forEach((hit) -> {
