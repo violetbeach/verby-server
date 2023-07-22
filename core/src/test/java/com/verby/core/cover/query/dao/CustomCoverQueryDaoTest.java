@@ -3,15 +3,13 @@ package com.verby.core.cover.query.dao;
 
 import com.verby.core.cover.command.application.CoverSearchRequest;
 import com.verby.core.cover.query.dto.CoverQueryModel;
+import com.verby.core.support.repository.QueryRepositoryTest;
 import com.verby.core.util.pagination.CursorRequest;
-import config.database.EmbeddedMongoConfig;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
-import org.springframework.context.annotation.Import;
-import org.springframework.data.mongodb.core.MongoTemplate;
 
 import java.util.List;
 
@@ -19,16 +17,16 @@ import static fixture.CoverQueryModelFixture.NORMAL_COVER_QUERY_MODEL;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-@Import({CustomCoverQueryDaoImpl.class, EmbeddedMongoConfig.class})
-@DataMongoTest
 @DisplayName("CoverDetailQueryDao의")
-class CustomCoverQueryDaoTest {
+class CustomCoverQueryDaoTest extends QueryRepositoryTest {
 
     @Autowired
     private CustomCoverQueryDao coverQueryDao;
 
-    @Autowired
-    private MongoTemplate mongoTemplate;
+	@BeforeEach
+	void setup() {
+		coverQueryDao = new CustomCoverQueryDaoImpl(mongoTemplate);
+	}
 
     @Nested
     @DisplayName("findAll 메서드는")

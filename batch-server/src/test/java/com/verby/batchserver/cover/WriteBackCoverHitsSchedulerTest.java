@@ -1,26 +1,20 @@
 package com.verby.batchserver.cover;
 
+import com.verby.batchserver.support.BaseIntegrationTest;
 import com.verby.core.cover.command.domain.Cover;
 import com.verby.core.cover.command.domain.CoverHit;
 import com.verby.core.cover.command.domain.CoverHitRepository;
 import com.verby.core.cover.command.domain.CoverRepository;
-import config.database.EmbeddedRedisConfig;
 import fixture.CoverFixture;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
-import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Transactional
-@SpringBootTest
-@Import(EmbeddedRedisConfig.class)
 @DisplayName("WriteBackCoverHitsScheduler 클래스의")
-class WriteBackCoverHitsSchedulerTest {
+class WriteBackCoverHitsSchedulerTest extends BaseIntegrationTest {
     @Autowired
     WriteBackCoverHitsScheduler writeBackCoverHitsScheduler;
     @Autowired

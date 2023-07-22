@@ -6,13 +6,11 @@ import com.verby.apiserver.support.presentation.BaseControllerTest;
 import com.verby.core.storage.dto.CreateUploadUrlRequest;
 import com.verby.core.storage.dto.Domain;
 import com.verby.core.storage.dto.Resource;
-import config.storage.S3TestConfig;
 import io.findify.s3mock.S3Mock;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation;
 import org.springframework.restdocs.payload.JsonFieldType;
@@ -24,7 +22,6 @@ import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWit
 import static org.springframework.restdocs.payload.PayloadDocumentation.requestFields;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@Import(S3TestConfig.class)
 @WithMockUser(roles = "MEMBER")
 class StorageControllerTest extends BaseControllerTest {
 

@@ -1,6 +1,6 @@
 package com.verby.core.contest.command.domain;
 
-import com.verby.core.support.repository.BaseRepositoryTest;
+import com.verby.core.support.repository.MainRepositoryTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class ContestRepositoryTest extends BaseRepositoryTest {
+class ContestRepositoryTest extends MainRepositoryTest {
 
     @Autowired
     private ContestRepository contestRepository;

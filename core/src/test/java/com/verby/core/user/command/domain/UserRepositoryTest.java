@@ -1,6 +1,6 @@
 package com.verby.core.user.command.domain;
 
-import com.verby.core.support.repository.BaseRepositoryTest;
+import com.verby.core.support.repository.MainRepositoryTest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import java.util.Optional;
 import static fixture.UserFixture.NORMAL_USER;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class UserRepositoryTest extends BaseRepositoryTest {
+class UserRepositoryTest extends MainRepositoryTest {
 
     @Autowired
     private UserRepository userRepository;

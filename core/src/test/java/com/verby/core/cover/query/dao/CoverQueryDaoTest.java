@@ -1,27 +1,20 @@
 package com.verby.core.cover.query.dao;
 
 import com.verby.core.cover.query.dto.CoverQueryModel;
-import config.database.EmbeddedMongoConfig;
+import com.verby.core.support.repository.QueryRepositoryTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
-import org.springframework.context.annotation.Import;
-import org.springframework.data.mongodb.core.MongoTemplate;
 
 import static fixture.CoverQueryModelFixture.NORMAL_COVER_QUERY_MODEL;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-@Import({EmbeddedMongoConfig.class})
-@DataMongoTest
 @DisplayName("CoverSummaryQueryDao의")
-class CoverQueryDaoTest {
+class CoverQueryDaoTest extends QueryRepositoryTest {
     @Autowired
     CoverQueryDao coverQueryDao;
-    @Autowired
-    MongoTemplate mongoTemplate;
 
     @Nested
     @DisplayName("findById 메서드는")

@@ -10,5 +10,5 @@ import org.springframework.transaction.annotation.Transactional;
 @DataJpaTest
 @Import({PersistenceConfig.class})
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class BaseRepositoryTest {
+public class MainRepositoryTest {
 }
