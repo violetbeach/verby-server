@@ -5,10 +5,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
     testImplementation 'com.h2database:h2'
-    testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.5.4'
-    testImplementation 'it.ozimov:embedded-redis:0.7.2'
+    testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
+    testImplementation 'it.ozimov:embedded-redis'
 }

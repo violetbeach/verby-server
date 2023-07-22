@@ -32,6 +32,14 @@ subprojects {
 		maven { url 'https://jitpack.io' }
 	}
 
+	dependencyManagement {
+		dependencies {
+			dependency 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.5.4'
+			dependency 'it.ozimov:embedded-redis:0.7.2'
+			dependency 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+		}
+	}
+
 	dependencies {
 		compileOnly 'org.projectlombok:lombok'
 		annotationProcessor 'org.projectlombok:lombok'
