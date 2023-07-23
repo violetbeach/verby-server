@@ -2,9 +2,9 @@ package com.verby.core.user.command.domain;
 
 import com.verby.core.support.repository.MainRepositoryTest;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import java.util.Optional;
 
@@ -12,14 +12,11 @@ import static fixture.UserFixture.NORMAL_USER;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class UserRepositoryTest extends MainRepositoryTest {
-
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private TestEntityManager em;
-
     @Test
+	@DisplayName("loginId로 특정 유저를 조회할 수 있다.")
     void findByLoginId() {
         // given
         User newUser = NORMAL_USER.getUser();
@@ -33,6 +30,7 @@ class UserRepositoryTest extends MainRepositoryTest {
     }
 
     @Test
+	@DisplayName("User를 등록할 수 있다.")
     void save() {
         // given
         String loginId = "violetbeach13";

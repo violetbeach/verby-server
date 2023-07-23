@@ -3,6 +3,8 @@ package com.verby.core.cover.command.application;
 
 import com.verby.core.storage.dto.Resource;
 import org.apache.logging.log4j.util.Strings;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -19,12 +21,12 @@ class CoverStorageServiceTest {
 
     @ParameterizedTest
     @MethodSource("paramsForGetPreSignUrl")
+	@DisplayName("resource 타입이 존재하면 예외를 발생하지 않는다.")
     void getPreSignUrl(Resource resource) {
-        // when
-        coverStorageService.getResourcePath(resource);
-
-        // then
-        // - Not Throw Exception
+        // when & then
+        Assertions.assertDoesNotThrow(() -> {
+			coverStorageService.getResourcePath(resource);
+		});
     }
 
 

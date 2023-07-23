@@ -36,7 +36,7 @@ class CustomCoverQueryDaoTest extends QueryRepositoryTest {
         @DisplayName("CoverDetailQueryModel을 전체 조회한다.")
         void firstPage() {
             // given
-            for(long i = 1; i <= 30; i++) {
+            for(long i = 100; i <= 130; i++) {
                 CoverQueryModel coverQueryModel = NORMAL_COVER_QUERY_MODEL.getCoverQueryModel(i);
                 mongoTemplate.insert(coverQueryModel);
             }
@@ -52,8 +52,8 @@ class CustomCoverQueryDaoTest extends QueryRepositoryTest {
             // then
             assertAll(
                     () -> assertThat(coverQueryModels).hasSize(10),
-                    () -> assertThat(coverQueryModels.get(0).getId()).isEqualTo(30L),
-                    () -> assertThat(coverQueryModels.get(9).getId()).isEqualTo(21L)
+                    () -> assertThat(coverQueryModels.get(0).getId()).isEqualTo(130L),
+                    () -> assertThat(coverQueryModels.get(9).getId()).isEqualTo(121L)
             );
         }
 

@@ -2,6 +2,7 @@ package com.verby.apiserver.user;
 
 import com.verby.apiserver.support.documentation.ApiDocumentUtils;
 import com.verby.apiserver.support.presentation.BaseControllerTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation;
 import org.springframework.restdocs.payload.JsonFieldType;
@@ -15,6 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class UserPolicyControllerTest extends BaseControllerTest {
 
     @Test
+	@DisplayName("사용 불가 ID 목록을 조회할 수 있다.")
     void findAllUnavailableIds() throws Exception {
         // when
         ResultActions result = mockMvc.perform(get("/users/unavailable-ids"));

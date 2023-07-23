@@ -1,21 +1,18 @@
 package com.verby.core.artist.command.domain;
 
 import com.verby.core.support.repository.MainRepositoryTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ArtistRepositoryTest extends MainRepositoryTest {
-
     @Autowired
     private ArtistRepository artistRepository;
 
-    @Autowired
-    private TestEntityManager em;
-
     @Test
+	@DisplayName("Artist를 저장할 수 있다.")
     void save() {
         // given
         Artist artist = new Artist("IU");

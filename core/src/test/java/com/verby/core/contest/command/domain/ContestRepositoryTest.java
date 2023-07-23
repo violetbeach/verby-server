@@ -1,23 +1,20 @@
 package com.verby.core.contest.command.domain;
 
 import com.verby.core.support.repository.MainRepositoryTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ContestRepositoryTest extends MainRepositoryTest {
-
     @Autowired
     private ContestRepository contestRepository;
 
-    @Autowired
-    private TestEntityManager em;
-
     @Test
+	@DisplayName("Contest를 저장할 수 있다.")
     void save() {
         // given
         Contest contest = new Contest(1L,

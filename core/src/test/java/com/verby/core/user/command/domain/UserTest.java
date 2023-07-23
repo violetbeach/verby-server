@@ -25,7 +25,7 @@ class UserTest {
     }
 
     @Test
-    @DisplayName("비밀번호 변경 테스트")
+    @DisplayName("비밀번호를 초기화할 수 있다.")
     public void resetPassword() {
         // given
         String newPassword = "changedPassword";
