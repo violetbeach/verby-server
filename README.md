@@ -228,11 +228,3 @@ com.verby.core
 ## ♻ 배포
 
 <img src="./docs/cicd.png" style="border: 1px solid black;border-radius: 12px;" width="100%"/>
-
-## 📜 기타 문서
-
-> 팀 전체 노션: https://bevel-buzzard-64c.notion.site/verby-3d934aa2c3044000b61361e443166d90
-> 
-> 백엔드 노션: https://bevel-buzzard-64c.notion.site/67bc72df37c94228a2cd6b5df488f2e3
-> 
-> Trouble Shooting: https://bevel-buzzard-64c.notion.site/Trouble-Shooting-003614a4bd214a92886b690c548a1eaf
