@@ -13,6 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Import({PersistenceConfig.class})
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class MainRepositoryTest {
-	@Autowired
-	protected TestEntityManager em;
+    @Autowired
+    protected TestEntityManager em;
 }

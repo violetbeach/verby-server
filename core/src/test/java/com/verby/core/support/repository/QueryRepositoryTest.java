@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 @DataMongoTest
 public class QueryRepositoryTest {
 
-	@Autowired
-	protected MongoTemplate mongoTemplate;
+    @Autowired
+    protected MongoTemplate mongoTemplate;
 
 }

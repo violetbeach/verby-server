@@ -13,7 +13,7 @@ class SongRepositoryTest extends MainRepositoryTest {
     private SongRepository songRepository;
 
     @Test
-	@DisplayName("Song을 저장할 수 있다.")
+    @DisplayName("Song을 저장할 수 있다.")
     void save() {
         // given
         Song song = new Song(1L, "사랑했지만", "imagePath");

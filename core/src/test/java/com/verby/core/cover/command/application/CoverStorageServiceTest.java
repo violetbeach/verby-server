@@ -21,12 +21,12 @@ class CoverStorageServiceTest {
 
     @ParameterizedTest
     @MethodSource("paramsForGetPreSignUrl")
-	@DisplayName("resource 타입이 존재하면 예외를 발생하지 않는다.")
+    @DisplayName("resource 타입이 존재하면 예외를 발생하지 않는다.")
     void getPreSignUrl(Resource resource) {
         // when & then
         Assertions.assertDoesNotThrow(() -> {
-			coverStorageService.getResourcePath(resource);
-		});
+            coverStorageService.getResourcePath(resource);
+        });
     }
 
 

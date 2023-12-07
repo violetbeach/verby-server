@@ -1,53 +1,53 @@
 plugins {
-	id 'org.asciidoctor.jvm.convert' version '3.3.2'
+    id 'org.asciidoctor.jvm.convert' version '3.3.2'
 }
 
 configurations {
-	asciidoctorExtensions
+    asciidoctorExtensions
 }
 
 bootJar {
-	dependsOn asciidoctor
+    dependsOn asciidoctor
 }
 
 dependencies {
-	implementation project(':core')
-	testImplementation(testFixtures(project(":core")))
+    implementation project(':core')
+    testImplementation(testFixtures(project(":core")))
 
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
 
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.session:spring-session-data-redis'
-	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.session:spring-session-data-redis'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 
-	implementation 'org.springframework.cloud:spring-cloud-starter-aws'
+    implementation 'org.springframework.cloud:spring-cloud-starter-aws'
 
-	testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'org.springframework.security:spring-security-test'
 
-	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+    testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
 
-	testImplementation 'com.h2database:h2'
-	testImplementation 'io.findify:s3mock_2.13:0.2.6'
-	testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
-	testImplementation 'it.ozimov:embedded-redis'
+    testImplementation 'com.h2database:h2'
+    testImplementation 'io.findify:s3mock_2.13:0.2.6'
+    testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
+    testImplementation 'it.ozimov:embedded-redis'
 
-	asciidoctorExtensions 'org.springframework.restdocs:spring-restdocs-asciidoctor'
+    asciidoctorExtensions 'org.springframework.restdocs:spring-restdocs-asciidoctor'
 
 }
 
 asciidoctor {
-	configurations 'asciidoctorExtensions'
-	dependsOn test
+    configurations 'asciidoctorExtensions'
+    dependsOn test
 }
 
 task copyDocument(type: Copy) {
-	dependsOn asciidoctor
-	from file('build/docs/asciidoc')
-	into file('src/main/resources/static/docs')
+    dependsOn asciidoctor
+    from file('build/docs/asciidoc')
+    into file('src/main/resources/static/docs')
 }
 
 build {
-	dependsOn copyDocument
+    dependsOn copyDocument
 }

@@ -1,19 +1,19 @@
 plugins {
-	id 'org.asciidoctor.jvm.convert' version '3.3.2'
+    id 'org.asciidoctor.jvm.convert' version '3.3.2'
 }
 
 dependencies {
-	implementation project(':core')
-	testImplementation(testFixtures(project(":core")))
+    implementation project(':core')
+    testImplementation(testFixtures(project(":core")))
 
-	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 
-	implementation 'org.springframework.boot:spring-boot-starter-tomcat'
+    implementation 'org.springframework.boot:spring-boot-starter-tomcat'
 
-	implementation 'org.springframework.security:spring-security-crypto'
+    implementation 'org.springframework.security:spring-security-crypto'
 
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
-	testImplementation 'com.h2database:h2'
+    testImplementation 'com.h2database:h2'
 }

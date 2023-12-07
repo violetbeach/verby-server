@@ -12,7 +12,7 @@ class ArtistRepositoryTest extends MainRepositoryTest {
     private ArtistRepository artistRepository;
 
     @Test
-	@DisplayName("Artist를 저장할 수 있다.")
+    @DisplayName("Artist를 저장할 수 있다.")
     void save() {
         // given
         Artist artist = new Artist("IU");

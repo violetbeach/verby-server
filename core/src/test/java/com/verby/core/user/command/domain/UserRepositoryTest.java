@@ -16,7 +16,7 @@ class UserRepositoryTest extends MainRepositoryTest {
     private UserRepository userRepository;
 
     @Test
-	@DisplayName("loginId로 특정 유저를 조회할 수 있다.")
+    @DisplayName("loginId로 특정 유저를 조회할 수 있다.")
     void findByLoginId() {
         // given
         User newUser = NORMAL_USER.getUser();
@@ -30,7 +30,7 @@ class UserRepositoryTest extends MainRepositoryTest {
     }
 
     @Test
-	@DisplayName("User를 등록할 수 있다.")
+    @DisplayName("User를 등록할 수 있다.")
     void save() {
         // given
         String loginId = "violetbeach13";

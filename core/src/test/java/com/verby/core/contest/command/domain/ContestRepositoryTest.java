@@ -14,7 +14,7 @@ class ContestRepositoryTest extends MainRepositoryTest {
     private ContestRepository contestRepository;
 
     @Test
-	@DisplayName("Contest를 저장할 수 있다.")
+    @DisplayName("Contest를 저장할 수 있다.")
     void save() {
         // given
         Contest contest = new Contest(1L,

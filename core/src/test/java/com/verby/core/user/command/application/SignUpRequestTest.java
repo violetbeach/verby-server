@@ -28,7 +28,7 @@ class SignUpRequestTest {
 
     @ParameterizedTest
     @MethodSource("paramsForPasswordRegex")
-	@DisplayName("10자~24자에 영문과 숫자, 특수문자 중 2가지 이상을 조합하면 violations가 존재하지 않는다.")
+    @DisplayName("10자~24자에 영문과 숫자, 특수문자 중 2가지 이상을 조합하면 violations가 존재하지 않는다.")
     void password_regex(String password, boolean expected) {
         // given
         SignUpRequest signUpRequest = SignUpRequest.builder()

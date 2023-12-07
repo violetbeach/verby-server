@@ -27,12 +27,12 @@ public class CoverController {
     private final CoverService coverService;
     private final CoverSummaryQueryService coverSummaryQueryService;
 
-	public CoverController(CoverService coverService, CoverSummaryQueryService coverSummaryQueryService) {
-		this.coverService = coverService;
-		this.coverSummaryQueryService = coverSummaryQueryService;
-	}
+    public CoverController(CoverService coverService, CoverSummaryQueryService coverSummaryQueryService) {
+        this.coverService = coverService;
+        this.coverSummaryQueryService = coverSummaryQueryService;
+    }
 
-	@GetMapping("/{id}")
+    @GetMapping("/{id}")
     private ResponseEntity<CoverQueryModel> findById(@PathVariable long id) {
         CoverQueryModel coverQueryModel = coverSummaryQueryService.findById(id);
         return new ResponseEntity<>(coverQueryModel, HttpStatus.OK);

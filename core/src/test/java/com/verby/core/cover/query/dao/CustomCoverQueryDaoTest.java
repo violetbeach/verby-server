@@ -23,10 +23,10 @@ class CustomCoverQueryDaoTest extends QueryRepositoryTest {
     @Autowired
     private CustomCoverQueryDao coverQueryDao;
 
-	@BeforeEach
-	void setup() {
-		coverQueryDao = new CustomCoverQueryDaoImpl(mongoTemplate);
-	}
+    @BeforeEach
+    void setup() {
+        coverQueryDao = new CustomCoverQueryDaoImpl(mongoTemplate);
+    }
 
     @Nested
     @DisplayName("findAll 메서드는")

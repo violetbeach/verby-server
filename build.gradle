@@ -1,92 +1,92 @@
 buildscript {
-	ext {
-		springBootVersion = '2.7.1'
-	}
-	repositories {
-		mavenCentral()
-	}
+    ext {
+        springBootVersion = '2.7.1'
+    }
+    repositories {
+        mavenCentral()
+    }
 
-	dependencies {
-		classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
-		classpath "io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE"
-	}
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE"
+    }
 
 }
 
 allprojects {
-	group = 'com.verby'
-	version = '0.0.1'
+    group = 'com.verby'
+    version = '0.0.1'
 }
 
 subprojects {
-	apply plugin: 'java-library'
-	apply plugin: 'org.springframework.boot'
-	apply plugin: 'io.spring.dependency-management'
-	apply plugin: 'jacoco'
-	apply plugin: 'java-test-fixtures'
+    apply plugin: 'java-library'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'jacoco'
+    apply plugin: 'java-test-fixtures'
 
-	sourceCompatibility = '17'
+    sourceCompatibility = '17'
 
-	repositories {
-		mavenCentral()
-		maven { url 'https://jitpack.io' }
-	}
+    repositories {
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
 
-	dependencyManagement {
-		dependencies {
-			dependency 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.5.4'
-			dependency 'it.ozimov:embedded-redis:0.7.2'
-			dependency 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
-		}
-	}
+    dependencyManagement {
+        dependencies {
+            dependency 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.5.4'
+            dependency 'it.ozimov:embedded-redis:0.7.2'
+            dependency 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+        }
+    }
 
-	dependencies {
-		compileOnly 'org.projectlombok:lombok'
-		annotationProcessor 'org.projectlombok:lombok'
-		testCompileOnly 'org.projectlombok:lombok'
-		testAnnotationProcessor 'org.projectlombok:lombok'
+    dependencies {
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+        testCompileOnly 'org.projectlombok:lombok'
+        testAnnotationProcessor 'org.projectlombok:lombok'
 
-		testImplementation('org.springframework.boot:spring-boot-starter-test') {
-			exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-		}
-	}
+        testImplementation('org.springframework.boot:spring-boot-starter-test') {
+            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+        }
+    }
 
-	test {
-		useJUnitPlatform()
-		finalizedBy jacocoTestReport
-	}
+    test {
+        useJUnitPlatform()
+        finalizedBy jacocoTestReport
+    }
 
-	jacocoTestReport {
-		dependsOn test
-		reports {
-			html.enabled true
-			csv.enabled false
-			xml.enabled false
-		}
-		finalizedBy 'jacocoTestCoverageVerification'
-	}
+    jacocoTestReport {
+        dependsOn test
+        reports {
+            html.enabled true
+            csv.enabled false
+            xml.enabled false
+        }
+        finalizedBy 'jacocoTestCoverageVerification'
+    }
 
-	jacocoTestCoverageVerification {
-		def Qdomains = []
+    jacocoTestCoverageVerification {
+        def Qdomains = []
 
-		for (qPattern in '*.QA'..'*.QZ') {
-			Qdomains.add(qPattern + '*')
-		}
+        for (qPattern in '*.QA'..'*.QZ') {
+            Qdomains.add(qPattern + '*')
+        }
 
-		violationRules {
-			rule {
-				enabled = true
-				element = 'CLASS'
+        violationRules {
+            rule {
+                enabled = true
+                element = 'CLASS'
 
-				limit {
-					counter = 'BRANCH'
-					value = 'COVEREDRATIO'
-					// minimum = 0.98
-				}
+                limit {
+                    counter = 'BRANCH'
+                    value = 'COVEREDRATIO'
+                    // minimum = 0.98
+                }
 
-				excludes = [] + Qdomains
-			}
-		}
-	}
+                excludes = [] + Qdomains
+            }
+        }
+    }
 
 }

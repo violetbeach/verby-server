@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class UserPolicyControllerTest extends BaseControllerTest {
 
     @Test
-	@DisplayName("사용 불가 ID 목록을 조회할 수 있다.")
+    @DisplayName("사용 불가 ID 목록을 조회할 수 있다.")
     void findAllUnavailableIds() throws Exception {
         // when
         ResultActions result = mockMvc.perform(get("/users/unavailable-ids"));
